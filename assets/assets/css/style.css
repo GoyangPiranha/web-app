@@ -1,0 +1,193 @@
+body{
+    background-color: #e2e1dc;
+}
+.form-login{
+    margin-top: 0;
+}
+.outter-form-login {
+    padding: 15px;
+    background: #EEEEEE;
+    position: relative;
+    border-radius: 5px;
+
+}
+.logo-login {
+    position: absolute;
+    border-radius: 50%;
+    font-size: 35px;
+    background: #21A957;
+    color: #FFFFFF;
+    padding: 10px 18px;
+    margin: auto;
+}
+.inner-login .form-control {
+    background: #D3D3D3;
+}
+h3.title-login {
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+.forget {
+    margin-top: 20px;
+    color: #ADADAD;
+}
+.btn-custom-green {
+    background: #f2c939;
+    color: #555;
+    font-weight: bold;
+}
+
+.input-group-addon {
+    padding: 6px 10px;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1;
+    color: #555;
+    text-align: center;
+    background-color: #f2c939;
+    border: 1px solid #f2c939;
+}
+
+.inner-login .form-control {
+     background: #ffffff;
+}
+
+.outter-logo {
+  margin-left: auto;
+  margin-right: auto;
+    position: relative;
+    border-radius: 5px;
+}
+
+img {
+  height: 180px;
+  width: 180px;
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@font-face {
+    font-family: "Century Gothic";
+    src: url(https://github.com/petrosalema/aloha-editor-barcamp-2013/blob/master/fonts/century-gothic-bold.ttf);
+}
+
+#throw {
+  font-family: "Century Gothic";
+}
+
+#youridea{
+  font-family: "Bradley Hand ITC";
+  font-weight: bold;
+  color: #f2c939;
+}
+
+#app {
+  color: #f2c939;
+}
+
+#register{
+  color: #f2c939;
+}
+
+.h1, .h2, .h3, h1, h2, h3 {
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+p{
+  font-size: 12px;
+}
+
+.navbar-default {
+    background-color: rgb(242, 201, 57);
+    border-color: #f2c939;
+}
+
+#placeholder{
+  font-size: 11px;
+}
+
+.form-control {
+  font-size: 12px;
+}
+
+textarea:focus,
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="datetime"]:focus,
+input[type="datetime-local"]:focus,
+input[type="date"]:focus,
+input[type="month"]:focus,
+input[type="time"]:focus,
+input[type="week"]:focus,
+input[type="number"]:focus,
+input[type="email"]:focus,
+input[type="url"]:focus,
+input[type="search"]:focus,
+input[type="tel"]:focus,
+input[type="color"]:focus,
+.uneditable-input:focus {
+  border-color: rgb(242, 201, 57);
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(232, 238, 104, 0.6);
+  outline: 0 none;
+}
+
+.navbar {
+    position: relative;
+    min-height: 50px;
+    margin-bottom: 20px;
+    border: 0px solid transparent;
+}
+
+@media screen and (-webkit-min-device-pixel-ratio: 0) {
+  input[type="date"].form-control,
+  input[type="time"].form-control,
+  input[type="datetime-local"].form-control,
+  input[type="month"].form-control {
+    line-height: 0px;
+  }
+  input[type="date"].input-sm,
+  input[type="time"].input-sm,
+  input[type="datetime-local"].input-sm,
+  input[type="month"].input-sm,
+  .input-group-sm input[type="date"],
+  .input-group-sm input[type="time"],
+  .input-group-sm input[type="datetime-local"],
+  .input-group-sm input[type="month"] {
+    line-height: 0px;
+  }
+  input[type="date"].input-lg,
+  input[type="time"].input-lg,
+  input[type="datetime-local"].input-lg,
+  input[type="month"].input-lg,
+  .input-group-lg input[type="date"],
+  .input-group-lg input[type="time"],
+  .input-group-lg input[type="datetime-local"],
+  .input-group-lg input[type="month"] {
+    line-height: 0px;
+  }
+}
+
+.btn-custom-yellow {
+    color: #555;
+    background-color: #f2c939;
+    border-color: #f2c939;
+}
+
+.input-group-btn:first-child>.btn, .input-group-btn:first-child>.btn-group {
+    margin-right: -5px;
+}
+
+#formgrupmarginbtm{
+  margin-bottom: 0px;
+}
+
+.help-block {
+    display: block;
+    margin-top: 0px;
+    margin-bottom: 10px;
+    color: #737373;
+    font-size: 12px;
+}
