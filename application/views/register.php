@@ -19,6 +19,9 @@
         </div><!--/.container -->
       </nav>
     <!-- NAVBAR -->
+<!--    <div class="col-md-4 col-md-offset-4 form-login">-->
+<!--            <img class="img-responsive img-register" src="--><?php //echo base_url('assets/images/bg-shirt.png'); ?><!--" alt="Flower">-->
+<!--    </div>-->
 
     <div class="col-md-4 col-md-offset-4 form-login">
         <div class="outter-form-login">
@@ -39,7 +42,7 @@
                   <div class="form-group">
                     <div class="input-group">
                       <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-user"></span></span>
-                      <input name="fullname" type="text" class="form-control" placeholder="Full Name" aria-describedby="basic-addon1">
+                      <input name="fullname" type="text" class="form-control" placeholder="Nama Lengkap" aria-describedby="basic-addon1">
                     </div>
                   </div>
                 </div>
@@ -64,10 +67,10 @@
                   <div class="form-group" id="formgrupmarginbtm">
                     <div class="input-group">
                       <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-calendar"></span></span>
-                      <input name="dateofbirth" type="date" class="form-control" placeholder="Date of Birth" aria-describedby="basic-addon1">
+                      <input name="dateofbirth" type="date" class="form-control" placeholder="Tanggal Lahir" aria-describedby="basic-addon1">
                     </div>
                   </div>
-                  <span class="help-block">*Date of Birth</span>
+                  <span class="help-block" style="color: #FFC300;">*Tanggal Lahir</span>
                 </div>
               </div>
 
@@ -81,7 +84,7 @@
                         <input name="userfile" type="file" class="form-control"  readonly>
                     </div>
                   </div>
-                  <span class="help-block">*Choose Your Avatar</span>
+                  <span class="help-block" style="color: #FFC300;">*Pilih Foto Profil</span>
                 </div>
               </div>
 
@@ -101,7 +104,7 @@
                   <div class="form-group">
                     <div class="input-group">
                       <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-lock"></span></span>
-                      <input name="confirmpassword" type="password" class="form-control validate" placeholder="Confirm Password" aria-describedby="basic-addon1">
+                      <input name="confirmpassword" type="password" class="form-control validate" placeholder="Konfirmasi Password" aria-describedby="basic-addon1">
                     </div>
                   </div>
                 </div>
@@ -114,7 +117,7 @@
                     <div class="input-group">
                       <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-map-marker"></span></span>
                       <select class="form-control" name="province">
-                        <option>Province</option>
+                        <option>Propinsi</option>
                         <option>Jawa Timur</option>
                         <option>Jawa Barat</option>
                         <option>Jawa Tengah</option>
@@ -132,7 +135,7 @@
                     <div class="input-group">
                       <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-map-marker"></span></span>
                       <select class="form-control" name="city">
-                        <option>City</option>
+                        <option>Kota</option>
                         <option>Banyuwangi</option>
                         <option>Madiun</option>
                         <option>Malang</option>
@@ -149,7 +152,7 @@
                     <div class="input-group">
                       <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-map-marker"></span></span>
                       <!-- <input type="text" class="form-control" placeholder="Address" aria-describedby="basic-addon1"> -->
-                      <textarea name="address" class="form-control" rows="2" cols="50" placeholder="Address" aria-describedby="basic-addon1"></textarea>
+                      <textarea name="address" class="form-control" rows="2" cols="50" placeholder="Alamat" aria-describedby="basic-addon1"></textarea>
                     </div>
                   </div>
                 </div>
@@ -171,7 +174,7 @@
                   <div class="form-group">
                     <div class="input-group">
                       <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-phone"></span></span>
-                      <input name="handphone" type="text" class="form-control" placeholder="Handphone" aria-describedby="basic-addon1">
+                      <input name="handphone" type="text" class="form-control" placeholder="No Handphone" aria-describedby="basic-addon1">
                     </div>
                   </div>
                 </div>

@@ -29,14 +29,14 @@
             <div class="card list-view-column">
                 <div class="card-header" role="tab" id="bri">
                     <h5 class="mb-0">
-                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseBri" aria-expanded="true" aria-controls="collapseOne">
+                        <a data-toggle="collapse" data-parent="#accordion" href="#collapse1" aria-expanded="true" aria-controls="collapseOne">
                             <div class="radio radio-primary">
                                 <strong>Andshop Custom</strong>
                             </div>
                         </a>
                     </h5>
                 </div>
-                <div id="collapseBri" class="collapse" role="tabpanel" aria-labelledby="bri">
+                <div id="collapse1" class="collapse" role="tabpanel" aria-labelledby="bri">
                     <div class="card-block">
                         <div class="row" id="row-konveksi">
                             <div class="col-lg-12">
@@ -73,35 +73,45 @@
                 </div>
             </div>
             <div class="card list-view-column">
-                <div class="card-header" role="tab" id="mandiri">
+                <div class="card-header" role="tab" id="bri">
                     <h5 class="mb-0">
-                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseMandiri" aria-expanded="true" aria-controls="collapseOne">
+                        <a data-toggle="collapse" data-parent="#accordion" href="#collapse2" aria-expanded="true" aria-controls="collapseOne">
                             <div class="radio radio-primary">
-                                <strong>Bank Mandiri</strong>
+                                <strong>Andshop Custom</strong>
                             </div>
                         </a>
                     </h5>
                 </div>
-                <div id="collapseMandiri" class="collapse" role="tabpanel" aria-labelledby="mandiri">
+                <div id="collapse2" class="collapse" role="tabpanel" aria-labelledby="bri">
                     <div class="card-block">
-                        <div class="row">
-                            <div class="col-xs-8">
+                        <div class="row" id="row-konveksi">
+                            <div class="col-lg-12">
                                 <div class="row">
-                                    <div class="col-xs-12">
-                                        a/n <strong>Zainul Bahar, S.Kom </strong>
-                                    </div>
-                                    <div class="col-xs-12">
-                                        No. Rek <strong>000982883877728</strong>
+                                    <div class="col-lg-12">
+                                        <img id="img-konveksi" class="img-responsive center-block" src="<?php echo base_url('assets/images/konveksi1.jpg'); ?>" alt="product-img">
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-xs-4">
+                            <div class="col-xs-12">
                                 <div class="row">
-                                    <div class="col-xs-12"></div>
                                     <div class="col-xs-12">
-                                        <img id="img-payment" class="img-responsive center-block" src="<?php echo base_url('assets/images/mandiri.webp'); ?>" alt="product-img">
+                                        <h5 class="text-left"><strong>Deskripsi: </strong></h5>
                                     </div>
-                                    <div class="col-xs-12"></div>
+                                    <div class="col-xs-12">
+                                        <p class="text-justify">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias aperiam, corporis cum dicta doloremque enim error exercitationem, ipsum iure labore maiores minus, quasi quia reiciendis sed tempora temporibus veritatis vero?</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-2">
+                                <h5 class="text-left"><strong>Harga</strong></h5>
+                            </div>
+                            <div class="col-xs-10">
+                                <h5 class="text-left"><strong>: Rp. 250.000/unit</strong></h5>
+                            </div>
+                            <div class="col-xs-12">
+                                <div class="checkbox">
+                                    <input type="checkbox" id="cb2">
+                                    <label for="cb2"><strong>Pilih Konveksi</strong></label>
                                 </div>
                             </div>
                         </div>
@@ -109,35 +119,45 @@
                 </div>
             </div>
             <div class="card list-view-column">
-                <div class="card-header" role="tab" id="bca">
+                <div class="card-header" role="tab" id="bri">
                     <h5 class="mb-0">
-                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseBca" aria-expanded="true" aria-controls="collapseOne">
+                        <a data-toggle="collapse" data-parent="#accordion" href="#collapse3" aria-expanded="true" aria-controls="collapseOne">
                             <div class="radio radio-primary">
-                                <strong>Bank BCA</strong>
+                                <strong>Andshop Custom</strong>
                             </div>
                         </a>
                     </h5>
                 </div>
-                <div id="collapseBca" class="collapse" role="tabpanel" aria-labelledby="bca">
+                <div id="collapse3" class="collapse" role="tabpanel" aria-labelledby="bri">
                     <div class="card-block">
-                        <div class="row">
-                            <div class="col-xs-8">
+                        <div class="row" id="row-konveksi">
+                            <div class="col-lg-12">
                                 <div class="row">
-                                    <div class="col-xs-12">
-                                        a/n <strong>Zainul Bahar, S.Kom </strong>
-                                    </div>
-                                    <div class="col-xs-12">
-                                        No. Rek <strong>000982883877728</strong>
+                                    <div class="col-lg-12">
+                                        <img id="img-konveksi" class="img-responsive center-block" src="<?php echo base_url('assets/images/konveksi1.jpg'); ?>" alt="product-img">
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-xs-4">
+                            <div class="col-xs-12">
                                 <div class="row">
-                                    <div class="col-xs-12"></div>
                                     <div class="col-xs-12">
-                                        <img id="img-payment" class="img-responsive center-block" src="<?php echo base_url('assets/images/bca.webp'); ?>" alt="product-img">
+                                        <h5 class="text-left"><strong>Deskripsi: </strong></h5>
                                     </div>
-                                    <div class="col-xs-12"></div>
+                                    <div class="col-xs-12">
+                                        <p class="text-justify">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias aperiam, corporis cum dicta doloremque enim error exercitationem, ipsum iure labore maiores minus, quasi quia reiciendis sed tempora temporibus veritatis vero?</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-2">
+                                <h5 class="text-left"><strong>Harga</strong></h5>
+                            </div>
+                            <div class="col-xs-10">
+                                <h5 class="text-left"><strong>: Rp. 250.000/unit</strong></h5>
+                            </div>
+                            <div class="col-xs-12">
+                                <div class="checkbox">
+                                    <input type="checkbox" id="cb2">
+                                    <label for="cb2"><strong>Pilih Konveksi</strong></label>
                                 </div>
                             </div>
                         </div>
@@ -145,41 +165,52 @@
                 </div>
             </div>
             <div class="card list-view-column">
-                <div class="card-header" role="tab" id="bni">
+                <div class="card-header" role="tab" id="bri">
                     <h5 class="mb-0">
-                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseBni" aria-expanded="true" aria-controls="collapseOne">
+                        <a data-toggle="collapse" data-parent="#accordion" href="#collapse4" aria-expanded="true" aria-controls="collapseOne">
                             <div class="radio radio-primary">
-                                <strong>Bank BNI</strong>
+                                <strong>Andshop Custom</strong>
                             </div>
                         </a>
                     </h5>
                 </div>
-                <div id="collapseBni" class="collapse" role="tabpanel" aria-labelledby="bni">
+                <div id="collapse4" class="collapse" role="tabpanel" aria-labelledby="bri">
                     <div class="card-block">
-                        <div class="row">
-                            <div class="col-xs-8">
+                        <div class="row" id="row-konveksi">
+                            <div class="col-lg-12">
                                 <div class="row">
-                                    <div class="col-xs-12">
-                                        a/n <strong>Zainul Bahar, S.Kom </strong>
-                                    </div>
-                                    <div class="col-xs-12">
-                                        No. Rek <strong>000982883877728</strong>
+                                    <div class="col-lg-12">
+                                        <img id="img-konveksi" class="img-responsive center-block" src="<?php echo base_url('assets/images/konveksi1.jpg'); ?>" alt="product-img">
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-xs-4">
+                            <div class="col-xs-12">
                                 <div class="row">
-                                    <div class="col-xs-12"></div>
                                     <div class="col-xs-12">
-                                        <img id="img-payment" class="img-responsive center-block" src="<?php echo base_url('assets/images/bni.webp'); ?>" alt="product-img">
+                                        <h5 class="text-left"><strong>Deskripsi: </strong></h5>
                                     </div>
-                                    <div class="col-xs-12"></div>
+                                    <div class="col-xs-12">
+                                        <p class="text-justify">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias aperiam, corporis cum dicta doloremque enim error exercitationem, ipsum iure labore maiores minus, quasi quia reiciendis sed tempora temporibus veritatis vero?</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-2">
+                                <h5 class="text-left"><strong>Harga</strong></h5>
+                            </div>
+                            <div class="col-xs-10">
+                                <h5 class="text-left"><strong>: Rp. 250.000/unit</strong></h5>
+                            </div>
+                            <div class="col-xs-12">
+                                <div class="checkbox">
+                                    <input type="checkbox" id="cb2">
+                                    <label for="cb2"><strong>Pilih Konveksi</strong></label>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+
         </div>
         <input name="submit" type="submit" class="btn btn-block btn-custom-green submit" value="Lanjut"></input>
     </form>
