@@ -605,3 +605,11 @@ input[type="radio"] .styled:checked + label::after {
   }
 }
 /*sampul foto*/
+
+a .navbar-brand{
+    color: white;
+}
+
+.navbar-default .navbar-brand{
+    color: #FFFFFF;
+}
