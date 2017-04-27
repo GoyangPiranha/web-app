@@ -19,7 +19,7 @@
           <h5 class="text-center" id="youridea">your ideas</h5>
         </div>
 
-        <div class="outter-form-login">
+        <div class="outter-form-login" id="login">
             <form action="<?php echo base_url('login/cekLogin'); ?>" class="inner-login" method="post">
             <p style="color: red; text-align: center">
             <?php 
@@ -30,7 +30,7 @@
               } 
             ?>
             </p>
-            <h4 class="title-login">Login</h4>
+            <h4 class="title-login" style="color: #444444">Login</h4>
                 <div class="form-group">
                   <div class="input-group">
                     <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-user"></span></span>
