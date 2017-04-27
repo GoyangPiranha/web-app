@@ -3,10 +3,19 @@ body{
 }
 
 @font-face {
-    font-family: "Century Gothic";
-    src: url(https://github.com/petrosalema/aloha-editor-barcamp-2013/blob/master/fonts/century-gothic-bold.ttf);
+    font-family: "Josefin Sans";
+    src: url(https://fonts.googleapis.com/css?family=Monofett);
 }
 
+@font-face {
+    font-family: "Monofett";
+    src: url(https://fonts.googleapis.com/css?family=Monofett);
+}
+
+@font-face {
+    font-family: "Puritan";
+    src: url("https://fonts.googleapis.com/css?family=Puritan");
+}
 .form-login{
     margin-top: 0;
 }
@@ -91,14 +100,26 @@ img {
   margin-right: auto;
 }
 
+#login-title{
+    font-family: "Puritan", sans-serif;
+}
+
 #throw {
-  font-family: "Century Gothic,", sans-serif;
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 25px;
 }
 
 #youridea{
-  font-family: "Bradley Hand ITC";
-  font-weight: bold;
-  color: #FFC300;
+    font-family: 'Monofett', sans-serif;
+    font-size: 20px;
+    color: #606062;
+    padding: 0px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+#no-account{
+    color: #606062;
 }
 
 #app {
@@ -650,4 +671,22 @@ a:focus, a:hover {
 a {
     color: #545454;
     text-decoration: none;
+}
+
+#img-bg-regist{
+    width: auto;
+    position: relative;
+    height: auto;
+}
+
+@media screen and (max-width: 768) {
+    #img-bg-regist{
+        width: 50%;
+        position: relative;
+        height: auto;
+    }
+}
+.bg-register{
+    width: 100%;
+    height: auto;
 }
