@@ -8,6 +8,9 @@
 
     <link href="<?php echo base_url('assets/bootstrap/css/bootstrap.min.css'); ?>" rel="stylesheet">
     <link href="<?php echo base_url('assets/bootstrap/css/style.css'); ?>" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Josefin+Sans' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Monofett' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Puritan' rel='stylesheet' type='text/css'>
   </head>
   <body>
     <div class="col-md-4 col-md-offset-4 form-login">
@@ -30,7 +33,7 @@
               } 
             ?>
             </p>
-            <h4 class="title-login" style="color: #444444">Login</h4>
+            <h4 class="title-login" style="color: #444444" id="">Login</h4>
                 <div class="form-group">
                   <div class="input-group">
                     <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-user"></span></span>
@@ -47,7 +50,7 @@
                 <input type="submit" class="btn btn-block btn-custom-green" value="LOGIN" />
 
                 <div class="text-center forget">
-                    <p>Didn't have account yet? <a href="<?=base_url(); ?>Daftar"><span id="register">Register</span></a></p>
+                    <p id="no-account">Didn't have account yet? <a href="<?=base_url(); ?>Daftar"><span id="register">Register</span></a></p>
                 </div>
             </form>
         </div>
