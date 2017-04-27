@@ -24,7 +24,7 @@
 <!--    </div>-->
 
     <div class="col-md-4 col-md-offset-4 form-login">
-        <div class="outter-form-login">
+        <div class="outter-form-register">
             <form action="<?php echo base_url('Daftar/proses'); ?>" class="inner-login" method="POST" enctype="multipart/form-data">
             <h5 class="title-login"><strong>Registration</strong></h5>
             <p style="color: red;">
