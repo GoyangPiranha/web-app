@@ -1,0 +1,215 @@
+#imaginary_container{
+    margin-top: 8px;
+}
+.stylish-input-group .input-group-addon{
+    background: white !important;
+}
+.stylish-input-group .form-control{
+    border-right:0;
+    box-shadow:0 0 0;
+    border-color:#ccc;
+}
+.stylish-input-group button{
+    border:0;
+    background:transparent;
+}
+
+#navbarform{
+    padding: 0;
+    border-bottom: 0;
+    border-top: 0;
+    padding-left: 0;
+}
+#inputnav{
+    padding-right: 5px;
+}
+#navbartoggle{
+    margin-left: 5px;
+    border: 0;
+}
+#navbar{
+    border-radius: 0;
+    margin-bottom: 0;
+    background: #FFC300;
+}
+#navbarcollapse{
+    border-radius: 0;
+    margin-bottom: 0;
+    background: darkorange;
+    height: 305px;
+}
+
+#brand{
+    font-size: 15px;
+    padding-left: 0;
+    padding-right: 5px;
+}
+#produk{
+    padding-left: 5px;
+    padding-right: 5px;
+}
+#produkcaption{
+    font-size: 10px;
+    margin: 0 0 0px;
+}
+#produkrating{
+    font-size: 8px;
+    margin: 0 0 0px;
+}
+#produkname{
+    margin-bottom: 0px;
+}
+#produkprice{
+    margin-top: 5px;
+}
+
+.buttonmenu1{
+    color: white;
+    background-color:dimgray;
+    border: 0;
+    margin-bottom: 5px;
+    margin-right: 0px;
+    width: 100%;
+    border-radius: 50px 0 0 0;
+    box-shadow: 0 1px 2px rgba(0,0,0,.075);
+}
+.buttonmenu2{
+    color: white;
+    background-color: dimgray;
+    border: 0;
+    margin-bottom: 5px;
+    margin-right: 0px;
+    width: 100%;
+    border-radius: 0 50px 0 0;
+}
+.seeall{
+    color: white;
+    background-color: orange;
+    border: 0;
+    margin-bottom: 10px;
+    border-radius: 2px;
+    float: right;
+}
+#brand{
+    color: white;
+}
+#footimg{
+    margin-top: 7px;
+}
+#menu{
+    margin-left: 6px;
+}
+
+
+body {
+    padding-top: 50px;
+    position: relative;
+}
+
+pre {
+    tab-size: 8;
+}
+
+
+#profilmenu{
+    text-align: center;
+    padding-left: 10%;
+    padding-top: 5%;
+    padding-bottom: 3%;
+}
+#divider{
+    background: #f1741e;
+    margin-top: 2px;
+    margin-bottom: 2px;
+}
+
+.buttonanimasi {
+    position: relative;
+    background-color: #f1741e;
+    border: none;
+    font-size: 16px;
+    color: #FFFFFF;
+    padding: 20px;
+    width: 200px;
+    text-align: center;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    text-decoration: none;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.buttonanimasi:after {
+    content: "";
+    background: white;
+    display: block;
+    position: absolute;
+    padding-top: 300%;
+    padding-left: 350%;
+    margin-left: -20px!important;
+    margin-top: -120%;
+    opacity: 0;
+    transition: all 0.8s
+}
+
+.buttonanimasi:active:after {
+    padding: 0;
+    margin: 0;
+    opacity: 1;
+    transition: 0s
+}
+
+#fotoproduk{
+    width: 200px;
+    height: 250px;
+}
+#fotodetails{
+    margin: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+#batasatas{
+    background-color: darkgrey;
+    height: 30px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-radius: 20px 20px 5px 5px;
+}
+#batasbawah{
+    background-color: darkgrey;
+    height: 30px;
+    margin-top: 10px;
+    border-radius: 5px 5px 20px 20px;
+}
+#carousel-left{
+    background-repeat: repeat-x;
+    background-image: none;
+}
+#carousel-right{
+    background-repeat: repeat-x;
+    background-image: none;
+}
+
+#deskripsiproduk{
+    background-color: darkgrey;
+    padding:2%;
+    color: white;
+    border-radius: 5px 5px 5px 5px;
+}
+#buttonproduk{
+    width: 100%;
+    background-color: #FFC300;
+}
+#pembatas{
+    height: 2px; 
+    background-color: white;   
+}
+
+#menusidebar{
+    color: white; 
+    height: 50px; 
+    font-size: 20px; 
+    text-align: center;
+    text-decoration: none;
+}
