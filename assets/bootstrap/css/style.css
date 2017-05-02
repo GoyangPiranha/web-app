@@ -1,13 +1,36 @@
 body{
     background-color: #e2e1dc;
 }
+
+@font-face {
+    font-family: "Josefin Sans";
+    src: url(https://fonts.googleapis.com/css?family=Monofett);
+}
+
+@font-face {
+    font-family: "Monofett";
+    src: url(https://fonts.googleapis.com/css?family=Monofett);
+}
+
+@font-face {
+    font-family: "Puritan";
+    src: url("https://fonts.googleapis.com/css?family=Puritan");
+}
 .form-login{
     margin-top: 0;
 }
-.outter-form-login {
+.outter-form-register {
     color: white;
     padding: 15px;
     background: #606062;
+    position: relative;
+    border-radius: 5px;
+}
+
+.outter-form-login{
+    background: #e2e1dc;
+    color: white;
+    padding: 15px;
     position: relative;
     border-radius: 5px;
 }
@@ -77,19 +100,26 @@ img {
   margin-right: auto;
 }
 
-@font-face {
-    font-family: "Century Gothic";
-    src: url(https://github.com/petrosalema/aloha-editor-barcamp-2013/blob/master/fonts/century-gothic-bold.ttf);
+#login-title{
+    font-family: "Puritan", sans-serif;
 }
 
 #throw {
-  font-family: "Century Gothic";
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 25px;
 }
 
 #youridea{
-  font-family: "Bradley Hand ITC";
-  font-weight: bold;
-  color: #FFC300;
+    font-family: 'Monofett', sans-serif;
+    font-size: 20px;
+    color: #606062;
+    padding: 0px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+#no-account{
+    color: #606062;
 }
 
 #app {
@@ -215,12 +245,15 @@ nav {
 
 .list-view-column, btn, submit {
     padding: 5px;
-    background: #f1f1f1;
+    background: #FFFFFF;
     position: relative;
     border-radius: 0px;
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 5px;
+    padding-right: 10px;
+    border:1px;
+    border-bottom-color: sienna;
     box-shadow: 0 1px 1px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.12);
 }
 
@@ -240,6 +273,7 @@ h5{
 #img-payment{
     max-width: 100px;
     max-height: 80px;
+    padding-right: 10px;
 }
 
 #img-konveksi{
@@ -627,4 +661,32 @@ a .navbar-brand{
     color: #ffc300;
     background-color: #606062;
     border-color: #606062;
+}
+
+a:focus, a:hover {
+    color: #23527c;
+    text-decoration: none;
+}
+
+a {
+    color: #545454;
+    text-decoration: none;
+}
+
+#img-bg-regist{
+    width: auto;
+    position: relative;
+    height: auto;
+}
+
+@media screen and (max-width: 768) {
+    #img-bg-regist{
+        width: 50%;
+        position: relative;
+        height: auto;
+    }
+}
+.bg-register{
+    width: 100%;
+    height: auto;
 }

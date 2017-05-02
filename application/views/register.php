@@ -9,7 +9,7 @@
     <link href="<?php echo base_url('assets/bootstrap/css/bootstrap.min.css'); ?>" rel="stylesheet">
     <link href="<?php echo base_url('assets/bootstrap/css/style.css'); ?>" rel="stylesheet">
   </head>
-  <body style="margin-top: 60px;">
+  <body style="margin-top: 60px; background: #FFFFFF">
     <!-- NAVBAR -->
     <nav class="navbar-default navbar-fixed-top">
         <div class="container">
@@ -22,9 +22,11 @@
 <!--    <div class="col-md-4 col-md-offset-4 form-login">-->
 <!--            <img class="img-responsive img-register" src="--><?php //echo base_url('assets/images/bg-shirt.png'); ?><!--" alt="Flower">-->
 <!--    </div>-->
-
+    <div class="col-lg-12 col-lg-offset-0 bg-register">
+        <img class="img-responsive" src="<?php echo base_url('assets/images/bg-shirt.png'); ?>" id="img-bg-regist">
+    </div>
     <div class="col-md-4 col-md-offset-4 form-login">
-        <div class="outter-form-login">
+        <div class="outter-form-register">
             <form action="<?php echo base_url('Daftar/proses'); ?>" class="inner-login" method="POST" enctype="multipart/form-data">
             <h5 class="title-login"><strong>Registration</strong></h5>
             <p style="color: red;">
