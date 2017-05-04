@@ -195,7 +195,7 @@ pre {
     background-color: darkgrey;
     padding:2%;
     color: white;
-    border-radius: 5px 5px 5px 5px;
+    border-radius: 5% 5% 5% 5%;
 }
 #buttonproduk{
     width: 100%;
@@ -213,3 +213,12 @@ pre {
     text-align: center;
     text-decoration: none;
 }
+#fotosampul{
+    height: 200px;
+    width: auto;
+}
+#keterangan{
+    background-color: darkgrey;
+    height: 100px;
+}
+
