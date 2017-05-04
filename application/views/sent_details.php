@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" style="margin-bottom: 65px;">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -215,7 +215,7 @@
                                 <h5 class="small"><strong>Total :</strong></h5>
                             </div>
                             <div class="col-xs-7 text-right">
-                                <h5 class="small text-right">Rp. 20.000</h5>
+                                <h5 class="small text-right">Rp. 520.000</h5>
                             </div>
                         </div>
                     </div>
@@ -237,6 +237,20 @@
         </form>
     </div>
 </div>
+
+<nav class="navbar navbar-default navbar-fixed-bottom" style="background: #606062; border-color: #606062 ;">
+    <div class="row" style="margin: 0;">
+        <div class="col-xs-4" style="text-align: center;">
+            <a><img id="footimg" src="<?php echo base_url('assets/images/shopping-cart.png'); ?>"></a>
+        </div>
+        <div class="col-xs-4" style="text-align: center;">
+            <a><img id="footimg" src="<?php echo base_url('assets/images/home.png'); ?>"></a>
+        </div>
+        <div class="col-xs-4" style="text-align: center;">
+            <a><img id="footimg" src="<?php echo base_url('assets/images/user.png'); ?>"></a>
+        </div>
+    </div>
+</nav>
 
 <script src="<?php echo base_url('assets/assets/js/jquery.min.js');?>"></script>
 <script src="<?php echo base_url('assets/bootstrap/js/bootstrap.min.js');?>"></script>

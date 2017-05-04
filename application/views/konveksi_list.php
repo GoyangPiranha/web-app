@@ -1,18 +1,16 @@
 <!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/html">
+<html lang="en" style="margin-bottom: 65px">
 <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
     <title>List Konveksi</title>
-
-
     <link href="<?php echo base_url('assets/bootstrap/css/bootstrap.min.css'); ?>" rel="stylesheet">
     <link href="<?php echo base_url('assets/bootstrap/css/style.css'); ?>" rel="stylesheet">
+    <link href="<?php echo base_url('assets/style.css'); ?>" rel="stylesheet">
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
 
 </head>
-<body style="margin-top: 60px; background: white;">
+<body style="margin-top: 20px; background: white;">
 <!-- NAVBAR -->
 <nav class="navbar-default navbar-fixed-top">
     <div class="container">
@@ -26,26 +24,28 @@
 <div class="col-lg-4 col-lg-offset-4 form-login">
     <form action="<?php echo base_url(''); ?>" class="inner-login" method="POST" enctype="multipart/form-data">
         <div id="accordion" role="tablist" aria-multiselectable="true">
-            <div class="card list-view-column">
+            <!--list view-->    
+            <div class="card list-view-column konveksi-col">
                 <div class="card-header" role="tab" id="bri">
                     <h5 class="mb-0">
-                        <a data-toggle="collapse" data-parent="#accordion" href="#collapse1" aria-expanded="true" aria-controls="collapseOne">
+                        <a data-toggle="collapse" data-parent="#accordion" href="#first" aria-expanded="true" aria-controls="collapseOne">
                             <div class="radio radio-primary">
                                 <strong>Andshop Custom</strong>
                             </div>
                         </a>
                     </h5>
                 </div>
-                <div id="collapse1" class="collapse" role="tabpanel" aria-labelledby="bri">
+                <div id="first" class="collapse" role="tabpanel" aria-labelledby="bri">
                     <div class="card-block">
                         <div class="row" id="row-konveksi">
                             <div class="col-lg-12">
                                 <div class="row">
-                                    <div class="col-lg-12">
+                                    <div class="col-lg-12" style="margin-bottom: 10px;">
                                         <img id="img-konveksi" class="img-responsive center-block" src="<?php echo base_url('assets/images/konveksi1.jpg'); ?>" alt="product-img">
                                     </div>
                                 </div>
                             </div>
+                            <div class="col-xs-12"><div class="line-separator" id="separator"></div></div>
                             <div class="col-xs-12">
                                 <div class="row">
                                     <div class="col-xs-12">
@@ -56,12 +56,14 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="col-xs-12"><div class="line-separator" id="separator"></div></div>
                             <div class="col-xs-2">
                                 <h5 class="text-left"><strong>Harga</strong></h5>
                             </div>
-                            <div class="col-xs-10">
+                            <div class="col-xs-10" style="margin-bottom: 5px;">
                                 <h5 class="text-left"><strong>: Rp. 250.000/unit</strong></h5>
                             </div>
+                            <div class="col-xs-12"><div class="line-separator" id="separator"></div></div>
                             <div class="col-xs-12">
                                 <div class="checkbox">
                                     <input type="checkbox" id="cb2">
@@ -72,26 +74,29 @@
                     </div>
                 </div>
             </div>
-            <div class="card list-view-column">
+            <!--ends of list view-->
+            <!--list view-->
+            <div class="card list-view-column konveksi-col">
                 <div class="card-header" role="tab" id="bri">
                     <h5 class="mb-0">
-                        <a data-toggle="collapse" data-parent="#accordion" href="#collapse2" aria-expanded="true" aria-controls="collapseOne">
+                        <a data-toggle="collapse" data-parent="#accordion" href="#second" aria-expanded="true" aria-controls="collapseOne">
                             <div class="radio radio-primary">
                                 <strong>Andshop Custom</strong>
                             </div>
                         </a>
                     </h5>
                 </div>
-                <div id="collapse2" class="collapse" role="tabpanel" aria-labelledby="bri">
+                <div id="second" class="collapse" role="tabpanel" aria-labelledby="bri">
                     <div class="card-block">
                         <div class="row" id="row-konveksi">
                             <div class="col-lg-12">
                                 <div class="row">
-                                    <div class="col-lg-12">
+                                    <div class="col-lg-12" style="margin-bottom: 10px;">
                                         <img id="img-konveksi" class="img-responsive center-block" src="<?php echo base_url('assets/images/konveksi1.jpg'); ?>" alt="product-img">
                                     </div>
                                 </div>
                             </div>
+                            <div class="col-xs-12"><div class="line-separator" id="separator"></div></div>
                             <div class="col-xs-12">
                                 <div class="row">
                                     <div class="col-xs-12">
@@ -102,12 +107,14 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="col-xs-12"><div class="line-separator" id="separator"></div></div>
                             <div class="col-xs-2">
                                 <h5 class="text-left"><strong>Harga</strong></h5>
                             </div>
-                            <div class="col-xs-10">
+                            <div class="col-xs-10" style="margin-bottom: 5px;">
                                 <h5 class="text-left"><strong>: Rp. 250.000/unit</strong></h5>
                             </div>
+                            <div class="col-xs-12"><div class="line-separator" id="separator"></div></div>
                             <div class="col-xs-12">
                                 <div class="checkbox">
                                     <input type="checkbox" id="cb2">
@@ -118,26 +125,29 @@
                     </div>
                 </div>
             </div>
-            <div class="card list-view-column">
+            <!--ends of list view-->
+            <!--list view-->
+            <div class="card list-view-column konveksi-col">
                 <div class="card-header" role="tab" id="bri">
                     <h5 class="mb-0">
-                        <a data-toggle="collapse" data-parent="#accordion" href="#collapse3" aria-expanded="true" aria-controls="collapseOne">
+                        <a data-toggle="collapse" data-parent="#accordion" href="#third" aria-expanded="true" aria-controls="collapseOne">
                             <div class="radio radio-primary">
                                 <strong>Andshop Custom</strong>
                             </div>
                         </a>
                     </h5>
                 </div>
-                <div id="collapse3" class="collapse" role="tabpanel" aria-labelledby="bri">
+                <div id="third" class="collapse" role="tabpanel" aria-labelledby="bri">
                     <div class="card-block">
                         <div class="row" id="row-konveksi">
                             <div class="col-lg-12">
                                 <div class="row">
-                                    <div class="col-lg-12">
+                                    <div class="col-lg-12" style="margin-bottom: 10px;">
                                         <img id="img-konveksi" class="img-responsive center-block" src="<?php echo base_url('assets/images/konveksi1.jpg'); ?>" alt="product-img">
                                     </div>
                                 </div>
                             </div>
+                            <div class="col-xs-12"><div class="line-separator" id="separator"></div></div>
                             <div class="col-xs-12">
                                 <div class="row">
                                     <div class="col-xs-12">
@@ -148,12 +158,14 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="col-xs-12"><div class="line-separator" id="separator"></div></div>
                             <div class="col-xs-2">
                                 <h5 class="text-left"><strong>Harga</strong></h5>
                             </div>
-                            <div class="col-xs-10">
+                            <div class="col-xs-10" style="margin-bottom: 5px;">
                                 <h5 class="text-left"><strong>: Rp. 250.000/unit</strong></h5>
                             </div>
+                            <div class="col-xs-12"><div class="line-separator" id="separator"></div></div>
                             <div class="col-xs-12">
                                 <div class="checkbox">
                                     <input type="checkbox" id="cb2">
@@ -164,26 +176,29 @@
                     </div>
                 </div>
             </div>
-            <div class="card list-view-column">
+            <!--ends of list view-->
+            <!--list view-->
+            <div class="card list-view-column konveksi-col">
                 <div class="card-header" role="tab" id="bri">
                     <h5 class="mb-0">
-                        <a data-toggle="collapse" data-parent="#accordion" href="#collapse4" aria-expanded="true" aria-controls="collapseOne">
+                        <a data-toggle="collapse" data-parent="#accordion" href="#fourth" aria-expanded="true" aria-controls="collapseOne">
                             <div class="radio radio-primary">
                                 <strong>Andshop Custom</strong>
                             </div>
                         </a>
                     </h5>
                 </div>
-                <div id="collapse4" class="collapse" role="tabpanel" aria-labelledby="bri">
+                <div id="fourth" class="collapse" role="tabpanel" aria-labelledby="bri">
                     <div class="card-block">
                         <div class="row" id="row-konveksi">
                             <div class="col-lg-12">
                                 <div class="row">
-                                    <div class="col-lg-12">
+                                    <div class="col-lg-12" style="margin-bottom: 10px;">
                                         <img id="img-konveksi" class="img-responsive center-block" src="<?php echo base_url('assets/images/konveksi1.jpg'); ?>" alt="product-img">
                                     </div>
                                 </div>
                             </div>
+                            <div class="col-xs-12"><div class="line-separator" id="separator"></div></div>
                             <div class="col-xs-12">
                                 <div class="row">
                                     <div class="col-xs-12">
@@ -194,12 +209,14 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="col-xs-12"><div class="line-separator" id="separator"></div></div>
                             <div class="col-xs-2">
                                 <h5 class="text-left"><strong>Harga</strong></h5>
                             </div>
-                            <div class="col-xs-10">
+                            <div class="col-xs-10" style="margin-bottom: 5px;">
                                 <h5 class="text-left"><strong>: Rp. 250.000/unit</strong></h5>
                             </div>
+                            <div class="col-xs-12"><div class="line-separator" id="separator"></div></div>
                             <div class="col-xs-12">
                                 <div class="checkbox">
                                     <input type="checkbox" id="cb2">
@@ -210,14 +227,27 @@
                     </div>
                 </div>
             </div>
+            <!--ends of list view-->
 
         </div>
         <input name="submit" type="submit" class="btn btn-block btn-custom-green submit" value="Lanjut"></input>
     </form>
-
-
 </div>
 
+
+<nav class="navbar navbar-default navbar-fixed-bottom" style="background: #606062; border-color: #606062 ;">
+    <div class="row" style="margin: 0;">
+        <div class="col-xs-4" style="text-align: center;">
+            <a><img id="footimg" src="<?php echo base_url('assets/images/shopping-cart.png'); ?>"></a>
+        </div>
+        <div class="col-xs-4" style="text-align: center;">
+            <a><img id="footimg" src="<?php echo base_url('assets/images/home.png'); ?>"></a>
+        </div>
+        <div class="col-xs-4" style="text-align: center;">
+            <a><img id="footimg" src="<?php echo base_url('assets/images/user.png'); ?>"></a>
+        </div>
+    </div>
+</nav>
 
 <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>

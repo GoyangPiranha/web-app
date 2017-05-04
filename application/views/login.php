@@ -17,7 +17,7 @@
 
 
         <div class="outter-logo">
-          <img href="<?php base_url()?>" class="center-block" src="<?php echo base_url('assets/bootstrap/img/logo.png'); ?>" alt="logo">
+          <img href="<?php base_url()?>" class="img-responsive center-block" id="img-custom-login" src="<?php echo base_url('assets/bootstrap/img/logo.png'); ?>" alt="logo">
           <h4 class="text-center" id="throw">Throw<span id="app">App</span></h4>
           <h5 class="text-center" id="youridea">your ideas</h5>
         </div>
