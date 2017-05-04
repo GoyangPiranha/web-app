@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" style="margin-bottom: 10px">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -153,7 +153,6 @@
                   <div class="form-group">
                     <div class="input-group">
                       <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-map-marker"></span></span>
-                      <!-- <input type="text" class="form-control" placeholder="Address" aria-describedby="basic-addon1"> -->
                       <textarea name="address" class="form-control" rows="2" cols="50" placeholder="Alamat" aria-describedby="basic-addon1"></textarea>
                     </div>
                   </div>
