@@ -17,12 +17,12 @@
                 <li class="list-group-item"><a href="<?=base_url(); ?>">Wishlist-----------</a></li>
                 <li class="list-group-item"><a href="<?=base_url(); ?>Konveksi_list">List Konveksi</a></li>
                 <li class="list-group-item"><a href="<?=base_url(); ?>Profile_edit">Edit Profil</a></li>
-                <li class="list-group-item"><a href="<?=base_url(); ?>">Detail Pengiriman-----------</a></li>
+                <li class="list-group-item"><a href="<?=base_url(); ?>Detail/sent_details">Detail Pengiriman</a></li>
                 <li class="list-group-item"><a href="<?=base_url(); ?>Payment_method">Metode Pembayaran</a></li>
                 <li class="list-group-item"><a href="<?=base_url(); ?>Purchasing_history">Rekap Pembelian</a></li>
                 <li class="list-group-item"><a href="<?=base_url(); ?>Sell_history">Rekap Penjualan</a></li>
-                <li class="list-group-item"><a href="<?=base_url(); ?>">Throw It-----------</a></li>
-                <li class="list-group-item"><a href="<?=base_url(); ?>">Detail Pembelian-----------</a></li>
+                <li class="list-group-item"><a href="<?=base_url(); ?>Detail/throwit">Throw It</a></li>
+                <li class="list-group-item"><a href="<?=base_url(); ?>Detail">Detail Pembelian</a></li>
                 <li class="list-group-item"><a href="<?=base_url(); ?>">Detail Penjualan-----------</a></li>
             </ul>
         </div>

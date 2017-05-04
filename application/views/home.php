@@ -80,7 +80,7 @@
   
   <a href="#" class="w3-bar-item w3-button" id="menusidebar" style="text-decoration: none;">Setting</a>
   
-  <a href="#" class="w3-bar-item w3-button" id="menusidebar" style="text-decoration: none;">Logout</a>
+  <a href="<?=base_url();?>Home/logout" class="w3-bar-item w3-button" id="menusidebar" style="text-decoration: none;">Logout</a>
  
 </div>
 

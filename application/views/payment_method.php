@@ -42,17 +42,17 @@
             <div id="collapseBri" class="collapse" role="tabpanel" aria-labelledby="bri">
                 <div class="card-block">
                     <div class="row" id="row-payment">
-                        <div class="col-xs-8">
+                        <div class="col-xs-6">
                             <div class="row">
                                 <div class="col-xs-12">
-                                    a/n <strong>Zainul Bahar, S.Kom </strong>
+                                    <h5 id="custom-h5">a/n <strong>Zainul Bahar, S.Kom </strong></h5>
                                 </div>
                                 <div class="col-xs-12">
-                                    No. Rek <strong>000982883877728</strong>
+                                    <h5 id="custom-h5">No. Rek <strong>000982883877728</strong></h5>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-xs-4">
+                        <div class="col-xs-6">
                             <div class="row">
                                 <div class="col-xs-12"></div>
                                 <div class="col-xs-12">
@@ -78,17 +78,17 @@
             <div id="collapseMandiri" class="collapse" role="tabpanel" aria-labelledby="mandiri">
                 <div class="card-block">
                     <div class="row" id="row-payment">
-                        <div class="col-xs-8">
+                        <div class="col-xs-6">
                             <div class="row">
                                 <div class="col-xs-12">
-                                    a/n <strong>Zainul Bahar, S.Kom </strong>
+                                    <h5 id="custom-h5">a/n <strong>Zainul Bahar, S.Kom </strong></h5>
                                 </div>
                                 <div class="col-xs-12">
-                                    No. Rek <strong>000982883877728</strong>
+                                    <h5 id="custom-h5">No. Rek <strong>000982883877728</strong></h5>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-xs-4">
+                        <div class="col-xs-6">
                             <div class="row">
                                 <div class="col-xs-12"></div>
                                 <div class="col-xs-12">
@@ -114,17 +114,17 @@
             <div id="collapseBca" class="collapse" role="tabpanel" aria-labelledby="bca">
                 <div class="card-block">
                     <div class="row" id="row-payment">
-                        <div class="col-xs-8">
+                        <div class="col-xs-6">
                             <div class="row">
                                 <div class="col-xs-12">
-                                    a/n <strong>Zainul Bahar, S.Kom </strong>
+                                    <h5 id="custom-h5">a/n <strong>Zainul Bahar, S.Kom </strong></h5>
                                 </div>
                                 <div class="col-xs-12">
-                                    No. Rek <strong>000982883877728</strong>
+                                    <h5 id="custom-h5">No. Rek <strong>000982883877728</strong></h5>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-xs-4">
+                        <div class="col-xs-6">
                             <div class="row">
                                 <div class="col-xs-12"></div>
                                 <div class="col-xs-12">
@@ -150,17 +150,17 @@
             <div id="collapseBni" class="collapse" role="tabpanel" aria-labelledby="bni">
                 <div class="card-block">
                     <div class="row" id="row-payment">
-                        <div class="col-xs-8">
+                        <div class="col-xs-6">
                             <div class="row">
                                 <div class="col-xs-12">
-                                    a/n <strong>Zainul Bahar, S.Kom </strong>
+                                    <h5 id="custom-h5">a/n <strong>Zainul Bahar, S.Kom </strong></h5>
                                 </div>
                                 <div class="col-xs-12">
-                                    No. Rek <strong>000982883877728</strong>
+                                    <h5 id="custom-h5">No. Rek <strong>000982883877728</strong></h5>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-xs-4">
+                        <div class="col-xs-6">
                             <div class="row">
                                 <div class="col-xs-12"></div>
                                 <div class="col-xs-12">
@@ -177,7 +177,7 @@
 
     <div class="row">
         <div class="col-xs-12">
-            <button class="btn btn-block btn-custom-green center-block">Selesai</button>
+            <button class="btn btn-block btn-custom-yellow center-block">Selesai</button>
         </div>
 
     </div>
