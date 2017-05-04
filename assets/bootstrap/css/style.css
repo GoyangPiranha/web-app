@@ -19,12 +19,36 @@ body{
 .form-login{
     margin-top: 0;
 }
+
+.small-font{
+    font-size: 12px;
+}
+
 .outter-form-register {
     color: white;
     padding: 15px;
     background: #606062;
     position: relative;
     border-radius: 5px;
+}
+
+.outter-form-sent {
+    color: black;
+    padding: 15px;
+    margin-bottom: 10px;
+    background: white;
+    position: relative;
+    border-radius: 3px;
+}
+
+.outter-form-throwit{
+    color: black;
+    padding: 50px;
+    height: 100%;
+    margin-bottom: 10px;
+    background: white;
+    position: relative;
+    border-radius: 3px;
 }
 
 .outter-form-login{
@@ -213,6 +237,7 @@ input[type="color"]:focus,
     color: white;
     background-color: #FFC300;
     border-color: #FFC300;
+    font-weight: bold;
 }
 
 .input-group-btn:first-child>.btn, .input-group-btn:first-child>.btn-group {
@@ -252,9 +277,14 @@ nav {
     margin-right: auto;
     margin-bottom: 5px;
     padding-right: 10px;
-    border:1px;
-    border-bottom-color: sienna;
-    box-shadow: 0 1px 1px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.12);
+    border: 1px solid #d5d5d5;
+    border-radius: 3px;
+    border-left-color: #FFC300;
+    border-left-width: 4px;
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+    -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.075);
+    box-shadow: 0 1px 2px rgba(0,0,0,.075);
 }
 
 #img-no-bg{
@@ -284,6 +314,8 @@ h5{
 /*custom checkbox*/
 .checkbox {
     padding-left: 20px;
+    margin-top: 2px;
+    margin-bottom: 2px;
 }
 .checkbox label {
     display: inline-block;
@@ -295,8 +327,8 @@ h5{
     content: "";
     display: inline-block;
     position: absolute;
-    width: 17px;
-    height: 17px;
+    width: 15px;
+    height: 15px;
     left: 0;
     margin-left: -20px;
     border: 1px solid #cccccc;
@@ -679,14 +711,64 @@ a {
     height: auto;
 }
 
-@media screen and (max-width: 768) {
-    #img-bg-regist{
-        width: 50%;
-        position: relative;
-        height: auto;
-    }
+.img-kurir{
+    max-width: 80px;
+    max-height: 80px;
 }
+
+/*@media screen and (max-width: 768px) {*/
+    /*#img-bg-regist{*/
+        /*width: 50%;*/
+        /*position: relative;*/
+        /*height: auto;*/
+    /*}*/
+/*}*/
 .bg-register{
     width: 100%;
     height: auto;
+}
+
+#inputfield {
+    margin-top: 5px;
+}
+
+#edit-profil-input {
+    border-radius: 5px;
+}
+
+.modal-content{
+    border-radius: 4px;
+    border-bottom-color: #FFC300;
+    border-bottom-width: 5px;
+
+}
+
+#custom-h5{
+    font-size: 12px;
+}
+
+.box-sent{
+    padding-left: 10px;
+}
+
+.box-aggrement{
+    padding-left: 20px;
+}
+
+.row-top-border{
+    border-top-color:#FFC300 ;
+    border-top-width: 2px;
+    padding-top: 10px;
+}
+
+.line-separator{
+    height: 1px;
+    background: #FFC300;
+    border-bottom: 1px #FFC300;
+    margin-top: 1px;
+}
+
+#separator{
+    margin-top:5px;
+    margin-bottom:10px;
 }
