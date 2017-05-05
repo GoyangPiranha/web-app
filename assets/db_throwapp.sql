@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 05 Mei 2017 pada 09.55
+-- Generation Time: 05 Mei 2017 pada 11.19
 -- Versi Server: 10.1.21-MariaDB
 -- PHP Version: 7.1.1
 
@@ -19,6 +19,17 @@ SET time_zone = "+00:00";
 --
 -- Database: `db_throwapp`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `bank`
+--
+
+CREATE TABLE `bank` (
+  `id_bank` smallint(6) NOT NULL,
+  `nama_bank` varchar(25) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -56,6 +67,7 @@ CREATE TABLE `pesan_pakaian` (
   `id_konveksi` smallint(6) NOT NULL,
   `jumlah_pesanan` int(100) NOT NULL,
   `desain_pakaian` varchar(150) NOT NULL,
+  `no_rekening` smallint(6) NOT NULL,
   `status_pembayaran_pesanan` tinyint(1) NOT NULL,
   `bukti_pembayaran_pesanan` varchar(150) NOT NULL,
   `status_pengiriman_pesanan` tinyint(1) NOT NULL,
@@ -109,6 +121,18 @@ CREATE TABLE `provinsi` (
 -- --------------------------------------------------------
 
 --
+-- Struktur dari tabel `rekening`
+--
+
+CREATE TABLE `rekening` (
+  `no_rekening` smallint(6) NOT NULL,
+  `nama_pemilik` int(11) NOT NULL,
+  `id_bank` smallint(6) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Struktur dari tabel `transaksi`
 --
 
@@ -116,6 +140,7 @@ CREATE TABLE `transaksi` (
   `id_transaksi` smallint(6) NOT NULL,
   `jumlah_produk` int(100) NOT NULL,
   `id_produk` smallint(6) NOT NULL,
+  `no_rekening` smallint(6) NOT NULL,
   `status_pembayaran_produk` tinyint(1) NOT NULL,
   `bukti_pembayaran_transaksi` varchar(100) NOT NULL,
   `status_pengiriman_produk` tinyint(1) NOT NULL,
@@ -154,6 +179,12 @@ CREATE TABLE `user` (
 --
 
 --
+-- Indexes for table `bank`
+--
+ALTER TABLE `bank`
+  ADD PRIMARY KEY (`id_bank`);
+
+--
 -- Indexes for table `konveksi`
 --
 ALTER TABLE `konveksi`
@@ -172,7 +203,8 @@ ALTER TABLE `kota`
 --
 ALTER TABLE `pesan_pakaian`
   ADD PRIMARY KEY (`id_pesan_pakaian`),
-  ADD KEY `id_konveksi` (`id_konveksi`);
+  ADD KEY `id_konveksi` (`id_konveksi`),
+  ADD KEY `no_rekening` (`no_rekening`);
 
 --
 -- Indexes for table `produk`
@@ -188,11 +220,19 @@ ALTER TABLE `provinsi`
   ADD PRIMARY KEY (`id_provinsi`);
 
 --
+-- Indexes for table `rekening`
+--
+ALTER TABLE `rekening`
+  ADD PRIMARY KEY (`no_rekening`),
+  ADD KEY `id_bank` (`id_bank`);
+
+--
 -- Indexes for table `transaksi`
 --
 ALTER TABLE `transaksi`
   ADD PRIMARY KEY (`id_transaksi`),
-  ADD KEY `id_produk` (`id_produk`);
+  ADD KEY `id_produk` (`id_produk`),
+  ADD KEY `no_rekening` (`no_rekening`);
 
 --
 -- Indexes for table `user`
@@ -245,7 +285,8 @@ ALTER TABLE `kota`
 -- Ketidakleluasaan untuk tabel `pesan_pakaian`
 --
 ALTER TABLE `pesan_pakaian`
-  ADD CONSTRAINT `pesan_pakaian_ibfk_1` FOREIGN KEY (`id_konveksi`) REFERENCES `konveksi` (`id_konveksi`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `pesan_pakaian_ibfk_1` FOREIGN KEY (`id_konveksi`) REFERENCES `konveksi` (`id_konveksi`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `pesan_pakaian_ibfk_2` FOREIGN KEY (`no_rekening`) REFERENCES `rekening` (`no_rekening`) ON UPDATE CASCADE;
 
 --
 -- Ketidakleluasaan untuk tabel `produk`
@@ -254,10 +295,17 @@ ALTER TABLE `produk`
   ADD CONSTRAINT `produk_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `user` (`id_user`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
+-- Ketidakleluasaan untuk tabel `rekening`
+--
+ALTER TABLE `rekening`
+  ADD CONSTRAINT `rekening_ibfk_1` FOREIGN KEY (`id_bank`) REFERENCES `bank` (`id_bank`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
 -- Ketidakleluasaan untuk tabel `transaksi`
 --
 ALTER TABLE `transaksi`
-  ADD CONSTRAINT `transaksi_ibfk_1` FOREIGN KEY (`id_produk`) REFERENCES `produk` (`id_produk`);
+  ADD CONSTRAINT `transaksi_ibfk_1` FOREIGN KEY (`id_produk`) REFERENCES `produk` (`id_produk`),
+  ADD CONSTRAINT `transaksi_ibfk_2` FOREIGN KEY (`no_rekening`) REFERENCES `rekening` (`no_rekening`) ON UPDATE CASCADE;
 
 --
 -- Ketidakleluasaan untuk tabel `user`
