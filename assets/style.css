@@ -170,14 +170,14 @@ pre {
 }
 
 #batasatas{
-    background-color: darkgrey;
+    background-color: #606062;
     height: 30px;
     margin-top: 10px;
     margin-bottom: 10px;
     border-radius: 20px 20px 5px 5px;
 }
 #batasbawah{
-    background-color: darkgrey;
+    background-color: #606062;
     height: 30px;
     margin-top: 10px;
     border-radius: 5px 5px 20px 20px;
@@ -192,10 +192,11 @@ pre {
 }
 
 #deskripsiproduk{
-    background-color: darkgrey;
+    background-color: #606062;
     padding:2%;
     color: white;
     border-radius: 5% 5% 5% 5%;
+    margin: 1%;
 }
 #buttonproduk{
     width: 100%;
@@ -218,7 +219,25 @@ pre {
     width: auto;
 }
 #keterangan{
-    background-color: darkgrey;
+    background-color: #606062;
     height: 100px;
 }
 
+#upload-photo {
+    height: 0;
+    width: 0;
+    border: none;
+}
+
+#upload-photo-label {
+    border: 1px solid #cccccc;
+    padding: 5px 30px;
+    font-family:arial;
+    font-size: 13px;
+    margin-top: 5%;
+    background-color: #FFC300;
+    border-radius: 10%;
+}
+#upload-photo-label:active{
+    background:yellow;
+}
