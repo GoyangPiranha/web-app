@@ -30,4 +30,8 @@ class Detail extends CI_Controller {
     public function throwit(){
         $this->load->view("throw_it");
     }
+
+    public function wishlist(){
+        $this->load->view('wishlist');
+    }
 }

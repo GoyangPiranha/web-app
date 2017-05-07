@@ -29,7 +29,7 @@
             if (empty($warning)) {
               echo "";
             }else{
-              echo $warning;
+              echo "<div class='alert alert-danger text-center' role='alert'>$warning</div>";
               } 
             ?>
             </p>
