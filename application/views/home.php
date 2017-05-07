@@ -186,8 +186,6 @@
     </div>
 </div>
 
-
-
 <nav class="navbar navbar-default navbar-fixed-bottom" style="background: #606062;">
     <div class="row" style="margin: 0;">
         <div class="col-xs-4" style="text-align: center;">
