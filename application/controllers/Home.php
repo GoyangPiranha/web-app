@@ -22,4 +22,7 @@ class Home extends CI_Controller {
 			session_destroy();
 			redirect ('Login');
 		}
+		function throw_it(){
+			redirect ('Throw_it');
+		}
 	}
