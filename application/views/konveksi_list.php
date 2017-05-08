@@ -235,16 +235,16 @@
 </div>
 
 
-<nav class="navbar navbar-default navbar-fixed-bottom" style="background: #606062; border-color: #606062 ;">
+<nav class="navbar navbar-default navbar-fixed-bottom" style="background: #606062;">
     <div class="row" style="margin: 0;">
         <div class="col-xs-4" style="text-align: center;">
-            <a><img id="footimg" src="<?php echo base_url('assets/images/shopping-cart.png'); ?>"></a>
+            <a href="<?php echo base_url("Detail/wishlist");?>"><img id="footimg" src="<?php echo base_url('assets/images/shopping-cart.png'); ?>"></a>
         </div>
         <div class="col-xs-4" style="text-align: center;">
-            <a><img id="footimg" src="<?php echo base_url('assets/images/home.png'); ?>"></a>
+            <a href="<?php echo base_url("Home");?>"><img id="footimg" src="<?php echo base_url('assets/images/home.png'); ?>"></a>
         </div>
         <div class="col-xs-4" style="text-align: center;">
-            <a><img id="footimg" src="<?php echo base_url('assets/images/user.png'); ?>"></a>
+            <a href="<?php echo base_url("Welcome");?>"><img id="footimg" src="<?php echo base_url('assets/images/user.png'); ?>"></a>
         </div>
     </div>
 </nav>
