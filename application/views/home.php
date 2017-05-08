@@ -16,7 +16,7 @@
    <link href="<?php echo base_url('assets/bootstrap/css/bootstrap.min.css'); ?>" rel="stylesheet">
 
 </head>
-<body style="margin-top: 0px; margin-bottom: 60px;">
+<body style="margin-top: 0px; margin-bottom: 60px;" id="bodyid" >
 
 <nav class="navbar navbar-default navbar-fixed-top" id="navbar">
         <!-- Brand and toggle get grouped for better mobile display -->
@@ -68,7 +68,7 @@
 
   <a href="#" class="w3-bar-item w3-button" id="menusidebar" style="text-decoration: none;">Canvass</a>
 
-  <a href="#" class="w3-bar-item w3-button" id="menusidebar" style="text-decoration: none;">History</a>
+  <a href="<?=base_url(); ?>Purchasing_history" class="w3-bar-item w3-button" id="menusidebar" style="text-decoration: none;">History</a>
   
   <a href="#" class="w3-bar-item w3-button" id="menusidebar" style="text-decoration: none;">Setting</a>
   
@@ -80,7 +80,7 @@
 
 
 
-<div id="myCarousel" class="carousel slide" data-ride="carousel">
+<div id="myCarousel" class="carousel slide" onclick="w3_close()" data-ride="carousel">
     <!-- Indicators -->
     <!-- <ol class="carousel-indicators">
         <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
@@ -112,14 +112,14 @@
     </a>
 </div>
 
-<div class="container">
+<div class="container" onclick="w3_close()">
     <div class="row">
 
         <div class="col-xs-6">
-            <button type="button" class="buttonmenu1">Category</button>
+            <button type="button" class="buttonmenu1" onclick="callfunction(this)" value="category">Category</button>
         </div>
         <div class="col-xs-6">
-            <button type="button" class="buttonmenu2">Throw It</button>
+            <button type="button"  class="buttonmenu2" onclick="callfunction(this)" value="throwit" >Throw It</button>
         </div>
         <div class="col-xs-6">
             <p>Kaos</p>
@@ -186,8 +186,6 @@
     </div>
 </div>
 
-
-
 <nav class="navbar navbar-default navbar-fixed-bottom" style="background: #606062;">
     <div class="row" style="margin: 0;">
         <div class="col-xs-4" style="text-align: center;">
@@ -212,6 +210,13 @@ function w3_open() {
 function w3_close() {
   document.getElementById("mySidebar").style.display = "none";
 }
+function callfunction(a) {
+    if (a.value == "throwit") { 
+        window.location = "<?php echo base_url(); ?>Detail/throwit";
+    }
+    else if (a.value == "category"){
 
+    }
+}
 
 </script>
