@@ -18,6 +18,11 @@ class Profile_edit extends CI_Controller {
      * map to /index.php/welcome/<method_name>
      * @see https://codeigniter.com/user_guide/general/urls.html
      */
+    function __construct()
+             {
+               parent::__construct();
+               $this->load->model('M_users','',TRUE);
+             }
     public function index()
     {
         $this->load->view('profile_edit');
