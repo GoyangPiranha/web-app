@@ -118,15 +118,13 @@
                   <div class="form-group">
                     <div class="input-group">
                       <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-map-marker"></span></span>
-                      <select class="form-control" name="province">
-                        <option>Propinsi</option>
-                        <option>Jawa Timur</option>
-                        <option>Jawa Barat</option>
-                        <option>Jawa Tengah</option>
-                        <option>Sumatera Barat</option>
-                        <option>Sumatera Selatan</option>
-                        <option>Kalimantan Timur</option>
-                        <option>Maluku Utara</option>
+                      <select class="form-control" name="provinsi" id="select_provinsi">
+                        <option value="">Pilih Provinsi</option>
+                        <?php
+                          foreach ($provinsi as $row):
+                         ?>
+                         <option value="<?php echo $row->id_provinsi;?>"><?php echo $row->nama_provinsi;?></option>
+                         <?php endforeach; ?>
                       </select>
                     </div>
                   </div>
@@ -136,12 +134,8 @@
                   <div class="form-group">
                     <div class="input-group">
                       <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-map-marker"></span></span>
-                      <select class="form-control" name="city">
-                        <option>Kota</option>
-                        <option>Banyuwangi</option>
-                        <option>Madiun</option>
-                        <option>Malang</option>
-                        <option>Surabaya</option>
+                      <select class="form-control" name="select_kota" id="select_kota" disabled="">
+                        <option value="">Pilih Kota</option>
                       </select>
                     </div>
                   </div>
@@ -189,7 +183,34 @@
         </div>
     </div>
 
-    <script src="<?php echo base_url('assets/assets/js/jquery.min.js');?>"></script>
+    <script src="<?php echo base_url('assets/bootstrap/js/jquery.min.js');?>"></script>
     <script src="<?php echo base_url('assets/bootstrap/js/bootstrap.min.js');?>"></script>
+    <script type="text/javascript">
+    // script untuk load kota berdasarkan provinsi yg dipilih
+      $(document).ready(function(){
+        $('#select_provinsi').on('change', function(){
+          var id_provinsi = $(this).val();
+          if (id_provinsi ==''){
+            $('#select_kota').prop('disabled', true);
+          }
+          else{
+            $('#select_kota').prop('disabled', false);
+            $.ajax({
+              url : "<?php echo base_url()?>Daftar/getKota",
+              type : 'POST',
+              data :  {'id_provinsi' : id_provinsi},
+              dataType: 'json',
+              success : function(data){
+                $('#select_kota').html(data);
+              },
+              error: function(){
+                alert('terjadi error error');
+              }
+            });
+          }
+        });
+      });
+      // end of one function
+    </script>
   </body>
 </html>
