@@ -17,9 +17,11 @@ class Home extends CI_Controller {
 				$this->load->view('login');
 			}
 		}
-
 		function logout(){
 			session_destroy();
 			redirect ('Login');
+		}
+		function throw_it(){
+			redirect ('Throw_it');
 		}
 	}

@@ -4,23 +4,22 @@
     <meta charset="UTF-8">
     <title>Title</title>
 
+   <meta charset="UTF-8">
+    <title>Title</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0  user-scalable=no"/>
-    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="<?php echo base_url('assets/assets/js/jquery.min.js');?>"></script>
+    <script src="<?php echo base_url('assets/bootstrap/js/bootstrap.min.js');?>"></script>
     <!--Import Google Icon Font-->
     <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
     <link rel="stylesheet" href="<?php echo base_url('./assets/style.css'); ?>">
 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+   <link href="<?php echo base_url('assets/bootstrap/css/bootstrap.min.css'); ?>" rel="stylesheet">
+   <script type="text/javascript" src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
+<script type="text/javascript" src="assets/js/jquery.uploadPreview.min.js"></script>
 
-    <!-- Optional theme -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-
-
-    <!-- Latest compiled and minified JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-
+<style type="text/css">.thumb-image{float:left;width:100px;position:relative;padding:5px;}</style>
 
 </head>
 <body style="margin-top: 0px; margin-bottom: 60px;">
@@ -89,13 +88,16 @@
 <div class="container">
     <div class="row" id="deskripsiproduk" style="margin-top: 5%;">
         <div class="col-xs-6">
-            <img class="img-responsive" style="width: 150px; height: 200px; margin-bottom: 2%;" src="<?php echo base_url('assets/images/sample1.png'); ?>" >            
+            <img class="img-responsive" style="width: 120px; height: 150px; margin-bottom: 2%;" src="<?php echo base_url('assets/images/sample1.png'); ?>" >            
         </div>
         <div class="col-xs-6">
             <div>Nomer Transaksi 12341323</div>
             <div>Jumlah: 1 buah</div>
             <div id="pembatas" style="background-color: #FFC300; margin-bottom: 2%;"></div>
             <h3 style="margin-top: -2%;">Status:</h3>
+            <div id="status" >
+                <button type="submit" class="btn btn-danger">Belum Dibayar</button>
+            </div>
             
 
         </div>
@@ -106,18 +108,22 @@
         <h5 style="text-align: center; margin-top: -7px;">Oleh Alwin Store</h5>
         <h5 style="text-align: center; margin-top: -7px; color: deepskyblue;">Mostly Positif (2313 Review)</h5>
         
-    <div class="row" id="deskripsiproduk">
-        <div class="form-group" id="formgrupmarginbtm">
-            <div class="input-group">
-                <label class="input-group-btn">
-                <span class="btn btn-custom-yellow"> <span class="glyphicon glyphicon-folder-open"></span></span>
-                </label>
-                <input name="userfile" type="file" class="form-control"  readonly>
-            </div>
-        </div>
-        <span class="help-block" style="color: #FFC300;">*Upload bukti pembayaran</span>
-        <div id="pembatas" style="background-color: #FFC300; margin-bottom: 2%;"></div>
-        <button id="buttonproduk" class=" btn" type="button">Beli Lagi</button>
+    <div class="row" id="deskripsiproduk"">
+        
+        <form id="f" enctype="multipart/form-data" method="POST" action="some.php">
+            <table>
+            <tr>
+            <td width="29%" height="100" align="center" valign="middle">
+                <img class="product" width="200" height="250" />
+                <input type="file" class="uploads" name="images[]" id="upload-photo">
+                <label id="upload-photo-label" for="upload-photo">Browse</label>
+            </td>
+            </tr>
+            </table>
+            <button id="buttonproduk" class=" btn" type="button">Konfirmasi</button>
+        </form>
+
+        
     </div>
 </div>
 
@@ -147,5 +153,26 @@ function w3_close() {
   document.getElementById("mySidebar").style.display = "none";
 }
 
+function readURL() {
+    var input = this;
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function (e) {
+            $(input).prev().attr('src', e.target.result);
+        }
+        reader.readAsDataURL(input.files[0]);
+    }
+}
 
+$(function () {
+    $(".uploads").change(readURL)
+    $("#f").submit(function(){
+        // do ajax submit or just classic form submit
+        alert("fake subminting")
+        return false
+    })
+});
 </script>
+
+
+
