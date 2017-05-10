@@ -8,11 +8,7 @@ class Login extends CI_Controller {
 			 }
 		 
 		function index() {
-			if (isset($_SESSION['USERNAME'])) { 
-			// $this->load->model('Thread_model');
-			// $mdata['thread'] = $this->Thread_model->getSemuaThread();
-				$data['username'] = $_SESSION['USERNAME'];
-				$data['fullname'] = $_SESSION['FULLNAME'];
+			if (isset($_SESSION['USERNAME'])) {
 				redirect('home','refresh');
 			} else {
 			$this->load->view('login');

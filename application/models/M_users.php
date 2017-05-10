@@ -30,12 +30,13 @@
 
 
 		function cekLogin($username, $password){
-			$query = $this->db->query("SELECT `username_user`, `password_user`,`nama_user`, `foto_profile_user` FROM `user` WHERE `username_user` = '$username' and `password_user` = '$password'");
+			$query = $this->db->query("SELECT `username_user`, `password_user`,`nama_user`, `foto_profile_user`, `foto_background_user` FROM `user` WHERE `username_user` = '$username' and `password_user` = '$password'");
 			if ($query->num_rows()>0) {
 				foreach ($query->result() as $row){
 					$_SESSION['FULLNAME']= $row->nama_user;
 					$_SESSION['USERNAME']= $row->username_user;
 					$_SESSION['AVATAR']= $row->foto_profile_user;
+					$_SESSION['BACKGROUND']= $row->foto_background_user;
 				return true;   
 				}
 		

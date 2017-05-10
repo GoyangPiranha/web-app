@@ -3,9 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-
-   <meta charset="UTF-8">
-    <title>Title</title>
+    
     <meta name="viewport" content="width=device-width, initial-scale=1.0  user-scalable=no"/>
     <script src="<?php echo base_url('assets/assets/js/jquery.min.js');?>"></script>
     <script src="<?php echo base_url('assets/bootstrap/js/bootstrap.min.js');?>"></script>
@@ -23,66 +21,13 @@
 
 </head>
 <body style="margin-top: 0px; margin-bottom: 60px;">
-
-<nav class="navbar navbar-default navbar-fixed-top" id="navbar">
-        <!-- Brand and toggle get grouped for better mobile display -->
+<nav class="navbar-default navbar-fixed-top" style="background-color:#FFC300;">
+    <div class="container">
         <div class="navbar-header">
-            <div class="row">
-                <div class="col-xs-2 col-md-6">
-                    
-                    <button class="w3-button w3-teal w3-xlarge" onclick="w3_open()" style="background-color: rgba(255, 255, 255, 0)!important;">☰</button>
-                </div>
-                <div class="col-xs-7 col-md-4">
-                    <div id="imaginary_container">
-                        <div class="input-group stylish-input-group">
-                            <input type="text" class="form-control"  placeholder="Search" >
-                            <span class="input-group-addon">
-                            <button type="submit">
-                            <span class="glyphicon glyphicon-search"></span>
-                        </button>
-                    </span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xs-3 col-md-2">
-                    <a class="navbar-brand" href="#" id="brand">
-                    <?php 
-            if (empty($username)) {
-              echo "Hai";
-            }else{
-              echo $username;
-              }?></a>
-                </div>
-            </div>
-</nav>
-
-<div class="w3-sidebar w3-bar-block w3-border-right" style="display:none; width: 250px; overflow: hidden; background-color: #FFC300;" id="mySidebar">
-  <div class="row" style="background: url(./assets/images/<?php if (empty($avatar)) {echo"profil.png";}else{echo$avatar;}?>) 50% 50% no-repeat;">
-            <div class="col-xs-4" id="profilmenu" >
-                <div style=" background: url(./assets/images/<?php if (empty($avatar)) {echo"profil.png";}else{echo$avatar;}?>) 50% 50% no-repeat; background-size: cover; overflow: hidden; width: 75px; height: 75px; border-radius: 50px;" class="circle">
-                </div>
-            </div>
-            <div class="col-xs-6" style="text-align: left; line-height: 50%; margin-left: 5px; margin-right: -5px;">
-                <p style="color: white;  padding-left: 0; font-size: 110%;  padding-right: 5%; padding-top: 25px; line-height: 100%; ">
-                <?php echo $fullname;?> </p>
-                <p style="color: orange; font-size: 80%; padding-top: 0;">Regular Account</p>
-            </div>
-            <div class="col-xs-2">
-                <button class="w3-bar-item w3-button" onclick="w3_close()" style="float: right;"><img src="<?php echo base_url('assets/images/cross-out.png'); ?>" style="margin-left: -7px;"></button>
-            </div>
+            <a class="navbar-brand" href="<?php echo base_url('login'); ?>"><span class="glyphicon glyphicon-chevron-left"></span><span  id="registration">Detail Pembelian</span></a>
         </div>
-  <a href="#" class="w3-bar-item w3-button" id="menusidebar" style="text-decoration: none;">Upgrade</a>
-
-  <a href="#" class="w3-bar-item w3-button" id="menusidebar" style="text-decoration: none;">Canvass</a>
-
-  <a href="#" class="w3-bar-item w3-button" id="menusidebar" style="text-decoration: none;">History</a>
-  
-  <a href="#" class="w3-bar-item w3-button" id="menusidebar" style="text-decoration: none;">Setting</a>
-  
-  <a href="#" class="w3-bar-item w3-button" id="menusidebar" style="text-decoration: none;">Logout</a>
- 
-</div>
-
+    </div><!--/.container -->
+</nav>
 <!-- tulis disini -->
 
 <div class="container">
@@ -108,7 +53,7 @@
         <h5 style="text-align: center; margin-top: -7px;">Oleh Alwin Store</h5>
         <h5 style="text-align: center; margin-top: -7px; color: deepskyblue;">Mostly Positif (2313 Review)</h5>
         
-    <div class="row" id="deskripsiproduk"">
+    <div class="row" id="deskripsiproduk" style="text-align:center;">
         
         <form id="f" enctype="multipart/form-data" method="POST" action="some.php">
             <table>
