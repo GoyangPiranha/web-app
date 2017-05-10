@@ -10,10 +10,6 @@ class Daftar extends CI_Controller {
 
 	public function index(){
 		if (isset($_SESSION['USERNAME'])) { 
-			// $this->load->model('Thread_model');
-			// $mdata['thread'] = $this->Thread_model->getSemuaThread();
-			$data['username'] = $_SESSION['USERNAME'];
-			$data['fullname'] = $_SESSION['FULLNAME'];
 			redirect('Home','refresh');
 
 		} else { 
@@ -40,10 +36,9 @@ class Daftar extends CI_Controller {
 
 			$fullname = $_POST['fullname'];
 			$username = $_POST['username'];
-			$name = $_FILES["userfile"]["name"];
+			$name = $username.$_FILES["userfile"]["name"];
 		    $tmp_name = $_FILES['userfile']['tmp_name'];
 		    $error = $_FILES['userfile']['error'];
-
 			$date = $_POST['dateofbirth'];
 			$avatar = $name;
 			$password = $_POST['password'];

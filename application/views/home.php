@@ -41,23 +41,23 @@
                 <div class="col-xs-3 col-md-2">
                     <a class="navbar-brand" href="#" id="brand">
                     <?php 
-            if (empty($username)) {
-              echo "Hai";
+            if (isset($_SESSION['USERNAME'])) {
+              echo $_SESSION['USERNAME'];
             }else{
-              echo $username;
+              echo 'Hai';
               }?></a>
                 </div>
             </div>
 </nav>
 
 <div class="w3-sidebar w3-bar-block w3-border-right" style="display:none; width: 250px; overflow: hidden; background-color: #FFC300;" id="mySidebar">
-  <div class="row" style="background: url(./assets/images/<?php if (empty($avatar)) {echo"profil.png";}else{echo$avatar;}?>) 50% 50% no-repeat;">
+  <div class="row" style="background: url(./assets/images/<?php if (isset($_SESSION['AVATAR'])) {echo $_SESSION['AVATAR'];}else{echo"profil.png";}?>) 50% 50% no-repeat;">
             <div class="col-xs-4" id="profilmenu" >
-                <div style=" background: url(./assets/images/<?php if (empty($avatar)) {echo"profil.png";}else{echo$avatar;}?>) 50% 50% no-repeat; background-size: cover; overflow: hidden; width: 75px; height: 75px; border-radius: 50px;" class="circle">
+                <div style=" background: url(./assets/images/<?php if (isset($_SESSION['AVATAR'])) {echo $_SESSION['AVATAR'];}else{echo"profil.png";}?>) 50% 50% no-repeat; background-size: cover; overflow: hidden; width: 75px; height: 75px; border-radius: 50px;" class="circle">
                 </div>
             </div>
             <div class="col-xs-6" style="text-align: left; line-height: 50%; margin-left: 5px; margin-right: -5px;">
-                <p style="color: white;  padding-left: 0; font-size: 110%;  padding-right: 5%; padding-top: 25px; line-height: 100%; "><?php echo $fullname;?></p>
+                <p style="color: white;  padding-left: 0; font-size: 110%;  padding-right: 5%; padding-top: 25px; line-height: 100%; "><?php echo $_SESSION['FULLNAME'];?></p>
                 <p style="color: orange; font-size: 80%; padding-top: 0;">Regular Account</p>
             </div>
             <div class="col-xs-2">
