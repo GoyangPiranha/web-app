@@ -58,6 +58,4 @@
 			$query = $this->db->query('SELECT * FROM provinsi');
 			return $query->result();
 		}
-
-	
 }

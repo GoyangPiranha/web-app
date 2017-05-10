@@ -66,7 +66,7 @@ class Daftar extends CI_Controller {
         		move_uploaded_file($tmp_name, $location.$name);
 				$p = $this->M_users->simpanData($fullname, $username, $date, $avatar, $password, $city, $address, $email, $handphone);
 				if ($p === TRUE) {
-					redirect('Login/index', 'refresh');
+					redirect('Home/index', 'refresh');
 				}else{
 					redirect('Daftar/index','refresh');
 				}
