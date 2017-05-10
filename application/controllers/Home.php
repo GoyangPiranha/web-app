@@ -8,11 +8,8 @@ class Home extends CI_Controller {
 			 }
 		 
 		function index() {
-			if (isset($_SESSION['USERNAME'])) { 
-				$data['username'] = $_SESSION['USERNAME'];
-				$data['fullname'] = $_SESSION['FULLNAME'];
-				$data['avatar'] = $_SESSION['AVATAR'];
-			$this->load->view('home', $data);
+			if (isset($_SESSION['USERNAME'])) {
+				$this->load->view('home');
 			} else {
 				$this->load->view('login');
 			}
