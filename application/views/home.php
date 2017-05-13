@@ -137,6 +137,14 @@
                     <p id="produkrating">Mostly Positive(123 review)</p>
                     <h5 id="produkprice">$24.99</h5>
                 </div>
+                <div class="row">
+                    <div class="col-xs-6">
+                        <button type="button" class="btn btn-info">Whistlist</button>
+                    </div>
+                    <div class="col-xs-6">
+                        <button type="button" class="btn btn-success">Beli</button>
+                    </div>
+                </div>   
             </div>
         </div>
 
@@ -149,6 +157,14 @@
                     <p id="produkrating">Mostly Positive(123 review)</p>
                     <h5 id="produkprice">$24.99</h5>
                 </div>
+                <div class="row">
+                    <div class="col-xs-6">
+                        <button type="button" class="btn btn-info">Whistlist</button>
+                    </div>
+                    <div class="col-xs-6">
+                        <button type="button" class="btn btn-success">Beli</button>
+                    </div>
+                </div>   
             </div>
         </div>
 
@@ -168,6 +184,14 @@
                     <p id="produkrating">Mostly Positive(123 review)</p>
                     <h5 id="produkprice">$24.99</h5>
                 </div>
+                <div class="row">
+                    <div class="col-xs-6">
+                        <button type="button" class="btn btn-info">Whistlist</button>
+                    </div>
+                    <div class="col-xs-6">
+                        <button type="button" class="btn btn-success">Beli</button>
+                    </div>
+                </div>   
             </div>
         </div>
 
@@ -180,6 +204,14 @@
                     <p id="produkrating">Mostly Positive(123 review)</p>
                     <h5 id="produkprice">$24.99</h5>
                 </div>
+                <div class="row">
+                    <div class="col-xs-6">
+                        <button type="button" class="btn btn-info">Whistlist</button>
+                    </div>
+                    <div class="col-xs-6">
+                        <button type="button" class="btn btn-success">Beli</button>
+                    </div>
+                </div>   
             </div>
         </div>
 
