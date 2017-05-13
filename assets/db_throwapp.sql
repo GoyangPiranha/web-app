@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: May 12, 2017 at 11:54 AM
+-- Generation Time: May 13, 2017 at 05:40 PM
 -- Server version: 10.1.19-MariaDB
 -- PHP Version: 7.0.13
 
@@ -664,15 +664,17 @@ CREATE TABLE `logistik` (
 CREATE TABLE `produk` (
   `id_produk` smallint(6) NOT NULL,
   `nama_produk` varchar(100) NOT NULL,
-  `foto_produk` varchar(100) NOT NULL,
+  `deskripsi` text NOT NULL,
+  `foto_produk_depan` longblob,
+  `foto_produk_belakang` longblob,
   `id_jenis_produk` int(100) NOT NULL,
   `id_kategori_produk` int(100) NOT NULL,
   `tag_produk` varchar(100) DEFAULT NULL,
   `harga_produk` double NOT NULL,
   `diskon_produk` double DEFAULT NULL,
   `id_user` smallint(6) NOT NULL,
-  `rating_produk` int(5) NOT NULL,
-  `acc_produk` tinyint(1) NOT NULL
+  `rating_produk` int(5) DEFAULT NULL,
+  `id_status_produk` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -766,6 +768,17 @@ CREATE TABLE `riwayat_penjualan` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `status_produk`
+--
+
+CREATE TABLE `status_produk` (
+  `id` tinyint(1) NOT NULL,
+  `status_produk` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `status_transaksi`
 --
 
@@ -796,7 +809,6 @@ CREATE TABLE `transaksi` (
   `jumlah_produk` int(100) NOT NULL,
   `id_produk` smallint(6) NOT NULL,
   `id_jenis_konveksi` int(100) NOT NULL,
-  `no_rekening` smallint(6) NOT NULL,
   `id_ukuran` int(100) DEFAULT NULL,
   `id_status_transaksi` int(100) NOT NULL,
   `id_jenis_pengiriman` smallint(6) NOT NULL,
@@ -861,27 +873,27 @@ CREATE TABLE `user` (
   `tanggal_lahir_user` date NOT NULL,
   `id_kota` smallint(6) NOT NULL,
   `alamat_user` varchar(200) NOT NULL,
-  `kode_pos_user` varchar(6) NOT NULL,
   `foto_profile_user` varchar(100) DEFAULT NULL,
   `foto_background_user` varchar(100) NOT NULL,
   `email_user` varchar(30) NOT NULL,
   `contact_user` varchar(25) NOT NULL,
-  `deskripsi_user` text NOT NULL,
-  `rekening_user` varchar(20) NOT NULL,
-  `jumlah_pelangan_user` int(100) NOT NULL,
-  `jenis_user` varchar(10) NOT NULL
+  `deskripsi_user` text,
+  `rekening_user` varchar(20) DEFAULT NULL,
+  `jumlah_pelangan_user` int(100) DEFAULT NULL,
+  `jenis_user` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`id_user`, `username_user`, `password_user`, `nama_user`, `jenis_kelamin_user`, `tanggal_lahir_user`, `id_kota`, `alamat_user`, `kode_pos_user`, `foto_profile_user`, `foto_background_user`, `email_user`, `contact_user`, `deskripsi_user`, `rekening_user`, `jumlah_pelangan_user`, `jenis_user`) VALUES
-(1, 'aku', 'aku', 'aku', 0, '2017-05-17', 3519, 'asa', '', 'logo-design-for-it-company-300x300.jpg', '', 'asa@asa.com', '09988776877', '', '', 0, ''),
-(2, 'tio', '1234', 'tio', 0, '2017-05-09', 1807, 'rtrtr', '', 'GIF89a/\0$\0?\0\0??????????????????????????????????????????????????????gi\\??}???~?q????????????km`?????}', '', 't@m.co', '123431', '', '', 0, ''),
-(3, 'qwe', '1234', 'qwe', 0, '2017-05-13', 1404, 'das', '', '', '', 'qwe@a.co', '12331233', '', '', 0, ''),
-(4, 'renndy', '123', 'renndy', 0, '2017-05-09', 1303, 'dfasda', '', '', '', 't@m.co', '1234', '', '', 0, ''),
-(5, 'wina', '123', 'winarna', 0, '2017-05-05', 1204, 'winarna', '', 'winasample2.png', '', 'w@s.c', '12345', '', '', 0, '');
+INSERT INTO `user` (`id_user`, `username_user`, `password_user`, `nama_user`, `jenis_kelamin_user`, `tanggal_lahir_user`, `id_kota`, `alamat_user`, `foto_profile_user`, `foto_background_user`, `email_user`, `contact_user`, `deskripsi_user`, `rekening_user`, `jumlah_pelangan_user`, `jenis_user`) VALUES
+(7, 'budi', '1234', 'budi', 0, '2017-05-24', 3212, 'qwert', '', '', 't@m.co', '1234', NULL, NULL, NULL, 1),
+(8, 'tio', '1234', 'tio', 0, '2017-05-17', 3512, 'qwwer', 'tioasa.PNG', '', 't@m.co', '1234', NULL, NULL, NULL, 1),
+(9, 'tio', '1234', 'tio', 0, '2017-05-23', 3603, 'eqweqw', 'tioasa.PNG', '', 't@m.co', '1234', NULL, NULL, NULL, 1),
+(10, 'qwe', '1234', 'qwe', 0, '2017-05-18', 3171, 'qwer', 'qweasa.PNG', '', 't@m.co', '1234', NULL, NULL, NULL, 1),
+(11, 'ppp', '1234', 'ppp', 0, '2017-05-18', 1117, '123', 'pppasa.PNG', '', 't@m.co', '1234', NULL, NULL, NULL, 1),
+(12, 'asd', '1234', 'ads', 0, '2017-05-11', 3212, 'qwe', '5916ffd764dbeasdbook-collection-in-flat-design_23-2147504725.jpg', '', 't@m.co', '123', NULL, NULL, NULL, 1);
 
 -- --------------------------------------------------------
 
@@ -958,7 +970,8 @@ ALTER TABLE `produk`
   ADD PRIMARY KEY (`id_produk`),
   ADD KEY `id_user` (`id_user`),
   ADD KEY `id_jenis_produk` (`id_jenis_produk`),
-  ADD KEY `id_kategori_produk` (`id_kategori_produk`);
+  ADD KEY `id_kategori_produk` (`id_kategori_produk`),
+  ADD KEY `id_status_produk` (`id_status_produk`);
 
 --
 -- Indexes for table `provinsi`
@@ -986,6 +999,12 @@ ALTER TABLE `riwayat_penjualan`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `status_produk`
+--
+ALTER TABLE `status_produk`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `status_transaksi`
 --
 ALTER TABLE `status_transaksi`
@@ -997,7 +1016,6 @@ ALTER TABLE `status_transaksi`
 ALTER TABLE `transaksi`
   ADD PRIMARY KEY (`id_transaksi`),
   ADD KEY `id_produk` (`id_produk`),
-  ADD KEY `no_rekening` (`no_rekening`),
   ADD KEY `id_jenis_pengiriman` (`id_jenis_pengiriman`),
   ADD KEY `id_ukuran` (`id_ukuran`),
   ADD KEY `id_tujuan` (`id_tujuan`),
@@ -1088,6 +1106,11 @@ ALTER TABLE `riwayat_pembelian`
 ALTER TABLE `riwayat_penjualan`
   MODIFY `id` int(100) NOT NULL AUTO_INCREMENT;
 --
+-- AUTO_INCREMENT for table `status_produk`
+--
+ALTER TABLE `status_produk`
+  MODIFY `id` tinyint(1) NOT NULL AUTO_INCREMENT;
+--
 -- AUTO_INCREMENT for table `status_transaksi`
 --
 ALTER TABLE `status_transaksi`
@@ -1111,7 +1134,7 @@ ALTER TABLE `ukuran`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id_user` smallint(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_user` smallint(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 --
 -- AUTO_INCREMENT for table `whistlist`
 --
@@ -1140,7 +1163,8 @@ ALTER TABLE `jenis_pengiriman`
 ALTER TABLE `produk`
   ADD CONSTRAINT `produk_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `user` (`id_user`) ON UPDATE CASCADE,
   ADD CONSTRAINT `produk_ibfk_2` FOREIGN KEY (`id_jenis_produk`) REFERENCES `jenis_produk` (`id`),
-  ADD CONSTRAINT `produk_ibfk_3` FOREIGN KEY (`id_kategori_produk`) REFERENCES `kategori_produk` (`id`);
+  ADD CONSTRAINT `produk_ibfk_3` FOREIGN KEY (`id_kategori_produk`) REFERENCES `kategori_produk` (`id`),
+  ADD CONSTRAINT `produk_ibfk_4` FOREIGN KEY (`id_status_produk`) REFERENCES `status_produk` (`id`);
 
 --
 -- Constraints for table `provinsi`
@@ -1160,7 +1184,6 @@ ALTER TABLE `rekening`
 ALTER TABLE `transaksi`
   ADD CONSTRAINT `transaksi_ibfk_1` FOREIGN KEY (`id_produk`) REFERENCES `produk` (`id_produk`) ON UPDATE CASCADE,
   ADD CONSTRAINT `transaksi_ibfk_10` FOREIGN KEY (`id_user`) REFERENCES `user` (`id_user`),
-  ADD CONSTRAINT `transaksi_ibfk_3` FOREIGN KEY (`no_rekening`) REFERENCES `rekening` (`no_rekening`) ON UPDATE CASCADE,
   ADD CONSTRAINT `transaksi_ibfk_4` FOREIGN KEY (`id_jenis_pengiriman`) REFERENCES `jenis_pengiriman` (`id_logistik`) ON UPDATE CASCADE,
   ADD CONSTRAINT `transaksi_ibfk_5` FOREIGN KEY (`id_ukuran`) REFERENCES `ukuran` (`id`),
   ADD CONSTRAINT `transaksi_ibfk_7` FOREIGN KEY (`id_tujuan`) REFERENCES `tujuan` (`id`),
