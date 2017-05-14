@@ -36,9 +36,11 @@ class Daftar extends CI_Controller {
 
 			$fullname = $_POST['fullname'];
 			$username = $_POST['username'];
-			$name = $username.$_FILES["userfile"]["name"];
+			$uniqid = uniqid();
+			$name = $uniqid.$username.$_FILES["userfile"]["name"];
 		    $tmp_name = $_FILES['userfile']['tmp_name'];
 		    $error = $_FILES['userfile']['error'];
+
 			$date = $_POST['dateofbirth'];
 			$avatar = $name;
 			$password = $_POST['password'];
@@ -57,11 +59,11 @@ class Daftar extends CI_Controller {
 				$data ['warning']  = "Password tidak sesuai";
 				$this->load->view('register', $data);
 			}else{
-				$location = './assets/images/';
+				$location = './assets/images/Profil/';
         		move_uploaded_file($tmp_name, $location.$name);
 				$p = $this->M_users->simpanData($fullname, $username, $date, $avatar, $password, $city, $address, $email, $handphone);
-				if ($p === TRUE) {
-					redirect('Home/index', 'refresh');
+				if ($p == TRUE) {
+					redirect('Login/index', 'refresh');
 				}else{
 					redirect('Daftar/index','refresh');
 				}

@@ -14,8 +14,8 @@
     	}
 
     	function simpanData($fullname,$username,$date,$avatar,$password,$id_kota,$address,$email,$handphone){
-		
-			$query = $this->db->query("INSERT INTO `user`(`nama_user`, `username_user`, `tanggal_lahir_user`, `foto_profile_user`, `password_user`, `id_kota`, `alamat_user`, `email_user`, `contact_user`) VALUES ('$fullname','$username','$date','$avatar','$password', $id_kota,'$address','$email','$handphone')");
+			$jenis_user = 1;
+			$query = $this->db->query("INSERT INTO `user`(`nama_user`, `username_user`, `tanggal_lahir_user`, `foto_profile_user`, `password_user`, `id_kota`, `alamat_user`, `email_user`, `contact_user`,`jenis_user`) VALUES ('$fullname','$username','$date','$avatar','$password', $id_kota,'$address','$email','$handphone','$jenis_user')");
 			if ($query == true) {
 				return true;
 			}
