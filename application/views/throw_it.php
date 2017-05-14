@@ -7,6 +7,7 @@
     <title>Throw It!</title>
 
     <link href="<?php echo base_url('assets/bootstrap/css/bootstrap.min.css'); ?>" rel="stylesheet">
+    <link href="<?php echo base_url('assets/bootstrap/css/dropzone.css'); ?>" rel="stylesheet">
     <link href="<?php echo base_url('assets/bootstrap/css/style.css'); ?>" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="//cdn.jsdelivr.net/bootstrap.tagsinput/0.4.2/bootstrap-tagsinput.css" />
@@ -21,10 +22,7 @@
         </div>
     </div><!--/.container -->
 </nav>
-<!-- NAVBAR -->
-<!--    <div class="col-md-4 col-md-offset-4 form-login">-->
-<!--            <img class="img-responsive img-register" src="--><?php //echo base_url('assets/images/bg-shirt.png'); ?><!--" alt="Flower">-->
-<!--    </div>-->
+
 <div class="col-lg-12 col-lg-offset-0 bg-register">
     <img class="img-responsive" src="<?php echo base_url('assets/images/bg-shirt.png'); ?>" id="img-bg-regist">
 </div>
@@ -54,10 +52,15 @@
             <div class="row">
                 <div class="col-xs-6">
                     <div class="form-login">
-                        <div class="outter-form-throwit">
+                        <div class="">
                             <div class="row">
                                 <div class="col-xs-12 text-center">
-                                    <span class="glyphicon glyphicon-plus"></span>
+                                    <div id="image-preview">
+                                        <span class="glyphicon glyphicon-plus" for="image-upload" id="image-label1"></span>
+                                        <!--<label for="image-upload" id="image-label">Choose File</label>-->
+                                        <input type="file" name="image" id="image-upload" />
+                                    </div>
+                                    
                                 </div>
                             </div>
                         </div>
@@ -214,8 +217,17 @@
 </nav>
 
 <script>
-
+    $(document).ready(function() {
+        $.uploadPreview({
+            input_field: "#image-upload",
+            preview_box: "#image-preview",
+            label_field: "#image-label"
+        });
+    });
 </script>
+<script type="text/javascript" src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
+<script type="text/javascript" src="assets/js/jquery.uploadPreview.min.js"></script>
+<script src="<?php echo base_url('assets/bootstrap/js/dropzone.js');?>" type="text/jvascript"></script>
 <script src="<?php echo base_url('assets/assets/js/jquery.min.js');?>"></script>
 <script src="<?php echo base_url('assets/bootstrap/js/bootstrap.min.js');?>"></script>
 <script src="//cdn.jsdelivr.net/bootstrap.tagsinput/0.4.2/bootstrap-tagsinput.min.js"></script>

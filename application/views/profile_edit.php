@@ -23,7 +23,7 @@
     <div class="custom-container">
         <div class="col-md-4 col-md-offset-4 form-login">
             <div class="outter-form-global">
-                <form action="<?php echo base_url('Daftar/proses'); ?>" class="inner-login" method="POST" enctype="multipart/form-data">
+                <form action="<?php echo base_url('Profile_edit/updateUser'); ?>" class="inner-login" method="post" enctype="multipart/form-data">
                     <h5 class="title-login"><strong>Perbarui identitas</strong></h5>
                     <p style="color: red;">
                         <?php
@@ -53,7 +53,9 @@
                                         <div class="col-xs-12">
                                             <div class="form-group">
                                                 <div class="input-group center-block">
-                                                    <input name="fullname" type="text" class="form-control" placeholder="Full Name" aria-describedby="basic-addon1" id="edit-profil-input">
+                                                    <?php foreach($users as $user):?>
+                                                    <input name="name_full" type="text" class="form-control" placeholder="Full Name" aria-describedby="basic-addon1" id="edit-profil-input" value="<?php echo $user->nama_user;?>">
+                                                    <?php endforeach;?>
                                                 </div>
                                             </div>
                                         </div>
@@ -79,21 +81,21 @@
                                         <div class="col-xs-12">
                                             <div class="form-group">
                                                 <div class="input-group center-block">
-                                                    <input name="password" type="password" class="form-control" placeholder="Password Lama" aria-describedby="basic-addon1" id="edit-profil-input">
+                                                    <input name="old_password" type="password" class="form-control" placeholder="Password Lama" aria-describedby="basic-addon1" id="edit-profil-input">
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="col-xs-12">
                                             <div class="form-group" id="inputfield">
                                                 <div class="input-group center-block">
-                                                    <input name="password" type="password" class="form-control" placeholder="Password Baru" aria-describedby="basic-addon1" id="edit-profil-input">
+                                                    <input name="new_password" type="password" class="form-control" placeholder="Password Baru" aria-describedby="basic-addon1" id="edit-profil-input">
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="col-xs-12">
                                             <div class="form-group" id="inputfield">
                                                 <div class="input-group center-block">
-                                                    <input name="password" type="password" class="form-control" placeholder="Konfirmasi Password Baru" aria-describedby="basic-addon1" id="edit-profil-input">
+                                                    <input name="confirm_new_password" type="password" class="form-control" placeholder="Konfirmasi Password Baru" aria-describedby="basic-addon1" id="edit-profil-input">
                                                 </div>
                                             </div>
                                         </div>
@@ -145,7 +147,7 @@
                                         <div class="col-xs-12">
                                             <div class="form-group">
                                                 <div class="input-group center-block">
-                                                    <input name="fullname" type="text" class="form-control" placeholder="Full Name" aria-describedby="basic-addon1" id="edit-profil-input">
+                                                    <input name="bg" type="text" class="form-control" placeholder="Full Name" aria-describedby="basic-addon1" id="edit-profil-input">
                                                 </div>
                                             </div>
                                         </div>
@@ -171,7 +173,9 @@
                                         <div class="col-xs-12">
                                             <div class="form-group">
                                                 <div class="input-group center-block">
-                                                    <input name="email" type="email" class="form-control" placeholder="Email" aria-describedby="basic-addon1" id="edit-profil-input">
+                                                    <?php foreach($users as $user):?>
+                                                    <input value="<?php echo $user->email_user?>" name="email" type="email" class="form-control" placeholder="Email" aria-describedby="basic-addon1" id="edit-profil-input">
+                                                    
                                                 </div>
                                             </div>
                                         </div>
@@ -197,7 +201,7 @@
                                         <div class="col-xs-12">
                                             <div class="form-group">
                                                 <div class="input-group center-block">
-                                                    <input name="email" type="email" class="form-control" placeholder="Email" aria-describedby="basic-addon1" id="edit-profil-input">
+                                                    <input value="<?php echo $user->contact_user;?>" name="contact" type="text" class="form-control" placeholder="No Handphone" aria-describedby="basic-addon1" id="edit-profil-input">
                                                 </div>
                                             </div>
                                         </div>
@@ -223,7 +227,8 @@
                                         <div class="col-xs-12">
                                             <div class="form-group">
                                                 <div class="input-group center-block">
-                                                    <textarea name="address" class="form-control" rows="2" cols="50" placeholder="Deskripsi" aria-describedby="basic-addon1" id="edit-profil-input"></textarea>
+                                                    <textarea value="<?php echo $user->deskripsi_user;?>" name="address" class="form-control" rows="2" cols="50" placeholder="Deskripsi" aria-describedby="basic-addon1" id="edit-profil-input"></textarea>
+                                                    <?php endforeach;?>
                                                 </div>
                                             </div>
                                         </div>
