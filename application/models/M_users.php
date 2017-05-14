@@ -45,8 +45,9 @@
 			}
 		}
 
-		function getUser($username){
-			$query = $this->db->query("SELECT `username_user`, `password_user` FROM `user` WHERE `username_user` = '$username' and `password_user` = 'password'");
+		function getByUsernameQuery($username){
+			$query = $this->db->query("SELECT * FROM `user` WHERE `username_user` = '$username' ");
+			return $query->result();
 
 		}
 
@@ -60,5 +61,14 @@
 			return $query->result();
 		}
 
-	
+		function getAllUserQuery(){
+			$query = $this->db->get('user');
+			return $query->result();
+		}
+
+		function updateUserQuery($where, $data){
+			$this->db->update('user', $data, $where);
+			return $this->db->affected_rows();
+		}
+
 }

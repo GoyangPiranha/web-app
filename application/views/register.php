@@ -175,7 +175,7 @@
                 </div>
               </div>
 
-            <input name="submit" type="submit" class="btn btn-block btn-custom-green" value="REGISTER" />
+            <input name="submit" type="submit" class="btn btn-block btn-custom-green" value="REGISTER"/>
                 <div class="text-center forget">
                     <p>Back To <a href="<?php echo base_url('login'); ?>"><span id="register">Login</span></a></p>
                 </div>

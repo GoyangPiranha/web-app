@@ -21,10 +21,52 @@ class Profile_edit extends CI_Controller {
     function __construct()
              {
                parent::__construct();
-               $this->load->model('M_users','',TRUE);
+               $this->load->helper('url');
+               $this->load->model('M_users','m_user',TRUE);
              }
     public function index()
     {
-        $this->load->view('profile_edit');
+        if(isset($_SESSION['USERNAME'])){
+            $username = $_SESSION['USERNAME'];
+            $data['users'] = $this->m_user->getByUsernameQuery($username);
+            $this->load->view('profile_edit', $data);
+        }
+        else{
+            $this->load->view('login');
+        }  
+    }
+
+    public function updateUser(){
+        $username = $_SESSION['USERNAME'];
+        $user_data = $this->m_user->getByUsernameQuery($username);
+        foreach($user_data as $row){
+            // echo $row->password_user;
+            $nama_user = $this->input->post('name_full');
+            $new_password = $this->input->post('new_password');
+            $confirm_password = $this->input->post('confirm_new_password');
+            $old_password = $this->input->post('old_password');
+            $email = $this->input->post('email');
+            $contact = $this->input->post('contact');
+            if(($old_password == $row->password_user) && ($new_password == $confirm_password)){
+                $change_password = $new_password;
+            }
+            else{
+                $warning = "Password salah sesuai atau konfirmasi password salah. Coba Periksa kembali.";
+                echo $warning;
+            }
+
+            $data = array('nama_user' => $nama_user,
+                            'password_user' => $change_password,
+                            'email_user' => $contact,
+                            'contact_user' => $contact);
+            $where = array('username_user' => $username);
+            $check = $this->m_user->updateUserQuery($where, $data);
+            redirect('Profile_edit', 'refresh');
+        }
+        // echo $nama_user." ".$old_password." ".$new_password." ".$confirm_password;
+        
+        // if($check == TRUE){
+        //     redirect('Profile_edit/index', 'refresh');
+        // }
     }
 }
