@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Home extends CI_Controller {
+class home extends CI_Controller {
 		function __construct()
 			 {
 			   parent::__construct();
@@ -8,17 +8,17 @@ class Home extends CI_Controller {
 			 }
 		 
 		function index() {
-			if (isset($_SESSION['USERNAME'])) {
-				$this->load->view('home');
+			if (isset($_SESSION['USERNAME'])) { 
+				$data['username'] = $_SESSION['USERNAME'];
+				$data['fullname'] = $_SESSION['FULLNAME'];
+				$this->load->view('home', $data);
 			} else {
 				$this->load->view('login');
 			}
 		}
+
 		function logout(){
 			session_destroy();
 			redirect ('Login');
-		}
-		function throw_it(){
-			redirect ('Throw_it');
 		}
 	}

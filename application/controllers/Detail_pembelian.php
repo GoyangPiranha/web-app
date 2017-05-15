@@ -21,7 +21,10 @@ class Detail_pembelian extends CI_Controller {
     public function index()
     {
         if (isset($_SESSION['USERNAME'])) { 
-            $this->load->view('detail_pembelian');
+                $data['username'] = $_SESSION['USERNAME'];
+                $data['fullname'] = $_SESSION['FULLNAME'];
+                $data['avatar'] = $_SESSION['AVATAR'];
+            $this->load->view('detail_pembelian', $data);
             } else {
                 $this->load->view('login');
             }

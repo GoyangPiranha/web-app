@@ -14,7 +14,7 @@
                 <li class="list-group-item"><a href="<?=base_url(); ?>Daftar">Register</a></li>
                 <li class="list-group-item"><a href="<?=base_url(); ?>Home">Home</a></li>
                 <li class="list-group-item"><a href="<?=base_url(); ?>">Profil-----------</a></li>
-                <li class="list-group-item"><a href="<?=base_url(); ?>Detail/wishlist">Wishlist</a></li>
+                <li class="list-group-item"><a href="<?=base_url(); ?>">Wishlist-----------</a></li>
                 <li class="list-group-item"><a href="<?=base_url(); ?>Konveksi_list">List Konveksi</a></li>
                 <li class="list-group-item"><a href="<?=base_url(); ?>Profile_edit">Edit Profil</a></li>
                 <li class="list-group-item"><a href="<?=base_url(); ?>Detail/sent_details">Detail Pengiriman</a></li>
@@ -23,8 +23,7 @@
                 <li class="list-group-item"><a href="<?=base_url(); ?>Sell_history">Rekap Penjualan</a></li>
                 <li class="list-group-item"><a href="<?=base_url(); ?>Detail/throwit">Throw It</a></li>
                 <li class="list-group-item"><a href="<?=base_url(); ?>Detail">Detail Pembelian</a></li>
-                <li class="list-group-item"><a href="<?=base_url(); ?>">Detail Penjualan</a></li>
-                <li class="list-group-item"><a href="<?=base_url(); ?>Welcome">Maintenance</a></li>
+                <li class="list-group-item"><a href="<?=base_url(); ?>">Detail Penjualan-----------</a></li>
             </ul>
         </div>
     </body>

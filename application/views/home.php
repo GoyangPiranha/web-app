@@ -16,7 +16,7 @@
    <link href="<?php echo base_url('assets/bootstrap/css/bootstrap.min.css'); ?>" rel="stylesheet">
 
 </head>
-<body style="margin-top: 0px; margin-bottom: 60px;" id="bodyid" >
+<body style="margin-top: 0px; margin-bottom: 60px;">
 
 <nav class="navbar navbar-default navbar-fixed-top" id="navbar">
         <!-- Brand and toggle get grouped for better mobile display -->
@@ -39,25 +39,25 @@
                     </div>
                 </div>
                 <div class="col-xs-3 col-md-2">
-                    <a class="navbar-brand" href="#" id="brand">
+                    <a class="navbar-brand" href="<?php echo base_url(); ?>home/logout" id="brand">
                     <?php 
-            if (isset($_SESSION['USERNAME'])) {
-              echo $_SESSION['USERNAME'];
+            if (empty($username)) {
+              echo "Hai";
             }else{
-              echo 'Hai';
+              echo $username;
               }?></a>
                 </div>
             </div>
 </nav>
 
 <div class="w3-sidebar w3-bar-block w3-border-right" style="display:none; width: 250px; overflow: hidden; background-color: #FFC300;" id="mySidebar">
-  <div class="row" style="background: url(./assets/images/<?php if (isset($_SESSION['AVATAR'])) {echo $_SESSION['AVATAR'];}else{echo"profil.png";}?>) 50% 50% no-repeat;">
+  <div class="row" style="background: url(./assets/images/<?php if (empty($avatar)) {echo"profil.png";}else{echo$avatar;}?>) 50% 50% no-repeat;">
             <div class="col-xs-4" id="profilmenu" >
-                <div style=" background: url(./assets/images/<?php if (isset($_SESSION['AVATAR'])) {echo $_SESSION['AVATAR'];}else{echo"profil.png";}?>) 50% 50% no-repeat; background-size: cover; overflow: hidden; width: 75px; height: 75px; border-radius: 50px;" class="circle">
+                <div style=" background: url(./assets/images/<?php if (empty($avatar)) {echo"profil.png";}else{echo$avatar;}?>) 50% 50% no-repeat; background-size: cover; overflow: hidden; width: 75px; height: 75px; border-radius: 50px;" class="circle">
                 </div>
             </div>
             <div class="col-xs-6" style="text-align: left; line-height: 50%; margin-left: 5px; margin-right: -5px;">
-                <p style="color: white;  padding-left: 0; font-size: 110%;  padding-right: 5%; padding-top: 25px; line-height: 100%; "><?php echo $_SESSION['FULLNAME'];?></p>
+                <p style="color: white;  padding-left: 0; font-size: 110%;  padding-right: 5%; padding-top: 25px; line-height: 100%; "><?php echo $fullname;?></p>
                 <p style="color: orange; font-size: 80%; padding-top: 0;">Regular Account</p>
             </div>
             <div class="col-xs-2">
@@ -66,11 +66,11 @@
         </div>
   <a href="#" class="w3-bar-item w3-button" id="menusidebar" style="text-decoration: none;">Upgrade</a>
 
-  <a href="<?php echo base_url("Detail/throwit");?>" class="w3-bar-item w3-button" id="menusidebar" style="text-decoration: none;">Canvass</a>
+  <a href="#" class="w3-bar-item w3-button" id="menusidebar" style="text-decoration: none;">Canvass</a>
 
-  <a href="<?php echo base_url("Purchasing_history");?>" class="w3-bar-item w3-button" id="menusidebar" style="text-decoration: none;">History</a>
-
-  <a href="<?php echo base_url("Profile_edit");?>" class="w3-bar-item w3-button" id="menusidebar" style="text-decoration: none;">Setting</a>
+  <a href="#" class="w3-bar-item w3-button" id="menusidebar" style="text-decoration: none;">History</a>
+  
+  <a href="#" class="w3-bar-item w3-button" id="menusidebar" style="text-decoration: none;">Setting</a>
   
 
   <a href="<?php echo base_url('Home/logout'); ?>" class="w3-bar-item w3-button" id="menusidebar" style="text-decoration: none;">Logout</a>
@@ -80,7 +80,7 @@
 
 
 
-<div id="myCarousel" class="carousel slide" onclick="w3_close()" data-ride="carousel">
+<div id="myCarousel" class="carousel slide" data-ride="carousel">
     <!-- Indicators -->
     <!-- <ol class="carousel-indicators">
         <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
@@ -112,14 +112,14 @@
     </a>
 </div>
 
-<div class="container" onclick="w3_close()">
+<div class="container">
     <div class="row">
 
         <div class="col-xs-6">
-            <button type="button" class="buttonmenu1" onclick="callfunction(this)" value="category">Category</button>
+            <button type="button" class="buttonmenu1">Category</button>
         </div>
         <div class="col-xs-6">
-            <button type="button"  class="buttonmenu2" onclick="callfunction(this)" value="throwit" >Throw It</button>
+            <a href="<?php echo base_url('throw_it') ?>"><button type="button" class="buttonmenu2">Throw It</button></a>
         </div>
         <div class="col-xs-6">
             <p>Kaos</p>
@@ -137,14 +137,6 @@
                     <p id="produkrating">Mostly Positive(123 review)</p>
                     <h5 id="produkprice">$24.99</h5>
                 </div>
-                <div class="row">
-                    <div class="col-xs-6">
-                        <button type="button" class="btn btn-info">Whistlist</button>
-                    </div>
-                    <div class="col-xs-6">
-                        <button type="button" class="btn btn-success">Beli</button>
-                    </div>
-                </div>   
             </div>
         </div>
 
@@ -157,14 +149,6 @@
                     <p id="produkrating">Mostly Positive(123 review)</p>
                     <h5 id="produkprice">$24.99</h5>
                 </div>
-                <div class="row">
-                    <div class="col-xs-6">
-                        <button type="button" class="btn btn-info">Whistlist</button>
-                    </div>
-                    <div class="col-xs-6">
-                        <button type="button" class="btn btn-success">Beli</button>
-                    </div>
-                </div>   
             </div>
         </div>
 
@@ -184,14 +168,6 @@
                     <p id="produkrating">Mostly Positive(123 review)</p>
                     <h5 id="produkprice">$24.99</h5>
                 </div>
-                <div class="row">
-                    <div class="col-xs-6">
-                        <button type="button" class="btn btn-info">Whistlist</button>
-                    </div>
-                    <div class="col-xs-6">
-                        <button type="button" class="btn btn-success">Beli</button>
-                    </div>
-                </div>   
             </div>
         </div>
 
@@ -204,30 +180,24 @@
                     <p id="produkrating">Mostly Positive(123 review)</p>
                     <h5 id="produkprice">$24.99</h5>
                 </div>
-                <div class="row">
-                    <div class="col-xs-6">
-                        <button type="button" class="btn btn-info">Whistlist</button>
-                    </div>
-                    <div class="col-xs-6">
-                        <button type="button" class="btn btn-success">Beli</button>
-                    </div>
-                </div>   
             </div>
         </div>
 
     </div>
 </div>
 
+
+
 <nav class="navbar navbar-default navbar-fixed-bottom" style="background: #606062;">
     <div class="row" style="margin: 0;">
         <div class="col-xs-4" style="text-align: center;">
-            <a href="<?php echo base_url("Detail/wishlist");?>"><img id="footimg" src="<?php echo base_url('assets/images/shopping-cart.png'); ?>"></a>
+            <a><img id="footimg" src="<?php echo base_url('assets/images/shopping-cart.png'); ?>"></a>
         </div>
         <div class="col-xs-4" style="text-align: center;">
-            <a href="<?php echo base_url("Home");?>"><img id="footimg" src="<?php echo base_url('assets/images/home.png'); ?>"></a>
+            <a><img id="footimg" src="<?php echo base_url('assets/images/home.png'); ?>"></a>
         </div>
         <div class="col-xs-4" style="text-align: center;">
-            <a href="<?php echo base_url("Welcome");?>"><img id="footimg" src="<?php echo base_url('assets/images/user.png'); ?>"></a>
+            <a><img id="footimg" src="<?php echo base_url('assets/images/user.png'); ?>"></a>
         </div>
     </div>
 </nav>
@@ -242,13 +212,6 @@ function w3_open() {
 function w3_close() {
   document.getElementById("mySidebar").style.display = "none";
 }
-function callfunction(a) {
-    if (a.value == "throwit") { 
-        window.location = "<?php echo base_url(); ?>Detail/throwit";
-    }
-    else if (a.value == "category"){
 
-    }
-}
 
 </script>

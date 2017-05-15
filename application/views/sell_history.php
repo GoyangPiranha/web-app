@@ -4,13 +4,12 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-    <title>Rekap Penjualan</title>
+    <title>Halaman Registrasi</title>
 
-    <link href="<?php echo base_url('assets/assets/materialize/css/materialize.min.css'); ?>" type="text/css" rel="stylesheet" media="screen,projection"/>
     <link href="<?php echo base_url('assets/bootstrap/css/bootstrap.min.css'); ?>" rel="stylesheet">
     <link href="<?php echo base_url('assets/bootstrap/css/style.css'); ?>" rel="stylesheet">
 </head>
-<body style="margin-top: 65px; background: white;">
+<body style="margin-top: 60px; background: white;">
 <!-- NAVBAR -->
 <nav class="navbar-default navbar-fixed-top">
     <div class="container">
@@ -36,7 +35,24 @@
                         <h6>Oleh <a href="">Alvin</a></h6>
                     </div>
                     <div class="col-xs-12">
-                        <h6><a style="color:#00b0ff;" href="">Mostly Positive (1280 Review)</a></h6>
+                        <h5><strong>Rp. 500.000</strong></h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="list-view-column">
+        <div class="row">
+            <div class="col-xs-4">
+                <img id="img-no-bg" class="img-responsive center-block" src="<?php echo base_url('assets/images/sample2.png'); ?>" alt="product-img">
+            </div>
+            <div class="col-xs-8">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <h6><strong>Sample Title</strong></h6>
+                    </div>
+                    <div class="col-xs-12">
+                        <h6>Oleh <a href="">Alvin</a></h6>
                     </div>
                     <div class="col-xs-12">
                         <h5><strong>Rp. 500.000</strong></h5>
@@ -59,7 +75,24 @@
                         <h6>Oleh <a href="">Alvin</a></h6>
                     </div>
                     <div class="col-xs-12">
-                        <h6><a style="color:#00b0ff;" href="">Mostly Positive (1280 Review)</a></h6>
+                        <h5><strong>Rp. 500.000</strong></h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="list-view-column">
+        <div class="row">
+            <div class="col-xs-4">
+                <img id="img-no-bg" class="img-responsive center-block" src="<?php echo base_url('assets/images/sample2.png'); ?>" alt="product-img">
+            </div>
+            <div class="col-xs-8">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <h6><strong>Sample Title</strong></h6>
+                    </div>
+                    <div class="col-xs-12">
+                        <h6>Oleh <a href="">Alvin</a></h6>
                     </div>
                     <div class="col-xs-12">
                         <h5><strong>Rp. 500.000</strong></h5>
@@ -82,15 +115,13 @@
                         <h6>Oleh <a href="">Alvin</a></h6>
                     </div>
                     <div class="col-xs-12">
-                        <h6><a style="color:#00b0ff;" href="">Mostly Positive (1280 Review)</a></h6>
-                    </div>
-                    <div class="col-xs-12">
                         <h5><strong>Rp. 500.000</strong></h5>
                     </div>
                 </div>
             </div>
         </div>
-    </div><div class="list-view-column">
+    </div>
+    <div class="list-view-column">
         <div class="row">
             <div class="col-xs-4">
                 <img id="img-no-bg" class="img-responsive center-block" src="<?php echo base_url('assets/images/sample2.png'); ?>" alt="product-img">
@@ -104,15 +135,13 @@
                         <h6>Oleh <a href="">Alvin</a></h6>
                     </div>
                     <div class="col-xs-12">
-                        <h6><a style="color:#00b0ff;" href="">Mostly Positive (1280 Review)</a></h6>
-                    </div>
-                    <div class="col-xs-12">
                         <h5><strong>Rp. 500.000</strong></h5>
                     </div>
                 </div>
             </div>
         </div>
-    </div><div class="list-view-column">
+    </div>
+    <div class="list-view-column">
         <div class="row">
             <div class="col-xs-4">
                 <img id="img-no-bg" class="img-responsive center-block" src="<?php echo base_url('assets/images/sample2.png'); ?>" alt="product-img">
@@ -126,15 +155,13 @@
                         <h6>Oleh <a href="">Alvin</a></h6>
                     </div>
                     <div class="col-xs-12">
-                        <h6><a style="color:#00b0ff;" href="">Mostly Positive (1280 Review)</a></h6>
-                    </div>
-                    <div class="col-xs-12">
                         <h5><strong>Rp. 500.000</strong></h5>
                     </div>
                 </div>
             </div>
         </div>
-    </div><div class="list-view-column">
+    </div>
+    <div class="list-view-column">
         <div class="row">
             <div class="col-xs-4">
                 <img id="img-no-bg" class="img-responsive center-block" src="<?php echo base_url('assets/images/sample2.png'); ?>" alt="product-img">
@@ -148,15 +175,13 @@
                         <h6>Oleh <a href="">Alvin</a></h6>
                     </div>
                     <div class="col-xs-12">
-                        <h6><a style="color:#00b0ff;" href="">Mostly Positive (1280 Review)</a></h6>
-                    </div>
-                    <div class="col-xs-12">
                         <h5><strong>Rp. 500.000</strong></h5>
                     </div>
                 </div>
             </div>
         </div>
-    </div><div class="list-view-column">
+    </div>
+    <div class="list-view-column">
         <div class="row">
             <div class="col-xs-4">
                 <img id="img-no-bg" class="img-responsive center-block" src="<?php echo base_url('assets/images/sample2.png'); ?>" alt="product-img">
@@ -168,31 +193,6 @@
                     </div>
                     <div class="col-xs-12">
                         <h6>Oleh <a href="">Alvin</a></h6>
-                    </div>
-                    <div class="col-xs-12">
-                        <h6><a style="color:#00b0ff;" href="">Mostly Positive (1280 Review)</a></h6>
-                    </div>
-                    <div class="col-xs-12">
-                        <h5><strong>Rp. 500.000</strong></h5>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div><div class="list-view-column">
-        <div class="row">
-            <div class="col-xs-4">
-                <img id="img-no-bg" class="img-responsive center-block" src="<?php echo base_url('assets/images/sample2.png'); ?>" alt="product-img">
-            </div>
-            <div class="col-xs-8">
-                <div class="row">
-                    <div class="col-xs-12">
-                        <h6><strong>Sample Title</strong></h6>
-                    </div>
-                    <div class="col-xs-12">
-                        <h6>Oleh <a href="">Alvin</a></h6>
-                    </div>
-                    <div class="col-xs-12">
-                        <h6><a style="color:#00b0ff;" href="">Mostly Positive (1280 Review)</a></h6>
                     </div>
                     <div class="col-xs-12">
                         <h5><strong>Rp. 500.000</strong></h5>
@@ -203,16 +203,16 @@
     </div>
 </div>
 
-<nav class="navbar navbar-default navbar-fixed-bottom" style="background: #606062;">
+<nav class="navbar navbar-default navbar-fixed-bottom" style="background: #606062; border-color: #606062; margin-top: 40px;">
     <div class="row" style="margin: 0;">
         <div class="col-xs-4" style="text-align: center;">
-            <a href="<?php echo base_url("Detail/wishlist");?>"><img id="footimg" src="<?php echo base_url('assets/images/shopping-cart.png'); ?>"></a>
+            <a><img id="footimg" src="<?php echo base_url('assets/images/shopping-cart.png'); ?>"></a>
         </div>
         <div class="col-xs-4" style="text-align: center;">
-            <a href="<?php echo base_url("Home");?>"><img id="footimg" src="<?php echo base_url('assets/images/home.png'); ?>"></a>
+            <a><img id="footimg" src="<?php echo base_url('assets/images/home.png'); ?>"></a>
         </div>
         <div class="col-xs-4" style="text-align: center;">
-            <a href="<?php echo base_url("Welcome");?>"><img id="footimg" src="<?php echo base_url('assets/images/user.png'); ?>"></a>
+            <a><img id="footimg" src="<?php echo base_url('assets/images/user.png'); ?>"></a>
         </div>
     </div>
 </nav>
