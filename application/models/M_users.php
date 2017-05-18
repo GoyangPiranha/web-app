@@ -30,9 +30,10 @@
 
 
 		function cekLogin($username, $password){
-			$query = $this->db->query("SELECT `username_user`, `password_user`,`nama_user`, `foto_profile_user`, `foto_background_user` FROM `user` WHERE `username_user` = '$username' and `password_user` = '$password'");
+			$query = $this->db->query("SELECT `id_user`, `username_user`, `password_user`,`nama_user`, `foto_profile_user`, `foto_background_user` FROM `user` WHERE `username_user` = '$username' and `password_user` = '$password'");
 			if ($query->num_rows()>0) {
 				foreach ($query->result() as $row){
+					$_SESSION['ID_USER'] = $row->id_user;
 					$_SESSION['FULLNAME']= $row->nama_user;
 					$_SESSION['USERNAME']= $row->username_user;
 					$_SESSION['AVATAR']= $row->foto_profile_user;
@@ -45,8 +46,9 @@
 			}
 		}
 
-		function getUser($username){
-			$query = $this->db->query("SELECT `username_user`, `password_user` FROM `user` WHERE `username_user` = '$username' and `password_user` = 'password'");
+		function getByUsernameQuery($username){
+			$query = $this->db->query("SELECT * FROM `user` WHERE `username_user` = '$username' ");
+			return $query->result();
 
 		}
 
@@ -59,4 +61,15 @@
 			$query = $this->db->query('SELECT * FROM provinsi');
 			return $query->result();
 		}
+
+		function getAllUserQuery(){
+			$query = $this->db->get('user');
+			return $query->result();
+		}
+
+		function updateUserQuery($where, $data){
+			$this->db->update('user', $data, $where);
+			return $this->db->affected_rows();
+		}
+
 }
