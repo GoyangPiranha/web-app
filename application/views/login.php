@@ -37,14 +37,14 @@
                 <div class="form-group">
                   <div class="input-group">
                     <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-user"></span></span>
-                    <input name="username" type="text" class="form-control" placeholder="Username" aria-describedby="basic-addon1">
+                    <input name="username" type="text" class="form-control" placeholder="Username" aria-describedby="basic-addon1" required>
                   </div>
                 </div>
 
                 <div class="form-group">
                   <div class="input-group">
                     <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-lock"></span></span>
-                    <input name="password" type="password" class="form-control" placeholder="Password" aria-describedby="basic-addon1">
+                    <input name="password" type="password" class="form-control" placeholder="Password" aria-describedby="basic-addon1" required>
                   </div>
                 </div>
                 <input type="submit" class="btn btn-block btn-custom-green" value="LOGIN" />

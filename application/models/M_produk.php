@@ -18,18 +18,19 @@
 			return $query->result();
         }
 
-        function get_produk($id){
+        function get_produk_by_id($id){
             $query = $this->db->query("SELECT * FROM `produk` WHERE `id_produk`= $id");
 			return $query->result();
         }
 
-        function get_produk($id, $id_status_produk){
-            $query = $this->db->query("SELECT * FROM `produk` WHERE `id_produk`= $id AND `id_status_produk`=$id_status_produk");
+        function get_produk_by_id_status($id_status_produk){
+            $query = $this->db->query("SELECT * FROM `produk` WHERE `id_status_produk`=$id_status_produk");
 			return $query->result();
         }
 
-        function insert($nama_produk, $deskripsi, $foto_produk_depan, $foto_produk_belakang, $id_jenis_produk, $id_kategori_produk, $tag_produk, $harga_produk, $id_user){
-            $id_status_produk = 0;
+
+        function insert($nama_produk, $deskripsi, $foto_produk_depan, $foto_produk_belakang, $id_jenis_produk, $id_kategori_produk, $tag_produk, $harga_produk, $id_user, $id_status_produk){
+            
             $query = $this->db->query("INSERT INTO `produk`(`nama_produk`, `deskripsi`, `foto_produk_depan`, `foto_produk_belakang`, `id_jenis_produk`, `id_kategori_produk`, `tag_produk`, `harga_produk`, `id_user`, `id_status_produk`) 
             VALUES ('$nama_produk', '$deskripsi', '$foto_produk_depan', '$foto_produk_belakang', $id_jenis_produk, $id_kategori_produk, '$tag_produk', $harga_produk, $id_user, $id_status_produk)");
             if ($query == true) {

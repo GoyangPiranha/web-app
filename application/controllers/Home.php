@@ -5,11 +5,14 @@ class Home extends CI_Controller {
 			 {
 			   parent::__construct();
 			   $this->load->model('M_users','',TRUE);
+			   $this->load->model('M_produk','',TRUE);
+			   
 			 }
 		 
 		function index() {
 			if (isset($_SESSION['USERNAME'])) {
-				$this->load->view('home');
+				$data = $this->load->model->M_produk->getProduk($id_status_produk);
+				$this->load->view('home', $data);
 			} else {
 				$this->load->view('login');
 			}
@@ -22,3 +25,6 @@ class Home extends CI_Controller {
 			redirect ('Throw_it');
 		}
 	}
+
+
+?>
