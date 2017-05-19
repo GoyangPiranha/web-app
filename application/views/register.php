@@ -118,7 +118,7 @@
                   <div class="form-group">
                     <div class="input-group">
                       <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-map-marker"></span></span>
-                      <select class="form-control" name="provinsi" id="select_provinsi">
+                      <select class="form-control" name="province" id="select_provinsi">
                         <option value="">Pilih Provinsi</option>
                         <?php
                           foreach ($provinsi as $row):
@@ -134,7 +134,7 @@
                   <div class="form-group">
                     <div class="input-group">
                       <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-map-marker"></span></span>
-                      <select class="form-control" name="select_kota" id="select_kota" disabled="">
+                      <select class="form-control" name="city" id="select_kota" disabled="">
                         <option value="">Pilih Kota</option>
                       </select>
                     </div>
@@ -175,7 +175,7 @@
                 </div>
               </div>
 
-            <input name="submit" type="submit" class="btn btn-block btn-custom-green" value="REGISTER"/>
+            <input name="submit" type="submit" class="btn btn-block btn-custom-green" value="REGISTER" />
                 <div class="text-center forget">
                     <p>Back To <a href="<?php echo base_url('login'); ?>"><span id="register">Login</span></a></p>
                 </div>
