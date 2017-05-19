@@ -252,11 +252,4 @@ function callfunction(a) {
     }
 }
 
-// $(document).ready(function(){
-//      $("#myCarousel").carousel({
-//          interval : 500,
-//          pause: false
-//      });
-// });
-
 </script>
