@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0  user-scalable=no"/>
-    <script src="<?php echo base_url('assets/assets/js/jquery.min.js');?>"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
     <script src="<?php echo base_url('assets/bootstrap/js/bootstrap.min.js');?>"></script>
     <!--Import Google Icon Font-->
     <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -82,21 +82,21 @@
 
 <div id="myCarousel" class="carousel slide" onclick="w3_close()" data-ride="carousel">
     <!-- Indicators -->
-    <!-- <ol class="carousel-indicators">
+     <ol class="carousel-indicators">
         <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
         <li data-target="#myCarousel" data-slide-to="1"></li>
         <li data-target="#myCarousel" data-slide-to="2"></li>
         <li data-target="#myCarousel" data-slide-to="3"></li>
-    </ol> -->
+    </ol> 
 
     <!-- Wrapper for slides -->
     <div class="carousel-inner" role="listbox" style="margin-bottom: 5px;">
         <div class="item active">
-            <img src="<?php echo base_url('assets/images/fashion1.jpg'); ?>" alt="Chania">
+            <img src="<?php echo base_url('assets/images/fashion2.jpg'); ?>" alt="1">
         </div>
 
         <div class="item">
-            <img src="<?php echo base_url('assets/images/fashion2.jpg'); ?>" alt="Chania">
+            <img src="<?php echo base_url('assets/images/fashion3.jpg'); ?>" alt="2">
         </div>
 
     </div>
@@ -242,6 +242,7 @@ function w3_open() {
 function w3_close() {
   document.getElementById("mySidebar").style.display = "none";
 }
+
 function callfunction(a) {
     if (a.value == "throwit") { 
         window.location = "<?php echo base_url(); ?>Detail/throwit";
