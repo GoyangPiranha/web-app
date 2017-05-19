@@ -12,11 +12,14 @@
         	parent::__construct();
         	$this->load->database();
     	}
-
-    	function registrasi($username_user, $password_user, $nama_user, $jenis_kelamin_user, $tanggal_lahir_user, $provinsi_user, $kota_user, $alamat_user, $kode_pos_user, $foto_profile_user, $email_user, $contact_user, $deskripsi_user, $rekening_user, $jenis_user){
-    		$id_kota = $this->db->query("select id_kota from provinsi as p, kota as k where p.nama_provinsi = '$provinsi_user' AND k.nama_kota = '$kota_user'");
-			$result = $this->db->query("INSERT INTO `user`(`id_user`, `username_user`, `password_user`, `nama_user`, `jenis_kelamin_user`, `tanggal_lahir_user`, `id_kota`, `alamat_user`, `kode_pos_user`, `foto_profile_user`, `foto_background_user`, `email_user`, `contact_user`, `deskripsi_user`, `rekening_user`, `jumlah_pelangan_user`, `jenis_user`) VALUES ('$username_user', '$password_user', '$nama_user', '$jenis_kelamin_user', '$tanggal_lahir_user', '$id_kota', '$alamat_user', '$kode_pos_user', '$foto_profile_user', '$email_user', '$contact_user', '$deskripsi_user', '$rekening_user', '$jenis_user') ");
-			if ($result == true) {
+function simpanData($fullname,$username,$date,$avatar,$password,$id_kota,$address,$email,$handphone){
+ 			$jenis_user = 1;
+ 			$query = $this->db->query("INSERT INTO `user`(`nama_user`, `username_user`, `tanggal_lahir_user`, `foto_profile_user`, `password_user`, `id_kota`, `alamat_user`, `email_user`, `contact_user`,`jenis_user`) VALUES ('$fullname','$username','$date','$avatar','$password', $id_kota,'$address','$email','$handphone','$jenis_user')");
+ 			// if ($query == true) {
+    	// function registrasi($username_user, $password_user, $nama_user, $jenis_kelamin_user, $tanggal_lahir_user, $provinsi_user, $kota_user, $alamat_user, $kode_pos_user, $foto_profile_user, $email_user, $contact_user, $deskripsi_user, $rekening_user, $jenis_user){
+    	// 	$id_kota = $this->db->query("select id_kota from provinsi as p, kota as k where p.nama_provinsi = '$provinsi_user' AND k.nama_kota = '$kota_user'");
+		// 	$result = $this->db->query("INSERT INTO `user`(`id_user`, `username_user`, `password_user`, `nama_user`, `jenis_kelamin_user`, `tanggal_lahir_user`, `id_kota`, `alamat_user`, `kode_pos_user`, `foto_profile_user`, `foto_background_user`, `email_user`, `contact_user`, `deskripsi_user`, `rekening_user`, `jumlah_pelangan_user`, `jenis_user`) VALUES ('$username_user', '$password_user', '$nama_user', '$jenis_kelamin_user', '$tanggal_lahir_user', '$id_kota', '$alamat_user', '$kode_pos_user', '$foto_profile_user', '$email_user', '$contact_user', '$deskripsi_user', '$rekening_user', '$jenis_user') ");
+			if ($query == true) {
 				return true;
 			}
 		}
