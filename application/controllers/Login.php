@@ -19,6 +19,7 @@ class Login extends CI_Controller {
 			$username = $_POST['username'];
 			$password = $_POST['password'];
 			$this->load->model('m_users');
+			$password = md5($password);
 			$user = $this->M_users->cekLogin($username, $password);
 			if ($user == true) {
 				redirect('home','refresh');
