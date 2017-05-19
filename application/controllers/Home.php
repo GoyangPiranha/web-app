@@ -11,8 +11,8 @@ class Home extends CI_Controller {
 		 
 		function index() {
 			if (isset($_SESSION['USERNAME'])) {
-				$data = $this->load->model->M_produk->getProduk($id_status_produk);
-				$this->load->view('home', $data);
+				//$data = $this->load->model->M_produk->getProduk($id_status_produk);
+				$this->load->view('home');
 			} else {
 				$this->load->view('login');
 			}
