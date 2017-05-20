@@ -227,8 +227,8 @@
                     </div>
                 </div>
             </div>
-
-            <input name="lanjut" type="submit" class="btn btn-block btn-custom-yellow" value="Lanjut" />
+            
+             <input name="lanjut" type="submit" class="btn btn-block btn-custom-yellow" value="Lanjut" /> 
         </form>
     </div>
 </div>

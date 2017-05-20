@@ -178,7 +178,7 @@
     </div>
     <div class="row">
         <div class="col-xs-12" style="margin-bottom: 10px;">
-            <button class="btn btn-block btn-custom-yellow center-block">Selesai</button>
+             <button class="btn btn-block btn-custom-yellow center-block">Selesai</button> 
         </div>
 
     </div>

@@ -189,7 +189,8 @@
                         <button type="button" class="btn btn-info">Whistlist</button>
                     </div>
                     <div class="col-xs-6">
-                        <button type="button" class="btn btn-success">Beli</button>
+                        <!-- <button type="button" class="btn btn-success">Beli</button> -->
+                        <button type="button" class="btn btn-success"><a href="<?php echo base_url('Konveksi_list');?>">Beli</a></button>
                     </div>
                 </div>   
             </div>
@@ -227,7 +228,7 @@
             <a href="<?php echo base_url("Home");?>"><img id="footimg" src="<?php echo base_url('assets/images/home.png'); ?>"></a>
         </div>
         <div class="col-xs-4" style="text-align: center;">
-            <a href="<?php echo base_url("Welcome");?>"><img id="footimg" src="<?php echo base_url('assets/images/user.png'); ?>"></a>
+            <a href="<?php echo base_url("Profile");?>"><img id="footimg" src="<?php echo base_url('assets/images/user.png'); ?>"></a>
         </div>
     </div>
 </nav>

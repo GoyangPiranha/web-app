@@ -56,9 +56,5 @@ class Sent_details extends CI_Controller {
 		$kota_tujuan	  = $this->input->post('select_kota');
 		$email_tujuan     = $this->input->post('email');
 		$alamat_tujuan    = $this->input->pos('alamat');
-
-		
-
-
 	}
 }

@@ -23,7 +23,7 @@
 
     <div class="fb-profile">
         <?php foreach($user_data as $row):?>
-        <img align="left" class="fb-image-lg" src="http://3.bp.blogspot.com/-61vtRgh1En8/UjKtonaa1VI/AAAAAAAAHdg/HeTuqUnhUG4/s1600/Danbo19.jpg" alt="Profile image example"/>
+        <img align="left" class="fb-image-lg" src="<?=base_url();?>assets/images/<?php if($_SESSION['BACKGROUND']==""){echo "default.jpg";}elseif(isset($_SESSION['BACKGROUND'])) {echo $_SESSION['BACKGROUND'];} else{echo "f1.jpg";}?>" alt="Profile image example"/>
         <img align="left" class="fb-image-profile thumbnail-profile" src="<?=base_url();?>assets/images/Profil/<?php if (isset($_SESSION['AVATAR'])) {echo $_SESSION['AVATAR'];}else{echo"profil.png";}?>" alt="Profile image example"/>
         
     </div>
@@ -42,8 +42,8 @@
         <div class="col-xs-12">
             <table class="table">
                 <thead class="text-center">
-                    <td class="table-custom col-xs-6">192 Pelanggan</td>
-                    <td class="table-custom col-xs-6">5 Ratings</td>
+                    <td class="table-custom col-xs-6">0 Pelanggan</td>
+                    <td class="table-custom col-xs-6">0 Ratings</td>
                 </thead>
             </table>
         </div>
@@ -72,7 +72,7 @@
                     <div class="row">
                         <div class="col-xs-12 center-block">
                             <div class="dropdown">
-                              <button class="btn btn-custom-yellow dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                              <button class="btn btn-custom-yellow dropdown-toggle align-right" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                                 Kirim Pesan
                                 <span class="caret"></span>
                               </button>
@@ -80,12 +80,11 @@
                                 <li><a href="#">Line</a></li>
                                 <li><a href="#">Whatsapp</a></li>
                                 <li><a href="#">BBM</a></li>
-                                <li><a href="#">Instagram</a></li>
                               </ul>
                              </div>
                         </div>
                         <div class="col-xs-12">
-                            <h5 class="small text-right" style="padding-right: 12px;">Last login 5 hours ago</h5>
+                            <h5 class="small text-right" style="padding-right: 12px;">Last login [null] hours ago</h5>
                         </div>
                     </div>
                 </div>
@@ -103,7 +102,11 @@
 </div>
 <?php endforeach;?>
 
-<!-- separator -->
+        <!-- separator -->
+        <div class="col-xs-12"><div class="line-separator" id="separator"></div></div>
+        <!-- end of separator -->
+        <h4 style="padding-left: 15px;"><strong>Produk Anda</strong></h4>
+        <!-- separator -->
         <div class="col-xs-12"><div class="line-separator" id="separator"></div></div>
         <!-- end of separator -->
 
