@@ -85,16 +85,95 @@ class Profile_edit extends CI_Controller {
             $nama_bank = $_POST['nama_bank'];
             $nama_pemilik = $_POST['nama_pemilik'];
             $no_rekening = $_POST['no_rekening'];
-
+            $password = '';
+            $fotouser = '';
+            $fotosampul = '';
 
             if($new_password == null || $confirm_password == null){
                 $password = $pass;
-            }elseif($foto_profile == null || $foto_background == null){
-                $foto_profile = $foto_user;
-                $foto_background = $foto_sampul;
+            }elseif($new_password != null && $confirm_password != null){
+                if($new_password != $confirm_password){
+                    $data['status'] = "Password tidak sesuai, silahkan cek kembali";
+                    $id_user = $_SESSION['ID_USER'];
+                    $data['users'] = $this->M_users->getUserById($id_user);
+                    $data['rekening'] = $this->M_rekening->getRekeningByUser($id_user);
+                    $this->load->view('profile_edit', $data);
+                }else{
+                    $password = $new_password;
+                }  
             }
-            echo $nama_user;
-            $password = $confirm_password;
+
+            if($foto_profile == null){
+                $fotouser = $foto_user;
+            }else{
+                $fotouser = $fotoname;
+            }
+            if($foto_background == null){
+                $fotosampul = $foto_sampul;
+            }else{
+                $fotosampul = $backgroundname;
+            }
+            // echo "password: ".$password."<br>";
+            // echo "fotouser: ".$fotouser."<br>";
+            // echo "sampul: ".$fotosampul."<br>";
+            if($no_rekening == null || $nama_pemilik == null || $nama_bank == null){
+                //echo "<br> update saja";
+                $data = array('nama_user' => $nama_user,
+                            'password_user' => $password,
+                            'email_user' => $email,
+                            'foto_profile_user' => $fotouser,
+                            'foto_background_user' => $fotosampul,
+                            'contact_user' => $contact);
+                $where = array('id_user' => $id_user);
+                $check = $this->M_users->updateUserQuery($where, $data);
+                $location1 = './assets/images/Profil/';
+                $location2 = './assets/images/Sampul/';
+                move_uploaded_file($tmp1, $location1.$fotouser);
+                move_uploaded_file($tmp2, $location2.$fotosampul);
+
+                if($check == true){
+                    $data['status'] = "Data Berhasil Diupdate";
+                    $id_user = $_SESSION['ID_USER'];
+                    $data['users'] = $this->M_users->getUserById($id_user);
+                    $data['rekening'] = $this->M_rekening->getRekeningByUser($id_user);
+                    $this->load->view('profile_edit', $data);
+                }else{
+                    $data['status'] = "";
+                    $id_user = $_SESSION['ID_USER'];
+                    $data['users'] = $this->M_users->getUserById($id_user);
+                    $data['rekening'] = $this->M_rekening->getRekeningByUser($id_user);
+                    $this->load->view('profile_edit', $data);
+                }
+            }elseif($no_rekening != null && $nama_pemilik != null && $nama_bank != null){
+                $data = array('nama_user' => $nama_user,
+                            'password_user' => $password,
+                            'email_user' => $email,
+                            'foto_profile_user' => $fotouser,
+                            'foto_background_user' => $fotosampul,
+                            'contact_user' => $contact);
+                $where = array('id_user' => $id_user);
+                $check = $this->M_users->updateUserQuery($where, $data);
+                $location1 = './assets/images/Profil/';
+                $location2 = './assets/images/Sampul/';
+                move_uploaded_file($tmp1, $location1.$fotouser);
+                move_uploaded_file($tmp2, $location2.$fotosampul);
+                $check2 = $this->M_rekening->insertRekening($no_rekening, $nama_pemilik, $id_user, $nama_bank);
+
+                if($check == true || $check2 == true){
+                    $data['status'] = "Data Berhasil Diupdate";
+                    $id_user = $_SESSION['ID_USER'];
+                    $data['users'] = $this->M_users->getUserById($id_user);
+                    $data['rekening'] = $this->M_rekening->getRekeningByUser($id_user);
+                    $this->load->view('profile_edit', $data);
+                }else{
+                    $data['status'] = "Data Tidak Berhasil Diupdate. Coba Periksa Kembali Data Anda.";
+                    $id_user = $_SESSION['ID_USER'];
+                    $data['users'] = $this->M_users->getUserById($id_user);
+                    $data['rekening'] = $this->M_rekening->getRekeningByUser($id_user);
+                    $this->load->view('profile_edit', $data);
+                }
+            }
+
             
             // if($new_password != $confirm_password){
             //     $data['status'] = "Password tidak sesuai, silahkan cek kembali";
