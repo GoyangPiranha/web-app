@@ -11,8 +11,62 @@
     <link href="<?php echo base_url('assets/bootstrap/css/style.css'); ?>" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="//cdn.jsdelivr.net/bootstrap.tagsinput/0.4.2/bootstrap-tagsinput.css" />
-
+	<script
+  src="https://code.jquery.com/jquery-3.2.1.js"
+  integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
+  crossorigin="anonymous"></script>
 </head>
+<script type="text/javascript">
+				function init() {
+			$("img[data-type=data]").each(function (i, e) {
+				var _inputFile = $('<input/>')
+					.attr('type', 'file')
+					.attr('hidden', 'hidden')
+					.attr('accept','image/*')
+					.attr('onchange', 'readImage()')
+					.attr('data-image-placeholder', e.id);
+
+				$(e.parentElement).append(_inputFile);
+
+				$(e).on("click", _inputFile, triggerClick);
+			});
+		}
+
+		function triggerClick(e) {
+			e.data.click();
+		}
+
+		Element.prototype.readImage = function () {
+			var _inputFile = this;
+			if (_inputFile && _inputFile.files && _inputFile.files[0]) {
+				var _fileReader = new FileReader();
+				_fileReader.onload = function (e) {
+					var _imagePlaceholder = _inputFile.attributes.getNamedItem("data-image-placeholder").value;
+					var _img = $("#" + _imagePlaceholder);
+					_img.attr("src", e.target.result);
+				};
+				_fileReader.readAsDataURL(_inputFile.files[0]);
+			}
+		};
+
+		(
+
+		function (yourcode) {
+			"use strict";
+			yourcode(window.jQuery, window, document);
+		}(
+
+		function ($, window, document) {
+			"use strict";
+			// The $ is now locally scoped 
+			$(function () {
+				// The DOM is ready!
+				init();
+			});
+
+			// The rest of your code goes here!
+		}));
+    </script>
 <body style="margin-top: 60px; background: #FFFFFF">
 <!-- NAVBAR -->
 <nav class="navbar-default navbar-fixed-top">
@@ -45,47 +99,37 @@
                 <div class="col-xs-6 text-center">
                     <h5 class="small"><strong>Design Tampak Depan</strong></h5>
                 </div>
+            </div>
+  
+			<div class="row">
+                <div class="col-xs-12 center-block">
+                    <div class="form-group center-block">
+					<div class="input-group center-block">
+						<img class="center-block img-responsive" id="desaindepan" src="#" data-type="data" /></div>
+                    </div>
+                </div>
+			</div>
+			<div class="row" style="margin-bottom: 4px;">
                 <div class="col-xs-6 text-center">
                     <h5 class="small"><strong>Design Tampak Belakang</strong></h5>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-xs-6">
-                    <div class="form-login">
-                        <div class="">
-                            <div class="row">
-                                <div class="col-xs-12 text-center">
-                                    <div id="image-preview">
-                                        <span class="glyphicon glyphicon-plus" for="image-upload" id="image-label1"></span>
-                                        <!--<label for="image-upload" id="image-label">Choose File</label>-->
-                                        <input type="file" name="image" id="image-upload" />
-                                    </div>
-                                    
-                                </div>
-                            </div>
-                        </div>
+  
+			<div class="row">
+                <div class="col-xs-12 center-block">
+                    <div class="form-group center-block">
+					<div class="input-group center-block">
+						<img class="center-block img-responsive" id="desainbelakang" src="#" data-type="data" /></div>
                     </div>
                 </div>
-                <div class="col-xs-6">
-                    <div class="form-login">
-                        <div class="outter-form-throwit">
-                            <div class="row">
-                                <div class="col-xs-12 text-center">
-                                    <span class="glyphicon glyphicon-plus"></span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
+			</div>
+            
             <div class="line-separator" id="separator"></div> <!--separator-->
-
             <!--nama dan deskripsi barang-->
             <div class="row">
                 <div class="col-xs-12">
                     <div class="form-group">
-                        <div class="input-group">
+                        <div class="input-group ">
                             <span class="input-group-addon" id="basic-addon1"><span class="fa fa-reorder"></span></span>
                             <input name="namabarang" type="text" class="form-control" placeholder="Nama Barang" aria-describedby="basic-addon1" required>
                         </div>
