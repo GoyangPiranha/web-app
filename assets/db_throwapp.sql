@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: May 19, 2017 at 03:29 PM
+-- Generation Time: May 20, 2017 at 07:13 AM
 -- Server version: 10.1.19-MariaDB
 -- PHP Version: 7.0.13
 
@@ -29,7 +29,8 @@ SET time_zone = "+00:00";
 CREATE TABLE `bank` (
   `id_bank` smallint(6) NOT NULL,
   `nama_bank` varchar(25) NOT NULL,
-  `logo_bank` longblob NOT NULL
+  `no_rekening` varchar(1000) DEFAULT NULL,
+  `logo_bank` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -735,10 +736,20 @@ INSERT INTO `provinsi` (`id_provinsi`, `nama_provinsi`) VALUES
 --
 
 CREATE TABLE `rekening` (
-  `no_rekening` smallint(6) NOT NULL,
-  `nama_pemilik` int(11) NOT NULL,
-  `id_bank` smallint(6) NOT NULL
+  `id_rekening` int(100) NOT NULL,
+  `no_rekening` varchar(100) NOT NULL,
+  `nama_pemilik` varchar(100) NOT NULL,
+  `id_user` smallint(6) NOT NULL,
+  `nama_bank` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `rekening`
+--
+
+INSERT INTO `rekening` (`id_rekening`, `no_rekening`, `nama_pemilik`, `id_user`, `nama_bank`) VALUES
+(2, '', '', 17, ''),
+(3, '123123123', 'renndy', 16, 'BNI');
 
 -- --------------------------------------------------------
 
@@ -877,7 +888,6 @@ CREATE TABLE `user` (
   `email_user` varchar(30) NOT NULL,
   `contact_user` varchar(25) NOT NULL,
   `deskripsi_user` text,
-  `rekening_user` varchar(20) DEFAULT NULL,
   `jenis_user` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -885,17 +895,9 @@ CREATE TABLE `user` (
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`id_user`, `username_user`, `password_user`, `nama_user`, `tanggal_lahir_user`, `id_kota`, `alamat_user`, `foto_profile_user`, `foto_background_user`, `email_user`, `contact_user`, `deskripsi_user`, `rekening_user`, `jenis_user`) VALUES
-(7, 'budi', '1234', 'budi', '2017-05-24', 3212, 'qwert', '', '', 't@m.co', '1234', NULL, NULL, 1),
-(8, 'tio', '1234', 'tio', '2017-05-17', 3512, 'qwwer', 'tioasa.PNG', '', 't@m.co', '1234', NULL, NULL, 1),
-(9, 'tio', '1234', 'tio', '2017-05-23', 3603, 'eqweqw', 'tioasa.PNG', '', 't@m.co', '1234', NULL, NULL, 1),
-(11, 'ppp', '1234', 'ppp', '2017-05-18', 1117, '123', 'pppasa.PNG', '', 't@m.co', '1234', NULL, NULL, 1),
-(12, 'asd', '1234', 'ads', '2017-05-11', 3212, 'qwe', '5916ffd764dbeasdbook-collection-in-flat-design_23-2147504725.jpg', '', 't@m.co', '123', NULL, NULL, 1),
-(13, 'a', '1', 'a', '2017-05-17', 3512, 'as', '', NULL, 'a@a.a', '123123', NULL, NULL, 1),
-(14, 'q', '123', 'q', '2017-05-19', 3604, 'asdad', '', NULL, 'a@a.a', '1234', NULL, NULL, 1),
-(15, 'qq', '1', 'qq', '2017-05-09', 3316, 'qwe', '591ef0644a5b9qq20170330_120254.jpg', NULL, 't@m.co', '121231', NULL, NULL, 1),
-(16, 'z', '202cb962ac59075b964b07152d234b70', 'z', '2017-05-18', 1303, 'dsfsdf', '591ef1a16375dz20170330_120124.jpg', NULL, 't@m.co', '123', NULL, NULL, 1),
-(17, 'zz', '202cb962ac59075b964b07152d234b70', 'zz', '2017-05-17', 1303, 'qq', '591ef2462b825zz20170330_120124.jpg', NULL, 't@m.co', '1234', NULL, NULL, 1);
+INSERT INTO `user` (`id_user`, `username_user`, `password_user`, `nama_user`, `tanggal_lahir_user`, `id_kota`, `alamat_user`, `foto_profile_user`, `foto_background_user`, `email_user`, `contact_user`, `deskripsi_user`, `jenis_user`) VALUES
+(19, 'w', '123', 'aku', '2017-05-31', 1203, '31231', '', '', '123', '123', NULL, 1),
+(20, 'a', '123', 'a', '2017-05-24', 1103, 'qwe', '591fc40b5c894a1480689069855.jpg', NULL, 'a@a.com', '123', NULL, 1);
 
 -- --------------------------------------------------------
 
@@ -985,8 +987,8 @@ ALTER TABLE `provinsi`
 -- Indexes for table `rekening`
 --
 ALTER TABLE `rekening`
-  ADD PRIMARY KEY (`no_rekening`),
-  ADD KEY `id_bank` (`id_bank`);
+  ADD PRIMARY KEY (`id_rekening`),
+  ADD KEY `id_user` (`id_user`);
 
 --
 -- Indexes for table `riwayat_pembelian`
@@ -1098,6 +1100,11 @@ ALTER TABLE `logistik`
 ALTER TABLE `provinsi`
   MODIFY `id_provinsi` smallint(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=95;
 --
+-- AUTO_INCREMENT for table `rekening`
+--
+ALTER TABLE `rekening`
+  MODIFY `id_rekening` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+--
 -- AUTO_INCREMENT for table `riwayat_pembelian`
 --
 ALTER TABLE `riwayat_pembelian`
@@ -1136,7 +1143,7 @@ ALTER TABLE `ukuran`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id_user` smallint(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id_user` smallint(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 --
 -- AUTO_INCREMENT for table `whistlist`
 --
@@ -1173,12 +1180,6 @@ ALTER TABLE `produk`
 --
 ALTER TABLE `provinsi`
   ADD CONSTRAINT `provinsi_ibfk_1` FOREIGN KEY (`id_provinsi`) REFERENCES `kota` (`id_provinsi`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Constraints for table `rekening`
---
-ALTER TABLE `rekening`
-  ADD CONSTRAINT `rekening_ibfk_1` FOREIGN KEY (`id_bank`) REFERENCES `bank` (`id_bank`) ON UPDATE CASCADE;
 
 --
 -- Constraints for table `transaksi`

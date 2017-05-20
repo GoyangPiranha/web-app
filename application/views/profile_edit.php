@@ -25,13 +25,10 @@
             <div class="outter-form-global">
                 <form action="<?php echo base_url('Profile_edit/updateUser'); ?>" class="inner-login" method="post" enctype="multipart/form-data">
                     <h5 class="title-login"><strong>Perbarui identitas</strong></h5>
+                    
                     <p style="color: red;">
                         <?php
-                        if (empty($warning)) {
-                            echo "";
-                        }else{
-                            echo "<div class='alert alert-danger text-center' role='alert'>$warning</div>";
-                        }
+                        echo $status;
                         ?>
                     </p>
                     <!-- fullname -->
@@ -55,7 +52,7 @@
                                                 <div class="input-group center-block">
                                                     <?php foreach($users as $user):?>
                                                     <input name="name_full" type="text" class="form-control" placeholder="Full Name" aria-describedby="basic-addon1" id="edit-profil-input" value="<?php echo $user->nama_user;?>">
-                                                    <?php endforeach;?>
+                                                    
                                                 </div>
                                             </div>
                                         </div>
@@ -78,13 +75,7 @@
                             <div id="ubahusername" class="collapse" role="tabpanel" aria-labelledby="bri">
                                 <div class="card-block">
                                     <div class="row" id="row-payment">
-                                        <div class="col-xs-12">
-                                            <div class="form-group">
-                                                <div class="input-group center-block">
-                                                    <input name="old_password" type="password" class="form-control" placeholder="Password Lama" aria-describedby="basic-addon1" id="edit-profil-input">
-                                                </div>
-                                            </div>
-                                        </div>
+
                                         <div class="col-xs-12">
                                             <div class="form-group" id="inputfield">
                                                 <div class="input-group center-block">
@@ -121,7 +112,7 @@
                                         <div class="col-xs-12">
                                             <div class="form-group">
                                                 <div class="input-group center-block">
-                                                    <input name="fullname" type="text" class="form-control" placeholder="Full Name" aria-describedby="basic-addon1" id="edit-profil-input">
+                                                    <input name="fotoprofile" type="file" class="form-control" placeholder="Full Name" aria-describedby="basic-addon1" id="edit-profil-input" value="">
                                                 </div>
                                             </div>
                                         </div>
@@ -147,7 +138,7 @@
                                         <div class="col-xs-12">
                                             <div class="form-group">
                                                 <div class="input-group center-block">
-                                                    <input name="bg" type="text" class="form-control" placeholder="Full Name" aria-describedby="basic-addon1" id="edit-profil-input">
+                                                    <input name="fotosampul" type="file" class="form-control" placeholder="Full Name" aria-describedby="basic-addon1" id="edit-profil-input">
                                                 </div>
                                             </div>
                                         </div>
@@ -173,7 +164,7 @@
                                         <div class="col-xs-12">
                                             <div class="form-group">
                                                 <div class="input-group center-block">
-                                                    <?php foreach($users as $user):?>
+                                                    
                                                     <input value="<?php echo $user->email_user?>" name="email" type="email" class="form-control" placeholder="Email" aria-describedby="basic-addon1" id="edit-profil-input">
                                                     
                                                 </div>
@@ -268,22 +259,21 @@
                                                                     <table class="table table-bordered">
                                                                         <thead>
                                                                         <tr>
-                                                                            <td class="text-center"><strong>No</strong></td>
                                                                             <td class="text-center"><strong>Bank</strong></td>
                                                                             <td class="text-center"><strong>Rekening</strong></td>
+                                                                            <td class="text-center"><strong>Nama</strong></td>
+                                                                            <td class="text-center"><strong>&nbsp</strong></td>
                                                                         </tr>
                                                                         </thead>
                                                                         <tbody>
+                                                                        <?php foreach($rekening as $rekening){?>
                                                                         <tr>
-                                                                            <td class="text-center">1</td>
-                                                                            <td class="text-center">BRI</td>
-                                                                            <td class="text-center">123456678</td>
+                                                                            <td class="text-center"><?php echo $rekening->nama_bank ?></td>
+                                                                            <td class="text-center"><?php echo $rekening->no_rekening ?></td>
+                                                                            <td class="text-center"><?php echo $rekening->nama_pemilik ?></td>
+                                                                            <td class="text-center"><a href="<?=base_url()?>Profile_edit/deleteRekening/<?=$rekening->id_rekening?>"><span class="glyphicon glyphicon-remove" aria-hidden="true"></td></a>
                                                                         </tr>
-                                                                        <tr>
-                                                                            <td class="text-center">2</td>
-                                                                            <td class="text-center">BRI</td>
-                                                                            <td class="text-center">123456678</td>
-                                                                        </tr>
+                                                                        <?php } ?>
                                                                         </tbody>
                                                                     </table>
 
@@ -316,21 +306,21 @@
                                                                             <div class="col-xs-12">
                                                                                 <div class="form-group" id="inputfield">
                                                                                     <div class="input-group center-block">
-                                                                                        <input name="fullname" type="text" class="form-control" placeholder="Nama Bank" aria-describedby="basic-addon1" id="edit-profil-input">
+                                                                                        <input name="nama_bank" type="text" class="form-control" placeholder="Nama Bank" aria-describedby="basic-addon1" id="edit-profil-input">
                                                                                     </div>
                                                                                 </div>
                                                                             </div>
                                                                             <div class="col-xs-12">
                                                                                 <div class="form-group" id="inputfield">
                                                                                     <div class="input-group center-block">
-                                                                                        <input name="fullname" type="text" class="form-control" placeholder="Nama Pemilik" aria-describedby="basic-addon1" id="edit-profil-input">
+                                                                                        <input name="nama_pemilik" type="text" class="form-control" placeholder="Nama Pemilik" aria-describedby="basic-addon1" id="edit-profil-input">
                                                                                     </div>
                                                                                 </div>
                                                                             </div>
                                                                             <div class="col-xs-12">
                                                                                 <div class="form-group" id="inputfield">
                                                                                     <div class="input-group center-block">
-                                                                                        <input name="fullname" type="text" class="form-control" placeholder="Nomor Rekening" aria-describedby="basic-addon1" id="edit-profil-input">
+                                                                                        <input name="no_rekening" type="text" class="form-control" placeholder="Nomor Rekening" aria-describedby="basic-addon1" id="edit-profil-input">
                                                                                     </div>
                                                                                 </div>
                                                                             </div>
@@ -352,22 +342,10 @@
                             </div>
                         </div>
                         <!--End of tambah rekening-->
-                        <!--tambah dan lihat Rekening-->
-                        <div class="card list-view-column">
-                            <div class="card-header" role="tab" id="bri">
-                                <h5 class="mb-0">
-                                    <a data-toggle="collapse" data-parent="#accordion" href="#" aria-expanded="true" aria-controls="collapseOne">
-                                        <div class="radio radio-primary">
-                                            <strong>Akun Premium</strong>
-                                        </div>
-                                    </a>
-                                </h5>
-                            </div>
-                        </div>
-                        <!--End of tambah rekening-->
+                       
                         <div class="row">
                             <div class="col-xs-10">
-                                <input name="submit" type="submit" class="btn btn-custom-yellow" value="Simpan" />
+                                <input name="submit" type="submit" href="<?php echo base_url('Profile_edit/updateUser'); ?>" class="btn btn-custom-yellow" value="Simpan" />
                             </div>
                         </div>
                     </div>
