@@ -18,10 +18,16 @@ class Profile extends CI_Controller {
      * map to /index.php/welcome/<method_name>
      * @see https://codeigniter.com/user_guide/general/urls.html
      */
-    public function index()
-    {
+     function __construct(){
+        parent::__construct();
+        $this->load->helper('url');
+        $this->load->model('M_users','m_user',TRUE);
+    }
+    public function index(){
         if (isset($_SESSION['USERNAME'])) {
-            $this->load->view('profil');
+            $username = $_SESSION['USERNAME'];
+            $data['user_data'] = $this->m_user->getByUsernameQuery($username);
+            $this->load->view('profil', $data);
             } else {
                 $this->load->view('login');
             }

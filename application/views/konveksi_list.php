@@ -229,8 +229,9 @@
             </div>
             <!--ends of list view-->
 
+
         </div>
-        <input name="submit" type="submit" class="btn btn-block btn-custom-green submit" value="Lanjut"></input>
+         <input name="submit" type="submit" class="btn btn-block btn-custom-green submit" value="Lanjut"></input> 
     </form>
 </div>
 

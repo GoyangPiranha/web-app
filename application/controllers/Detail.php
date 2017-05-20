@@ -23,10 +23,6 @@ class Detail extends CI_Controller {
         $this->load->view('details');
     }
 
-    public function sent_details(){
-        $this->load->view('sent_details');
-    }
-
     public function throwit(){
         $this->load->view("throw_it");
     }

@@ -1,102 +1,154 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" style="margin-bottom: 65px">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
-
-    <meta name="viewport" content="width=device-width, initial-scale=1.0  user-scalable=no"/>
-    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-    <!--Import Google Icon Font-->
-    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-
+    <title><?php echo $_SESSION['FULLNAME'];?> Profil</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,  user-scalable=no"/>
+    <link href="<?php echo base_url('assets/bootstrap/css/bootstrap.min.css'); ?>" rel="stylesheet">
+    <link href="<?php echo base_url('assets/bootstrap/css/style.css'); ?>" rel="stylesheet">
     <link rel="stylesheet" href="<?php echo base_url('./assets/style.css'); ?>">
-
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-
-    <!-- Optional theme -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-
-    <!-- Latest compiled and minified JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
 
 </head>
-<body style="margin-top: 0px; margin-bottom: 60px;">
-
-<nav class="navbar navbar-default navbar-fixed-top" id="navbar">
-        <!-- Brand and toggle get grouped for better mobile display -->
+<body style="margin-top: 6px; margin-bottom: 60px; background: white;">
+<div>
+    <nav class="navbar-default navbar-fixed-top">
+    <div class="container">
         <div class="navbar-header">
+            <a class="navbar-brand" href="<?php echo base_url('login'); ?>"><span class="glyphicon glyphicon-chevron-left"></span><span  id="registration">Profil</span></a>
+        </div>
+    </div><!--/.container -->
+</nav>
+</div>
+
+    <div class="fb-profile">
+        <?php foreach($user_data as $row):?>
+        <img align="left" class="fb-image-lg" src="<?=base_url();?>assets/images/<?php if($_SESSION['BACKGROUND']==""){echo "default.jpg";}elseif(isset($_SESSION['BACKGROUND'])) {echo $_SESSION['BACKGROUND'];} else{echo "f1.jpg";}?>" alt="Profile image example"/>
+        <img align="left" class="fb-image-profile thumbnail-profile" src="<?=base_url();?>assets/images/Profil/<?php if (isset($_SESSION['AVATAR'])) {echo $_SESSION['AVATAR'];}else{echo"profil.png";}?>" alt="Profile image example"/>
+        
+    </div>
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+            <h4 class="text-center" style="margin-top: -15px;"><strong><?php echo $_SESSION['FULLNAME'];?></strong></h4>
+            <h5 class="text-center">Akun Reguler</h5>
+            <h5 class="text-center">Nomor ID: <?php echo $row->id_user?> </h5>
+        </div>
+
+        <!-- separator -->
+        <div class="col-xs-12"><div class="line-separator" id="separator"></div></div>
+        <!-- end of separator -->
+
+        <div class="col-xs-12">
+            <table class="table">
+                <thead class="text-center">
+                    <td class="table-custom col-xs-6">0 Pelanggan</td>
+                    <td class="table-custom col-xs-6">0 Ratings</td>
+                </thead>
+            </table>
+        </div>
+        <div class="col-xs-12">
             <div class="row">
-                <div class="col-xs-2 col-md-6">
-                    
-                    <button class="w3-button w3-teal w3-xlarge" onclick="w3_open()" style="background-color: rgba(255, 255, 255, 0)!important;">☰</button>
-                </div>
-                <div class="col-xs-7 col-md-4">
-                    <div id="imaginary_container">
-                        <div class="input-group stylish-input-group">
-                            <input type="text" class="form-control"  placeholder="Search" >
-                            <span class="input-group-addon">
-                            <button type="submit">
-                            <span class="glyphicon glyphicon-search"></span>
-                        </button>
-                    </span>
+                <div class="col-xs-6">
+                    <div class="row" >
+                        <div class="col-xs-12">
+                        <!-- alamat -->
+                            <div class="row">
+                                <div class="col-xs-1" style="color: #FFC300;"><span class="fa fa-home profile-view"></span></div>
+                                <div class="col-xs-11"><h5 class="profile-view"><?php echo $row->alamat_user?></h5></div>
+                            </div>
+                        </div>
+
+                        <div class="col-xs-12">
+                            <div class="row">
+                                <div class="col-xs-1" style="color: #FFC300;"><span class="fa fa-envelope profile-view"></span></div>
+                                <div class="col-xs-11"><h5 style="margin-bottom: 2px;" class="profile-view"><?php echo $row->email_user;?></h5></div>
+                            </div>
+                            
                         </div>
                     </div>
                 </div>
-                <div class="col-xs-3 col-md-2">
-                    <a class="navbar-brand" href="#" id="brand">
-                    <?php 
-            if (empty($username)) {
-              echo "Hai";
-            }else{
-              echo $username;
-              }?></a>
+                <div class="col-xs-6">
+                    <div class="row">
+                        <div class="col-xs-12 center-block">
+                            <div class="dropdown">
+                              <button class="btn btn-custom-yellow dropdown-toggle align-right" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                Kirim Pesan
+                                <span class="caret"></span>
+                              </button>
+                              <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                                <li><a href="#">Line</a></li>
+                                <li><a href="#">Whatsapp</a></li>
+                                <li><a href="#">BBM</a></li>
+                              </ul>
+                             </div>
+                        </div>
+                        <div class="col-xs-12">
+                            <h5 class="small text-right" style="padding-right: 12px;">Last login [null] hours ago</h5>
+                        </div>
+                    </div>
                 </div>
-            </div>
-</nav>
-
-<div class="w3-sidebar w3-bar-block w3-border-right" style="display:none; width: 250px; overflow: hidden; background-color: #FFC300;" id="mySidebar">
-  <div class="row" style="background: url(./assets/images/<?php if (empty($avatar)) {echo"profil.png";}else{echo$avatar;}?>) 50% 50% no-repeat;">
-            <div class="col-xs-4" id="profilmenu" >
-                <div style=" background: url(./assets/images/<?php if (empty($avatar)) {echo"profil.png";}else{echo$avatar;}?>) 50% 50% no-repeat; background-size: cover; overflow: hidden; width: 75px; height: 75px; border-radius: 50px;" class="circle">
-                </div>
-            </div>
-            <div class="col-xs-6" style="text-align: left; line-height: 50%; margin-left: 5px; margin-right: -5px;">
-                <p style="color: white;  padding-left: 0; font-size: 110%;  padding-right: 5%; padding-top: 25px; line-height: 100%; ">
-                <?php echo $fullname;?> </p>
-                <p style="color: orange; font-size: 80%; padding-top: 0;">Regular Account</p>
-            </div>
-            <div class="col-xs-2">
-                <button class="w3-bar-item w3-button" onclick="w3_close()" style="float: right;"><img src="<?php echo base_url('assets/images/cross-out.png'); ?>" style="margin-left: -7px;"></button>
             </div>
         </div>
-  <a href="#" class="w3-bar-item w3-button" id="menusidebar" style="text-decoration: none;">Upgrade</a>
-
-  <a href="#" class="w3-bar-item w3-button" id="menusidebar" style="text-decoration: none;">Canvass</a>
-
-  <a href="#" class="w3-bar-item w3-button" id="menusidebar" style="text-decoration: none;">History</a>
-  
-  <a href="#" class="w3-bar-item w3-button" id="menusidebar" style="text-decoration: none;">Setting</a>
-  
-  <a href="#" class="w3-bar-item w3-button" id="menusidebar" style="text-decoration: none;">Logout</a>
- 
+        <!-- separator -->
+        <div class="col-xs-12"><div class="line-separator" id="separator"></div></div>
+        <!-- end of separator -->
+        <!-- deskripsi -->
+        <div class="col-xs-12">
+            <h5><strong>Deskripsi:</strong></h5>
+            <p><?php echo $row->deskripsi_user;?></p>
+        </div>
+    </div>
 </div>
+<?php endforeach;?>
 
-<!-- tulis disini -->
+        <!-- separator -->
+        <div class="col-xs-12"><div class="line-separator" id="separator"></div></div>
+        <!-- end of separator -->
+        <h4 style="padding-left: 15px;"><strong>Produk Anda</strong></h4>
+        <!-- separator -->
+        <div class="col-xs-12"><div class="line-separator" id="separator"></div></div>
+        <!-- end of separator -->
 
-<div class="img-responsive" style="background-image: url(http://placehold.it/200x200);">
-	
-</div>
+<div class="col-xs-6 col-md-4" id="produk">
+            <div class="thumbnail">
+                <img src="<?php echo base_url('assets/images/sample1.png'); ?>" alt="" class="img-responsive">
+                <div class="caption">
+                    <h5 id="produkname"><a href="#">First Product</a></h5>
+                    <p id="produkcaption">oleh Alvin Store</p>
+                    <p id="produkrating">Mostly Positive(123 review)</p>
+                    <h5 id="produkprice">$24.99</h5>
+                </div>
+                <div class="row">
+                    <div class="col-xs-6">
+                        <button type="button" class="btn btn-info center-block">Jual</button>
+                    </div>
+                    <div class="col-xs-6">
+                        <button type="button" class="btn btn-success center-block">Simpan</button>
+                    </div>
+                </div>   
+            </div>
+        </div>
 
-<div class="row">
-	<div class="col-xs-6" id="keterangan" style="background-color: darkgrey;">
-		192 Pelanggan
-	</div>
-	<div class="col-xs-6" style="background-color: darkgrey;">
-		Rating 5 Star
-	</div>
-</div>
+        <div class="col-xs-6 col-md-4" id="produk">
+            <div class="thumbnail">
+                <img src="<?php echo base_url('assets/images/sample1.png'); ?>" alt="" class="img-responsive">
+                <div class="caption">
+                    <h5 id="produkname"><a href="#">First Product</a></h5>
+                    <p id="produkcaption">oleh Alvin Store</p>
+                    <p id="produkrating">Mostly Positive(123 review)</p>
+                    <h5 id="produkprice">$24.99</h5>
+                </div>
+                <div class="row">
+                    <div class="col-xs-6">
+                        <button type="button" class="btn btn-info center-block">Jual</button>
+                    </div>
+                    <div class="col-xs-6">
+                        <button type="button" class="btn btn-success center-block">Simpan</button>
+                    </div>
+                </div>   
+            </div>
+        </div>
 
 
 <nav class="navbar navbar-default navbar-fixed-bottom" style="background: #606062;">
@@ -112,8 +164,9 @@
         </div>
     </div>
 </nav>
-
 </body>
+<script src="<?php echo base_url('assets/bootstrap/js/jquery.min.js');?>"></script>
+<script src="<?php echo base_url('assets/bootstrap/js/bootstrap.min.js');?>"></script>
 </html>
 <script>
 
@@ -123,6 +176,5 @@ function w3_open() {
 function w3_close() {
   document.getElementById("mySidebar").style.display = "none";
 }
-
 
 </script>

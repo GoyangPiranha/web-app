@@ -33,6 +33,7 @@ class Profile_edit extends CI_Controller {
             $data['users'] = $this->M_users->getUserById($id_user);
             $data['rekening'] = $this->M_rekening->getRekeningByUser($id_user);
             $data['status'] = "";
+
             $this->load->view('profile_edit', $data);
         }
         else{
