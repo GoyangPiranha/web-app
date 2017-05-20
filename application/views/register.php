@@ -44,7 +44,7 @@
                   <div class="form-group">
                     <div class="input-group">
                       <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-user"></span></span>
-                      <input name="fullname" type="text" class="form-control" placeholder="Nama Lengkap" aria-describedby="basic-addon1">
+                      <input name="fullname" type="text" class="form-control" placeholder="Nama Lengkap" aria-describedby="basic-addon1" required>
                     </div>
                   </div>
                 </div>
@@ -56,7 +56,7 @@
                   <div class="form-group">
                     <div class="input-group">
                       <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-user"></span></span>
-                      <input name="username" type="text" class="form-control" placeholder="Username" aria-describedby="basic-addon1">
+                      <input name="username" type="text" class="form-control" placeholder="Username" aria-describedby="basic-addon1" required>
                     </div>
                   </div>
                 </div>
@@ -69,7 +69,7 @@
                   <div class="form-group" id="formgrupmarginbtm">
                     <div class="input-group">
                       <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-calendar"></span></span>
-                      <input name="dateofbirth" type="date" class="form-control" placeholder="Tanggal Lahir" aria-describedby="basic-addon1">
+                      <input name="dateofbirth" type="date" class="form-control" placeholder="Tanggal Lahir" aria-describedby="basic-addon1" required>
                     </div>
                   </div>
                   <span class="help-block" style="color: #FFC300;">*Tanggal Lahir</span>
@@ -83,7 +83,7 @@
                       <label class="input-group-btn">
                         <span class="btn btn-custom-yellow"> <span class="glyphicon glyphicon-folder-open"></span></span>
                       </label>
-                        <input name="userfile" type="file" class="form-control"  readonly>
+                        <input name="userfile" type="file" class="form-control"  readonly  required>
                     </div>
                   </div>
                   <span class="help-block" style="color: #FFC300;">*Pilih Foto Profil</span>
@@ -95,7 +95,7 @@
                   <div class="form-group">
                     <div class="input-group">
                       <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-lock"></span></span>
-                      <input name="password" type="password" class="form-control validate" placeholder="Password" aria-describedby="basic-addon1">
+                      <input name="password" type="password" class="form-control validate" placeholder="Password" aria-describedby="basic-addon1" required>
                     </div>
                   </div>
                 </div>
@@ -106,7 +106,7 @@
                   <div class="form-group">
                     <div class="input-group">
                       <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-lock"></span></span>
-                      <input name="confirmpassword" type="password" class="form-control validate" placeholder="Konfirmasi Password" aria-describedby="basic-addon1">
+                      <input name="confirmpassword" type="password" class="form-control validate" placeholder="Konfirmasi Password" aria-describedby="basic-addon1" required>
                     </div>
                   </div>
                 </div>
@@ -141,13 +141,12 @@
                   </div>
                 </div>
               </div>
-
               <div class="row">
                 <div class="col-xs-12">
                   <div class="form-group">
                     <div class="input-group">
                       <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-map-marker"></span></span>
-                      <textarea name="address" class="form-control" rows="2" cols="50" placeholder="Alamat" aria-describedby="basic-addon1"></textarea>
+                      <textarea name="address" class="form-control" rows="2" cols="50" placeholder="Alamat" aria-describedby="basic-addon1" required></textarea>
                     </div>
                   </div>
                 </div>
@@ -158,7 +157,7 @@
                   <div class="form-group">
                     <div class="input-group">
                       <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-envelope"></span></span>
-                      <input name="email" type="email" class="form-control" placeholder="Email" aria-describedby="basic-addon1">
+                      <input name="email" type="email" class="form-control" placeholder="Email" aria-describedby="basic-addon1" required>
                     </div>
                   </div>
                 </div>
@@ -169,13 +168,13 @@
                   <div class="form-group">
                     <div class="input-group">
                       <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-phone"></span></span>
-                      <input name="handphone" type="text" class="form-control" placeholder="No Handphone" aria-describedby="basic-addon1">
+                      <input name="handphone" type="text" class="form-control" placeholder="No Handphone" aria-describedby="basic-addon1" required>
                     </div>
                   </div>
                 </div>
               </div>
 
-            <input name="submit" type="submit" class="btn btn-block btn-custom-green" value="REGISTER"/>
+            <input name="submit" type="submit" class="btn btn-block btn-custom-green" value="REGISTER" />
                 <div class="text-center forget">
                     <p>Back To <a href="<?php echo base_url('login'); ?>"><span id="register">Login</span></a></p>
                 </div>

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: May 13, 2017 at 05:40 PM
+-- Generation Time: May 19, 2017 at 03:29 PM
 -- Server version: 10.1.19-MariaDB
 -- PHP Version: 7.0.13
 
@@ -869,17 +869,15 @@ CREATE TABLE `user` (
   `username_user` varchar(50) NOT NULL,
   `password_user` varchar(255) NOT NULL,
   `nama_user` varchar(50) NOT NULL,
-  `jenis_kelamin_user` tinyint(1) NOT NULL,
   `tanggal_lahir_user` date NOT NULL,
   `id_kota` smallint(6) NOT NULL,
   `alamat_user` varchar(200) NOT NULL,
   `foto_profile_user` varchar(100) DEFAULT NULL,
-  `foto_background_user` varchar(100) NOT NULL,
+  `foto_background_user` varchar(100) DEFAULT NULL,
   `email_user` varchar(30) NOT NULL,
   `contact_user` varchar(25) NOT NULL,
   `deskripsi_user` text,
   `rekening_user` varchar(20) DEFAULT NULL,
-  `jumlah_pelangan_user` int(100) DEFAULT NULL,
   `jenis_user` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -887,13 +885,17 @@ CREATE TABLE `user` (
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`id_user`, `username_user`, `password_user`, `nama_user`, `jenis_kelamin_user`, `tanggal_lahir_user`, `id_kota`, `alamat_user`, `foto_profile_user`, `foto_background_user`, `email_user`, `contact_user`, `deskripsi_user`, `rekening_user`, `jumlah_pelangan_user`, `jenis_user`) VALUES
-(7, 'budi', '1234', 'budi', 0, '2017-05-24', 3212, 'qwert', '', '', 't@m.co', '1234', NULL, NULL, NULL, 1),
-(8, 'tio', '1234', 'tio', 0, '2017-05-17', 3512, 'qwwer', 'tioasa.PNG', '', 't@m.co', '1234', NULL, NULL, NULL, 1),
-(9, 'tio', '1234', 'tio', 0, '2017-05-23', 3603, 'eqweqw', 'tioasa.PNG', '', 't@m.co', '1234', NULL, NULL, NULL, 1),
-(10, 'qwe', '1234', 'qwe', 0, '2017-05-18', 3171, 'qwer', 'qweasa.PNG', '', 't@m.co', '1234', NULL, NULL, NULL, 1),
-(11, 'ppp', '1234', 'ppp', 0, '2017-05-18', 1117, '123', 'pppasa.PNG', '', 't@m.co', '1234', NULL, NULL, NULL, 1),
-(12, 'asd', '1234', 'ads', 0, '2017-05-11', 3212, 'qwe', '5916ffd764dbeasdbook-collection-in-flat-design_23-2147504725.jpg', '', 't@m.co', '123', NULL, NULL, NULL, 1);
+INSERT INTO `user` (`id_user`, `username_user`, `password_user`, `nama_user`, `tanggal_lahir_user`, `id_kota`, `alamat_user`, `foto_profile_user`, `foto_background_user`, `email_user`, `contact_user`, `deskripsi_user`, `rekening_user`, `jenis_user`) VALUES
+(7, 'budi', '1234', 'budi', '2017-05-24', 3212, 'qwert', '', '', 't@m.co', '1234', NULL, NULL, 1),
+(8, 'tio', '1234', 'tio', '2017-05-17', 3512, 'qwwer', 'tioasa.PNG', '', 't@m.co', '1234', NULL, NULL, 1),
+(9, 'tio', '1234', 'tio', '2017-05-23', 3603, 'eqweqw', 'tioasa.PNG', '', 't@m.co', '1234', NULL, NULL, 1),
+(11, 'ppp', '1234', 'ppp', '2017-05-18', 1117, '123', 'pppasa.PNG', '', 't@m.co', '1234', NULL, NULL, 1),
+(12, 'asd', '1234', 'ads', '2017-05-11', 3212, 'qwe', '5916ffd764dbeasdbook-collection-in-flat-design_23-2147504725.jpg', '', 't@m.co', '123', NULL, NULL, 1),
+(13, 'a', '1', 'a', '2017-05-17', 3512, 'as', '', NULL, 'a@a.a', '123123', NULL, NULL, 1),
+(14, 'q', '123', 'q', '2017-05-19', 3604, 'asdad', '', NULL, 'a@a.a', '1234', NULL, NULL, 1),
+(15, 'qq', '1', 'qq', '2017-05-09', 3316, 'qwe', '591ef0644a5b9qq20170330_120254.jpg', NULL, 't@m.co', '121231', NULL, NULL, 1),
+(16, 'z', '202cb962ac59075b964b07152d234b70', 'z', '2017-05-18', 1303, 'dsfsdf', '591ef1a16375dz20170330_120124.jpg', NULL, 't@m.co', '123', NULL, NULL, 1),
+(17, 'zz', '202cb962ac59075b964b07152d234b70', 'zz', '2017-05-17', 1303, 'qq', '591ef2462b825zz20170330_120124.jpg', NULL, 't@m.co', '1234', NULL, NULL, 1);
 
 -- --------------------------------------------------------
 
@@ -1134,7 +1136,7 @@ ALTER TABLE `ukuran`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id_user` smallint(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id_user` smallint(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 --
 -- AUTO_INCREMENT for table `whistlist`
 --

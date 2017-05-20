@@ -28,7 +28,7 @@
 </div>
 <div class="col-md-4 col-md-offset-4 form-login">
     <div class="outter-form-register">
-        <form action="<?php echo base_url('Daftar/proses'); ?>" class="inner-login" method="POST" enctype="multipart/form-data">
+        <form action="<?php echo base_url('Throw_it/insert'); ?>" class="inner-login" method="POST" enctype="multipart/form-data">
             <h5 class="title-login"><strong>Deskripsi design yang akan dijual</strong></h5>
             <p style="color: red;">
                 <?php
@@ -87,7 +87,7 @@
                     <div class="form-group">
                         <div class="input-group">
                             <span class="input-group-addon" id="basic-addon1"><span class="fa fa-reorder"></span></span>
-                            <input name="namabarang" type="text" class="form-control" placeholder="Nama Barang" aria-describedby="basic-addon1">
+                            <input name="namabarang" type="text" class="form-control" placeholder="Nama Barang" aria-describedby="basic-addon1" required>
                         </div>
                     </div>
                 </div>
@@ -95,7 +95,7 @@
                     <div class="form-group">
                         <div class="input-group">
                             <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-list"></span></span>
-                            <textarea name="description" class="form-control" rows="2" cols="50" placeholder="Deskripsi Barang" aria-describedby="basic-addon1"></textarea>
+                            <textarea name="description" class="form-control" rows="2" cols="50" placeholder="Deskripsi Barang" aria-describedby="basic-addon1" required></textarea>
                         </div>
                     </div>
                 </div>
@@ -173,7 +173,7 @@
                         <div class="form-group">
                             <div class="input-group">
                                 <span class="input-group-addon" id="basic-addon1"><span class="fa fa-tags"></span></span>
-                                <input name="tags" type="text" class="form-control" data-role="tagsinput" placeholder="Tags" aria-describedby="basic-addon1">
+                                <input name="tags" type="text" class="form-control" data-role="tagsinput" placeholder="Tags" aria-describedby="basic-addon1" required>
                             </div>
                         </div>
                     </div>
@@ -181,7 +181,7 @@
                         <div class="form-group">
                             <div class="input-group">
                                 <span class="input-group-addon" id="basic-addon1"><span class="fa fa-money"></span></span>
-                                <input name="harga" type="text" class="form-control" placeholder="Harga Barang" aria-describedby="basic-addon1">
+                                <input name="harga" type="text" class="form-control" placeholder="Harga Barang" aria-describedby="basic-addon1" required>
                             </div>
                         </div>
                     </div>

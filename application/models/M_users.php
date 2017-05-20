@@ -13,10 +13,11 @@
         	$this->load->database();
     	}
 
-    	function simpanData($fullname,$username,$date,$avatar,$password,$id_kota,$address,$email,$handphone){
+    	function registrasi($username_user, $password_user, $nama_user, $tanggal_lahir_user, $kota_user, $alamat_user, $fotoprofile, $email_user, $contact_user){
 			$jenis_user = 1;
-			$query = $this->db->query("INSERT INTO `user`(`nama_user`, `username_user`, `tanggal_lahir_user`, `foto_profile_user`, `password_user`, `id_kota`, `alamat_user`, `email_user`, `contact_user`,`jenis_user`) VALUES ('$fullname','$username','$date','$avatar','$password', $id_kota,'$address','$email','$handphone','$jenis_user')");
-			if ($query == true) {
+			$result = $this->db->query("INSERT INTO `user`(`username_user`, `password_user`, `nama_user`, `tanggal_lahir_user`, `id_kota`, `alamat_user`, `foto_profile_user`, `email_user`, `contact_user`, `jenis_user`) 
+			VALUES ('$username_user', '$password_user', '$nama_user', '$tanggal_lahir_user', $kota_user, '$alamat_user', '$fotoprofile', '$email_user', '$contact_user', $jenis_user)");
+			if ($result == true) {
 				return true;
 			}
 		}
@@ -28,11 +29,19 @@
 			}
 		}
 
+		function cekEmail($username){
+			$query = $this->db->query("SELECT `email_user` FROM `user` WHERE `username_user` = '$username'");
+			if ($query->num_rows() > 0) {
+				return true;
+			}
+		}
+
 
 		function cekLogin($username, $password){
-			$query = $this->db->query("SELECT `username_user`, `password_user`,`nama_user`, `foto_profile_user`, `foto_background_user` FROM `user` WHERE `username_user` = '$username' and `password_user` = '$password'");
+			$query = $this->db->query("SELECT `id_user`, `username_user`, `password_user`,`nama_user`, `foto_profile_user`, `foto_background_user` FROM `user` WHERE `username_user` = '$username' and `password_user` = '$password'");
 			if ($query->num_rows()>0) {
 				foreach ($query->result() as $row){
+					$_SESSION['ID_USER'] = $row->id_user;
 					$_SESSION['FULLNAME']= $row->nama_user;
 					$_SESSION['USERNAME']= $row->username_user;
 					$_SESSION['AVATAR']= $row->foto_profile_user;
