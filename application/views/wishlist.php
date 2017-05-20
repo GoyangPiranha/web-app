@@ -1,4 +1,4 @@
-n<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en" style="margin-bottom: 65px;">
 <head>
     <meta charset="utf-8">
@@ -10,7 +10,7 @@ n<!DOCTYPE html>
     <link href="<?php echo base_url('assets/bootstrap/css/style.css'); ?>" rel="stylesheet">
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
 </head>
-<body style="margin-top: 65px; background: white;">
+<body style="margin-top: 65px; background: #FFFFFF;">
 <!-- NAVBAR -->
 <nav class="navbar-default navbar-fixed-top">
     <div class="container">
@@ -37,7 +37,7 @@ n<!DOCTYPE html>
             <div class="col-xs-8">
                 <div class="row">
                     <div class="col-xs-12">
-                        <h6><strong>Sample Title</strong></h6>
+                        <h5><strong>Sample Title</strong></h5>
                     </div>
                     <div class="col-xs-12">
                         <h6>Oleh <a href="">Alvin</a></h6>
@@ -51,20 +51,19 @@ n<!DOCTYPE html>
         <div class="row">
             <div class="col-xs-8"></div>
             <div class="col-xs-4">
-                <button style="padding: 3px 7px;border-radius: 2px;font-size: 12px;" class="pull-right btn btn-custom-yellow small">Bayar</button>
+                <button href="<?=base_url('');?>Konveksi_list" style="padding: 3px 7px;border-radius: 2px;font-size: 12px;" class="pull-right btn btn-custom-yellow small">Bayar</button>
             </div>
         </div>
 
         <!--separator-->
-        <div class="line-separator" id="separator"></div>
+        <!--<div class="line-separator" id="separator"></div>-->
         <!--separator-->
 
-        <div class="row" style="padding-left: 10px;">
+        <!--<div class="row" style="padding-left: 10px;">
             <div class="col-xs-4">
                 <h4 class="small"><strong>Harga :</strong></h4>
             </div>
-
-        </div>
+        </div>-->
     </div>
     <div class="list-view-column">
         <div class="row">
@@ -100,15 +99,14 @@ n<!DOCTYPE html>
         </div>
 
         <!--separator-->
-        <div class="line-separator" id="separator"></div>
+        <!--<div class="line-separator" id="separator"></div>-->
         <!--separator-->
 
-        <div class="row" style="padding-left: 10px;">
+        <!--<div class="row" style="padding-left: 10px;">
             <div class="col-xs-4">
                 <h4 class="small"><strong>Harga :</strong></h4>
             </div>
-
-        </div>
+        </div>-->
     </div>
 </div>
 
@@ -126,7 +124,7 @@ n<!DOCTYPE html>
     </div>
 </nav>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js">-->
 <script src="<?php echo base_url('assets/bootstrap/js/jquery.min.js');?>"></script>
 <script src="<?php echo base_url('assets/bootstrap/js/bootstrap.min.js');?>"></script>
 </body>

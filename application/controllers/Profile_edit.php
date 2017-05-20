@@ -28,7 +28,7 @@ class Profile_edit extends CI_Controller {
     {
         if(isset($_SESSION['USERNAME'])){
             $username = $_SESSION['USERNAME'];
-            $data['users'] = $this->m_user->getByUsernameQuery($username);
+            $data['user_data'] = $this->m_user->getByUsernameQuery($username);
             $this->load->view('profile_edit', $data);
         }
         else{
