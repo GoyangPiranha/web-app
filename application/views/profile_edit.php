@@ -7,7 +7,7 @@
     <title>Edit Profil</title>
     <link href="<?php echo base_url('assets/bootstrap/css/bootstrap.min.css'); ?>" rel="stylesheet">
     <link href="<?php echo base_url('assets/bootstrap/css/style.css'); ?>" rel="stylesheet">
-      <link rel="stylesheet" href="<?php echo base_url('./assets/style.css'); ?>">
+    <link rel="stylesheet" href="<?php echo base_url('./assets/style.css'); ?>">
 
   </head>
   <body style="margin-top: 22px; background: white">
@@ -53,9 +53,9 @@
                                         <div class="col-xs-12">
                                             <div class="form-group">
                                                 <div class="input-group center-block">
-                                                    <?php foreach($users as $user):?>
-                                                    <input name="name_full" type="text" class="form-control" placeholder="Full Name" aria-describedby="basic-addon1" id="edit-profil-input" value="<?php echo $user->nama_user;?>">
-                                                    <?php endforeach;?>
+                                                    <?php /*foreach($user_data as $user):*/?>
+                                                    <input name="name_full" type="text" class="form-control" placeholder="Full Name" aria-describedby="basic-addon1" id="edit-profil-input" >
+                                                    <?php /*endforeach*/;?>
                                                 </div>
                                             </div>
                                         </div>
@@ -121,7 +121,7 @@
                                         <div class="col-xs-12">
                                             <div class="form-group">
                                                 <div class="input-group center-block">
-                                                    <input name="fullname" type="text" class="form-control" placeholder="Full Name" aria-describedby="basic-addon1" id="edit-profil-input">
+                                                    <!--<input name="fullname" type="text" class="form-control" placeholder="Full Name" aria-describedby="basic-addon1" id="edit-profil-input">-->
                                                 </div>
                                             </div>
                                         </div>
@@ -147,7 +147,7 @@
                                         <div class="col-xs-12">
                                             <div class="form-group">
                                                 <div class="input-group center-block">
-                                                    <input name="bg" type="text" class="form-control" placeholder="Full Name" aria-describedby="basic-addon1" id="edit-profil-input">
+                                                    <!--<input name="bg" type="text" class="form-control" placeholder="Full Name" aria-describedby="basic-addon1" id="edit-profil-input">-->
                                                 </div>
                                             </div>
                                         </div>
@@ -173,8 +173,8 @@
                                         <div class="col-xs-12">
                                             <div class="form-group">
                                                 <div class="input-group center-block">
-                                                    <?php foreach($users as $user):?>
-                                                    <input value="<?php echo $user->email_user?>" name="email" type="email" class="form-control" placeholder="Email" aria-describedby="basic-addon1" id="edit-profil-input">
+                                                 
+                                                    <input  name="email" type="email" class="form-control" placeholder="Email" aria-describedby="basic-addon1" id="edit-profil-input">
                                                     
                                                 </div>
                                             </div>
@@ -201,7 +201,7 @@
                                         <div class="col-xs-12">
                                             <div class="form-group">
                                                 <div class="input-group center-block">
-                                                    <input value="<?php echo $user->contact_user;?>" name="contact" type="text" class="form-control" placeholder="No Handphone" aria-describedby="basic-addon1" id="edit-profil-input">
+                                                    <input  name="contact" type="text" class="form-control" placeholder="No Handphone" aria-describedby="basic-addon1" id="edit-profil-input">
                                                 </div>
                                             </div>
                                         </div>
@@ -227,8 +227,8 @@
                                         <div class="col-xs-12">
                                             <div class="form-group">
                                                 <div class="input-group center-block">
-                                                    <textarea value="<?php echo $user->deskripsi_user;?>" name="address" class="form-control" rows="2" cols="50" placeholder="Deskripsi" aria-describedby="basic-addon1" id="edit-profil-input"></textarea>
-                                                    <?php endforeach;?>
+                                                    <textarea  name="address" class="form-control" rows="2" cols="50" placeholder="Deskripsi" aria-describedby="basic-addon1" id="edit-profil-input"></textarea>
+                                                   
                                                 </div>
                                             </div>
                                         </div>
