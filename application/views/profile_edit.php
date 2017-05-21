@@ -75,7 +75,13 @@
                             <div id="ubahusername" class="collapse" role="tabpanel" aria-labelledby="bri">
                                 <div class="card-block">
                                     <div class="row" id="row-payment">
-
+                                        <div class="col-xs-12">
+                                            <div class="form-group" id="inputfield">
+                                                <div class="input-group center-block">
+                                                    <input name="old_password" type="password" class="form-control" placeholder="Password Lama" aria-describedby="basic-addon1" id="edit-profil-input">
+                                                </div>
+                                            </div>
+                                        </div>
                                         <div class="col-xs-12">
                                             <div class="form-group" id="inputfield">
                                                 <div class="input-group center-block">
