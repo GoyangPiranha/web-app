@@ -75,6 +75,15 @@
 			return $query->result();
 		}
 
+		function getIdUser($username_user){
+			$query = $this->db->query("SELECT id_user FROM `user` WHERE `username_user`= '$username_user'");
+			return $query->result_array();
+		}
+
+		function simpan_desain($gambar_depan, $gambar_belakang, $nama_desain, $deskripsi_desain, $kategori, $jenis_pakaian, $tags, $harga, $diskon, $id_user, $acc){
+			$query = $this->db->query("INSERT INTO `produk`(`nama_produk`, `gambar_depan`, `gambar_belakang`, `kategori`, `jenis_pakaian`, `tag_produk`, `harga_produk`, `diskon_produk`, `id_user`, `acc_produk`) 
+				VALUES ('$nama_desain', '$gambar_depan', '$gambar_belakang', '$kategori', '$jenis_pakaian', '$tags', '$harga', '$diskon', '$id_user', '$acc');");
+		}
 		function updateUserQuery($where, $data){
 			$this->db->update('user', $data, $where);
 			return $this->db->affected_rows();

@@ -21,7 +21,10 @@ class Details_produk extends CI_Controller {
     public function index()
     {
         if (isset($_SESSION['USERNAME'])) { 
-            $this->load->view('details');
+                $data['username'] = $_SESSION['USERNAME'];
+                $data['fullname'] = $_SESSION['FULLNAME'];
+                $data['avatar'] = $_SESSION['AVATAR'];
+            $this->load->view('details', $data);
             } else {
                 $this->load->view('login');
             }
