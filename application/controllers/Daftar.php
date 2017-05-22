@@ -41,7 +41,7 @@ class Daftar extends CI_Controller {
 			$tanggal_lahir_user = $_POST['dateofbirth'];
 			$password_user = $_POST['password'];
 			$repassword_user = $_POST['confirmpassword'];
-			$kota_user = $_POST['city'];
+			$kota_user = $_POST['select_kota'];
 			$alamat_user = $_POST['address'];
 			$email_user = $_POST['email'];
 			$contact_user = $_POST['handphone'];
@@ -77,3 +77,4 @@ class Daftar extends CI_Controller {
 			}
 	}
 }
+
