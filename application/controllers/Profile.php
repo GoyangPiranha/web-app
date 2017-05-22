@@ -24,9 +24,9 @@ class Profile extends CI_Controller {
         $this->load->model('M_users','m_user',TRUE);
     }
     public function index(){
-        if (isset($_SESSION['USERNAME'])) {
-            $username = $_SESSION['USERNAME'];
-            $data['user_data'] = $this->m_user->getByUsernameQuery($username);
+        if (isset($_SESSION['ID_USER'])) {
+            $id_user = $_SESSION['ID_USER'];
+            $data['user_data'] = $this->m_user->getUserById($id_user);
             $this->load->view('profil', $data);
             } else {
                 $this->load->view('login');

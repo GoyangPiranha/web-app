@@ -24,8 +24,8 @@
     <div class="fb-profile">
         <?php foreach($user_data as $row):?>
         <img align="left" class="fb-image-lg" src="<?=base_url();?>assets/images/<?php if($_SESSION['BACKGROUND']==""){echo "default.jpg";}elseif(isset($_SESSION['BACKGROUND'])) {echo $_SESSION['BACKGROUND'];} else{echo "f1.jpg";}?>" alt="Profile image example"/>
-        <img align="left" class="fb-image-profile thumbnail-profile" src="<?=base_url();?>assets/images/Profil/<?php if (isset($_SESSION['AVATAR'])) {echo $_SESSION['AVATAR'];}else{echo"profil.png";}?>" alt="Profile image example"/>
-        
+        <img align="left" class="fb-image-profile thumbnail-profile" src="<?=base_url();?>assets/images/Profil/<?php if (isset($_SESSION['AVATAR'])) {echo $_SESSION['AVATAR'];}else{echo"default_profile.jpg";}?>" alt="Profile image example"/>
+
     </div>
 <div class="container">
     <div class="row">
@@ -64,13 +64,13 @@
                                 <div class="col-xs-1" style="color: #FFC300;"><span class="fa fa-envelope profile-view"></span></div>
                                 <div class="col-xs-11"><h5 style="margin-bottom: 2px;" class="profile-view"><?php echo $row->email_user;?></h5></div>
                             </div>
-                            
+
                         </div>
                     </div>
                 </div>
                 <div class="col-xs-6">
                     <div class="row">
-                        <div class="col-xs-12 center-block">
+                        <div class="col-xs-12 text-center">
                             <div class="dropdown">
                               <button class="btn btn-custom-yellow dropdown-toggle align-right" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                                 Kirim Pesan
@@ -83,8 +83,8 @@
                               </ul>
                              </div>
                         </div>
-                        <div class="col-xs-12">
-                            <h5 class="small text-right" style="padding-right: 12px;">Last login [null] hours ago</h5>
+                        <div class="col-xs-12 text-center">
+                            <h5 class="small" style="padding-right: 12px;">Last login [null] hours ago</h5>
                         </div>
                     </div>
                 </div>
@@ -98,57 +98,66 @@
             <h5><strong>Deskripsi:</strong></h5>
             <p><?php echo $row->deskripsi_user;?></p>
         </div>
+        <!-- separator -->
+        <div class="col-xs-12"><div class="line-separator" id="separator"></div></div>
+        <!-- end of separator -->
+
+        <!-- produk -->
+        <div class="col-xs-12">
+          <h4 style="padding-left: 15px;"><strong>Produk Anda</strong></h4>
+        </div>
+        <!-- separator -->
+        <!-- <div class="col-xs-12"><div class="line-separator" id="separator"></div></div> -->
+        <!-- end of separator -->
+        <div class="container">
+          <div class="col-xs-6 col-md-4" id="produk">
+              <div class="thumbnail">
+                  <img src="<?php echo base_url('assets/images/sample1.png'); ?>" alt="" class="img-responsive">
+                  <div class="caption">
+                      <h5 id="produkname"><a href="#">First Product</a></h5>
+                      <p id="produkcaption">oleh Alvin Store</p>
+                      <p id="produkrating">Mostly Positive(123 review)</p>
+                      <h5 id="produkprice">$24.99</h5>
+                  </div>
+                  <div class="row">
+                      <div class="col-xs-6">
+                          <button type="button" class="btn btn-info btn-product center-block">Jual</button>
+                      </div>
+                      <div class="col-xs-6">
+                          <button type="button" class="btn btn-success btn-product center-block">Simpan</button>
+                      </div>
+                  </div>
+              </div>
+          </div>
+
+          <div class="col-xs-6 col-md-4" id="produk">
+              <div class="thumbnail">
+                  <img src="<?php echo base_url('assets/images/sample1.png'); ?>" alt="" class="img-responsive">
+                  <div class="caption">
+                      <h5 id="produkname"><a href="#">First Product</a></h5>
+                      <p id="produkcaption">oleh Alvin Store</p>
+                      <p id="produkrating">Mostly Positive(123 review)</p>
+                      <h5 id="produkprice">$24.99</h5>
+                  </div>
+                  <div class="row">
+                      <div class="col-xs-6">
+                          <button type="button" class="btn btn-info btn-product center-block">Jual</button>
+                      </div>
+                      <div class="col-xs-6">
+                          <button type="button" class="btn btn-success btn-product center-block">Simpan</button>
+                      </div>
+                  </div>
+              </div>
+          </div>
+        </div>
+
+
     </div>
 </div>
 <?php endforeach;?>
 
-        <!-- separator -->
-        <div class="col-xs-12"><div class="line-separator" id="separator"></div></div>
-        <!-- end of separator -->
-        <h4 style="padding-left: 15px;"><strong>Produk Anda</strong></h4>
-        <!-- separator -->
-        <div class="col-xs-12"><div class="line-separator" id="separator"></div></div>
-        <!-- end of separator -->
 
-<div class="col-xs-6 col-md-4" id="produk">
-            <div class="thumbnail">
-                <img src="<?php echo base_url('assets/images/sample1.png'); ?>" alt="" class="img-responsive">
-                <div class="caption">
-                    <h5 id="produkname"><a href="#">First Product</a></h5>
-                    <p id="produkcaption">oleh Alvin Store</p>
-                    <p id="produkrating">Mostly Positive(123 review)</p>
-                    <h5 id="produkprice">$24.99</h5>
-                </div>
-                <div class="row">
-                    <div class="col-xs-6">
-                        <button type="button" class="btn btn-info center-block">Jual</button>
-                    </div>
-                    <div class="col-xs-6">
-                        <button type="button" class="btn btn-success center-block">Simpan</button>
-                    </div>
-                </div>   
-            </div>
-        </div>
 
-        <div class="col-xs-6 col-md-4" id="produk">
-            <div class="thumbnail">
-                <img src="<?php echo base_url('assets/images/sample1.png'); ?>" alt="" class="img-responsive">
-                <div class="caption">
-                    <h5 id="produkname"><a href="#">First Product</a></h5>
-                    <p id="produkcaption">oleh Alvin Store</p>
-                    <p id="produkrating">Mostly Positive(123 review)</p>
-                    <h5 id="produkprice">$24.99</h5>
-                </div>
-                <div class="row">
-                    <div class="col-xs-6">
-                        <button type="button" class="btn btn-info center-block">Jual</button>
-                    </div>
-                    <div class="col-xs-6">
-                        <button type="button" class="btn btn-success center-block">Simpan</button>
-                    </div>
-                </div>   
-            </div>
-        </div>
 
 
 <nav class="navbar navbar-default navbar-fixed-bottom" style="background: #606062;">

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0  user-scalable=no"/>
     <script src="<?php echo base_url('assets/assets/js/jquery.min.js');?>"></script>
     <script src="<?php echo base_url('assets/bootstrap/js/bootstrap.min.js');?>"></script>
@@ -15,7 +15,7 @@
 
    <link href="<?php echo base_url('assets/bootstrap/css/bootstrap.min.css'); ?>" rel="stylesheet">
    <script type="text/javascript" src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
-<script type="text/javascript" src="assets/js/jquery.uploadPreview.min.js"></script>
+   <script type="text/javascript" src="assets/js/jquery.uploadPreview.min.js"></script>
 
 <style type="text/css">.thumb-image{float:left;width:100px;position:relative;padding:5px;}</style>
 
@@ -33,7 +33,7 @@
 <div class="container">
     <div class="row" id="deskripsiproduk" style="margin-top: 5%;">
         <div class="col-xs-6">
-            <img class="img-responsive" style="width: 120px; height: 150px; margin-bottom: 2%;" src="<?php echo base_url('assets/images/sample1.png'); ?>" >            
+            <img class="img-responsive" style="width: 120px; height: 150px; margin-bottom: 2%;" src="<?php echo base_url('assets/images/sample1.png'); ?>" >
         </div>
         <div class="col-xs-6">
             <div>Nomer Transaksi 12341323</div>
@@ -43,18 +43,18 @@
             <div id="status" >
                 <button type="submit" class="btn btn-danger">Belum Dibayar</button>
             </div>
-            
+
 
         </div>
-        
-        
+
+
     </div>
     <h3 style="text-align: center;">Yellow Ham</h3>
         <h5 style="text-align: center; margin-top: -7px;">Oleh Alwin Store</h5>
         <h5 style="text-align: center; margin-top: -7px; color: deepskyblue;">Mostly Positif (2313 Review)</h5>
-        
+
     <div class="row" id="deskripsiproduk" style="text-align:center;">
-        
+
         <form id="f" enctype="multipart/form-data" method="POST" action="some.php">
             <table>
             <tr>
@@ -68,7 +68,7 @@
             <button id="buttonproduk" class=" btn" type="button">Konfirmasi</button>
         </form>
 
-        
+
     </div>
 </div>
 
@@ -118,6 +118,3 @@ $(function () {
     })
 });
 </script>
-
-
-

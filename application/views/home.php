@@ -6,11 +6,12 @@
     <title>Title</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0  user-scalable=no"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script src="<?php echo base_url('assets/assets/js/jquery.min.js');?>"></script>
     <script src="<?php echo base_url('assets/bootstrap/js/bootstrap.min.js');?>"></script>
     <!--Import Google Icon Font-->
     <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-
+    <script src="<?php echo base_url('assets/bootstrap/css/style.css');?>"></script>
     <link rel="stylesheet" href="<?php echo base_url('./assets/style.css'); ?>">
 
    <link href="<?php echo base_url('assets/bootstrap/css/bootstrap.min.css'); ?>" rel="stylesheet">
@@ -23,7 +24,7 @@
         <div class="navbar-header">
             <div class="row">
                 <div class="col-xs-2 col-md-6">
-                    
+
                     <button class="w3-button w3-teal w3-xlarge" onclick="w3_open()" style="background-color: rgba(255, 255, 255, 0)!important;">☰</button>
                 </div>
                 <div class="col-xs-7 col-md-4">
@@ -40,7 +41,7 @@
                 </div>
                 <div class="col-xs-3 col-md-2">
                     <a class="navbar-brand" href="#" id="brand">
-                    <?php 
+                    <?php
             if (isset($_SESSION['USERNAME'])) {
               echo $_SESSION['USERNAME'];
             }else{
@@ -64,17 +65,17 @@
                 <button class="w3-bar-item w3-button" onclick="w3_close()" style="float: right;"><img src="<?php echo base_url('assets/images/cross-out.png'); ?>" style="margin-left: -7px;"></button>
             </div>
         </div>
-  <a href="#" class="w3-bar-item w3-button" id="menusidebar" style="text-decoration: none;">Upgrade</a>
+  <a href="#" class="w3-bar-item w3-button" id="menusidebar" style="text-decoration: none;"><h4>Upgrade</h4></a>
 
-  <a href="<?php echo base_url("Detail/throwit");?>" class="w3-bar-item w3-button" id="menusidebar" style="text-decoration: none;">Canvass</a>
+  <a href="<?php echo base_url("Detail/throwit");?>" class="w3-bar-item w3-button" id="menusidebar" style="text-decoration: none;"><h4>Canvass</h4></a>
 
-  <a href="<?php echo base_url("Purchasing_history");?>" class="w3-bar-item w3-button" id="menusidebar" style="text-decoration: none;">History</a>
+  <a href="<?php echo base_url("Purchasing_history");?>" class="w3-bar-item w3-button" id="menusidebar" style="text-decoration: none;"><h4>History</h4></a>
 
-  <a href="<?php echo base_url("Profile_edit");?>" class="w3-bar-item w3-button" id="menusidebar" style="text-decoration: none;">Setting</a>
-  
+  <a href="<?php echo base_url("Profile_edit");?>" class="w3-bar-item w3-button" id="menusidebar" style="text-decoration: none;"><h4>Setting</h4></a>
 
-  <a href="<?php echo base_url('Home/logout'); ?>" class="w3-bar-item w3-button" id="menusidebar" style="text-decoration: none;">Logout</a>
- 
+
+  <a href="<?php echo base_url('Home/logout'); ?>" class="w3-bar-item w3-button" id="menusidebar" style="text-decoration: none;"><h4>Logout</h4></a>
+
 </div>
 
 
@@ -82,12 +83,12 @@
 
 <div id="myCarousel" class="carousel slide" onclick="w3_close()" data-ride="carousel">
     <!-- Indicators -->
-     <ol class="carousel-indicators">
+     <!-- <ol class="carousel-indicators">
         <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
         <li data-target="#myCarousel" data-slide-to="1"></li>
         <li data-target="#myCarousel" data-slide-to="2"></li>
         <li data-target="#myCarousel" data-slide-to="3"></li>
-    </ol> 
+    </ol> -->
 
     <!-- Wrapper for slides -->
     <div class="carousel-inner" role="listbox" style="margin-bottom: 5px;">
@@ -139,12 +140,12 @@
                 </div>
                 <div class="row">
                     <div class="col-xs-6">
-                        <button type="button" class="btn btn-info">Whistlist</button>
+                        <button type="button" class="btn btn-info btn-product">Whistlist</button>
                     </div>
                     <div class="col-xs-6">
-                        <button type="button" class="btn btn-success">Beli</button>
+                        <button type="button" class="btn btn-success btn-product">Beli</button>
                     </div>
-                </div>   
+                </div>
             </div>
         </div>
 
@@ -159,12 +160,12 @@
                 </div>
                 <div class="row">
                     <div class="col-xs-6">
-                        <button type="button" class="btn btn-info">Whistlist</button>
+                        <button type="button" class="btn btn-info btn-product">Whistlist</button>
                     </div>
                     <div class="col-xs-6">
-                        <button type="button" class="btn btn-success">Beli</button>
+                        <button type="button" class="btn btn-success btn-product">Beli</button>
                     </div>
-                </div>   
+                </div>
             </div>
         </div>
 
@@ -186,13 +187,13 @@
                 </div>
                 <div class="row">
                     <div class="col-xs-6">
-                        <button type="button" class="btn btn-info">Whistlist</button>
+                        <button type="button" class="btn btn-info btn-product">Whistlist</button>
                     </div>
                     <div class="col-xs-6">
                         <!-- <button type="button" class="btn btn-success">Beli</button> -->
-                        <button type="button" class="btn btn-success"><a href="<?php echo base_url('Konveksi_list');?>">Beli</a></button>
+                        <button type="button" class="btn btn-success btn-product"><a href="<?php echo base_url('Konveksi_list');?>">Beli</a></button>
                     </div>
-                </div>   
+                </div>
             </div>
         </div>
 
@@ -207,12 +208,12 @@
                 </div>
                 <div class="row">
                     <div class="col-xs-6">
-                        <button type="button" class="btn btn-info">Whistlist</button>
+                        <button type="button" class="btn btn-info btn-product">Whistlist</button>
                     </div>
                     <div class="col-xs-6">
-                        <button type="button" class="btn btn-success">Beli</button>
+                        <button type="button" class="btn btn-success btn-product">Beli</button>
                     </div>
-                </div>   
+                </div>
             </div>
         </div>
 
@@ -245,7 +246,7 @@ function w3_close() {
 }
 
 function callfunction(a) {
-    if (a.value == "throwit") { 
+    if (a.value == "throwit") {
         window.location = "<?php echo base_url(); ?>Detail/throwit";
     }
     else if (a.value == "category"){

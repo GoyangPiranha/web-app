@@ -165,7 +165,7 @@ p{
 
 .navbar-default {
     background-color: rgb(255, 195, 0);
-    border-color: #FFC300;
+    /*border-color: #FFC300;*/
 }
 
 #placeholder{
@@ -688,12 +688,22 @@ input[type="radio"] .styled:checked + label::after {
     width: 20%;
 }
 
+
+@media (max-width: 1080px){
+    .fb-image-profile
+    {
+        margin: -29px 10px 0px 457px;
+        z-index: 9;
+        width: 15%;
+    }
+}
+
 @media (max-width: 1024px){
     .fb-image-profile
     {
-        margin: -86px 10px 0px 416px;
+        margin: -86px 10px 0px 435px;
         z-index: 9;
-        width: 15%; 
+        width: 15%;
     }
 }
 
@@ -710,7 +720,7 @@ input[type="radio"] .styled:checked + label::after {
   {
     margin: -71px 12px 0px 316px;
     z-index: 9;
-    width: 15%; 
+    width: 15%;
   }
 }
 
@@ -719,7 +729,7 @@ input[type="radio"] .styled:checked + label::after {
       {
         margin: -71px 12px 0px 304px;
         z-index: 9;
-        width: 15%; 
+        width: 15%;
      }
 }
 
@@ -728,7 +738,7 @@ input[type="radio"] .styled:checked + label::after {
       {
         margin: -59px 12px 0px 269px;
         z-index: 9;
-        width: 15%; 
+        width: 15%;
      }
 }
 
@@ -737,7 +747,7 @@ input[type="radio"] .styled:checked + label::after {
       {
         margin: -56px 12px 0px 246px;
         z-index: 9;
-        width: 15%; 
+        width: 15%;
      }
 }
 
@@ -746,36 +756,46 @@ input[type="radio"] .styled:checked + label::after {
       {
         margin: -46px 12px 0px 201px;
         z-index: 9;
-        width: 15%; 
+        width: 15%;
      }
 }
 
+@media(max-width: 414px){
+
+    .fb-image-profile
+      {
+        margin: -35px 12px 0px 177px;
+        z-index: 9;
+        width: 15%;
+      }
+}
+
 @media(max-width: 400px){
-    
+
     .fb-image-profile
       {
         margin: -42px 12px 0px 167px;
         z-index: 9;
-        width: 15%; 
+        width: 15%;
      }
 }
 
 @media(max-width: 360px){
-    
+
     .fb-image-profile
       {
         margin: -38px 12px 0px 149px;
         z-index: 9;
-        width: 15%; 
+        width: 15%;
      }
 }
 @media(max-width: 320px){
-    
+
     .fb-image-profile
       {
         margin: -37px 12px 0px 133px;
         z-index: 9;
-        width: 15%; 
+        width: 15%;
      }
 }
 /*sampul foto*/
@@ -950,4 +970,16 @@ a {
 
 .profile-view{
     padding-left: 10px;
+}
+
+#purchase-details{
+    /*max-width: 120px;*/
+    min-height: 130px;
+    margin-bottom: 2%;
+    border-radius: 4px;
+}
+
+.btn-product{
+  padding:1px 3px;
+  border-radius: 2px;
 }

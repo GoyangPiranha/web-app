@@ -203,14 +203,14 @@ pre {
     background-color: #FFC300;
 }
 #pembatas{
-    height: 2px; 
-    background-color: white;   
+    height: 2px;
+    background-color: white;
 }
 
 #menusidebar{
-    color: white; 
-    height: 50px; 
-    font-size: 20px; 
+    color: white;
+    height: 50px;
+    font-size: 20px;
     text-align: center;
     text-decoration: none;
 }
@@ -230,13 +230,12 @@ pre {
 }
 
 #upload-photo-label {
-    border: 1px solid #cccccc;
     padding: 5px 30px;
     font-family:arial;
     font-size: 13px;
     margin-top: 5%;
     background-color: #FFC300;
-    border-radius: 10%;
+    border-radius: 5%;
 }
 #upload-photo-label:active{
     background:yellow;
