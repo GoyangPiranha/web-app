@@ -56,7 +56,7 @@ class Daftar extends CI_Controller {
 				$data ['warning']  = "Password tidak sesuai";
 				$data ['provinsi'] = $this->M_users->getProvinsiQuery();
 				$this->load->view('register',$data);
-			}elseif($fotoerror==0){
+			}elseif($fotoerror==1){
 				$data ['warning']  = "Foto gagal di upload";
 				$data ['provinsi'] = $this->M_users->getProvinsiQuery();
 				$this->load->view('register',$data);
@@ -65,6 +65,7 @@ class Daftar extends CI_Controller {
 				$data ['provinsi'] = $this->M_users->getProvinsiQuery();
 				$this->load->view('register',$data);
 			}else{
+				$password_user = md5($password_user);
 				$location = './assets/images/Profil/';
 				move_uploaded_file($tmp_name, $location.$fotoprofile);
 				$p = $this->M_users->registrasi($username_user, $password_user, $nama_user, $tanggal_lahir_user, $kota_user, $alamat_user, $fotoprofile, $email_user, $contact_user);

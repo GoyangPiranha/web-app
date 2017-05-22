@@ -7,7 +7,7 @@
     <title>Edit Profil</title>
     <link href="<?php echo base_url('assets/bootstrap/css/bootstrap.min.css'); ?>" rel="stylesheet">
     <link href="<?php echo base_url('assets/bootstrap/css/style.css'); ?>" rel="stylesheet">
-    <link rel="stylesheet" href="<?php echo base_url('./assets/style.css'); ?>">
+      <link rel="stylesheet" href="<?php echo base_url('./assets/style.css'); ?>">
 
   </head>
   <body style="margin-top: 22px; background: white">
@@ -50,7 +50,6 @@
                                         <div class="col-xs-12">
                                             <div class="form-group">
                                                 <div class="input-group center-block">
-
                                                     <?php foreach($users as $user):?>
                                                     <input name="name_full" type="text" class="form-control" placeholder="Full Name" aria-describedby="basic-addon1" id="edit-profil-input" value="<?php echo $user->nama_user;?>">
                                                     
@@ -76,7 +75,13 @@
                             <div id="ubahusername" class="collapse" role="tabpanel" aria-labelledby="bri">
                                 <div class="card-block">
                                     <div class="row" id="row-payment">
-
+                                        <div class="col-xs-12">
+                                            <div class="form-group" id="inputfield">
+                                                <div class="input-group center-block">
+                                                    <input name="old_password" type="password" class="form-control" placeholder="Password Lama" aria-describedby="basic-addon1" id="edit-profil-input">
+                                                </div>
+                                            </div>
+                                        </div>
                                         <div class="col-xs-12">
                                             <div class="form-group" id="inputfield">
                                                 <div class="input-group center-block">
@@ -113,9 +118,7 @@
                                         <div class="col-xs-12">
                                             <div class="form-group">
                                                 <div class="input-group center-block">
-
                                                     <input name="fotoprofile" type="file" class="form-control" placeholder="Full Name" aria-describedby="basic-addon1" id="edit-profil-input" value="">
-
                                                 </div>
                                             </div>
                                         </div>
@@ -141,9 +144,7 @@
                                         <div class="col-xs-12">
                                             <div class="form-group">
                                                 <div class="input-group center-block">
-
                                                     <input name="fotosampul" type="file" class="form-control" placeholder="Full Name" aria-describedby="basic-addon1" id="edit-profil-input">
-
                                                 </div>
                                             </div>
                                         </div>
@@ -197,7 +198,7 @@
                                         <div class="col-xs-12">
                                             <div class="form-group">
                                                 <div class="input-group center-block">
-                                                    <input  name="contact" type="text" class="form-control" placeholder="No Handphone" aria-describedby="basic-addon1" id="edit-profil-input">
+                                                    <input value="<?php echo $user->contact_user;?>" name="contact" type="text" class="form-control" placeholder="No Handphone" aria-describedby="basic-addon1" id="edit-profil-input">
                                                 </div>
                                             </div>
                                         </div>
@@ -223,8 +224,8 @@
                                         <div class="col-xs-12">
                                             <div class="form-group">
                                                 <div class="input-group center-block">
-                                                    <textarea  name="address" class="form-control" rows="2" cols="50" placeholder="Deskripsi" aria-describedby="basic-addon1" id="edit-profil-input"></textarea>
-                                                   
+                                                    <textarea value="<?php echo $user->deskripsi_user;?>" name="address" class="form-control" rows="2" cols="50" placeholder="Deskripsi" aria-describedby="basic-addon1" id="edit-profil-input"></textarea>
+                                                    <?php endforeach;?>
                                                 </div>
                                             </div>
                                         </div>
