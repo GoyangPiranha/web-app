@@ -86,13 +86,15 @@ class Profile_edit extends CI_Controller {
             $nama_bank = $_POST['nama_bank'];
             $nama_pemilik = $_POST['nama_pemilik'];
             $no_rekening = $_POST['no_rekening'];
+            $deskripsi = $_POST['deskripsi'];
             $password = '';
             $fotouser = '';
             $fotosampul = '';
 
             if($old_password == null || $new_password == null || $confirm_password == null){
                 $password = $passen;
-            }elseif($old_password != null && $new_password != null && $confirm_password != null){
+            }
+            elseif($old_password != null && $new_password != null && $confirm_password != null){
                 $old_password = md5($old_password);
                 if($old_password == $passen){
                     if($new_password != $confirm_password){
@@ -131,7 +133,8 @@ class Profile_edit extends CI_Controller {
                             'email_user' => $email,
                             'foto_profile_user' => $fotouser,
                             'foto_background_user' => $fotosampul,
-                            'contact_user' => $contact);
+                            'contact_user' => $contact,
+                            'deskripsi_user' => $deskripsi);
                 $where = array('id_user' => $id_user);
                 $check = $this->M_users->updateUserQuery($where, $data);
                 $location1 = './assets/images/Profil/';

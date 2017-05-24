@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Detail_pembelian extends CI_Controller {
+class Sales_detail extends CI_Controller {
 
     /**
      * Index Page for this controller.
@@ -20,10 +20,11 @@ class Detail_pembelian extends CI_Controller {
      */
     public function index()
     {
-        if (isset($_SESSION['USERNAME'])) { 
-            $this->load->view('purchasing_details');
-            } else {
-                $this->load->view('login');
-            }
+      if (isset($_SESSION['USERNAME'])){
+        $this->load->view('sales_detail');
+      }
+      else{
+        $this->load->view('login');
+      }
     }
 }

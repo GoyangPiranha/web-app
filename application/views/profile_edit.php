@@ -7,7 +7,8 @@
     <title>Edit Profil</title>
     <link href="<?php echo base_url('assets/bootstrap/css/bootstrap.min.css'); ?>" rel="stylesheet">
     <link href="<?php echo base_url('assets/bootstrap/css/style.css'); ?>" rel="stylesheet">
-      <link rel="stylesheet" href="<?php echo base_url('./assets/style.css'); ?>">
+    <link href="<?php echo base_url('assets/bootstrap/css/snackbarlight.css'); ?>" rel="stylesheet">
+    <link rel="stylesheet" href="<?php echo base_url('./assets/style.css'); ?>">
 
   </head>
   <body style="margin-top: 22px; background: white">
@@ -25,12 +26,23 @@
             <div class="outter-form-global">
                 <form action="<?php echo base_url('Profile_edit/updateUser'); ?>" class="inner-login" method="post" enctype="multipart/form-data">
                     <h5 class="title-login"><strong>Perbarui identitas</strong></h5>
-                    
+
                     <p style="color: red;">
                         <?php
-                        echo $status;
+                        if (empty($status)) {
+                          echo "";
+                        }else{
+                          echo "<div class='alert alert-success alert-dismissible text-center' role='alert'>
+                            <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+                              <span aria-hidden='true'>&times;</span>
+                            </button>
+                            $status
+                          </div>";
+                          }
+
                         ?>
                     </p>
+
                     <!-- fullname -->
                     <div id="accordion" role="tablist" aria-multiselectable="true">
                         <!--Ubah Nama-->
@@ -52,7 +64,7 @@
                                                 <div class="input-group center-block">
                                                     <?php foreach($users as $user):?>
                                                     <input name="name_full" type="text" class="form-control" placeholder="Full Name" aria-describedby="basic-addon1" id="edit-profil-input" value="<?php echo $user->nama_user;?>">
-                                                    
+
                                                 </div>
                                             </div>
                                         </div>
@@ -170,9 +182,9 @@
                                         <div class="col-xs-12">
                                             <div class="form-group">
                                                 <div class="input-group center-block">
-                                                    
+
                                                     <input value="<?php echo $user->email_user?>" name="email" type="email" class="form-control" placeholder="Email" aria-describedby="basic-addon1" id="edit-profil-input">
-                                                    
+
                                                 </div>
                                             </div>
                                         </div>
@@ -224,7 +236,7 @@
                                         <div class="col-xs-12">
                                             <div class="form-group">
                                                 <div class="input-group center-block">
-                                                    <textarea value="<?php echo $user->deskripsi_user;?>" name="address" class="form-control" rows="2" cols="50" placeholder="Deskripsi" aria-describedby="basic-addon1" id="edit-profil-input"></textarea>
+                                                    <textarea value="" name="deskripsi" class="form-control" rows="2" cols="50" placeholder="Deskripsi" aria-describedby="basic-addon1" id="edit-profil-input"><?php echo $user->deskripsi_user;?></textarea>
                                                     <?php endforeach;?>
                                                 </div>
                                             </div>
@@ -348,11 +360,12 @@
                             </div>
                         </div>
                         <!--End of tambah rekening-->
-                       
+
                         <div class="row">
                             <div class="col-xs-10">
                                 <input name="submit" type="submit" href="<?php echo base_url('Profile_edit/updateUser'); ?>" class="btn btn-custom-yellow" value="Simpan" />
                             </div>
+                            <span class="btn btn-primary" data-toggle="snackbar" data-content="Hellow">Snack</span>
                         </div>
                     </div>
                 </form>
@@ -360,24 +373,26 @@
         </div>
     </div>
 
-    <nav class="navbar navbar-default navbar-fixed-bottom" style="background: #606062;">
-        <div class="row" style="margin: 0;">
-            <div class="col-xs-4" style="text-align: center;">
-                <a href="<?php echo base_url("Detail/wishlist");?>"><img id="footimg" src="<?php echo base_url('assets/images/shopping-cart.png'); ?>"></a>
-            </div>
-            <div class="col-xs-4" style="text-align: center;">
-                <a href="<?php echo base_url("Home");?>"><img id="footimg" src="<?php echo base_url('assets/images/home.png'); ?>"></a>
-            </div>
-            <div class="col-xs-4" style="text-align: center;">
-                <a href="<?php echo base_url("Welcome");?>"><img id="footimg" src="<?php echo base_url('assets/images/user.png'); ?>"></a>
-            </div>
+<nav class="navbar navbar-default navbar-fixed-bottom" style="background: #606062;">
+    <div class="row" style="margin: 0;">
+        <div class="col-xs-4" style="text-align: center;">
+            <a href="<?php echo base_url("Detail/wishlist");?>"><img id="footimg" src="<?php echo base_url('assets/images/shopping-cart.png'); ?>"></a>
         </div>
-    </nav>
+        <div class="col-xs-4" style="text-align: center;">
+            <a href="<?php echo base_url("Home");?>"><img id="footimg" src="<?php echo base_url('assets/images/home.png'); ?>"></a>
+        </div>
+        <div class="col-xs-4" style="text-align: center;">
+            <a href="<?php echo base_url("Profile");?>"><img id="footimg" src="<?php echo base_url('assets/images/user.png'); ?>"></a>
+        </div>
+    </div>
+</nav>
+
 <!--    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>-->
 <!--    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>-->
 <!--    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>-->
 
     <script src="<?=base_url();?>assets/bootstrap/js/jquery.min.js" type="text/javascript"></script>
+    <script src="<?=base_url();?>assets/bootstrap/js/snackbarlight.js" type="text/javascript"></script>
     <script src="<?=base_url();?>assets/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
 
   </body>

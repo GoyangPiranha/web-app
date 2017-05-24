@@ -3,7 +3,7 @@
     if(!isset($_SESSION))
     {
         session_start();
-    }
+    }   
 
 	Class M_rekening extends CI_Model {
 

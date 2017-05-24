@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-    <title>Detail Pembelian</title>
+    <title>Detail Penjualan</title>
 
     <link rel="stylesheet" href="<?php echo base_url('./assets/style.css'); ?>">
     <link href="<?php echo base_url('assets/bootstrap/css/bootstrap.min.css'); ?>" rel="stylesheet">
@@ -15,7 +15,7 @@
     <nav class="navbar-default navbar-fixed-top">
         <div class="container">
           <div class="navbar-header">
-            <a class="navbar-brand" href="<?php echo base_url('login'); ?>"><span class="glyphicon glyphicon-chevron-left"></span><span  id="registration">  Detail Pembelian</span></a>
+            <a class="navbar-brand" href="<?php echo base_url('login'); ?>"><span class="glyphicon glyphicon-chevron-left"></span><span  id="registration">  Detail Penjualan</span></a>
           </div>
         </div><!--/.container -->
       </nav>
@@ -94,19 +94,19 @@
     </div>
 
     <!-- navbar footer -->
-    <nav class="navbar navbar-default navbar-fixed-bottom" style="background: #606062;">
-        <div class="row" style="margin: 0;">
-            <div class="col-xs-4" style="text-align: center;">
-                <a href="<?php echo base_url("Detail/wishlist");?>"><img id="footimg" src="<?php echo base_url('assets/images/shopping-cart.png'); ?>"></a>
-            </div>
-            <div class="col-xs-4" style="text-align: center;">
-                <a href="<?php echo base_url("Home");?>"><img id="footimg" src="<?php echo base_url('assets/images/home.png'); ?>"></a>
-            </div>
-            <div class="col-xs-4" style="text-align: center;">
-                <a href="<?php echo base_url("Profile");?>"><img id="footimg" src="<?php echo base_url('assets/images/user.png'); ?>"></a>
-            </div>
+<nav class="navbar navbar-default navbar-fixed-bottom" style="background: #606062;">
+    <div class="row" style="margin: 0;">
+        <div class="col-xs-4" style="text-align: center;">
+            <a href="<?php echo base_url("Detail/wishlist");?>"><img id="footimg" src="<?php echo base_url('assets/images/shopping-cart.png'); ?>"></a>
         </div>
-    </nav>
+        <div class="col-xs-4" style="text-align: center;">
+            <a href="<?php echo base_url("Home");?>"><img id="footimg" src="<?php echo base_url('assets/images/home.png'); ?>"></a>
+        </div>
+        <div class="col-xs-4" style="text-align: center;">
+            <a href="<?php echo base_url("Profile");?>"><img id="footimg" src="<?php echo base_url('assets/images/user.png'); ?>"></a>
+        </div>
+    </div>
+</nav>
 
     <script type="text/javascript" src="assets/js/jquery.uploadPreview.min.js"></script>
     <script type="text/javascript" src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
