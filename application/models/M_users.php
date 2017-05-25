@@ -60,6 +60,12 @@
 
 		}
 
+		function getUserById($id_user){
+			$query = $this->db->query("SELECT * FROM `user` WHERE `id_user` = '$id_user' ");
+			return $query->result();
+
+		}
+
 		function getKotaQuery($id_provinsi){
 			$query = $this->db->get_where('kota', array('id_provinsi' => $id_provinsi));
 			return $query->result();
@@ -78,6 +84,11 @@
 		function updateUserQuery($where, $data){
 			$this->db->update('user', $data, $where);
 			return $this->db->affected_rows();
+		}
+
+		function getRekeningByUser($id_user){
+			$query = $this->db->query("SELECT * FROM `rekening` WHERE id_user = $id_user");
+			return $query->result();
 		}
 
 }

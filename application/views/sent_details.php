@@ -8,6 +8,7 @@
 
     <link href="<?php echo base_url('assets/bootstrap/css/bootstrap.min.css'); ?>" rel="stylesheet">
     <link href="<?php echo base_url('assets/bootstrap/css/style.css'); ?>" rel="stylesheet">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
 </head>
 <body style="margin-top: 60px; background: #FFFFFF">
 <!-- NAVBAR -->
@@ -23,7 +24,7 @@
 <!--</div>-->
 <div class="col-md-4 col-md-offset-4 form-login">
     <div class="outter-form-register">
-        <form action="<?php echo base_url('Daftar/proses'); ?>" class="inner-login" method="POST" enctype="multipart/form-data">
+        <form action="<?php echo base_url('Sent_details/process'); ?>" class="inner-login" method="POST" enctype="multipart/form-data">
             <h5 class="title-login"><strong>Tujuan Pengiriman</strong></h5>
             <p style="color: red;">
                 <?php
@@ -52,16 +53,14 @@
                     <div class="form-group">
                         <div class="input-group">
                             <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-map-marker"></span></span>
-                            <select class="form-control" name="province">
-                                <option>Propinsi</option>
-                                <option>Jawa Timur</option>
-                                <option>Jawa Barat</option>
-                                <option>Jawa Tengah</option>
-                                <option>Sumatera Barat</option>
-                                <option>Sumatera Selatan</option>
-                                <option>Kalimantan Timur</option>
-                                <option>Maluku Utara</option>
-                            </select>
+                            <select class="form-control" name="provinsi" id="select_provinsi">
+                                <option value="">Pilih Provinsi</option>
+                                <?php
+                                  foreach ($provinsi as $row):
+                                 ?>
+                                 <option value="<?php echo $row->id_provinsi;?>"><?php echo $row->nama_provinsi;?></option>
+                                 <?php endforeach; ?>
+                              </select>
                         </div>
                     </div>
                 </div>
@@ -70,12 +69,8 @@
                     <div class="form-group">
                         <div class="input-group">
                             <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-map-marker"></span></span>
-                            <select class="form-control" name="city">
-                                <option>Kota</option>
-                                <option>Banyuwangi</option>
-                                <option>Madiun</option>
-                                <option>Malang</option>
-                                <option>Surabaya</option>
+                            <select class="form-control" name="select_kota" id="select_kota" disabled="">
+                                <option value="">Pilih Kota</option>
                             </select>
                         </div>
                     </div>
@@ -117,7 +112,7 @@
                     <div class="form-group">
                         <div class="input-group">
                             <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-map-marker"></span></span>
-                            <textarea name="address" class="form-control" rows="2" cols="50" placeholder="Alamat" aria-describedby="basic-addon1"></textarea>
+                            <textarea name="alamat" class="form-control" rows="2" cols="50" placeholder="Alamat" aria-describedby="basic-addon1"></textarea>
                         </div>
                     </div>
                 </div>
@@ -232,8 +227,8 @@
                     </div>
                 </div>
             </div>
-
-            <input name="lanjut" type="submit" class="btn btn-block btn-custom-yellow" value="Lanjut" />
+            
+             <input name="lanjut" type="submit" class="btn btn-block btn-custom-yellow" value="Lanjut" /> 
         </form>
     </div>
 </div>
@@ -247,12 +242,39 @@
             <a href="<?php echo base_url("Home");?>"><img id="footimg" src="<?php echo base_url('assets/images/home.png'); ?>"></a>
         </div>
         <div class="col-xs-4" style="text-align: center;">
-            <a href="<?php echo base_url("Welcome");?>"><img id="footimg" src="<?php echo base_url('assets/images/user.png'); ?>"></a>
+            <a href="<?php echo base_url("Profile");?>"><img id="footimg" src="<?php echo base_url('assets/images/user.png'); ?>"></a>
         </div>
     </div>
 </nav>
 
-<script src="<?php echo base_url('assets/assets/js/jquery.min.js');?>"></script>
+<script src="<?php echo base_url('assets/bootstrap/js/jquery.min.js');?>"></script>
 <script src="<?php echo base_url('assets/bootstrap/js/bootstrap.min.js');?>"></script>
+<script type="text/javascript">
+    // script untuk load kota berdasarkan provinsi yg dipilih
+      $(document).ready(function(){
+        $('#select_provinsi').on('change', function(){
+          var id_provinsi = $(this).val();
+          if (id_provinsi ==''){
+            $('#select_kota').prop('disabled', true);
+          }
+          else{
+            $('#select_kota').prop('disabled', false);
+            $.ajax({
+              url : "<?php echo base_url()?>Daftar/getKota",
+              type : 'POST',
+              data :  {'id_provinsi' : id_provinsi},
+              dataType: 'json',
+              success : function(data){
+                $('#select_kota').html(data);
+              },
+              error: function(){
+                alert('terjadi error error');
+              }
+            });
+          }
+        });
+      });
+      // end of one function
+    </script>
 </body>
 </html>

@@ -7,7 +7,7 @@
     <title>Throw It!</title>
 
     <link href="<?php echo base_url('assets/bootstrap/css/bootstrap.min.css'); ?>" rel="stylesheet">
-    <link href="<?php echo base_url('assets/bootstrap/css/dropzone.css'); ?>" rel="stylesheet">
+    <!--<link href="<?php echo base_url('assets/bootstrap/css/dropzone.css'); ?>" rel="stylesheet">-->
     <link href="<?php echo base_url('assets/bootstrap/css/style.css'); ?>" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="//cdn.jsdelivr.net/bootstrap.tagsinput/0.4.2/bootstrap-tagsinput.css" />
@@ -255,12 +255,12 @@
             <a href="<?php echo base_url("Home");?>"><img id="footimg" src="<?php echo base_url('assets/images/home.png'); ?>"></a>
         </div>
         <div class="col-xs-4" style="text-align: center;">
-            <a href="<?php echo base_url("Welcome");?>"><img id="footimg" src="<?php echo base_url('assets/images/user.png'); ?>"></a>
+            <a href="<?php echo base_url("Profile");?>"><img id="footimg" src="<?php echo base_url('assets/images/user.png'); ?>"></a>
         </div>
     </div>
 </nav>
 
-<script>
+<!--<script>
     $(document).ready(function() {
         $.uploadPreview({
             input_field: "#image-upload",
@@ -268,9 +268,9 @@
             label_field: "#image-label"
         });
     });
-</script>
-<script type="text/javascript" src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
-<script type="text/javascript" src="assets/js/jquery.uploadPreview.min.js"></script>
+</script>-->
+<!--<script type="text/javascript" src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
+<script type="text/javascript" src="assets/js/jquery.uploadPreview.min.js"></script>-->
 <script src="<?php echo base_url('assets/bootstrap/js/dropzone.js');?>" type="text/jvascript"></script>
 <script src="<?php echo base_url('assets/assets/js/jquery.min.js');?>"></script>
 <script src="<?php echo base_url('assets/bootstrap/js/bootstrap.min.js');?>"></script>

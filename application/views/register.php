@@ -30,12 +30,12 @@
             <form action="<?php echo base_url('Daftar/proses'); ?>" class="inner-login" method="POST" enctype="multipart/form-data">
             <h5 class="title-login"><strong>Registration</strong></h5>
             <p style="color: red;">
-            <?php 
+            <?php
             if (empty($warning)) {
               echo "";
             }else{
                 echo "<div class='alert alert-danger text-center' role='alert'>$warning</div>";
-              } 
+              }
             ?>
             </p>
             <!-- fullname -->
@@ -134,7 +134,7 @@
                   <div class="form-group">
                     <div class="input-group">
                       <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-map-marker"></span></span>
-                      <select class="form-control" name="city" id="select_kota" disabled="">
+                      <select class="form-control" name="select_kota" id="select_kota" disabled="">
                         <option value="">Pilih Kota</option>
                       </select>
                     </div>
