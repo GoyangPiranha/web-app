@@ -30,9 +30,8 @@
 
 
         function insert($nama_produk, $deskripsi, $foto_produk_depan, $foto_produk_belakang, $id_jenis_produk, $id_kategori_produk, $tag_produk, $harga_produk, $id_user, $id_status_produk){
-            
-            $query = $this->db->query("INSERT INTO `produk`(`nama_produk`, `deskripsi`, `foto_produk_depan`, `foto_produk_belakang`, `id_jenis_produk`, `id_kategori_produk`, `tag_produk`, `harga_produk`, `id_user`, `id_status_produk`) 
-            VALUES ('$nama_produk', '$deskripsi', '$foto_produk_depan', '$foto_produk_belakang', $id_jenis_produk, $id_kategori_produk, '$tag_produk', $harga_produk, $id_user, $id_status_produk)");
+            $query = $this->db->query("INSERT INTO `produk`(`nama_produk`, `deskripsi`, `foto_produk_depan`, `foto_produk_belakang`, `id_jenis_produk`, `id_kategori_produk`, `tag_produk`, `harga_produk`, `id_user`, `id_status_produk`)
+            VALUES ('$nama_produk', '$deskripsi', '$foto_produk_depan', '$foto_produk_belakang', $id_jenis_produk, $id_kategori_produk, '$tag_produk', '$harga_produk', $id_user,$id_status_produk)");
             if ($query == true) {
 				return true;
 			}

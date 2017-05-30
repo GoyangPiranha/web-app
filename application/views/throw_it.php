@@ -24,7 +24,10 @@
 					.attr('hidden', 'hidden')
 					.attr('accept','image/*')
 					.attr('onchange', 'readImage()')
-					.attr('data-image-placeholder', e.id);
+                    .attr('class',  'form-control')
+					.attr('data-image-placeholder', e.id)
+                    .attr('name', e.id + "name");
+                    console.log(e.id + "name")
 
 				$(e.parentElement).append(_inputFile);
 
@@ -105,7 +108,7 @@
                 <div class="col-xs-12 center-block">
                     <div class="form-group center-block">
 					<div class="input-group center-block">
-						<img class="center-block img-responsive" id="desaindepan" src="#" data-type="data" /></div>
+						<img class="center-block img-responsive" name="desaindepan" id="desaindepan" src="#" data-type="data" /></div>
                     </div>
                 </div>
 			</div>
@@ -119,7 +122,7 @@
                 <div class="col-xs-12 center-block">
                     <div class="form-group center-block">
 					<div class="input-group center-block">
-						<img class="center-block img-responsive" id="desainbelakang" src="#" data-type="data" /></div>
+						<img class="center-block img-responsive" name="desainbelakang" id="desainbelakang" src="#" data-type="data" /></div>
                     </div>
                 </div>
 			</div>
