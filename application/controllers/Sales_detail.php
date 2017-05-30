@@ -18,10 +18,17 @@ class Sales_detail extends CI_Controller {
      * map to /index.php/welcome/<method_name>
      * @see https://codeigniter.com/user_guide/general/urls.html
      */
+     function __construct(){
+        parent::__construct();
+        $this->load->helper('url');
+        $this->load->model('M_produk','m_produk', TRUE);
+    }
     public function index()
     {
-      if (isset($_SESSION['USERNAME'])){
-        $this->load->view('sales_detail');
+      if (isset($_SESSION['ID_USER'])){
+        $id_user = $_SESSION['ID_USER'];
+        $data['produk'] = $this->m_produk->get_produk_by_id($id_user);
+        $this->load->view('sales_detail', $data);
       }
       else{
         $this->load->view('login');
