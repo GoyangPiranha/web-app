@@ -66,7 +66,7 @@
                             </div>
                             <div class="col-xs-12"><div class="line-separator" id="separator"></div></div>
                             <div class="col-xs-12">
-                                <input name="submit" type="submit" class="btn btn-block btn-custom-green submit" value="Lanjut"></input>
+                                <a href="<?=base_url()?>Wishlist/deleteWishlist/<?=$wishlist->id?>"><input name="submit" type="submit" class="btn btn-block btn-custom-green submit" value="Lanjut"></input></a>
                             </div>
                         </div>
                     </div>

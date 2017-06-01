@@ -43,10 +43,7 @@
             <div id="status" >
                 <button type="submit" class="btn btn-danger">Belum Dibayar</button>
             </div>
-
-
         </div>
-
 
     </div>
     <h3 style="text-align: center;">Yellow Ham</h3>
