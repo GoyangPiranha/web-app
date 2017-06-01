@@ -48,8 +48,9 @@
 					$_SESSION['BACKGROUND']= $row->foto_background_user;
 				return true;   
 				}
-		
-			}else{
+			}
+
+			else{
 				return false;
 			}
 		}
@@ -91,4 +92,19 @@
 			return $query->result();
 		}
 
+		function cekAdmin($username, $password, $jenis_user){
+			$query = $this->db->query("SELECT * FROM `user` WHERE `username_user` = '$username' and `password_user` = '$password' and `jenis_user` = '$jenis_user'");
+			if ($query->num_rows()>0) {
+				foreach ($query->result() as $row){
+					$_SESSION['FULLNAME']= $row->nama_user;
+					$_SESSION['USERNAME']= $row->username_user;
+					$_SESSION['AVATAR']= $row->foto_profile_user;
+					$_SESSION['JENIS_USER']= $row->jenis_user;
+				return true;   
+				}
+			}
+			else{
+				return false;
+			}
+		}
 }
