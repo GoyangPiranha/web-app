@@ -31,7 +31,9 @@ class Wishlist extends CI_Controller {
             $id_user = $_SESSION['ID_USER'];
             $data['wishlist'] = $this->M_wishlist->getWishlistByUser($id_user);
             $this->load->view('wishlist', $data);
-        }
+        }else {
+				$this->load->view('login');
+			}
 	}
 
 	function insert($id_produk){
