@@ -65,10 +65,7 @@
                             </div>
                             <div class="col-xs-12"><div class="line-separator" id="separator"></div></div>
                             <div class="col-xs-12">
-                                <div class="checkbox">
-                                    <input type="checkbox" id="cb2">
-                                    <label for="cb2"><strong>Pilih Konveksi</strong></label>
-                                </div>
+                                <input name="submit" type="submit" class="btn btn-block btn-custom-green submit" value="Lanjut"></input>
                             </div>
                         </div>
                     </div>

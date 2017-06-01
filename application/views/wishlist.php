@@ -15,35 +15,51 @@
 <nav class="navbar-default navbar-fixed-top">
     <div class="container">
         <div class="navbar-header">
-            <a class="navbar-brand" href="<?php echo base_url('login'); ?>"><span class="glyphicon glyphicon-chevron-left"></span><span  id="registration"> Wishlist</span></a>
+            <a class="navbar-brand" href="<?php echo base_url('Home'); ?>"><span class="glyphicon glyphicon-chevron-left"></span><span  id="registration"> Home</span></a>
         </div>
     </div><!--/.container -->
 </nav>
 <!-- NAVBAR -->
 
 <div class="col-md-4 col-md-offset-4 form-login">
+
+                        <?php
+                        if (empty($status)) {
+                          echo "";
+                        }else{
+                          echo "<div class='alert alert-success alert-dismissible text-center' role='alert'>
+                            <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+                              <span aria-hidden='true'>&times;</span>
+                            </button>
+                            $status
+                          </div>";
+                          }
+
+                        ?>
+
+<?php foreach ($wishlist as $wishlist) { ?>
     <div class="list-view-column">
         <div class="row">
             <div class="col-xs-10">
             </div>
             <div class="col-xs-2">
-                <span id="wishlist-delete" class="glyphicon glyphicon-trash small"></span>
+                <a href="<?=base_url()?>Wishlist/deleteWishlist/<?=$wishlist->id?>"><span id="wishlist-delete" class="glyphicon glyphicon-trash small"></span><a/>
             </div>
         </div>
         <div class="row">
             <div class="col-xs-4">
-                <img id="img-no-bg" class="img-responsive center-block" src="<?php echo base_url('assets/images/sample2.png'); ?>" alt="product-img">
+                <img id="img-no-bg" class="img-responsive center-block" src="assets/images/Product/<?php echo $wishlist->foto_produk_depan ?>" alt="product-img">
             </div>
             <div class="col-xs-8">
                 <div class="row">
                     <div class="col-xs-12">
-                        <h5><strong>Sample Title</strong></h5>
+                        <h5><strong><?php echo $wishlist->nama_produk ?></strong></h5>
                     </div>
                     <div class="col-xs-12">
-                        <h6>Oleh <a href="">Alvin</a></h6>
+                        <h6>Oleh <a href=""><?php echo $wishlist->nama_user ?></a></h6>
                     </div>
                     <div class="col-xs-12">
-                        <h5><strong>Rp. 500.000</strong></h5>
+                        <h5><strong><?php echo $wishlist->harga_produk ?></strong></h5>
                     </div>
                 </div>
             </div>
@@ -54,66 +70,17 @@
                 <button href="<?=base_url('');?>Konveksi_list" style="padding: 3px 7px;border-radius: 2px;font-size: 12px;" class="pull-right btn btn-custom-yellow small">Bayar</button>
             </div>
         </div>
-
-        <!--separator-->
-        <!--<div class="line-separator" id="separator"></div>-->
-        <!--separator-->
-
-        <!--<div class="row" style="padding-left: 10px;">
-            <div class="col-xs-4">
-                <h4 class="small"><strong>Harga :</strong></h4>
-            </div>
-        </div>-->
     </div>
-    <div class="list-view-column">
-        <div class="row">
-            <div class="col-xs-10">
-            </div>
-            <div class="col-xs-2">
-                <span id="wishlist-delete" class="glyphicon glyphicon-trash small"></span>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-xs-4">
-                <img id="img-no-bg" class="img-responsive center-block" src="<?php echo base_url('assets/images/sample2.png'); ?>" alt="product-img">
-            </div>
-            <div class="col-xs-8">
-                <div class="row">
-                    <div class="col-xs-12">
-                        <h5><strong>Sample Title</strong></h5>
-                    </div>
-                    <div class="col-xs-12">
-                        <h6>Oleh <a href="">Alvin</a></h6>
-                    </div>
-                    <div class="col-xs-12">
-                        <h5><strong>Rp. 500.000</strong></h5>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-xs-8"></div>
-            <div class="col-xs-4">
-                <button style="padding: 3px 7px; border-radius: 2px;font-size: 12px;" class="pull-right btn btn-custom-yellow small">Bayar</button>
-            </div>
-        </div>
+<?php } ?>
 
-        <!--separator-->
-        <!--<div class="line-separator" id="separator"></div>-->
-        <!--separator-->
-
-        <!--<div class="row" style="padding-left: 10px;">
-            <div class="col-xs-4">
-                <h4 class="small"><strong>Harga :</strong></h4>
-            </div>
-        </div>-->
-    </div>
 </div>
+
+
 
 <nav class="navbar navbar-default navbar-fixed-bottom" style="background: #606062;">
     <div class="row" style="margin: 0;">
         <div class="col-xs-4" style="text-align: center;">
-            <a href="<?php echo base_url("Detail/wishlist");?>"><img id="footimg" src="<?php echo base_url('assets/images/shopping-cart.png'); ?>"></a>
+            <a href="<?php echo base_url("Wishlist");?>"><img id="footimg" src="<?php echo base_url('assets/images/shopping-cart.png'); ?>"></a>
         </div>
         <div class="col-xs-4" style="text-align: center;">
             <a href="<?php echo base_url("Home");?>"><img id="footimg" src="<?php echo base_url('assets/images/home.png'); ?>"></a>

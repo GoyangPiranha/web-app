@@ -18,6 +18,10 @@ class Profile_edit extends CI_Controller {
      * map to /index.php/welcome/<method_name>
      * @see https://codeigniter.com/user_guide/general/urls.html
      */
+
+     //kurang status gagal/berhasil lewat javascript
+
+
     function __construct()
              {
                parent::__construct();
@@ -43,17 +47,11 @@ class Profile_edit extends CI_Controller {
     function deleteRekening($id_rekening){
         $query = $this->M_rekening->deleteRekening($id_rekening);
         if($query == true){
-            $data['status'] = "Delete Rekening Berhasil";
-            $id_user = $_SESSION['ID_USER'];
-            $data['users'] = $this->M_users->getUserById($id_user);
-            $data['rekening'] = $this->M_rekening->getRekeningByUser($id_user);
-            $this->load->view('profile_edit', $data);
+            //kurang status berhasil
+            redirect('/Profile_edit', 'refresh');
         }else{
-            $data['status'] = "Delete Rekening Gagal";
-            $id_user = $_SESSION['ID_USER'];
-            $data['users'] = $this->M_users->getUserById($id_user);
-            $data['rekening'] = $this->M_rekening->getRekeningByUser($id_user);
-            $this->load->view('profile_edit', $data);
+            //kurang status gagal
+            redirect('/Profile_edit', 'refresh');
         }
     }
 
@@ -98,20 +96,16 @@ class Profile_edit extends CI_Controller {
                 $old_password = md5($old_password);
                 if($old_password == $passen){
                     if($new_password != $confirm_password){
-                        $data['status'] = "Password tidak sesuai, silahkan cek kembali";
-                        $id_user = $_SESSION['ID_USER'];
-                        $data['users'] = $this->M_users->getUserById($id_user);
-                        $data['rekening'] = $this->M_rekening->getRekeningByUser($id_user);
-                        $this->load->view('profile_edit', $data);
+                        //kurang status password tidak sesuai
+                        //$data['status'] = "Password tidak sesuai, silahkan cek kembali";
+                        redirect('/Profile_edit', 'refresh');
                     }else{
                         $password = md5($new_password);
                     }
                 }else{
-                    $data['status'] = "Password lama tidak sesuai";
-                    $id_user = $_SESSION['ID_USER'];
-                    $data['users'] = $this->M_users->getUserById($id_user);
-                    $data['rekening'] = $this->M_rekening->getRekeningByUser($id_user);
-                    $this->load->view('profile_edit', $data);
+                    //kurang status password lama tidak sesuai
+                    //$data['status'] = "Password lama tidak sesuai";
+                    redirect('/Profile_edit', 'refresh');
                 }
             }
            
@@ -143,17 +137,13 @@ class Profile_edit extends CI_Controller {
                 move_uploaded_file($tmp2, $location2.$fotosampul);
 
                 if($check == true){
-                    $data['status'] = "Data Berhasil Diupdate";
-                    $id_user = $_SESSION['ID_USER'];
-                    $data['users'] = $this->M_users->getUserById($id_user);
-                    $data['rekening'] = $this->M_rekening->getRekeningByUser($id_user);
-                    $this->load->view('profile_edit', $data);
+                    //kurang status data berhasil diupdate
+                    //$data['status'] = "Data Berhasil Diupdate";
+                    redirect('/Profile_edit', 'refresh');
                 }else{
-                    $data['status'] = "";
-                    $id_user = $_SESSION['ID_USER'];
-                    $data['users'] = $this->M_users->getUserById($id_user);
-                    $data['rekening'] = $this->M_rekening->getRekeningByUser($id_user);
-                    $this->load->view('profile_edit', $data);
+                    //kurang status gagal
+                    //$data['status'] = "";
+                    redirect('/Profile_edit', 'refresh');
                 }
             }elseif($no_rekening != null && $nama_pemilik != null && $nama_bank != null){
                 $data = array('nama_user' => $nama_user,
@@ -171,17 +161,13 @@ class Profile_edit extends CI_Controller {
                 $check2 = $this->M_rekening->insertRekening($no_rekening, $nama_pemilik, $id_user, $nama_bank);
 
                 if($check == true || $check2 == true){
-                    $data['status'] = "Data Berhasil Diupdate";
-                    $id_user = $_SESSION['ID_USER'];
-                    $data['users'] = $this->M_users->getUserById($id_user);
-                    $data['rekening'] = $this->M_rekening->getRekeningByUser($id_user);
-                    $this->load->view('profile_edit', $data);
+                    //kurang sttatus berhasil
+                    //$data['status'] = "Data Berhasil Diupdate";
+                    redirect('/Profile_edit', 'refresh'); 
                 }else{
-                    $data['status'] = "Data Tidak Berhasil Diupdate. Coba Periksa Kembali Data Anda.";
-                    $id_user = $_SESSION['ID_USER'];
-                    $data['users'] = $this->M_users->getUserById($id_user);
-                    $data['rekening'] = $this->M_rekening->getRekeningByUser($id_user);
-                    $this->load->view('profile_edit', $data);
+                    //kurang status gagal
+                    //$data['status'] = "Data Tidak Berhasil Diupdate. Coba Periksa Kembali Data Anda.";
+                    redirect('/Profile_edit', 'refresh');
                 }
             }        
     }

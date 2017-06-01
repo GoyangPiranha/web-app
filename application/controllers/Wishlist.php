@@ -21,14 +21,35 @@ class Wishlist extends CI_Controller {
      function __construct(){
         parent::__construct();
         $this->load->helper('url');
-        $this->load->model('M_transaksi','m_transaksi',TRUE);
+        $this->load->model('M_wishlist','',TRUE);
     }
 	public function index()
 	{
         if(isset($_SESSION['ID_USER'])){
+            //$_SESSION['STATUS'] = "";
+			$data['status'] = "";
             $id_user = $_SESSION['ID_USER'];
-            $data['wishlist'] = $this->m_transaksi->viewWishlist($id_user);
+            $data['wishlist'] = $this->M_wishlist->getWishlistByUser($id_user);
             $this->load->view('wishlist', $data);
         }
 	}
+
+	function insert($id_produk){
+		$id_user = $_SESSION['ID_USER'];
+		$query = $this->M_wishlist->insert($id_produk, $id_user);
+        if($query == true){
+         	redirect('/Wishlist', 'refresh');
+        }
+
+	}
+
+	function deleteWishlist($id){
+		$query = $this->M_wishlist->deleteWishlist($id);
+		if($query == true){
+         	redirect('/Wishlist', 'refresh');
+        }else{
+           	redirect('/Wishlist', 'refresh');
+        }
+	}
+
 }

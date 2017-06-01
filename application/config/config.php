@@ -25,7 +25,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 
 
-$config['base_url'] = 'http://localhost/web-app/';
+$config['base_url'] = 'http://localhost:8090/web-app/';
 
 
 /*

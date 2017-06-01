@@ -27,7 +27,16 @@
             $query = $this->db->query("SELECT * FROM `produk` WHERE `id_status_produk`=$id_status_produk");
 			return $query->result();
         }
+        
+        function getProdukByKategoriLimit($id_kategori_produk, $id_status_produk){
+            $query = $this->db->query("SELECT p.id_produk, p.foto_produk_depan, p.nama_produk, u.nama_user, p.rating_produk, p.harga_produk FROM produk p join user u ON p.id_user = u.id_user WHERE `id_kategori_produk`=$id_kategori_produk AND `id_status_produk` = $id_status_produk LIMIT 4");
+			return $query->result();
+        }
 
+        function searchProduk($key){
+            $query = $this->db->query("SELECT * FROM `produk` WHERE nama_produk LIKE %$key%");
+			return $query->result();
+        }
 
         function insert($nama_produk, $deskripsi, $foto_produk_depan, $foto_produk_belakang, $id_jenis_produk, $id_kategori_produk, $tag_produk, $harga_produk, $id_user, $id_status_produk){
             
