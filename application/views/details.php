@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0  user-scalable=no"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0  user-scalable=no"/>
     <script src="<?php echo base_url('assets/assets/js/jquery.min.js');?>"></script>
     <script src="<?php echo base_url('assets/bootstrap/js/bootstrap.min.js');?>"></script>
     <!--Import Google Icon Font-->
@@ -15,9 +15,9 @@
 
    <link href="<?php echo base_url('assets/bootstrap/css/bootstrap.min.css'); ?>" rel="stylesheet">
    <script type="text/javascript" src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
-<script type="text/javascript" src="assets/js/jquery.uploadPreview.min.js"></script>
+    <script type="text/javascript" src="assets/js/jquery.uploadPreview.min.js"></script>
 
-<style type="text/css">.thumb-image{float:left;width:100px;position:relative;padding:5px;}</style>
+    <style type="text/css">.thumb-image{float:left;width:100px;position:relative;padding:5px;}</style>
 
 
 </head>

@@ -13,6 +13,12 @@
         	$this->load->database();
     	}
 
+		// rekening admin
+		function getAdminRek(){
+			$query = $this->db->query("SELECT * FROM `bank`");
+		}
+		
+		//rekening user
         function getRekeningByUser($id_user){
 			$query = $this->db->query("SELECT * FROM `rekening` WHERE id_user = $id_user");
 			return $query->result();
@@ -37,5 +43,6 @@
 			$this->db->update('rekening', $data, $where);
 			return $this->db->affected_rows();
 		}
+		
 
     }

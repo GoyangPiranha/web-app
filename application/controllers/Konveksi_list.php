@@ -18,8 +18,19 @@ class Konveksi_list extends CI_Controller {
      * map to /index.php/welcome/<method_name>
      * @see https://codeigniter.com/user_guide/general/urls.html
      */
-    public function index()
-    {
-        $this->load->view('konveksi_list');
+    function __construct(){
+        parent::__construct();
+        $this->load->helper('url');
+        $this->load->model('M_konveksi','',TRUE);
     }
+	public function index()
+	{
+        if(isset($_SESSION['ID_USER'])){
+            //$_SESSION['STATUS'] = "";
+            $data['konveksi'] = $this->M_konveksi->getKonveksi();
+            $this->load->view('konveksi_list', $data);
+        }else {
+				$this->load->view('login');
+		}
+	}
 }

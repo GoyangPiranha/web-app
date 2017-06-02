@@ -90,6 +90,8 @@
                                 <thead>
                                     <tr>
                                         <th style="width:20px;">No</th>
+                                        <th>Nama Pemilik</th>
+                                        <th>Nomor Rekening</th>
                                         <th>Nama Bank</th>
                                         <th>Logo Bank</th>
                                         <th style="width:40px;">&nbsp;</th>
@@ -98,6 +100,8 @@
                                 <tbody>
                                     <tr>
                                         <td>1</td>
+                                        <td>System Architect</td>
+                                        <td>System Architect</td>
                                         <td>System Architect</td>
                                         <td>Edinburgh</td>
                                         <th class="text-center"><a data-toggle="modal" data-target="#update_bank" class="btn btn-info btn-flat" style="padding:5px 5px;" href="#"><i class="fa fa-sm fa-pencil" ></i></a><a class="btn btn-danger btn-flat" style="padding:5px 5px;" href="#"><i class="fa fa-sm fa-trash" ></i></a></th>

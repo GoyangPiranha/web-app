@@ -365,7 +365,7 @@
                             <div class="col-xs-10">
                                 <input name="submit" type="submit" href="<?php echo base_url('Profile_edit/updateUser'); ?>" class="btn btn-custom-yellow" value="Simpan" />
                             </div>
-                            <span class="btn btn-primary" data-toggle="snackbar" data-content="Hellow">Snack</span>
+                            <!--<span class="btn btn-primary" data-toggle="snackbar" data-content="Hellow">Snack</span>-->
                         </div>
                     </div>
                 </form>

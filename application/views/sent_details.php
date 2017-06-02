@@ -227,8 +227,9 @@
                     </div>
                 </div>
             </div>
-            
-             <input name="lanjut" type="submit" class="btn btn-block btn-custom-yellow" value="Lanjut" /> 
+             
+             <button type="button" class="btn btn-block btn-custom-yellow"><a href="<?=base_url('');?>Payment_method">Lanjut</a></button>
+             <!--<input name="lanjut" type="submit" class="btn btn-block btn-custom-yellow" value="Lanjut" /> -->
         </form>
     </div>
 </div>

@@ -69,7 +69,7 @@ class Daftar extends CI_Controller {
 				$location = './assets/images/Profil/';
 				move_uploaded_file($tmp_name, $location.$fotoprofile);
 				$p = $this->M_users->registrasi($username_user, $password_user, $nama_user, $tanggal_lahir_user, $kota_user, $alamat_user, $fotoprofile, $email_user, $contact_user);
-				if ($p === TRUE) {
+				if ($p == TRUE) {
 					redirect('Login/index', 'refresh');
 				}else{
 					redirect('Daftar/index','refresh');

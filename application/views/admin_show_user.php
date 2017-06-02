@@ -103,17 +103,19 @@
                                 </thead>
                                 <tbody>
                                     <tr>
+                                    <?php foreach($users as $row):?>
                                         <td>1</td>
-                                        <td>System Architect</td>
-                                        <td>Edinburgh</td>
-                                        <td>Edinburgh</td>
-                                        <td>Edinburgh</td>
-                                        <td>Edinburgh</td>
-                                        <td>Edinburgh</td>
-                                        <td>Edinburgh</td>
-                                        <td>Edinburgh</td>
-                                        <td>Edinburgh</td>
+                                        <td><?php echo $row->nama_user;?></td>
+                                        <td><?php echo $row->username_user;?></td>
+                                        <td><?php echo $row->tanggal_lahir_user;?></td>
+                                        <td><?php echo $row->alamat_user;?></td>
+                                        <td><?php echo $row->nama_kota;?></td>
+                                        <td><?php echo $row->propinsi;?></td>
+                                        <td><?php echo $row->email_user;?></td>
+                                        <td><?php echo $row->contact_user;?></td>
+                                        <td><?php echo $row->jenis_user;?></td>
                                         <th class="text-center"><a title="Upgrade User" data-toggle="modal" data-target="#upgrade_user" class="btn btn-info btn-flat" style="padding:5px 5px;" href="#"><i class="fa fa-sm fa-pencil" ></i></a></th>
+                                    <?php endforeach;?>
                                 </tbody>
                             </table>
                         </div>

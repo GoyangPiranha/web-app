@@ -231,7 +231,8 @@
 
 
         </div>
-         <input name="submit" type="submit" class="btn btn-block btn-custom-green submit" value="Lanjut"></input> 
+        <button type="button" class="btn btn-block btn-custom-yellow"><a href="<?=base_url('');?>Sent_details">Lanjut</a></button>
+         <!--<input name="submit" type="submit" class="btn btn-block btn-custom-green submit" value="Lanjut"></input> -->
     </form>
 </div>
 

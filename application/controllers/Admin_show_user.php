@@ -18,10 +18,16 @@ class Admin_show_user extends CI_Controller {
 	 * map to /index.php/welcome/<method_name>
 	 * @see https://codeigniter.com/user_guide/general/urls.html
 	 */
+
+	function __construct(){
+		parent::__construct();
+		$this->load->model('M_users','',TRUE);
+	}
 	public function index()
 	{
 		if (isset($_SESSION['USERNAME'])) {
-			$this->load->view('admin_show_user');
+			$data['users'] = $this->M_users->getNoAdmin();
+			$this->load->view('admin_show_user', $data);
 		}
 		else {
 			$this->load->view('admin_login');

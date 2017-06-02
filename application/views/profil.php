@@ -23,7 +23,8 @@
 
     <div class="fb-profile">
         <?php foreach($user_data as $row):?>
-        <img align="left" class="fb-image-lg" src="<?=base_url();?>assets/images/<?php if($_SESSION['BACKGROUND']==""){echo "default.jpg";}elseif(isset($_SESSION['BACKGROUND'])) {echo $_SESSION['BACKGROUND'];} else{echo "f1.jpg";}?>" alt="Profile image example"/>
+        
+        <img align="left" class="fb-image-lg" src="<?=base_url();?>assets/images/Sampul/<?php if(isset($_SESSION['BACKGROUND'])) {echo $_SESSION['BACKGROUND'];}elseif($_SESSION['BACKGROUND']==""){echo "default.jpg";} else{echo "f1.jpg";}?>" alt="Profile image example"/>
         <img align="left" class="fb-image-profile thumbnail-profile" src="<?=base_url();?>assets/images/Profil/<?php if (isset($_SESSION['AVATAR'])) {echo $_SESSION['AVATAR'];}else{echo"default_profile.jpg";}?>" alt="Profile image example"/>
 
     </div>
@@ -31,7 +32,7 @@
     <div class="row">
         <div class="col-xs-12">
             <h4 class="text-center" style="margin-top: -15px;"><strong><?php echo $_SESSION['FULLNAME'];?></strong></h4>
-            <h5 class="text-center">Akun Reguler</h5>
+            <h5 class="text-center">Akun <?php if($row->jenis_user==1){echo 'Reguler';}else{echo 'Premium';}?></h5>
             <h5 class="text-center">Nomor ID: <?php echo $row->id_user?> </h5>
         </div>
 

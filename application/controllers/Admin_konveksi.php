@@ -38,7 +38,7 @@ class Admin_konveksi extends CI_Controller {
 	function add(){
 		$nama = $_POST['nama_konveksi'];
 		$harga = $_POST['harga_konveksi'];
-		$deskripsi = $_POST['harga_konveksi'];
+		$deskripsi = $_POST['deskripsi_konveksi'];
 		$logo = $_FILES['logo_konveksi']['name'];
 		$uniqid = uniqid();
 		$logo_konveksi = $uniqid.$logo;
@@ -50,7 +50,7 @@ class Admin_konveksi extends CI_Controller {
 			$this->load->view('admin_konveksi', $data);
 		}
 		else{
-			$location = '.assets/images/';
+			$location = '.assets/images/Konveksi/';
 			move_uploaded_file($tmp_name, $location.$logo_konveksi);
 			$check = $this->M_konveksi->insertKonveksi($nama, $deskripsi, $harga, $logo_konveksi);
 			if($check == true){

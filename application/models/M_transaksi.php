@@ -26,6 +26,11 @@
 			}
         }
 
+        function viewWishlist($id_user){
+            $query = $this->db->query("SELECT * FROM `wishlist` WHERE `id_user` = $id_user");
+            return $query->result();
+        }
+
 
 
     

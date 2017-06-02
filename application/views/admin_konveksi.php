@@ -88,6 +88,19 @@
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-body">
+                        <?php
+                        if (empty($status)) {
+                          echo "";
+                        }else{
+                          echo "<div class='alert alert-success alert-dismissible text-center' role='alert'>
+                            <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+                              <span aria-hidden='true'>&times;</span>
+                            </button>
+                            $status
+                          </div>";
+                          }
+
+                        ?>
                             <table class="table table-hover table-bordered" id="konveksi">
                                 <thead>
                                     <tr>
@@ -141,7 +154,7 @@
                         </div>
                         <div class="form-group">
                             <div class="col-md-12">
-                                <textarea class="form-control" rows="3" placeholder="Deskripsi konveksi"></textarea>
+                                <textarea value="" name="deskripsi_konveksi" class="form-control" rows="3" placeholder="Deskripsi konveksi"></textarea>
                             </div>
                         </div>
                         <div class="form-group">
@@ -189,7 +202,7 @@
                         </div>
                         <div class="form-group">
                             <div class="col-md-12">
-                                <textarea class="form-control" rows="3" placeholder="Deskripsi konveksi"></textarea>
+                                <textarea class="form-control" rows="3" placeholder="Deskripsi konveksi" name="deskripsi_konveksi"></textarea>
                             </div>
                         </div>
                         <div class="form-group">

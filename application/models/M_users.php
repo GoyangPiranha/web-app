@@ -107,4 +107,11 @@
 				return false;
 			}
 		}
+
+
+		//query get all user kecuali admin
+		function getNoAdmin(){
+			$query = $this->db->query("SELECT * FROM `user` WHERE `jenis_user` = 1");
+			return $query->result();
+		}
 }

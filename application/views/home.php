@@ -129,93 +129,27 @@
             <button type="button" class="seeall">See All</button>
         </div>
 
-        <div class="col-xs-6 col-md-4" id="produk">
+        <?php foreach($produkkaos as $produkkaos){?>
+        <div class="col-xs-6 col-md-3" id="produk">
             <div class="thumbnail">
-                <img src="<?php echo base_url('assets/images/sample1.png'); ?>" alt="" class="img-responsive">
+                <img src="assets/images/Product/<?php echo $produkkaos->foto_produk_depan ?>" alt="" class="img-responsive">
                 <div class="caption">
-                    <h5 id="produkname"><a href="#">First Product</a></h5>
-                    <p id="produkcaption">oleh Alvin Store</p>
-                    <p id="produkrating">Mostly Positive(123 review)</p>
-                    <h5 id="produkprice">$24.99</h5>
+                    <h5 id="produkname"><a href="#"><?php echo $produkkaos->nama_produk ?></a></h5>
+                    <p id="produkcaption">Oleh <?php echo $produkkaos->nama_user ?></p>
+                    <p id="produkrating"><?php echo $produkkaos->rating_produk ?></p>
+                    <h5 id="produkprice"><?php echo $produkkaos->harga_produk ?></h5>
                 </div>
                 <div class="row">
                     <div class="col-xs-6">
-                        <button type="button" class="btn btn-info btn-product">Whistlist</button>
+                        <a href="<?=base_url()?>Wishlist/insert/<?=$produkkaos->id_produk?>"><button type="button" class="btn btn-info btn-product">Whistlist</button></a>
                     </div>
                     <div class="col-xs-6">
-                        <button type="button" class="btn btn-success btn-product">Beli</button>
+                        <button type="button" class="btn btn-success btn-product"><a href="<?=base_url('');?>Konveksi_list">Beli</a></button>
                     </div>
                 </div>
             </div>
         </div>
-
-        <div class="col-xs-6 col-md-4" id="produk">
-            <div class="thumbnail">
-                <img src="<?php echo base_url('assets/images/sample1.png'); ?>" alt="" class="img-responsive">
-                <div class="caption">
-                    <h5 id="produkname"><a href="#">First Product</a></h5>
-                    <p id="produkcaption">oleh Alvin Store</p>
-                    <p id="produkrating">Mostly Positive(123 review)</p>
-                    <h5 id="produkprice">$24.99</h5>
-                </div>
-                <div class="row">
-                    <div class="col-xs-6">
-                        <button type="button" class="btn btn-info btn-product">Whistlist</button>
-                    </div>
-                    <div class="col-xs-6">
-                        <button type="button" class="btn btn-success btn-product">Beli</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-xs-6">
-            <p>Kemeja</p>
-        </div>
-        <div class="col-xs-6">
-            <button type="button" class="seeall">See All</button>
-        </div>
-
-        <div class="col-xs-6 col-md-4" id="produk">
-            <div class="thumbnail">
-                <img src="<?php echo base_url('assets/images/sample1.png'); ?>" alt="" class="img-responsive">
-                <div class="caption">
-                    <h5 id="produkname"><a href="#">First Product</a></h5>
-                    <p id="produkcaption">oleh Alvin Store</p>
-                    <p id="produkrating">Mostly Positive(123 review)</p>
-                    <h5 id="produkprice">$24.99</h5>
-                </div>
-                <div class="row">
-                    <div class="col-xs-6">
-                        <button type="button" class="btn btn-info btn-product">Whistlist</button>
-                    </div>
-                    <div class="col-xs-6">
-                        <!-- <button type="button" class="btn btn-success">Beli</button> -->
-                        <button type="button" class="btn btn-success btn-product"><a href="<?php echo base_url('Konveksi_list');?>">Beli</a></button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-xs-6 col-md-4" id="produk">
-            <div class="thumbnail">
-                <img src="<?php echo base_url('assets/images/sample1.png'); ?>" alt="" class="img-responsive">
-                <div class="caption">
-                    <h5 id="produkname"><a href="#">First Product</a></h5>
-                    <p id="produkcaption">oleh Alvin Store</p>
-                    <p id="produkrating">Mostly Positive(123 review)</p>
-                    <h5 id="produkprice">$24.99</h5>
-                </div>
-                <div class="row">
-                    <div class="col-xs-6">
-                        <button type="button" class="btn btn-info btn-product">Whistlist</button>
-                    </div>
-                    <div class="col-xs-6">
-                        <button type="button" class="btn btn-success btn-product">Beli</button>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <?php } ?>
 
     </div>
 </div>
@@ -223,7 +157,7 @@
 <nav class="navbar navbar-default navbar-fixed-bottom" style="background: #606062;">
     <div class="row" style="margin: 0;">
         <div class="col-xs-4" style="text-align: center;">
-            <a href="<?php echo base_url("Detail/wishlist");?>"><img id="footimg" src="<?php echo base_url('assets/images/shopping-cart.png'); ?>"></a>
+            <a href="<?php echo base_url("Wishlist");?>"><img id="footimg" src="<?php echo base_url('assets/images/shopping-cart.png'); ?>"></a>
         </div>
         <div class="col-xs-4" style="text-align: center;">
             <a href="<?php echo base_url("Home");?>"><img id="footimg" src="<?php echo base_url('assets/images/home.png'); ?>"></a>
