@@ -33,11 +33,11 @@ class Throw_it extends CI_Controller {
 
             // $id_jenis_produk = $_POST[''];
             // $id_kategori_produk = $_POST[''];
-			$id_jenis_produk = 1;
-			$id_kategori_produk = 1;
+			$id_jenis_produk = $this->input->post('jenisproduk');
+			$id_kategori_produk = $_POST['kategoriproduk'];
             $tag_produk = $_POST['tags'];
             $harga_produk = $_POST['harga'];
-            
+            echo $id_jenis_produk;
 			 $location = './assets/images/Produk/';
         	move_uploaded_file($foto_depan_tmp, $location.$foto_produk_depan);
         	move_uploaded_file($foto_belakang_tmp, $location.$foto_produk_belakang);
