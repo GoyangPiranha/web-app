@@ -144,11 +144,9 @@
                         <a href="<?=base_url()?>Wishlist/insert/<?=$produkkaos->id_produk?>"><button type="button" class="btn btn-info btn-product">Whistlist</button></a>
                     </div>
                     <div class="col-xs-6">
-<<<<<<< Updated upstream
-                        <button type="button" class="btn btn-success btn-product"><a href="<?=base_url('');?>Konveksi_list">Beli</a></button>
-=======
+
                         <a href="<?=base_url()?>Konveksi_list/konveksi/<?=$produkkaos->id_kategori_produk?>"><button type="button" class="btn btn-success btn-product">Beli</button></a>
->>>>>>> Stashed changes
+
                     </div>
                 </div>
             </div>

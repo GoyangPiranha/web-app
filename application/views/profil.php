@@ -23,14 +23,9 @@
 
     <div class="fb-profile">
         <?php foreach($user_data as $row):?>
-<<<<<<< Updated upstream
-        
-        <img align="left" class="fb-image-lg" src="<?=base_url();?>assets/images/Sampul/<?php if(isset($_SESSION['BACKGROUND'])) {echo $_SESSION['BACKGROUND'];}elseif($_SESSION['BACKGROUND']==""){echo "default.jpg";} else{echo "f1.jpg";}?>" alt="Profile image example"/>
-        <img align="left" class="fb-image-profile thumbnail-profile" src="<?=base_url();?>assets/images/Profil/<?php if (isset($_SESSION['AVATAR'])) {echo $_SESSION['AVATAR'];}else{echo"default_profile.jpg";}?>" alt="Profile image example"/>
-=======
+
         <img align="left" class="fb-image-lg" src="<?=base_url();?>assets/images/Sampul/<?php echo $row->foto_background_user?>" alt="Profile image example"/>
         <img align="left" class="fb-image-profile thumbnail-profile" src="<?=base_url();?>assets/images/Profil/<?php echo $row->foto_profile_user?>" alt="Profile image example"/>
->>>>>>> Stashed changes
 
     </div>
 <div class="container">

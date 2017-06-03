@@ -8,7 +8,7 @@ class Throw_it extends CI_Controller {
 			 }
 		 
 		function index() {
-			if (isset($_SESSION['USERNAME'])) {
+			if (isset($_SESSION['ID_USER'])) {
 				$this->load->view('throw_it');
 			} else {
 				$this->load->view('login');
@@ -37,7 +37,7 @@ class Throw_it extends CI_Controller {
 			$id_kategori_produk = $_POST['kategoriproduk'];
             $tag_produk = $_POST['tags'];
             $harga_produk = $_POST['harga'];
-			 $location = './assets/images/Produk/';
+			 $location = './assets/images/Product/';
         	move_uploaded_file($foto_depan_tmp, $location.$foto_produk_depan);
         	move_uploaded_file($foto_belakang_tmp, $location.$foto_produk_belakang);
             if($_POST['simpan']){
@@ -58,6 +58,7 @@ class Throw_it extends CI_Controller {
 					// redirect('Login/index', 'refresh');
 				}else{
 					// redirect('Daftar/index','refresh');
+					echo("tru");
 				}
             }
 
