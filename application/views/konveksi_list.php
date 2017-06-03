@@ -29,20 +29,20 @@
             <div class="card list-view-column konveksi-col">
                 <div class="card-header" role="tab" id="bri">
                     <h5 class="mb-0">
-                        <a data-toggle="collapse" data-parent="#accordion" href="#first" aria-expanded="true" aria-controls="collapseOne">
+                        <a data-toggle="collapse" data-parent="#accordion" href="<?php echo "#".$konveksi->nama ?>" aria-expanded="true" aria-controls="collapseOne">
                             <div class="radio radio-primary">
                                 <strong><?php echo $konveksi->nama ?></strong>
                             </div>
                         </a>
                     </h5>
                 </div>
-                <div id="first" class="collapse" role="tabpanel" aria-labelledby="bri">
+                <div id="<?php echo $konveksi->nama ?>" class="collapse" role="tabpanel" aria-labelledby="bri">
                     <div class="card-block">
                         <div class="row" id="row-konveksi">
                             <div class="col-lg-12">
                                 <div class="row">
                                     <div class="col-lg-12" style="margin-bottom: 10px;">
-                                        <img id="img-konveksi" class="img-responsive center-block" src="assets/images/<?php echo $konveksi->logo ?>" alt="product-img">
+                                        <img id="img-konveksi" class="img-responsive center-block" src="<?php echo base_url(); ?>assets/images/Konveksi/<?php echo $konveksi->logo; ?>" alt="product-img">
                                     </div>
                                 </div>
                             </div>
@@ -66,7 +66,7 @@
                             </div>
                             <div class="col-xs-12"><div class="line-separator" id="separator"></div></div>
                             <div class="col-xs-12">
-                                <a href="<?=base_url()?>Wishlist/deleteWishlist/<?=$wishlist->id?>"><input name="submit" type="submit" class="btn btn-block btn-custom-green submit" value="Lanjut"></input></a>
+                                <a href=""><input name="submit" type="submit" class="btn btn-block btn-custom-green submit" value="Lanjut"></input></a>
                             </div>
                         </div>
                     </div>

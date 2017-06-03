@@ -18,12 +18,24 @@ class Details_produk extends CI_Controller {
      * map to /index.php/welcome/<method_name>
      * @see https://codeigniter.com/user_guide/general/urls.html
      */
+
+      function __construct(){
+        parent::__construct();
+        $this->load->helper('url');
+        $this->load->model('M_produk','', TRUE);
+    }
+
     public function index()
     {
-        if (isset($_SESSION['USERNAME'])) { 
+        if (isset($_SESSION['ID_USER'])) { 
             $this->load->view('details');
             } else {
                 $this->load->view('login');
             }
+    }
+
+    function details($id){
+        $data['produk'] = $this->M_produk->get_produk_by_id($id);
+        $this->load->view('details',$data);
     }
 }

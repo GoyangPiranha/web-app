@@ -18,8 +18,13 @@
 			return $query->result();
         }
 
+        function getProdukUser($id_user){
+            $query = $this->db->query("SELECT p.*, u.* FROM produk p join user u ON p.id_user = u.id_user WHERE p.id_user = $id_user");
+			return $query->result();
+        }
+
         function get_produk_by_id($id){
-            $query = $this->db->query("SELECT * FROM `produk` WHERE `id_produk`= $id");
+            $query = $this->db->query("SELECT p.*, u.* FROM produk p join user u ON p.id_user = u.id_user WHERE `id_produk`= $id");
 			return $query->result();
         }
 
@@ -29,7 +34,7 @@
         }
         
         function getProdukByKategoriLimit($id_kategori_produk, $id_status_produk){
-            $query = $this->db->query("SELECT p.id_produk, p.foto_produk_depan, p.nama_produk, u.nama_user, p.rating_produk, p.harga_produk FROM produk p join user u ON p.id_user = u.id_user WHERE `id_kategori_produk`=$id_kategori_produk AND `id_status_produk` = $id_status_produk LIMIT 4");
+            $query = $this->db->query("SELECT p.*, u.* FROM produk p join user u ON p.id_user = u.id_user WHERE `id_kategori_produk`=$id_kategori_produk AND `id_status_produk` = $id_status_produk LIMIT 4");
 			return $query->result();
         }
 
@@ -39,9 +44,8 @@
         }
 
         function insert($nama_produk, $deskripsi, $foto_produk_depan, $foto_produk_belakang, $id_jenis_produk, $id_kategori_produk, $tag_produk, $harga_produk, $id_user, $id_status_produk){
-            
-            $query = $this->db->query("INSERT INTO `produk`(`nama_produk`, `deskripsi`, `foto_produk_depan`, `foto_produk_belakang`, `id_jenis_produk`, `id_kategori_produk`, `tag_produk`, `harga_produk`, `id_user`, `id_status_produk`) 
-            VALUES ('$nama_produk', '$deskripsi', '$foto_produk_depan', '$foto_produk_belakang', $id_jenis_produk, $id_kategori_produk, '$tag_produk', $harga_produk, $id_user, $id_status_produk)");
+            $query = $this->db->query("INSERT INTO `produk`(`nama_produk`, `deskripsi`, `foto_produk_depan`, `foto_produk_belakang`, `id_jenis_produk`, `id_kategori_produk`, `tag_produk`, `harga_produk`, `id_user`, `id_status_produk`)
+            VALUES ('$nama_produk', '$deskripsi', '$foto_produk_depan', '$foto_produk_belakang', $id_jenis_produk, $id_kategori_produk, '$tag_produk', '$harga_produk', $id_user,$id_status_produk)");
             if ($query == true) {
 				return true;
 			}

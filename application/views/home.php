@@ -50,15 +50,15 @@
                 </div>
             </div>
 </nav>
-
+<?php foreach($user as $row){ ?>
 <div class="w3-sidebar w3-bar-block w3-border-right" style="display:none; width: 250px; overflow: hidden; background-color: #FFC300;" id="mySidebar">
-  <div class="row" style="background: url(./assets/images/Profil/<?php if (isset($_SESSION['AVATAR'])) {echo $_SESSION['AVATAR'];}else{echo"profil.png";}?>) 50% 50% no-repeat;">
+  <div class="row" style="background: url(./assets/images/Sampul/<?php echo $row->foto_background_user ?>) 50% 50% no-repeat;">
             <div class="col-xs-4" id="profilmenu" >
-                <div style=" background: url(./assets/images/Profil/<?php if (isset($_SESSION['AVATAR'])) {echo $_SESSION['AVATAR'];}else{echo"profil.png";}?>) 50% 50% no-repeat; background-size: cover; overflow: hidden; width: 75px; height: 75px; border-radius: 50px;" class="circle">
+                <div style=" background: url(./assets/images/Profil/<?php echo $row->foto_profile_user ?>) 50% 50% no-repeat; background-size: cover; overflow: hidden; width: 75px; height: 75px; border-radius: 50px;" class="circle">
                 </div>
             </div>
             <div class="col-xs-6" style="text-align: left; line-height: 50%; margin-left: 5px; margin-right: -5px;">
-                <p style="color: white;  padding-left: 0; font-size: 110%;  padding-right: 5%; padding-top: 25px; line-height: 100%; "><?php echo $_SESSION['FULLNAME'];?></p>
+                <p style="color: white;  padding-left: 0; font-size: 110%;  padding-right: 5%; padding-top: 25px; line-height: 100%; "><?php echo $row->nama_user?></p>
                 <p style="color: orange; font-size: 80%; padding-top: 0;">Regular Account</p>
             </div>
             <div class="col-xs-2">
@@ -77,7 +77,7 @@
   <a href="<?php echo base_url('Home/logout'); ?>" class="w3-bar-item w3-button" id="menusidebar" style="text-decoration: none;"><h4>Logout</h4></a>
 
 </div>
-
+<?php } ?>
 
 
 
@@ -132,19 +132,23 @@
         <?php foreach($produkkaos as $produkkaos){?>
         <div class="col-xs-6 col-md-3" id="produk">
             <div class="thumbnail">
-                <img src="assets/images/Product/<?php echo $produkkaos->foto_produk_depan ?>" alt="" class="img-responsive">
+                <a href="<?=base_url()?>Details_produk/details/<?=$produkkaos->id_produk?>"><img src="<?php echo base_url(); ?>assets/images/Product/<?php echo $produkkaos->foto_produk_depan; ?>" alt="" class="img-responsive"></a>
                 <div class="caption">
-                    <h5 id="produkname"><a href="#"><?php echo $produkkaos->nama_produk ?></a></h5>
+                    <h5 id="produkname"><a href="<?=base_url()?>Details_produk/details/<?=$produkkaos->id_produk?>"><?php echo $produkkaos->nama_produk ?></a></h5>
                     <p id="produkcaption">Oleh <?php echo $produkkaos->nama_user ?></p>
                     <p id="produkrating"><?php echo $produkkaos->rating_produk ?></p>
-                    <h5 id="produkprice"><?php echo $produkkaos->harga_produk ?></h5>
+                    <h5 id="produkprice">Rp. <?php echo $produkkaos->harga_produk ?></h5>
                 </div>
                 <div class="row">
                     <div class="col-xs-6">
                         <a href="<?=base_url()?>Wishlist/insert/<?=$produkkaos->id_produk?>"><button type="button" class="btn btn-info btn-product">Whistlist</button></a>
                     </div>
                     <div class="col-xs-6">
-                        <button type="button" class="btn btn-success btn-product">Beli</button>
+<<<<<<< Updated upstream
+                        <button type="button" class="btn btn-success btn-product"><a href="<?=base_url('');?>Konveksi_list">Beli</a></button>
+=======
+                        <a href="<?=base_url()?>Konveksi_list/konveksi/<?=$produkkaos->id_kategori_produk?>"><button type="button" class="btn btn-success btn-product">Beli</button></a>
+>>>>>>> Stashed changes
                     </div>
                 </div>
             </div>

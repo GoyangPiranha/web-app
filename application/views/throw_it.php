@@ -11,8 +11,68 @@
     <link href="<?php echo base_url('assets/bootstrap/css/style.css'); ?>" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="//cdn.jsdelivr.net/bootstrap.tagsinput/0.4.2/bootstrap-tagsinput.css" />
-
+	<script
+  src="https://code.jquery.com/jquery-3.2.1.js"
+  integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
+  crossorigin="anonymous"></script>
 </head>
+<script type="text/javascript">
+				function init() {
+			$("img[data-type=data]").each(function (i, e) {
+				var _inputFile = $('<input/>')
+					.attr('type', 'file')
+					.attr('hidden', 'hidden')
+					.attr('accept','image/*')
+					.attr('onchange', 'readImage()')
+                    .attr('class',  'form-control')
+					.attr('data-image-placeholder', e.id)
+                    .attr('name', e.id + "name")
+					.attr('required','');
+				$(e.parentElement).append(_inputFile);
+				$(e).on("click", _inputFile, triggerClick);
+			});
+			$('input[name=jenisproduk]').on('change', function() {
+    			$('input[name=jenisproduk]').not(this).prop('checked', false);  
+			});
+			$('input[name=kategoriproduk]').on('change', function() {
+    			$('input[name=kategoriproduk]').not(this).prop('checked', false);  
+			});
+		}
+		function triggerClick(e) {
+			e.data.click();
+		}
+
+		Element.prototype.readImage = function () {
+			var _inputFile = this;
+			if (_inputFile && _inputFile.files && _inputFile.files[0]) {
+				var _fileReader = new FileReader();
+				_fileReader.onload = function (e) {
+					var _imagePlaceholder = _inputFile.attributes.getNamedItem("data-image-placeholder").value;
+					var _img = $("#" + _imagePlaceholder);
+					_img.attr("src", e.target.result);
+				};
+				_fileReader.readAsDataURL(_inputFile.files[0]);
+			}
+		};
+
+		(
+
+		function (yourcode) {
+			"use strict";
+			yourcode(window.jQuery, window, document);
+		}(
+
+		function ($, window, document) {
+			"use strict";
+			// The $ is now locally scoped 
+			$(function () {
+				// The DOM is ready!
+				init();
+			});
+
+			// The rest of your code goes here!
+		}));
+    </script>
 <body style="margin-top: 60px; background: #FFFFFF">
 <!-- NAVBAR -->
 <nav class="navbar-default navbar-fixed-top">
@@ -45,47 +105,37 @@
                 <div class="col-xs-6 text-center">
                     <h5 class="small"><strong>Design Tampak Depan</strong></h5>
                 </div>
+            </div>
+  
+			<div class="row">
+                <div class="col-xs-12 center-block">
+                    <div class="form-group center-block">
+					<div class="input-group center-block">
+						<img class="center-block img-responsive" name="desaindepan" id="desaindepan" src="#" data-type="data" /></div>
+                    </div>
+                </div>
+			</div>
+			<div class="row" style="margin-bottom: 4px;">
                 <div class="col-xs-6 text-center">
                     <h5 class="small"><strong>Design Tampak Belakang</strong></h5>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-xs-6">
-                    <div class="form-login">
-                        <div class="outter-form-throwit">
-                            <div class="row">
-                                <div class="col-xs-12 text-center">
-                                    <!--<div id="image-preview">
-                                        <span class="glyphicon glyphicon-plus" for="image-upload" id="image-label1"></span>-->
-                                        <!--<label for="image-upload" id="image-label">Choose File</label>-->
-                                        <!--<input type="file" name="image" id="image-upload" />
-                                    </div>-->
-                                    <span class="glyphicon glyphicon-plus"></span>
-                                </div>
-                            </div>
-                        </div>
+  
+			<div class="row">
+                <div class="col-xs-12 center-block">
+                    <div class="form-group center-block">
+					<div class="input-group center-block">
+						<img class="center-block img-responsive" name="desainbelakang" id="desainbelakang" src="#" data-type="data" /></div>
                     </div>
                 </div>
-                <div class="col-xs-6">
-                    <div class="form-login">
-                        <div class="outter-form-throwit">
-                            <div class="row">
-                                <div class="col-xs-12 text-center">
-                                    <span class="glyphicon glyphicon-plus"></span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
+			</div>
+            
             <div class="line-separator" id="separator"></div> <!--separator-->
-
             <!--nama dan deskripsi barang-->
             <div class="row">
                 <div class="col-xs-12">
                     <div class="form-group">
-                        <div class="input-group">
+                        <div class="input-group ">
                             <span class="input-group-addon" id="basic-addon1"><span class="fa fa-reorder"></span></span>
                             <input name="namabarang" type="text" class="form-control" placeholder="Nama Barang" aria-describedby="basic-addon1" required>
                         </div>
@@ -117,13 +167,13 @@
                         <div class="row" style="padding-left: 15px;">
                             <div class="col-xs-12">
                                 <div class="checkbox box-aggrement center-block">
-                                    <input type="checkbox" id="male_cloth">
+                                    <input type="checkbox" id="male_cloth" name="jenisproduk" value=1>
                                     <label for="male_cloth" class="small text-justify">Pakaian Pria</label>
                                 </div>
                             </div>
                             <div class="col-xs-12">
                                 <div class="checkbox box-aggrement center-block">
-                                    <input type="checkbox" id="female_cloth">
+                                    <input type="checkbox" id="female_cloth" name="jenisproduk" value=2>
                                     <label for="female_cloth" class="small text-justify">Pakaian Wanita</label>
                                 </div>
                             </div>
@@ -134,25 +184,25 @@
                         <div class="row">
                             <div class="col-xs-12">
                                 <div class="checkbox box-aggrement center-block">
-                                    <input type="checkbox" id="baju">
+                                    <input type="checkbox" id="baju" name="kategoriproduk" value=1>
                                     <label for="baju" class="small text-justify">Baju</label>
                                 </div>
                             </div>
                             <div class="col-xs-12">
                                 <div class="checkbox box-aggrement center-block">
-                                    <input type="checkbox" id="jaket">
+                                    <input type="checkbox" name="kategoriproduk" id="jaket" value=2>
                                     <label for="jaket" class="small text-justify">Jaket</label>
                                 </div>
                             </div>
                             <div class="col-xs-12">
                                 <div class="checkbox box-aggrement center-block">
-                                    <input type="checkbox" id="topi">
+                                    <input type="checkbox" id="topi" name="kategoriproduk" value=3>
                                     <label for="topi" class="small text-justify">Topi</label>
                                 </div>
                             </div>
                             <div class="col-xs-12">
                                 <div class="checkbox box-aggrement center-block">
-                                    <input type="checkbox" id="celana">
+                                    <input type="checkbox" id="celana" name="kategoriproduk" value=4>
                                     <label for="celana" class="small text-justify">Celana</label>
                                 </div>
                             </div>

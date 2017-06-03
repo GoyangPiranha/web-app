@@ -83,7 +83,7 @@
                       <label class="input-group-btn">
                         <span class="btn btn-custom-yellow"> <span class="glyphicon glyphicon-folder-open"></span></span>
                       </label>
-                        <input name="userfile" type="file" class="form-control"  readonly  required>
+                        <input name="userfile" type="file" accept="image/*" class="form-control"  readonly  required>
                     </div>
                   </div>
                   <span class="help-block" style="color: #FFC300;">*Pilih Foto Profil</span>

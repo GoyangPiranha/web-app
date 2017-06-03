@@ -12,10 +12,16 @@
         	$this->load->database();
     	}
 
-        function getKonveksi(){
-            $query = $this->db->query("SELECT * FROM konveksi");
-            return $query->result();
+        function insertKonveksi($nama, $deskripsi, $harga, $logo){
+            $query = $this->db->query("INSERT INTO `konveksi` (`nama`, `deskripsi`, `harga`, `logo`) VALUES ('$nama', '$deskripsi', '$harga', '$logo')");
+            if($query == true){
+                return true;
+            }
         }
 
+        function getKonveksi(){
+            $query = $this->db->query("SELECT * FROM `konveksi`");
 
+            return $query->result();
+        }
     }

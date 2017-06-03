@@ -10,9 +10,10 @@ class Home extends CI_Controller {
 			 }
 
 		function index() {
-			if (isset($_SESSION['USERNAME'])) {
+			if (isset($_SESSION['ID_USER'])) {
+				$id_user = $_SESSION['ID_USER'];
 				$data['produkkaos'] = $this->M_produk->getProdukByKategoriLimit(4, 3);
-				//$data = $this->load->model->M_produk->getProduk($id_status_produk);
+				$data['user'] = $this->M_users->getUserById($id_user);
 				$this->load->view('home', $data);
 			} else {
 				$this->load->view('login');

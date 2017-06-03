@@ -2,7 +2,7 @@
 <html lang="en" style="margin-bottom: 65px">
 <head>
     <meta charset="UTF-8">
-    <title><?php echo $_SESSION['FULLNAME'];?> Profil</title>
+    <title>Profil</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0,  user-scalable=no"/>
     <link href="<?php echo base_url('assets/bootstrap/css/bootstrap.min.css'); ?>" rel="stylesheet">
     <link href="<?php echo base_url('assets/bootstrap/css/style.css'); ?>" rel="stylesheet">
@@ -10,12 +10,12 @@
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
 
 </head>
-<body style="margin-top: 6px; margin-bottom: 60px; background: white;">
+<body style="margin-top: 0; margin-bottom: 60px; background: white;">
 <div>
     <nav class="navbar-default navbar-fixed-top">
     <div class="container">
         <div class="navbar-header">
-            <a class="navbar-brand" href="<?php echo base_url('login'); ?>"><span class="glyphicon glyphicon-chevron-left"></span><span  id="registration">Profil</span></a>
+            <a class="navbar-brand" href="javascript:window.history.go(-1);"><span class="glyphicon glyphicon-chevron-left"></span><span  id="registration">Profil</span></a>
         </div>
     </div><!--/.container -->
 </nav>
@@ -23,14 +23,20 @@
 
     <div class="fb-profile">
         <?php foreach($user_data as $row):?>
+<<<<<<< Updated upstream
+        
         <img align="left" class="fb-image-lg" src="<?=base_url();?>assets/images/Sampul/<?php if(isset($_SESSION['BACKGROUND'])) {echo $_SESSION['BACKGROUND'];}elseif($_SESSION['BACKGROUND']==""){echo "default.jpg";} else{echo "f1.jpg";}?>" alt="Profile image example"/>
         <img align="left" class="fb-image-profile thumbnail-profile" src="<?=base_url();?>assets/images/Profil/<?php if (isset($_SESSION['AVATAR'])) {echo $_SESSION['AVATAR'];}else{echo"default_profile.jpg";}?>" alt="Profile image example"/>
+=======
+        <img align="left" class="fb-image-lg" src="<?=base_url();?>assets/images/Sampul/<?php echo $row->foto_background_user?>" alt="Profile image example"/>
+        <img align="left" class="fb-image-profile thumbnail-profile" src="<?=base_url();?>assets/images/Profil/<?php echo $row->foto_profile_user?>" alt="Profile image example"/>
+>>>>>>> Stashed changes
 
     </div>
 <div class="container">
     <div class="row">
         <div class="col-xs-12">
-            <h4 class="text-center" style="margin-top: -15px;"><strong><?php echo $_SESSION['FULLNAME'];?></strong></h4>
+            <h4 class="text-center" style="margin-top: -15px;"><strong><?php echo $row->nama_user?></strong></h4>
             <h5 class="text-center">Akun <?php if($row->jenis_user==1){echo 'Reguler';}else{echo 'Premium';}?></h5>
             <h5 class="text-center">Nomor ID: <?php echo $row->id_user?> </h5>
         </div>
@@ -101,7 +107,8 @@
         <!-- separator -->
         <div class="col-xs-12"><div class="line-separator" id="separator"></div></div>
         <!-- end of separator -->
-
+        <?php endforeach;?>
+        
         <!-- produk -->
         <div class="col-xs-12">
           <h4 style="padding-left: 15px;"><strong>Produk Anda</strong></h4>
@@ -109,52 +116,33 @@
         <!-- separator -->
         <!-- <div class="col-xs-12"><div class="line-separator" id="separator"></div></div> -->
         <!-- end of separator -->
+        
         <div class="container">
-          <div class="col-xs-6 col-md-4" id="produk">
-              <div class="thumbnail">
-                  <img src="<?php echo base_url('assets/images/sample1.png'); ?>" alt="" class="img-responsive">
-                  <div class="caption">
-                      <h5 id="produkname"><a href="#">First Product</a></h5>
-                      <p id="produkcaption">oleh Alvin Store</p>
-                      <p id="produkrating">Mostly Positive(123 review)</p>
-                      <h5 id="produkprice">$24.99</h5>
-                  </div>
-                  <div class="row">
-                      <div class="col-xs-6">
-                          <button type="button" class="btn btn-info btn-product center-block">Jual</button>
-                      </div>
-                      <div class="col-xs-6">
-                          <button type="button" class="btn btn-success btn-product center-block">Simpan</button>
-                      </div>
-                  </div>
-              </div>
-          </div>
-
-          <div class="col-xs-6 col-md-4" id="produk">
-              <div class="thumbnail">
-                  <img src="<?php echo base_url('assets/images/sample1.png'); ?>" alt="" class="img-responsive">
-                  <div class="caption">
-                      <h5 id="produkname"><a href="#">First Product</a></h5>
-                      <p id="produkcaption">oleh Alvin Store</p>
-                      <p id="produkrating">Mostly Positive(123 review)</p>
-                      <h5 id="produkprice">$24.99</h5>
-                  </div>
-                  <div class="row">
-                      <div class="col-xs-6">
-                          <button type="button" class="btn btn-info btn-product center-block">Jual</button>
-                      </div>
-                      <div class="col-xs-6">
-                          <button type="button" class="btn btn-success btn-product center-block">Simpan</button>
-                      </div>
-                  </div>
-              </div>
-          </div>
+        <?php foreach($user_produk as $produk){ ?>
+        <div class="col-xs-6 col-md-3" id="produk">
+            <div class="thumbnail">
+                <a href="<?=base_url()?>Details_produk/details/<?=$produk->id_produk?>"><img src="<?php echo base_url(); ?>assets/images/Product/<?php echo $produk->foto_produk_depan; ?>" alt="" class="img-responsive"></a>
+                <div class="caption">
+                    <h5 id="produkname"><a href="<?=base_url()?>Details_produk/details/<?=$produk->id_produk?>"><?php echo $produk->nama_produk ?></a></h5>
+                    <p id="produkcaption">Oleh <?php echo $produk->nama_user ?></p>
+                    <p id="produkrating"><?php echo $produk->rating_produk ?></p>
+                    <h5 id="produkprice">Rp. <?php echo $produk->harga_produk ?></h5>
+                </div>
+                <!--<div class="row">
+                    <div class="col-xs-6">
+                        <a href="<?=base_url()?>Wishlist/insert/<?=$produk->id_produk?>"><button type="button" class="btn btn-info btn-product" style="margin-left:10%;">Jual</button></a>
+                    </div>
+                    <div class="col-xs-6">
+                        <a href="<?=base_url()?>Konveksi_list/konveksi/<?=$produk->id_kategori_produk?>"><button type="button" class="btn btn-success btn-product" style="margin-left:10%;">Simpan</button></a>
+                    </div>
+                </div>-->
+            </div>   
         </div>
-
+    <?php } ?>
+        
 
     </div>
 </div>
-<?php endforeach;?>
 
 
 <nav class="navbar navbar-default navbar-fixed-bottom" style="background: #606062;">

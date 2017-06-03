@@ -26,11 +26,29 @@
 			}
         }
 
-        function viewWishlist($id_user){
-            $query = $this->db->query("SELECT * FROM `wishlist` WHERE `id_user` = $id_user");
+        
+        function getRiwayatPembelian($id_user){
+            $query = $this->db->query("SELECT t.id, t.id_user, t.id_status_transaksi, p.id_produk, p.nama_produk, u.id_user as id_user_produk, u.nama_user, p.foto_produk_depan, p.harga_produk 
+            FROM transaksi t, produk p, user u 
+            WHERE t.id_produk = p.id_produk AND p.id_user = u.id_user AND t.id_user = $id_user AND t.id_status_transaksi = 4");
             return $query->result();
         }
 
+<<<<<<< Updated upstream
+        function getUkuran(){
+            $query = $this->db->query("SELECT * FROM `ukuran`");
+
+            return $query->result();
+        }
+
+=======
+        function getRiwayatPenjualan($id_user){
+            $query = $this->db->query("SELECT t.id, t.id_user, t.id_status_transaksi, p.id_produk, p.nama_produk, u.id_user as id_user_produk, u.nama_user, p.foto_produk_depan, p.harga_produk 
+            FROM transaksi t, produk p, user u 
+            WHERE t.id_produk = p.id_produk AND p.id_user = u.id_user AND u.id_user = $id_user AND t.id_status_transaksi = 4");
+            return $query->result();
+        }
+>>>>>>> Stashed changes
 
 
     
