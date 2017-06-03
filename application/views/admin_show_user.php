@@ -94,7 +94,7 @@
                                         <th>Tanggal Lahir</th>
                                         <th>Alamat</th>
                                         <th>Kota</th>
-                                        <th>Propinsi</th>
+                                        <th>Provinsi</th>
                                         <th>Email</th>
                                         <th>Kontak</th>
                                         <th>Jenis User</th>
@@ -102,20 +102,21 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                     <?php foreach($users as $index => $row):?>
                                     <tr>
-                                    <?php foreach($users as $row):?>
-                                        <td>1</td>
+                                        <td><?php echo $index+1; ?></td>
                                         <td><?php echo $row->nama_user;?></td>
                                         <td><?php echo $row->username_user;?></td>
                                         <td><?php echo $row->tanggal_lahir_user;?></td>
                                         <td><?php echo $row->alamat_user;?></td>
                                         <td><?php echo $row->nama_kota;?></td>
-                                        <td><?php echo $row->propinsi;?></td>
+                                        <td><?php echo $row->nama_provinsi;?></td>
                                         <td><?php echo $row->email_user;?></td>
                                         <td><?php echo $row->contact_user;?></td>
-                                        <td><?php echo $row->jenis_user;?></td>
-                                        <th class="text-center"><a title="Upgrade User" data-toggle="modal" data-target="#upgrade_user" class="btn btn-info btn-flat" style="padding:5px 5px;" href="#"><i class="fa fa-sm fa-pencil" ></i></a></th>
-                                    <?php endforeach;?>
+                                        <td><?php if($row->jenis_user==1){echo "Reguler";}elseif($row->jenis_user==2){echo "Premium";}?></td>
+                                        <td class="text-center"><a title="Upgrade User" data-toggle="modal" data-target="#upgrade_user" class="btn btn-info btn-flat" style="padding:5px 5px;" href="#"><i class="fa fa-sm fa-pencil" ></i></a></td>
+                                    </tr>
+                                    <?php endforeach;?>                      
                                 </tbody>
                             </table>
                         </div>

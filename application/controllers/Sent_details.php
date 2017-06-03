@@ -22,12 +22,14 @@ class Sent_details extends CI_Controller {
         parent::__construct();
         $this->load->helper('url');
         $this->load->model('M_users','m_user',TRUE);
+		$this->load->model('M_transaksi','',TRUE);
     }
 	public function index()
 	{
 		if(isset($_SESSION['USERNAME'])){
 			$username = $_SESSION['USERNAME'];
 			$data['provinsi'] = $this->m_user->getProvinsiQuery();
+			$data['ukuran'] = $this->M_transaksi->getUkuran();
 			$this->load->view('sent_details', $data);
 		}
 		else{

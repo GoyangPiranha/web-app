@@ -119,6 +119,23 @@
             </div>
 
             <div class="row">
+                <div class="col-xs-12">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-map-marker"></span></span>
+                            <select class="form-control" name="select_ukuran" id="select_ukuran">
+                                <option value="">Pilih Ukuran</option>
+                                <?php foreach ($ukuran as $row):?>
+                                <option value="<?php echo $row->id;?>"><?php echo $row->ukuran;?></option>
+                                <?php endforeach; ?>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+
+            <div class="row">
                 <div class="col-xs-12 form-login">
                     <div class="outter-form-sent">
                         <div class="row">

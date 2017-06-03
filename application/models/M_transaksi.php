@@ -31,6 +31,12 @@
             return $query->result();
         }
 
+        function getUkuran(){
+            $query = $this->db->query("SELECT * FROM `ukuran`");
+
+            return $query->result();
+        }
+
 
 
     

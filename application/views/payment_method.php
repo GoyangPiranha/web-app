@@ -10,6 +10,7 @@
     <link href="<?php echo base_url('assets/bootstrap/css/bootstrap.min.css'); ?>" rel="stylesheet">
     <link href="<?php echo base_url('assets/bootstrap/css/style.css'); ?>" rel="stylesheet">
     <link href="<?php echo base_url('assets/bootstrap/css/style.css'); ?>" rel="stylesheet">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
 
 </head>
 <body style="margin-top: 60px; background: white;">
@@ -28,7 +29,8 @@
     </div>
 </div>
 
-<div class="col-lg-4 col-lg-offset-4 form-login">
+<form>
+    <div class="col-lg-4 col-lg-offset-4 form-login">
     <div id="accordion" role="tablist" aria-multiselectable="true">
         <div class="card list-view-column">
             <div class="card-header" role="tab" id="bri">
@@ -46,10 +48,14 @@
                         <div class="col-xs-6">
                             <div class="row">
                                 <div class="col-xs-12">
-                                    <h5 id="custom-h5">a/n <strong>Zainul Bahar, S.Kom </strong></h5>
-                                </div>
-                                <div class="col-xs-12">
                                     <h5 id="custom-h5">No. Rek <strong>000982883877728</strong></h5>
+                                </div>
+                                <div class="col-xs-12"><div class="line-separator" id="separator"></div></div>
+                                <div class="col-xs-12">
+                                    <div class="checkbox">
+                                        <input type="checkbox" id="cb2">
+                                        <label for="cb2"><strong>Pilih Bank</strong></label>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -82,10 +88,14 @@
                         <div class="col-xs-6">
                             <div class="row">
                                 <div class="col-xs-12">
-                                    <h5 id="custom-h5">a/n <strong>Zainul Bahar, S.Kom </strong></h5>
-                                </div>
-                                <div class="col-xs-12">
                                     <h5 id="custom-h5">No. Rek <strong>000982883877728</strong></h5>
+                                </div>
+                                <div class="col-xs-12"><div class="line-separator" id="separator"></div></div>
+                                <div class="col-xs-12">
+                                    <div class="checkbox">
+                                        <input type="checkbox" id="cb2">
+                                        <label for="cb2"><strong>Pilih Bank</strong></label>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -118,10 +128,14 @@
                         <div class="col-xs-6">
                             <div class="row">
                                 <div class="col-xs-12">
-                                    <h5 id="custom-h5">a/n <strong>Zainul Bahar, S.Kom </strong></h5>
-                                </div>
-                                <div class="col-xs-12">
                                     <h5 id="custom-h5">No. Rek <strong>000982883877728</strong></h5>
+                                </div>
+                                <div class="col-xs-12"><div class="line-separator" id="separator"></div></div>
+                                <div class="col-xs-12">
+                                    <div class="checkbox">
+                                        <input type="checkbox" id="cb2">
+                                        <label for="cb2"><strong>Pilih Bank</strong></label>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -154,10 +168,14 @@
                         <div class="col-xs-6">
                             <div class="row">
                                 <div class="col-xs-12">
-                                    <h5 id="custom-h5">a/n <strong>Zainul Bahar, S.Kom </strong></h5>
-                                </div>
-                                <div class="col-xs-12">
                                     <h5 id="custom-h5">No. Rek <strong>000982883877728</strong></h5>
+                                </div>
+                                <div class="col-xs-12"><div class="line-separator" id="separator"></div></div>
+                                <div class="col-xs-12">
+                                    <div class="checkbox">
+                                        <input type="checkbox" id="cb2">
+                                        <label for="cb2"><strong>Pilih Bank</strong></label>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -174,15 +192,62 @@
                 </div>
             </div>
         </div>
-        
+        <!--end of card list view column-->
     </div>
+
+    <div class="col-xs-12"><div class="line-separator" style="" id="separator"></div></div>
+    <div class="card list-view-column" style="margin-top:20px;">
+            <div class="card-header" role="tab" id="bni">
+                <h5 class="mb-0">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#rekPembeli" aria-expanded="true" aria-controls="collapseOne">
+                        <div class="radio radio-primary">
+                            <strong>Rekening Pembeli</strong>
+                        </div>
+                    </a>
+                </h5>
+            </div>
+            <div id="rekPembeli" class="collapse" role="tabpanel" aria-labelledby="bni">
+                <div class="card-block">
+                    <div class="row" id="row-payment">
+                        <div class="col-xs-12" style="margin-bottom:5px;">
+                            <div class="form-group">
+                                <div class="input-group center-block">
+                                    <input name="nama_pemilik" type="text" class="form-control" placeholder="Nama Pemilik" aria-describedby="basic-addon1" id="edit-profil-input" value="">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12" style="margin-bottom:5px;">
+                            <div class="form-group">
+                                <div class="input-group center-block">
+                                    <input name="no_rek" type="text" class="form-control" placeholder="Nomor Rekening" aria-describedby="basic-addon1" id="edit-profil-input" value="">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12">
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <select class="form-control" name="select_bank" id="select_bank">
+                                    <option value="">Pilih Bank</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     <div class="row">
         <div class="col-xs-12" style="margin-bottom: 10px;">
-             <button class="btn btn-block btn-custom-yellow center-block">Selesai</button> 
+             <input type="submit" value="Selesai" class="btn btn-block btn-custom-yellow center-block"></input> 
         </div>
 
     </div>
-</div>
+</div> 
+</form>
+
+
+<!--end of col-lg-4-->
 
 <nav class="navbar navbar-default navbar-fixed-bottom" style="background: #606062;">
     <div class="row" style="margin: 0;">
