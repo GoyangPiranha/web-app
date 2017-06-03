@@ -26,15 +26,18 @@
 					.attr('onchange', 'readImage()')
                     .attr('class',  'form-control')
 					.attr('data-image-placeholder', e.id)
-                    .attr('name', e.id + "name");
-                    console.log(e.id + "name")
-
+                    .attr('name', e.id + "name")
+					.attr('required','');
 				$(e.parentElement).append(_inputFile);
-
 				$(e).on("click", _inputFile, triggerClick);
 			});
+			$('input[name=jenisproduk]').on('change', function() {
+    			$('input[name=jenisproduk]').not(this).prop('checked', false);  
+			});
+			$('input[name=kategoriproduk]').on('change', function() {
+    			$('input[name=kategoriproduk]').not(this).prop('checked', false);  
+			});
 		}
-
 		function triggerClick(e) {
 			e.data.click();
 		}
@@ -164,13 +167,13 @@
                         <div class="row" style="padding-left: 15px;">
                             <div class="col-xs-12">
                                 <div class="checkbox box-aggrement center-block">
-                                    <input type="checkbox" id="male_cloth">
+                                    <input type="checkbox" id="male_cloth" name="jenisproduk" value=1>
                                     <label for="male_cloth" class="small text-justify">Pakaian Pria</label>
                                 </div>
                             </div>
                             <div class="col-xs-12">
                                 <div class="checkbox box-aggrement center-block">
-                                    <input type="checkbox" id="female_cloth">
+                                    <input type="checkbox" id="female_cloth" name="jenisproduk" value=2>
                                     <label for="female_cloth" class="small text-justify">Pakaian Wanita</label>
                                 </div>
                             </div>
@@ -181,25 +184,25 @@
                         <div class="row">
                             <div class="col-xs-12">
                                 <div class="checkbox box-aggrement center-block">
-                                    <input type="checkbox" id="baju">
+                                    <input type="checkbox" id="baju" name="kategoriproduk" value=1>
                                     <label for="baju" class="small text-justify">Baju</label>
                                 </div>
                             </div>
                             <div class="col-xs-12">
                                 <div class="checkbox box-aggrement center-block">
-                                    <input type="checkbox" id="jaket">
+                                    <input type="checkbox" name="kategoriproduk" id="jaket" value=2>
                                     <label for="jaket" class="small text-justify">Jaket</label>
                                 </div>
                             </div>
                             <div class="col-xs-12">
                                 <div class="checkbox box-aggrement center-block">
-                                    <input type="checkbox" id="topi">
+                                    <input type="checkbox" id="topi" name="kategoriproduk" value=3>
                                     <label for="topi" class="small text-justify">Topi</label>
                                 </div>
                             </div>
                             <div class="col-xs-12">
                                 <div class="checkbox box-aggrement center-block">
-                                    <input type="checkbox" id="celana">
+                                    <input type="checkbox" id="celana" name="kategoriproduk" value=4>
                                     <label for="celana" class="small text-justify">Celana</label>
                                 </div>
                             </div>

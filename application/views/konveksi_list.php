@@ -8,8 +8,38 @@
     <link href="<?php echo base_url('assets/bootstrap/css/style.css'); ?>" rel="stylesheet">
     <link href="<?php echo base_url('assets/style.css'); ?>" rel="stylesheet">
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
-
+	<script
+  src="https://code.jquery.com/jquery-3.2.1.js"
+  integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
+  crossorigin="anonymous"></script>
 </head>
+
+<script type="text/javascript">
+		function init() {
+
+			$('input[type=checkbox]').on('change', function() {
+    			$('input[type=checkbox]').not(this).prop('checked', false);  
+			});
+		}
+		(
+
+		function (yourcode) {
+			"use strict";
+			yourcode(window.jQuery, window, document);
+		}(
+
+		function ($, window, document) {
+			"use strict";
+			// The $ is now locally scoped 
+			$(function () {
+				// The DOM is ready!
+				init();
+			});
+
+			// The rest of your code goes here!
+		}));
+    </script>
+
 <body style="margin-top: 20px; background: white;">
 <!-- NAVBAR -->
 <nav class="navbar-default navbar-fixed-top">

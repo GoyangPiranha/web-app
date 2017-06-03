@@ -58,7 +58,7 @@
                                 <?php
                                   foreach ($provinsi as $row):
                                  ?>
-                                 <option value="<?php echo $row->id_provinsi;?>"><?php echo $row->nama_provinsi;?></option>
+                                 <option value="<?php echo $row->province_id;?>"><?php echo $row->province;?></option>
                                  <?php endforeach; ?>
                               </select>
                         </div>
@@ -276,9 +276,10 @@
             $('#select_kota').prop('disabled', true);
           }
           else{
+			  console.log(id_provinsi);
             $('#select_kota').prop('disabled', false);
             $.ajax({
-              url : "<?php echo base_url()?>Daftar/getKota",
+              url : "<?php echo base_url()?>Sent_details/getKota",
               type : 'POST',
               data :  {'id_provinsi' : id_provinsi},
               dataType: 'json',
@@ -286,7 +287,32 @@
                 $('#select_kota').html(data);
               },
               error: function(){
-                alert('terjadi error error');
+                  alert('terjadi  error');
+              }
+            });
+          }
+        });
+      });
+	   $(document).ready(function(){
+        $('#select_kota').on('change', function(){
+          var id_kota = $(this).val();
+          if (id_kota ==''){
+            $('#select_kota').prop('disabled', true);
+          }
+          else{
+			  console.log(id_kota);
+            $('#select_kota').prop('disabled', false);
+            $.ajax({
+              url : "<?php echo base_url()?>Sent_details/getHarga",
+              type : 'POST',
+              data :  {'id_kota' : id_kota},
+              dataType: 'json',
+              success : function(data){
+                // $('#select_kota').html(data);
+				console.log(data);
+              },
+              error: function(){
+                  alert('terjadi  error');
               }
             });
           }
