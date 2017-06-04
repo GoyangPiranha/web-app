@@ -9,7 +9,46 @@
     <link href="<?php echo base_url('assets/bootstrap/css/bootstrap.min.css'); ?>" rel="stylesheet">
     <link href="<?php echo base_url('assets/bootstrap/css/style.css'); ?>" rel="stylesheet">
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+		<script
+  src="https://code.jquery.com/jquery-3.2.1.js"
+  integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
+  crossorigin="anonymous"></script>
 </head>
+
+<script type="text/javascript">
+		function init() {
+
+			$('input[type=checkbox]').on('change', function() {
+    			$('input[type=checkbox]').not(this).prop('checked', false);
+				if ($(this)["0"].checked) {
+					$('#biayakirim').html('Rp.'+$(this)["0"].value);
+					$('#biayakirim')["0"].attributes[2].nodeValue = $(this)["0"].value;
+					$('#hargatotal')["0"].attributes[2].nodeValue =parseInt($('#hargabarang')["0"].attributes[2].nodeValue) + parseInt($('#biayakirim')["0"].attributes[2].nodeValue);
+					$('#hargatotal').html('Rp.' + $('#hargatotal')["0"].attributes[2].nodeValue);
+				}else{
+
+				}
+			});
+		}
+		(
+
+		function (yourcode) {
+			"use strict";
+			yourcode(window.jQuery, window, document);
+		}(
+
+		function ($, window, document) {
+			"use strict";
+			// The $ is now locally scoped 
+			$(function () {
+				// The DOM is ready!
+				init();
+			});
+
+			// The rest of your code goes here!
+		}));
+    </script>
+
 <body style="margin-top: 60px; background: #FFFFFF">
 <!-- NAVBAR -->
 <nav class="navbar-default navbar-fixed-top">
@@ -146,26 +185,59 @@
                                            <img id="img-no-bg" src="assets/images/Logistik/jne.png" alt="" class="img-responsive img-kurir align-left">
                                        </div>
                                    </div>
-                                    <?php foreach($jenis as $jenis){ ?>
                                    
                                    <div class="col-xs-8">
                                        <div class="col-xs-12">
                                        
                                            <div class="col-xs-12">
                                                <div class="checkbox box-sent">
-                                                   <input type="checkbox" id="oke">
-                                                   <label for="oke"><strong class="small"><?php echo $jenis->jenis_pengiriman ?></strong></label>
+
+                                                   <input type="checkbox" id="OKE" value="0" name="logistik_jne">
+                                                   <label for="OKE" id="OKE-lab"><strong class="small">JNE OKE : Rp.</strong><strong class="small" id="OKE-cost"> 0,00 </strong></label>
                                                </div>
-                                           </div>       
+                                           </div>
+                                           <div class="col-xs-12">
+                                               <div class="checkbox box-sent">
+                                                   <input type="checkbox" id="REG" value="0" name="logistik_jne">
+                                                   <label for="REG" id="REG-lab"><strong class="small">JNE Reguler : Rp.</strong><strong class="small" id="REG-cost"> 0,00 </strong></label>
+                                               </div>
+                                           </div>
+                                           <div class="col-xs-12">
+                                               <div class="checkbox box-sent">
+                                                   <input type="checkbox" id="YES" value="0" name="logistik_jne">
+                                                   <label for="YES" id="YES-lab"><strong class="small">JNE Express  : Rp.</strong><strong class="small" id="YES-cost"> 0,00 </strong></label>
+                                               </div>
+                                           </div>
+
                                        </div>
                                    </div>
-                                   <?php } ?>
                                 </div>
                             </div>
                         </div>
-                     
-
-                        
+                    
+                        <div class="row row-top-border">
+                            <div class="col-xs-12">
+                                <div class="row">
+                                    <div class="col-xs-4">
+                                        <div class="col-xs-12"></div>
+                                        <div class="col-xs-12">
+                                            <img id="img-no-bg" src="<?php echo base_url('assets/images/pos-logo.png'); ?>" alt="" class="img-responsive img-kurir align-left">
+                                        </div>
+                                        <div class="col-xs-12"></div>
+                                    </div>
+                                    <div class="col-xs-8">
+                                        <div class="col-xs-12">
+                                            <div class="col-xs-12">
+                                                <div class="checkbox box-sent">
+                                                    <input type="checkbox" id="poskilat" value="0" name="logistik_pos">
+                                                    <label for="poskilat" id="poskilat-lab"><strong class="small">Pos Kilat Khusus : Rp.</strong><strong class="small" id="poskilat-cost"> 0,00 </strong></label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -179,7 +251,7 @@
                                 <h5 class="small">Harga barang :</h5>
                             </div>
                             <div class="col-xs-7 text-right">
-                                <h5 class="small text-right">Rp. 500.000</h5>
+                                <h5 class="small text-right" id="hargabarang" value="500000">Rp. 500.000</h5>
                             </div>
                         </div>
                         <div class="row">
@@ -187,7 +259,7 @@
                                 <h5 class="small">Biaya kirim :</h5>
                             </div>
                             <div class="col-xs-7 text-right">
-                                <h5 class="small text-right">Rp. 20.000</h5>
+                                <h5 class="small text-right" id="biayakirim" value="0">Rp. 0</h5>
                             </div>
                         </div>
                         <div class="line-separator"></div>
@@ -196,7 +268,7 @@
                                 <h5 class="small"><strong>Total :</strong></h5>
                             </div>
                             <div class="col-xs-7 text-right">
-                                <h5 class="small text-right">Rp. 520.000</h5>
+                                <h5 class="small text-right" id="hargatotal" value="500000">Rp. 500.000</h5>
                             </div>
                         </div>
                     </div>
@@ -245,7 +317,6 @@
             $('#select_kota').prop('disabled', true);
           }
           else{
-			  console.log(id_provinsi);
             $('#select_kota').prop('disabled', false);
             $.ajax({
               url : "<?php echo base_url()?>Sent_details/getKota",
@@ -253,7 +324,9 @@
               data :  {'id_provinsi' : id_provinsi},
               dataType: 'json',
               success : function(data){
-                $('#select_kota').html(data);
+				$('#select_kota').val('null');
+				$('#select_kota').empty();
+                $('#select_kota').append(data);
               },
               error: function(){
                   alert('terjadi  error');
@@ -262,14 +335,20 @@
           }
         });
       });
+
 	   $(document).ready(function(){
         $('#select_kota').on('change', function(){
           var id_kota = $(this).val();
-          if (id_kota ==''){
-            $('#select_kota').prop('disabled', true);
-          }
-          else{
+          if (id_kota != 'null'){
 			  console.log(id_kota);
+			($('#REG').attr('value', '0'));				  
+			($('#YES').attr('value', '0'));				  
+			($('#OKE').attr('value', '0'));
+			($('#OKE-cost').html("-"));				  
+			($('#YES-cost').html("-"));
+			($('#REG-cost').html("-"));
+			($('#poskilat').attr('value', '0'));				  
+			($('#poskilat-cost').html("-"));				  
             $('#select_kota').prop('disabled', false);
             $.ajax({
               url : "<?php echo base_url()?>Sent_details/getHarga",
@@ -277,8 +356,33 @@
               data :  {'id_kota' : id_kota},
               dataType: 'json',
               success : function(data){
-                // $('#select_kota').html(data);
-				console.log(data);
+				  "Paket Kilat Khusus"
+				  $.each(data, function(i,r){
+					$.each(r[0].costs, function( index, values ) {
+						if (values.description == "Paket Kilat Khusus") {
+							if($('#poskilat').length){
+								$('#poskilat').attr('value',values.cost[0].value);
+								$('#poskilat-cost').html(values.cost[0].value + '('+ values.cost[0].etd+' Hari)');
+							}
+						}else if (values.description=="Ongkos Kirim Ekonomis"){
+							if($('#OKE').length){
+								$('#OKE').attr('value',values.cost[0].value);
+								$('#OKE-cost').html(values.cost[0].value + '('+ values.cost[0].etd+' Hari)');
+							}
+						}else if (values.description=="Layanan Reguler"){
+							if($('#REG').length){
+								$('#REG').attr('value',values.cost[0].value);
+								$('#REG-cost').html(values.cost[0].value + '('+ values.cost[0].etd+' Hari)');
+							}
+						}else if (values.description=="Yakin Esok Sampai"){
+							if($('#YES').length){
+								$('#YES').attr('value',values.cost[0].value);
+								$('#YES-cost').html(values.cost[0].value + '('+ values.cost[0].etd+' Hari)');
+							}
+						}							
+						
+					});
+				  });
               },
               error: function(){
                   alert('terjadi  error');
