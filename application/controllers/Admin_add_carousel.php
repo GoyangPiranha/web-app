@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Admin_index extends CI_Controller {
+class Admin_add_carousel extends CI_Controller {
 
 	/**
 	 * Index Page for this controller.
@@ -18,26 +18,13 @@ class Admin_index extends CI_Controller {
 	 * map to /index.php/welcome/<method_name>
 	 * @see https://codeigniter.com/user_guide/general/urls.html
 	 */
-	function __construct()
-	{
-		parent::__construct();
-		$this->load->model('M_users','',TRUE);
-		$this->load->model('M_produk','',TRUE);
-		$this->load->model('M_konveksi','',TRUE);
-		
-	}
 	public function index()
 	{
 		if (isset($_SESSION['USERNAME'])) {
-			$this->load->view('admin_index');
+			$this->load->view('admin_add_carousel');
 		}
 		else {
 			$this->load->view('admin_login');
 		}
-	}
-	
-	function logout(){
-		session_destroy();
-		redirect ('admin_login');
 	}
 }

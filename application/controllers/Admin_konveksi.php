@@ -53,17 +53,17 @@ class Admin_konveksi extends CI_Controller {
 			$location = '.assets/images/Konveksi/';
 			move_uploaded_file($tmp_name, $location.$logo_konveksi);
 			$check = $this->M_konveksi->insertKonveksi($nama, $deskripsi, $harga, $logo_konveksi);
-			if($check == true){
-				$data['status'] = "Data berhasil ditambahkan.";
-				$data['konveksi'] = $this->M_konveksi->getKonveksi(); 
-				$this->load->view('admin_konveksi', $data);
-			}
-			else{
-				$data['status'] = "Gagal menambahkan data.";
-				$data['konveksi'] = $this->M_konveksi->getKonveksi(); 
-				$this->load->view('admin_konveksi', $data);
-			}
-
+			
+			// if($check == true){
+			// 	$data['status'] = "Data berhasil ditambahkan.";
+			// 	$data['konveksi'] = $this->M_konveksi->getKonveksi(); 
+			// 	$this->load->view('admin_konveksi', $data);
+			// }
+			// else{
+			// 	$data['status'] = "Gagal menambahkan data.";
+			// 	$data['konveksi'] = $this->M_konveksi->getKonveksi(); 
+			// 	$this->load->view('admin_konveksi', $data);
+			// }
 		}
 	}
 }

@@ -60,6 +60,7 @@
                 <!-- Sidebar Menu-->
                 <ul class="sidebar-menu">
                     <li><a href="<?php echo base_url('Admin_index');?>"><i class="fa fa-home"></i><span>Beranda</span></a></li>
+                    <li><a href="<?php echo base_url('Admin_add_carousel');?>"><i class="fa fa-laptop"></i><span>Kelola Header</span></a></li>
                     <li><a href="<?php echo base_url('Admin_konveksi');?>"><i class="fa fa-laptop"></i><span>Kelola Konveksi</span></a></li>
                     <li><a href="<?php echo base_url('Admin_bank');?>"><i class="fa fa-bank"></i><span>Kelola Bank</span></a></li>
                     <li><a href="<?php echo base_url('Admin_show_user');?>"><i class="fa fa-home"></i><span>Kelola Pengguna</span></a></li>
@@ -72,10 +73,10 @@
         <div class="content-wrapper">
             <div class="page-title">
                 <div>
-                    <h1>Daftar Konveksi</h1>
+                    <h1>Daftar Transaksi</h1>
                     <ul class="breadcrumb side">
                         <li><i class="fa fa-home fa-lg"></i></li>
-                        <li class="active"><a href="konveksi.html">Daftar Konveksi</a></li>
+                        <li class="active"><a href="konveksi.html">Daftar Transaksi</a></li>
                     </ul>
                 </div>
                 <div><a class="btn btn-primary btn-flat" href="#"><i class="fa fa-lg fa-plus"></i></a><a class="btn btn-info btn-flat" href="courier.html"><i class="fa fa-lg fa-refresh"></i></a><a class="btn btn-warning btn-flat" href="#"><i class="fa fa-lg fa-trash"></i></a></div>
@@ -86,17 +87,20 @@
                         <div class="card-body">
                             <table class="table table-hover table-bordered" id="usertable">
                                 <thead>
-                                    <tr>
-                                        <th>No</th>
-                                        <th>Nama Lengkap</th>
-                                        <th>Username</th>
-                                        <th>Tanggal Lahir</th>
-                                        <th>Alamat</th>
-                                        <th>Kota</th>
-                                        <th>Propinsi</th>
-                                        <th>Email</th>
-                                        <th>Kontak</th>
-                                        <th>Jenis User</th>
+                                    <tr class="text-center">
+                                        <th style="max-width:13px;">No</th>
+                                        <th>Nama Produk</th>
+                                        <th>Pembeli</th>
+                                        <th>Tanggal Beli</th>
+                                        <!--<th>Ukuran</th>
+                                        <th>Jumlah</th>
+                                        <th>Konveksi</th>
+                                        <th>Harga</th>
+                                        <th>Jasa</th>
+                                        <th>Tujuan</th>-->
+                                        <th>Total Harga</th>
+                                        <th>Status</th>
+                                        <th>&nbsp;</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -106,11 +110,14 @@
                                         <td>Edinburgh</td>
                                         <td>Edinburgh</td>
                                         <td>Edinburgh</td>
+                                        <!--<td>Edinburgh</td>
                                         <td>Edinburgh</td>
                                         <td>Edinburgh</td>
                                         <td>Edinburgh</td>
                                         <td>Edinburgh</td>
+                                        <td>Edinburgh</td>-->
                                         <td>Edinburgh</td>
+                                        <td class="text-center" style="min-width:40px;"><a data-toggle="modal" data-target="#detail_transaksi" title="Detail" class="btn btn-success btn-flat" style="padding:5px 5px;" href="#"><i class="fa fa-sm fa-bars" ></i></a><a data-toggle="modal" data-target="#ubah_status"title="Ubah Status Pengiriman" data-toggle="modal" data-target="#ubah_status" class="btn btn-info btn-flat" style="padding:5px 5px;" href="#"><i class="fa fa-sm fa-pencil" ></i></a><a title="Hapus" class="btn btn-danger btn-flat show-alert" style="padding:5px 5px;" href="#"><i class="fa fa-sm fa-trash" ></i></a></td>
                                 </tbody>
                             </table>
                         </div>
@@ -119,6 +126,91 @@
             </div>
         </div>
     </div>
+    <!--change transaction status modal-->
+    <div class="modal fade" id="detail_transaksi" style="border-radius:0px;" role="dialog">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header" style="border-radius:0px;">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Status Transaksi</h4>
+                </div>
+                <div class="modal-body">
+                    <form class="form-horizontal">
+                       <div class="form-group"d>
+                            <div class="col-lg-12">
+                                <label class="control-label" for="ukuran">Ukuran</label>
+                                <input class="form-control" id="ukuran" name="ukuran" type="text" placeholder="Ukuran" readonly>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-lg-12">
+                                <label class="control-label" for="jumlah">Jumlah</label>
+                                <input class="form-control" id="jumlah" name="ukuran" type="text" placeholder="Jumlah" readonly>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-lg-12">
+                                <label class="control-label" for="konveksi">Konveksi</label>
+                                <input class="form-control" id="konveksi" name="ukuran" type="text" placeholder="Konveksi" readonly>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-lg-12">
+                                <label class="control-label" for="jasa">Jasa Pengiriman</label>
+                                <input class="form-control" id="jasa" name="jasa" type="text" placeholder="Jasa Pengiriman" readonly>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-lg-12">
+                                <label class="control-label" for="tujuan">Tujuan Pengiriman</label>
+                                <textarea value="" name="tujuan" id="tujuan" class="form-control" rows="3" placeholder="Deskripsi konveksi" readonly></textarea>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Batal</button>
+                    <button type="button" name="submit" class="btn btn-success">Ubah</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--End of change transaction status modal-->
+        <!--change transaction status modal-->
+    <div class="modal fade" id="ubah_status" style="border-radius:0px;" role="dialog">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header" style="border-radius:0px;">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Status Transaksi</h4>
+                </div>
+                <div class="modal-body">
+                    <form class="form-horizontal">
+                        <div class="form-group">
+                            <div class="col-lg-12"><h5><strong>Status Sekarang:</strong></h5></div>
+                            <div class="col-lg-12"><h4 class="text-center"><strong>Belum Dibayar</strong></h4></div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-12"><strong>Upgrade User:</strong></label>
+                            <div class="col-lg-12">
+                                <select class="form-control" id="upgrade_list">
+                                    <option value="1">Belum Dibayar</option>
+                                    <option value="1">Dibayar</option>
+                                    <option value="1">Dikirim</option>
+                                    <option value="1">Diterima</option>
+                                </select>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Batal</button>
+                    <button type="button" name="submit" class="btn btn-success">Ubah</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--End of change transaction status modal-->
     <!-- Javascripts-->
     <script src="<?php echo base_url('assets/bootstrap/js/jquery.min.js');?>"></script>
     <script src="<?php echo base_url('assets/bootstrap/js/bootstrap.min.js');?>"></script>

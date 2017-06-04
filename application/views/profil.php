@@ -60,13 +60,12 @@
                             </div>
                         </div>
 
-                        <div class="col-xs-12">
+                        <!--<div class="col-xs-12">
                             <div class="row">
                                 <div class="col-xs-1" style="color: #FFC300;"><span class="fa fa-envelope profile-view"></span></div>
                                 <div class="col-xs-11"><h5 style="margin-bottom: 2px;" class="profile-view"><?php echo $row->email_user;?></h5></div>
                             </div>
-
-                        </div>
+                        </div>-->
                     </div>
                 </div>
                 <div class="col-xs-6">
@@ -81,6 +80,7 @@
                                 <li><a href="#">Line</a></li>
                                 <li><a href="#">Whatsapp</a></li>
                                 <li><a href="#">BBM</a></li>
+                                <li><a href="#"><span class="glyphicon glyphicon-envelope"></span> <?php echo $row->email_user;?></a></li>
                               </ul>
                              </div>
                         </div>

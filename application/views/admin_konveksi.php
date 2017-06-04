@@ -62,6 +62,7 @@
                 <!-- Sidebar Menu-->
                 <ul class="sidebar-menu">
                     <li><a href="<?php echo base_url('Admin_index');?>"><i class="fa fa-home"></i><span>Beranda</span></a></li>
+                    <li><a href="<?php echo base_url('Admin_add_carousel');?>"><i class="fa fa-laptop"></i><span>Kelola Header</span></a></li>
                     <li class="active"><a href="<?php echo base_url('Admin_konveksi');?>"><i class="fa fa-laptop"></i><span>Kelola Konveksi</span></a></li>
                     <li><a href="<?php echo base_url('Admin_bank');?>"><i class="fa fa-bank"></i><span>Kelola Bank</span></a></li>
                     <li><a href="<?php echo base_url('Admin_show_user');?>"><i class="fa fa-home"></i><span>Kelola Pengguna</span></a></li>
@@ -81,26 +82,14 @@
                     </ul>
                 </div>
                 <div>
-                    <a class="btn btn-primary btn-flat" href="" data-toggle="modal" data-target="#tambah"><span class="fa fa-lg fa-plus"></span> Tambah Konveksi</a>
+                    <button class="btn btn-primary btn-flat" onclick="tambah_data()"><span class="fa fa-lg fa-plus"></span> Tambah Konveksi</button>
                 </div>
             </div>
+            
             <div class="row">
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-body">
-                        <?php
-                        if (empty($status)) {
-                          echo "";
-                        }else{
-                          echo "<div class='alert alert-success alert-dismissible text-center' role='alert'>
-                            <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
-                              <span aria-hidden='true'>&times;</span>
-                            </button>
-                            $status
-                          </div>";
-                          }
-
-                        ?>
                             <table class="table table-hover table-bordered" id="konveksi">
                                 <thead>
                                     <tr>
@@ -113,14 +102,14 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <?php foreach($konveksi as $row):?>
+                                    <?php foreach($konveksi as $index => $row):?>
                                     <tr>
                                         <td class="text-center"><?php echo $row->id;?></td>
                                         <td><?php echo $row->nama;?></td>
                                         <td><?php echo $row->harga;?></td>
                                         <td><?php echo $row->deskripsi;?></td>
                                         <td>logo</td>
-                                        <th class="text-center"><a data-toggle="modal" data-target="#update_konveksi" class="btn btn-info btn-flat" style="padding:5px 5px;" href="#"><i class="fa fa-sm fa-pencil" ></i></a><a class="btn btn-danger btn-flat show-alert" style="padding:5px 5px;" href="#"><i class="fa fa-sm fa-trash" ></i></a></th>
+                                        <td class="text-center"><button onclick="update_data(<?php echo $row->id;?>)" class="btn btn-info btn-flat" style="padding:5px 5px;"><i class="fa fa-sm fa-pencil" ></i></button><a class="btn btn-danger btn-flat show-alert" style="padding:5px 5px;" href="#"><i class="fa fa-sm fa-trash" ></i></a></td>
                                     </tr>
                                     <?php endforeach;?>
                                 </tbody>
@@ -132,8 +121,8 @@
         </div>
     </div>
 
-    <!--      modal tambah-->
-    <div class="modal fade" id="tambah" style="border-radius:0px;" role="dialog">
+    <!--modal tambah-->
+    <div class="modal fade" id="modal_konveksi" style="border-radius:0px;" role="dialog">
         <div class="modal-dialog modal-sm">
             <div class="modal-content">
                 <div class="modal-header" style="border-radius:0px;">
@@ -141,7 +130,7 @@
                     <h4 class="modal-title">Tambah Konveksi</h4>
                 </div>
                 <div class="modal-body">
-                    <form class="form-horizontal" action="<?= base_url('Admin_konveksi/add');?>" method="POST" enctype="multipart/form-data">
+                    <form class="form-horizontal" id="form" method="POST" enctype="multipart/form-data">
                         <div class="form-group">
                             <div class="col-lg-12">
                                 <input class="form-control" name="nama_konveksi" id="nama_konveksi" type="text" placeholder="Nama Konveksi">
@@ -149,7 +138,28 @@
                         </div>
                         <div class="form-group">
                             <div class="col-lg-12">
-                                <input class="form-control" name="harga_konveksi" type="text" placeholder="Harga Konveksi">
+                                <div class="row">
+                                    <div class="col-xs-6">
+                                        <label class="control-label" for="kategori_baju">Kategori Baju</label>
+                                        <input class="form-control" id="kategori_baju" name="harga_kategori_baju" type="text" placeholder="Harga">
+                                    </div>
+                                    <div class="col-xs-6">
+                                        <label class="control-label" for="kategori_jaket">Kategori Jaket</label>
+                                        <input class="form-control" id="kategori_jaket" name="harga_kategori_jaket" type="text" placeholder="Harga">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="row">
+                                    <div class="col-xs-6">
+                                        <label class="control-label" for="kategori_topi">Kategori Topi</label>
+                                        <input class="form-control" id="kategori_topi" name="harga_kategori_topi" type="text" placeholder="Harga">
+                                    </div>
+                                    <div class="col-xs-6">
+                                        <label class="control-label" for="kategori_celana">Kategori Celana</label>
+                                        <input class="form-control" id="kategori_celana" name="harga_kategori_celana" type="text" placeholder="Harga">
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <div class="form-group">
@@ -180,53 +190,7 @@
         </div>
     </div>
     <!--end of modal tambah-->
-    <!--modal update-->
-    <div class="modal fade" id="update_konveksi" style="border-radius:0px;" role="dialog">
-        <div class="modal-dialog modal-sm">
-            <div class="modal-content">
-                <div class="modal-header" style="border-radius:0px;">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">Update Konveksi</h4>
-                </div>
-                <div class="modal-body">
-                    <form class="form-horizontal">
-                        <div class="form-group">
-                            <div class="col-lg-12">
-                                <input class="form-control" name="nama_konveksi" type="text" placeholder="Nama Konveksi">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-lg-12">
-                                <input class="form-control" name="harga_konveksi" type="text" placeholder="Harga Konveksi">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-md-12">
-                                <textarea class="form-control" rows="3" placeholder="Deskripsi konveksi" name="deskripsi_konveksi"></textarea>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-lg-12"><strong>Logo Konveksi</strong></label>
-                            <div class="col-lg-12">
-                                <input class="form-control" type="file" name="logo_konveksi_update" id="logo_konveksi_update">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-lg-12 ">
-                                <img class="center-block" id="show_logo_update" style="max-width:120px;height:auto;" />
-                            </div>
-                        </div>
-
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">Tutup</button>
-                    <button type="button" name="submit" class="btn btn-success">Update</button>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!--end of modal update-->
+    
     <!-- Javascripts-->
     <script src="<?php echo base_url('assets/bootstrap/js/jquery.min.js');?>"></script>
     <script src="<?php echo base_url('assets/bootstrap/js/bootstrap.min.js');?>"></script>
@@ -270,6 +234,32 @@
                 confirmButtonText: 'Ya!'
             });
         };
+
+        var save_method;
+
+        function tambah_data(){
+            save_method = 'tambah';
+            $('#form')[0].reset();
+            $('#modal_konveksi').modal('show');
+            $('.modal-title').text('Tambah Konveksi');
+        }
+
+        function update_data(){
+            save_method='update';
+            $('#form')['0'].reset();
+            $('#modal_konveksi').modal('show');
+            $('.modal-title').text('Update Konveksi');
+
+            $.ajax({
+                url : "<?php echo base_url('Admin_konveksi/ajax_edit/')?>/" + id,
+                type: "GET",
+                dataType: "JSON",
+                success: function(data){
+                    
+                }
+            });
+            
+        }
     </script>
 </body>
 

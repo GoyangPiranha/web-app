@@ -13,12 +13,29 @@
         	$this->load->database();
     	}
 
-		// rekening admin
-		function getAdminRek(){
+		//BANK
+		function getBank(){
 			$query = $this->db->query("SELECT * FROM `bank`");
+			return $query->result();
+		}
+
+		// REKENING ADMIN
+		function getAdminRek(){
+			$query = $this->db->query("SELECT * FROM `rekening` WHERE `id_user` = 23");
+			return $query->result();
 		}
 		
-		//rekening user
+		public function insertAdminBank($data){
+			$this->db->insert('rekening', $data);
+			return $this->db->insert_id();
+		}
+
+		public function delete($id){
+			$this->db->where('id_rekening', $id);
+			$this->db->delete('rekening');
+		}
+		
+		// REKENING USER
         function getRekeningByUser($id_user){
 			$query = $this->db->query("SELECT * FROM `rekening` WHERE id_user = $id_user");
 			return $query->result();
@@ -34,6 +51,7 @@
         function insertRekening($no_rekening, $nama_pemilik, $id_user, $nama_bank){
             $result = $this->db->query("INSERT INTO `rekening`(`no_rekening`, `nama_pemilik`, `id_user`, `nama_bank`) 
             VALUES ('$no_rekening', '$nama_pemilik', $id_user, '$nama_bank')");
+			return $query->insert_id();
 			if ($result == true) {
 				return true;
 			}

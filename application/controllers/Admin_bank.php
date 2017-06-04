@@ -18,13 +18,47 @@ class Admin_bank extends CI_Controller {
 	 * map to /index.php/welcome/<method_name>
 	 * @see https://codeigniter.com/user_guide/general/urls.html
 	 */
+	function __construct()
+	{
+		parent::__construct();
+		$this->load->helper('url');
+		$this->load->model('M_rekening','',TRUE);
+	}
+
 	public function index()
 	{
 		if (isset($_SESSION['USERNAME'])) {
-			$this->load->view('admin_bank');
+			$data['admin_bank'] = $this->M_rekening->getAdminRek();
+			$data['bank'] = $this->M_rekening->getBank();
+			$this->load->view('admin_bank', $data);
 		}
 		else {
 			$this->load->view('admin_login');
 		}
+	}
+
+	public function add(){
+		$id_user = $_SESSION['ID_USER'];
+		$data = array(
+					'no_rekening' => $this->input->post('no_rekening'),
+					'nama_pemilik' => $this->input->post('nama_pemilik'),
+					'id_user' => $id_user,
+					'nama_bank' => $this->input->post('pilih_bank'),
+		);
+
+		$this->M_rekening->insertAdminBank($data);
+
+		// $id_user = $_SESSION['ID_USER'];
+		// $nama_pemilik = $_POST['nama_pemilik'];
+		// $no_rekening = $_POST['no_rekening'];
+		// $nama_bank = $_POST['pilih_bank'];
+
+		// $this->M_rekening->insertRekening($no_rekening, $nama_pemilik, $id_user, $nama_bank);
+		echo json_encode(array("status" => TRUE));
+	}
+
+	function hapus($id){
+		$this->M_rekening->delete($id);
+		echo json_encode(array("status" => TRUE));
 	}
 }

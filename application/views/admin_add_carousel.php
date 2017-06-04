@@ -8,7 +8,7 @@
     <!-- CSS-->
     <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/bootstrap/css/main.css'); ?>">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/bootstrap/css/pace.css'); ?>">
-    <title>Daftar Bank | Admin</title>
+    <title>Kelola Header | Admin</title>
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries-->
     <!--if lt IE 9
     script(src='https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js')
@@ -62,9 +62,9 @@
                 <!-- Sidebar Menu-->
                 <ul class="sidebar-menu">
                     <li><a href="<?php echo base_url('Admin_index');?>"><i class="fa fa-home"></i><span>Beranda</span></a></li>
-                    <li><a href="<?php echo base_url('Admin_add_carousel');?>"><i class="fa fa-laptop"></i><span>Kelola Header</span></a></li>
+                    <li class="active"><a href="<?php echo base_url('Admin_add_carousel');?>"><i class="fa fa-laptop"></i><span>Kelola Header</span></a></li>
                     <li><a href="<?php echo base_url('Admin_konveksi');?>"><i class="fa fa-laptop"></i><span>Kelola Konveksi</span></a></li>
-                    <li class="active"><a href="<?php echo base_url('Admin_bank');?>"><i class="fa fa-bank"></i><span>Kelola Bank</span></a></li>
+                    <li><a href="<?php echo base_url('Admin_bank');?>"><i class="fa fa-bank"></i><span>Kelola Bank</span></a></li>
                     <li><a href="<?php echo base_url('Admin_show_user');?>"><i class="fa fa-home"></i><span>Kelola Pengguna</span></a></li>
                     <!--<li><a href="#"><i class="fa fa-truck"></i><span>Kelola Kurir</span></a></li>-->
                     <li><a href="<?php echo base_url('Admin_product');?>"><i class="fa fa-home"></i><span>Kelola Produk</span></a></li>
@@ -75,38 +75,84 @@
         <div class="content-wrapper">
             <div class="page-title">
                 <div>
-                    <h1>Daftar Bank</h1>
+                    <h1>Header Home</h1>
                     <ul class="breadcrumb side">
                         <li><i class="fa fa-home fa-lg"></i></li>
-                        <li class="active"><a href="#">Daftar Bank</a></li>
+                        <li class="active"><a href="#">Header</a></li>
                     </ul>
                 </div>
-                <div><button class="btn btn-primary btn-flat" onclick="tambah_bank()"><span class="fa fa-lg fa-plus"></span> Tambah Bank</button></div>
+                <div>
+                    <a class="btn btn-primary btn-flat" href="" data-toggle="modal" data-target="#tambah"><i class="fa fa-lg fa-plus"></i></a><a class="btn btn-info btn-flat" href="#"><i class="fa fa-lg fa-refresh"></i></a><a class="btn btn-warning btn-flat" href="#"><i class="fa fa-lg fa-trash"></i></a>
+                </div>
             </div>
             <div class="row">
                 <div class="col-md-12">
                     <div class="card">
+                        <div class="card-title"><h3>Preview Header</h3></div>
                         <div class="card-body">
-                            <table class="table table-hover table-bordered" id="bank">
+                            <div id="myCarousel" class="carousel slide" data-ride="carousel">
+                            <!-- Indicators -->
+                            <ol class="carousel-indicators">
+                                <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                                <li data-target="#myCarousel" data-slide-to="1"></li>
+                                <li data-target="#myCarousel" data-slide-to="2"></li>
+                            </ol>
+
+                            <!-- Wrapper for slides -->
+                            <div class="carousel-inner">
+                                <div class="item active">
+                                    <img src="<?php echo base_url('assets/images/fashion2.jpg'); ?>" alt="1">
+                                </div>
+
+                                <div class="item">
+                                    <img src="<?php echo base_url('assets/images/fashion3.jpg'); ?>" alt="2">
+                                </div>
+
+                                <div class="item">
+                                    <img src="<?php echo base_url('assets/images/fashion2.jpg'); ?>" alt="1">
+                                </div>
+                            </div>
+
+                            <!-- Left and right controls -->
+                            <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+                                <span class="glyphicon glyphicon-chevron-left"></span>
+                                <span class="sr-only">Previous</span>
+                            </a>
+                            <a class="right carousel-control" href="#myCarousel" data-slide="next">
+                                <span class="glyphicon glyphicon-chevron-right"></span>
+                                <span class="sr-only">Next</span>
+                            </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="card">
+                        <div class="card-title">
+                            <h4>List Header</h4>
+                        </div>
+                        <div class="card-body">
+                            <table class="table table-hover table-bordered" id="konveksi">
                                 <thead>
                                     <tr>
-                                        <th style="width:20px;">No</th>
-                                        <th>Nama Pemilik</th>
-                                        <th>Nomor Rekening</th>
-                                        <th>Nama Bank</th>
-                                        <th style="width:40px;">&nbsp;</th>
+                                        <th style="width:30px;">No</th>
+                                        <th>Nama File</th>
+                                        <th>Foto</th>
+                                        <th>&nbsp;</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <?php foreach($admin_bank as $index=> $row):?>
+                                    
                                     <tr>
-                                        <td><?php echo $index+1;?></td>
-                                        <td><?php echo $row->nama_pemilik;?></td>
-                                        <td><?php echo $row->no_rekening;?></td>
-                                        <td><?php echo $row->nama_bank;?></td>
-                                        <th class="text-center"><button onclick="update_bank(<?php echo $row->id_rekening;?>)" class="btn btn-info btn-flat" style="padding:5px 5px;" href="#"><span class="fa fa-sm fa-pencil" ></span></button><button onclick="hapus(<?php echo $row->id_rekening;?>)" class="btn btn-danger btn-flat" style="padding:5px 5px;" href="#"><i class="fa fa-sm fa-trash" ></i></button></th>
+                                        <td class="text-center">lsdfjalksdjla</td>
+                                        <td>sdfsdmf.smdf.</td>
+                                        <td>logo</td>
+                                        <td class="text-center"><a data-toggle="modal" data-target="#update_konveksi" class="btn btn-info btn-flat" style="padding:5px 5px;" href="#"><i class="fa fa-sm fa-pencil" ></i></a><a class="btn btn-danger btn-flat show-alert" style="padding:5px 5px;" href="#"><i class="fa fa-sm fa-trash" ></i></a></td>
                                     </tr>
-                                    <?php endforeach;?>
+                                    
                                 </tbody>
                             </table>
                         </div>
@@ -115,130 +161,78 @@
             </div>
         </div>
     </div>
-    <!--modal tambah bank-->
-    <div class="modal fade" id="modal-bank" style="border-radius:0px;" role="dialog">
+
+    <!--      modal tambah-->
+    <div class="modal fade" id="status_product" style="border-radius:0px;" role="dialog">
         <div class="modal-dialog modal-sm">
             <div class="modal-content">
                 <div class="modal-header" style="border-radius:0px;">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">Tambah Bank</h4>
+                    <h4 class="modal-title">Ubah Status Produk</h4>
                 </div>
                 <div class="modal-body">
-                    <form class="form-horizontal" action="#" id="form_bank" method="POST">
+                    <form class="form-horizontal">
                         <div class="form-group">
                             <div class="col-lg-12">
-                                <input class="form-control" name="nama_pemilik" id="nama_pemilik" type="text" placeholder="Nama Pemilik">
+                                <input class="form-control" name="nama_konveksi" type="text" placeholder="Nama Konveksi">
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="col-lg-12">
-                                <input class="form-control" name="no_rekening" id="no_rekening" type="text" placeholder="Nomor Rekening">
+                                <input class="form-control" name="harga_konveksi" type="text" placeholder="Harga Konveksi">
                             </div>
                         </div>
                         <div class="form-group">
-                            <div class="col-lg-12">
-                                <select class="form-control" id="pilih_bank" name="pilih_bank">
-                                    <option value="">Pilih Bank</option>
-                                    <?php foreach($bank as $row):?>
-                                    <option value="<?php echo $row->nama_bank;?>"><?php echo $row->nama_bank;?></option>
-                                    <?php endforeach;?>
-                                </select>
+                            <div class="col-md-12">
+                                <textarea class="form-control" rows="3" placeholder="Deskripsi konveksi"></textarea>
                             </div>
-                        </div>  
-                    </div>
-                </form>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-12"><strong>Logo Konveksi</strong></label>
+                            <div class="col-lg-12">
+                                <input class="form-control" type="file" name="logo_konveksi" id="logo_konveksi">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-lg-12 ">
+                                <img class="center-block" id="show_logo" style="max-width:120px;height:auto;"/>
+                            </div>
+                        </div>
+                        
+                    </form>
+                </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger" data-dismiss="modal">Tutup</button>
-                    <button type="button" onclick="simpan()" class="btn btn-success">Tambah</input>
+                    <button type="button" name="submit" class="btn btn-success">Tambah</button>
                 </div>
             </div>
         </div>
     </div>
-    <!--end of modal tambah bank-->
-
+    <!--      end of modal tambah-->
     <!-- Javascripts-->
+
     <script src="<?php echo base_url('assets/bootstrap/js/jquery.min.js');?>"></script>
     <script src="<?php echo base_url('assets/bootstrap/js/bootstrap.min.js');?>"></script>
     <script src="<?php echo base_url('assets/bootstrap/js/plugins/pace.min.js');?>"></script>
     <script src="<?php echo base_url('assets/bootstrap/js/main.js');?>"></script>
     <script src="<?php echo base_url('assets/bootstrap/js/plugins/jquery.dataTables.min.js');?>"></script>
     <script src="<?php echo base_url('assets/bootstrap/js/plugins/dataTables.bootstrap.min.js');?>"></script>
-    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <script type="text/javascript">
-        var save_method;
-        var table;
-        $(document).ready( function () {
-            table = $('#bank').DataTable();
-        });
-
-        function tambah_bank(){
-            save_method = 'tambah'
-            $('#form_bank')['0'].reset();
-            $('#modal-bank').modal('show');
-            $('.modal-title').text('Tambah Bank');
-        }
-
-        function update_bank(){
-            save_method = 'update'
-            $('#form_bank')['0'].reset();
-            $('#modal-bank').modal('show');
-            $('.modal-title').text('Update Bank');
-        }
-
-        function simpan(){
-            var url;
-            if(save_method=='tambah'){
-                url = "<?=base_url('');?>Admin_bank/add";
-            }
-            else{
-                url = "<?php echo base_url('Admin_bank/update');?>";
-            }
-            console.log($('#form_bank').serialize())
-            // // var data;
-            // $.each($('#form_bank').serialize(),function(a, i){
-            //     console.log(i,a);
-            // });
-            $.ajax({
-                url : url,
-                type: "POST",
-                data: $('#form_bank').serialize(),
-                dataType: "JSON",
-                success: function(data)
-                {
-                    //if success close modal and reload ajax table
-                    $('#modal-bank').modal('hide');
-                    location.reload();// for reload a page
-                },
-                error: function (jqXHR, textStatus, errorThrown)
-                {
-                    alert('Error adding / update data');
-                }
-            });
-        }
-
-        function hapus(id){
-            if(confirm('Apakah anda yaking ingin menghapus data?')){
-                // ajax delete data to database
-                console.log(id)
-                $.ajax({
-                    url : "<?php echo site_url('Admin_bank/hapus');?>/" + id,
-                    type: "POST",
-                    dataType: "JSON",
-                    success: function(data)
-                    {
-                        //if success reload ajax table
-                        $('#modal-bank').modal('hide');
-                        location.reload();
-                    },
-                    error: function (jqXHR, textStatus, errorThrown)
-                    {
-                        alert('Gagal menghapus data.');
-                    }
-                });
-            }
-        }
+        $('#konveksi').DataTable();
     </script>
+    <!--<script>
+    document.getElementById("logo_konveksi").onchange = function() {
+        var reader = new FileReader();
+
+        reader.onload = function(e) {
+            // get loaded data and render thumbnail.
+            document.getElementById("show_logo").src = e.target.result;
+        };
+
+        // read the image file as a data URL.
+        reader.readAsDataURL(this.files[0]);
+    };
+</script>-->
 </body>
 
 </html>

@@ -5,9 +5,7 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0  user-scalable=no"/>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-    <script src="<?php echo base_url('assets/assets/js/jquery.min.js');?>"></script>
-    <script src="<?php echo base_url('assets/bootstrap/js/bootstrap.min.js');?>"></script>
+    <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
     <!--Import Google Icon Font-->
     <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -15,6 +13,8 @@
     <link rel="stylesheet" href="<?php echo base_url('./assets/style.css'); ?>">
 
    <link href="<?php echo base_url('assets/bootstrap/css/bootstrap.min.css'); ?>" rel="stylesheet">
+   <script src="<?php echo base_url('assets/bootstrap/js/jquery.min.js');?>"></script>
+    <script src="<?php echo base_url('assets/bootstrap/js/bootstrap.min.js');?>"></script>
 
 </head>
 <body style="margin-top: 0px; margin-bottom: 60px;" id="bodyid" >
@@ -115,9 +115,14 @@
 
 <div class="container" onclick="w3_close()">
     <div class="row">
-
         <div class="col-xs-6">
-            <button type="button" class="buttonmenu1" onclick="callfunction(this)" value="category">Category</button>
+            <button type="button" class="buttonmenu1 dropdown-toggle" onclick="callfunction(this)" data-toggle="dropdown" value="category">Category</button>
+            <div class="dropdown-menu" >
+                <a class="dropdown-item">Baju</a><br>
+                <a class="dropdown-item">Celana</a><br>
+                <a class="dropdown-item">Jaket</a><br>
+                <a class="dropdown-item">Topi</a>
+            </div>
         </div>
         <div class="col-xs-6">
             <button type="button"  class="buttonmenu2" onclick="callfunction(this)" value="throwit" >Throw It</button>
