@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Wishlist extends CI_Controller {
+class Canvass extends CI_Controller {
 
 	/**
 	 * Index Page for this controller.
@@ -21,7 +21,7 @@ class Wishlist extends CI_Controller {
      function __construct(){
         parent::__construct();
         $this->load->helper('url');
-        $this->load->model('M_wishlist','',TRUE);
+        $this->load->model('M_produk','',TRUE);
     }
 	public function index()
 	{
@@ -32,40 +32,36 @@ class Wishlist extends CI_Controller {
 			}
 
             $id_user = $_SESSION['ID_USER'];
-            $data['wishlist'] = $this->M_wishlist->getWishlistByUser($id_user);
-            $this->load->view('wishlist', $data);
+            $data['produk'] = $this->M_produk->getProdukCanvass($id_user);
+            $this->load->view('canvass', $data);
 			$this->session->unset_userdata('STATUS');
         }else{
 				$this->load->view('login');
 		}
 	}
 
-	function insert($id_produk){
-		$id_user = $_SESSION['ID_USER'];
-		$query = $this->M_wishlist->insert($id_produk, $id_user);
-        // if(!isset($_SESSION['STATUS'])){
-        // 		session_start();
-    	// }
-		
-		if($query == true){
-			$_SESSION['STATUS'] = "Data Berhasil Ditambahkan";	
-         	redirect('/Wishlist', 'refresh');
-        }else{
-			$_SESSION['STATUS'] = "Data Gagal Ditambahkan";		
-         	redirect('/Wishlist', 'refresh');					
-		}
-
-	}
-
-	function deleteWishlist($id){
-		$query = $this->M_wishlist->deleteWishlist($id);
+	function deleteProduk($id_produk){
+		$query = $this->M_produk->deleteProduk($id_produk);
 		if($query == true){
 			$_SESSION['STATUS'] = "Data Berhasil Dihapus";
-         	redirect('/Wishlist', 'refresh');
+         	redirect('/Canvass', 'refresh');
         }else{
 			$_SESSION['STATUS'] = "Data Gagal Dihapus";				
-           	redirect('/Wishlist', 'refresh');
+           	redirect('/Canvass', 'refresh');
+        }
+	}
+
+	function updateProduk($id){
+		$date= date("Y/m/d");
+		$query = $this->M_produk->updateStatusJual($id, $date);
+		if($query == true){
+         	redirect('/Home', 'refresh');
+        }else{
+			$_SESSION['STATUS'] = "Gagal Menjual";				
+           	redirect('/Canvass', 'refresh');
         }
 	}
 
 }
+
+?>

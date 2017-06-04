@@ -15,7 +15,7 @@
 <nav class="navbar-default navbar-fixed-top">
     <div class="container">
         <div class="navbar-header">
-            <a class="navbar-brand" href="javascript:window.history.go(-1);"><span class="glyphicon glyphicon-chevron-left"></span><span  id="registration"> Wishlist</span></a>
+            <a class="navbar-brand" href="javascript:window.history.go(-1);"><span class="glyphicon glyphicon-chevron-left"></span><span  id="registration">Canvass</span></a>
         </div>
     </div><!--/.container -->
 </nav>
@@ -37,29 +37,29 @@
 
                         ?>
 
-<?php foreach ($wishlist as $wishlist) { ?>
+<?php foreach ($produk as $row) { ?>
     <div class="list-view-column">
         <div class="row">
             <div class="col-xs-10">
             </div>
             <div class="col-xs-2">
-                <a href="<?=base_url()?>Wishlist/deleteWishlist/<?=$wishlist->id?>"><span id="wishlist-delete" class="glyphicon glyphicon-trash small"></span><a/>
+                <a href="<?=base_url()?>Canvass/deleteProduk/<?=$row->id_produk?>"><span id="wishlist-delete" class="glyphicon glyphicon-trash small"></span><a/>
             </div>
         </div>
         <div class="row">
             <div class="col-xs-4">
-                <img id="img-no-bg" class="img-responsive center-block" src="<?php echo base_url(); ?>assets/images/Product/<?php echo $wishlist->foto_produk_depan ?>" alt="product-img">
+                <a href=""><img id="img-no-bg" class="img-responsive center-block" src="<?php echo base_url(); ?>assets/images/Product/<?php echo $row->foto_produk_depan ?>" alt="product-img"></a>
             </div>
             <div class="col-xs-8">
                 <div class="row">
                     <div class="col-xs-12">
-                        <h5><strong><?php echo $wishlist->nama_produk ?></strong></h5>
+                        <h5><strong><?php echo $row->nama_produk ?></strong></h5>
                     </div>
                     <div class="col-xs-12">
-                        <h6>Oleh <a href=""><?php echo $wishlist->nama_user ?></a></h6>
+                        <h6>Oleh <a href=""><?php echo $row->nama_user ?></a></h6>
                     </div>
                     <div class="col-xs-12">
-                        <h5><strong><?php echo $wishlist->harga_produk ?></strong></h5>
+                        <h5><strong>Rp. <?php echo $row->harga_produk ?></strong></h5>
                     </div>
                 </div>
             </div>
@@ -67,7 +67,7 @@
         <div class="row">
             <div class="col-xs-8"></div>
             <div class="col-xs-4">
-                <a href=""><button style="padding: 3px 7px;border-radius: 2px;font-size: 12px;" class="pull-right btn btn-custom-yellow small">Bayar</button></a>
+                <a href="<?=base_url()?>Canvass/updateProduk/<?=$row->id_produk?>"><button style="padding: 3px 7px;border-radius: 2px;font-size: 12px;" class="pull-right btn btn-custom-yellow small">Jual</button></a>
             </div>
         </div>
     </div>

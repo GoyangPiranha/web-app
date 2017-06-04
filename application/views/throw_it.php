@@ -78,7 +78,7 @@
 <nav class="navbar-default navbar-fixed-top">
     <div class="container">
         <div class="navbar-header">
-            <a class="navbar-brand" href="<?php echo base_url('login'); ?>"><span class="glyphicon glyphicon-chevron-left"></span><span  id="registration">  Throw It!</span></a>
+            <a class="navbar-brand" href="javascript:window.history.go(-1);"><span class="glyphicon glyphicon-chevron-left"></span><span  id="registration">  Throw It!</span></a>
         </div>
     </div><!--/.container -->
 </nav>
@@ -92,10 +92,15 @@
             <h5 class="title-login"><strong>Deskripsi design yang akan dijual</strong></h5>
             <p style="color: red;">
                 <?php
-                if (empty($warning)) {
+                if (empty($status)) {
                     echo "";
                 }else{
-                    echo $warning;
+                    echo "<div class='alert alert-success alert-dismissible text-center' role='alert'>
+                            <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+                              <span aria-hidden='true'>&times;</span>
+                            </button>
+                            $status
+                          </div>";
                 }
                 ?>
             </p>
@@ -111,7 +116,7 @@
                 <div class="col-xs-12 center-block">
                     <div class="form-group center-block">
 					<div class="input-group center-block">
-						<img class="center-block img-responsive" name="desaindepan" id="desaindepan" src="" data-type="data" /></div>
+						<img class="center-block img-responsive" name="fotodepan" id="desaindepan" src="" data-type="data" /></div>
                     </div>
                 </div>
 			</div>
@@ -125,7 +130,7 @@
                 <div class="col-xs-12 center-block">
                     <div class="form-group center-block">
 					<div class="input-group center-block">
-						<img class="center-block img-responsive" name="desainbelakang" id="desainbelakang" src="" data-type="data" /></div>
+						<img class="center-block img-responsive" name="fotobelakang" id="desainbelakang" src="" data-type="data" /></div>
                     </div>
                 </div>
 			</div>
