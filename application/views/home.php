@@ -183,7 +183,7 @@ function w3_close() {
 
 function callfunction(a) {
     if (a.value == "throwit") {
-        window.location = "<?php echo base_url(); ?>Detail/throwit";
+        window.location = "<?php echo base_url(); ?>Throw_it";
     }
     else if (a.value == "category"){
 

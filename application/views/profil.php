@@ -32,7 +32,7 @@
     <div class="row">
         <div class="col-xs-12">
             <h4 class="text-center" style="margin-top: -15px;"><strong><?php echo $row->nama_user?></strong></h4>
-            <h5 class="text-center">Akun <?php if($row->jenis_user==1){echo 'Reguler';}else{echo 'Premium';}?></h5>
+            <h5 class="text-center">Akun <?php if($row->id_jenis_user==1){echo 'Reguler';}else{echo 'Premium';}?></h5>
             <h5 class="text-center">Nomor ID: <?php echo $row->id_user?> </h5>
         </div>
 

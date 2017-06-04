@@ -105,8 +105,10 @@
         }
 
         function hitungProduk($id_user){
-            $query = $this->db->query("SELECT COUNT(id_produk) FROM `produk` WHERE id_user = $id_user AND id_jenis_user = 2");
+            $query = $this->db->query("SELECT COUNT(id_produk) as jumlah FROM `produk` WHERE id_user = $id_user");
 			return $query->result();
         }
+
+        
 
     }

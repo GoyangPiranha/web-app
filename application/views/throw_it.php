@@ -228,7 +228,7 @@
                         <div class="form-group">
                             <div class="input-group">
                                 <span class="input-group-addon" id="basic-addon1"><span class="fa fa-tags"></span></span>
-                                <input name="tags" type="text" class="form-control" data-role="tagsinput" placeholder="Tags" aria-describedby="basic-addon1" required>
+                                <input name="tags" type="text" class="form-control" data-role="tagsinput" placeholder="Tags" aria-describedby="basic-addon1">
                             </div>
                         </div>
                     </div>

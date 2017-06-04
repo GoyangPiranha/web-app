@@ -96,4 +96,9 @@
 			return $query->result();
 		}
 
+		function getJenisUser($id_user){
+            $query = $this->db->query("SELECT id_jenis_user FROM user WHERE id_user = $id_user");
+			return $query->result();
+        }
+
 }
