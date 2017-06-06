@@ -18,13 +18,30 @@ class Admin_transaction extends CI_Controller {
 	 * map to /index.php/welcome/<method_name>
 	 * @see https://codeigniter.com/user_guide/general/urls.html
 	 */
+	function __construct(){
+		parent::__construct();
+		$this->load->model('M_transaksi','',TRUE);
+	}
 	public function index()
 	{
 		if (isset($_SESSION['USERNAME'])) {
-			$this->load->view('admin_transaction');
+			$data['transaksi'] = $this->M_transaksi->getTransaksi();
+			$data['status'] = $this->M_transaksi->getAllTransaction();
+			$this->load->view('admin_transaction', $data);
 		}
 		else {
 			$this->load->view('admin_login');
 		}
+	}
+
+	public function detail($id){
+		$data = $this->M_transaksi->getTransaksiById($id);
+		echo json_encode($data);
+	}
+
+	public function showAllStatus(){
+		$data['status'] = $this->M_transaksi->getAllTransaction();
+
+		// echo json_encode($data);
 	}
 }

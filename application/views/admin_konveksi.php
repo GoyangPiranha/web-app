@@ -62,7 +62,7 @@
                 <!-- Sidebar Menu-->
                 <ul class="sidebar-menu">
                     <li><a href="<?php echo base_url('Admin_index');?>"><i class="fa fa-home"></i><span>Beranda</span></a></li>
-                    <li><a href="<?php echo base_url('Admin_add_carousel');?>"><i class="fa fa-laptop"></i><span>Kelola Header</span></a></li>
+                    <li><a href="<?php echo base_url('Admin_carousel');?>"><i class="fa fa-laptop"></i><span>Kelola Header</span></a></li>
                     <li class="active"><a href="<?php echo base_url('Admin_konveksi');?>"><i class="fa fa-laptop"></i><span>Kelola Konveksi</span></a></li>
                     <li><a href="<?php echo base_url('Admin_bank');?>"><i class="fa fa-bank"></i><span>Kelola Bank</span></a></li>
                     <li><a href="<?php echo base_url('Admin_show_user');?>"><i class="fa fa-home"></i><span>Kelola Pengguna</span></a></li>
@@ -95,7 +95,10 @@
                                     <tr>
                                         <th style="width:30px;">No</th>
                                         <th>Nama Konveksi</th>
-                                        <th>Harga</th>
+                                        <th>Baju</th>
+                                        <th>Celana</th>
+                                        <th>Jaket</th>
+                                        <th>Topi</th>
                                         <th>Deskripsi</th>
                                         <th>Logo</th>
                                         <th>&nbsp;</th>
@@ -104,12 +107,15 @@
                                 <tbody>
                                     <?php foreach($konveksi as $index => $row):?>
                                     <tr>
-                                        <td class="text-center"><?php echo $row->id;?></td>
+                                        <td class="text-center"><?php echo $index+1;?></td>
                                         <td><?php echo $row->nama;?></td>
-                                        <td><?php echo $row->harga;?></td>
+                                        <td><?php if($row->id_kategori_produk==1){echo $row->harga;}?></td>
+                                        <td><?php if($row->id_kategori_produk==4){echo $row->harga;}?></td>
+                                        <td><?php if($row->id_kategori_produk==2){echo $row->harga;}?></td>
+                                        <td><?php if($row->id_kategori_produk==3){echo $row->harga;}?></td>
                                         <td><?php echo $row->deskripsi;?></td>
-                                        <td>logo</td>
-                                        <td class="text-center"><button onclick="update_data(<?php echo $row->id;?>)" class="btn btn-info btn-flat" style="padding:5px 5px;"><i class="fa fa-sm fa-pencil" ></i></button><a class="btn btn-danger btn-flat show-alert" style="padding:5px 5px;" href="#"><i class="fa fa-sm fa-trash" ></i></a></td>
+                                        <td><?php echo $row->logo;?></td>
+                                        <td class="text-center"><button onclick="update_data()" class="btn btn-info btn-flat" style="padding:5px 5px;"><i class="fa fa-sm fa-pencil" ></i></button><a class="btn btn-danger btn-flat show-alert" style="padding:5px 5px;" href="#"><i class="fa fa-sm fa-trash" ></i></a></td>
                                     </tr>
                                     <?php endforeach;?>
                                 </tbody>

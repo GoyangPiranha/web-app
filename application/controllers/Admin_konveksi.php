@@ -37,7 +37,7 @@ class Admin_konveksi extends CI_Controller {
 
 	function add(){
 		$nama = $_POST['nama_konveksi'];
-		$harga = $_POST['harga_konveksi'];
+		$harga_baju = $_POST['harga_konveksi'];
 		$deskripsi = $_POST['deskripsi_konveksi'];
 		$logo = $_FILES['logo_konveksi']['name'];
 		$uniqid = uniqid();

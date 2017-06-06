@@ -47,7 +47,24 @@
             return $query->result();
         }
 
+        //ADMIN 
+        function getTransaksi(){
+            $query = $this->db->query("SELECT T.id, T.id_transaksi, T.tanggal, U.nama_user, P.nama_produk, jumlah_produk, UK.ukuran, KP.kategori_produk, K.nama, TJ.alamat, JP.jenis_pengiriman, ST.status_transaksi ,T.total_harga FROM transaksi T, user U, ukuran UK, produk P, jenis_konveksi JK, konveksi K, tujuan TJ, jenis_pengiriman JP, logistik LG, status_transaksi ST, kategori_produk KP WHERE T.id_user = U.id_user AND UK.id = T.id_ukuran AND P.id_produk = T.id_produk AND JK.id = T.id_jenis_konveksi AND JK.id_konveksi = K.id AND JK.id_konveksi=KP.id AND TJ.id = T.id_tujuan AND JP.id_jenis_pengiriman=T.id_jenis_pengiriman AND LG.id_logistik=JP.id_logistik AND ST.id=T.id_status_transaksi AND (U.id_jenis_user = 1 OR U.id_jenis_user=2)");
+            
+            return $query->result();
+        }
 
+        function getTransaksiById($id){
+            $query = $this->db->query("SELECT T.id, T.id_transaksi, T.tanggal, U.nama_user, P.nama_produk, jumlah_produk, UK.ukuran, KP.kategori_produk, K.nama, TJ.alamat, JP.jenis_pengiriman, ST.status_transaksi ,T.total_harga FROM transaksi T, user U, ukuran UK, produk P, jenis_konveksi JK, konveksi K, tujuan TJ, jenis_pengiriman JP, logistik LG, status_transaksi ST, kategori_produk KP WHERE T.id_user = U.id_user AND UK.id = T.id_ukuran AND P.id_produk = T.id_produk AND JK.id = T.id_jenis_konveksi AND JK.id_konveksi = K.id AND JK.id_konveksi=KP.id AND TJ.id = T.id_tujuan AND JP.id_jenis_pengiriman=T.id_jenis_pengiriman AND LG.id_logistik=JP.id_logistik AND ST.id=T.id_status_transaksi AND (U.id_jenis_user = 1 OR U.id_jenis_user=2) AND T.id = $id");
+            
+            return $query->result();
+        }
+
+        function getAllTransaction(){
+            $query = $this->db->query("SELECT * FROM `status_transaksi`");
+
+            return $query->result();
+        }
 
     
     }

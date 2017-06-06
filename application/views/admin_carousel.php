@@ -62,7 +62,7 @@
                 <!-- Sidebar Menu-->
                 <ul class="sidebar-menu">
                     <li><a href="<?php echo base_url('Admin_index');?>"><i class="fa fa-home"></i><span>Beranda</span></a></li>
-                    <li class="active"><a href="<?php echo base_url('Admin_add_carousel');?>"><i class="fa fa-laptop"></i><span>Kelola Header</span></a></li>
+                    <li class="active"><a href="<?php echo base_url('Admin_carousel');?>"><i class="fa fa-laptop"></i><span>Kelola Header</span></a></li>
                     <li><a href="<?php echo base_url('Admin_konveksi');?>"><i class="fa fa-laptop"></i><span>Kelola Konveksi</span></a></li>
                     <li><a href="<?php echo base_url('Admin_bank');?>"><i class="fa fa-bank"></i><span>Kelola Bank</span></a></li>
                     <li><a href="<?php echo base_url('Admin_show_user');?>"><i class="fa fa-home"></i><span>Kelola Pengguna</span></a></li>
@@ -81,38 +81,22 @@
                         <li class="active"><a href="#">Header</a></li>
                     </ul>
                 </div>
-                <div>
-                    <a class="btn btn-primary btn-flat" href="" data-toggle="modal" data-target="#tambah"><i class="fa fa-lg fa-plus"></i></a><a class="btn btn-info btn-flat" href="#"><i class="fa fa-lg fa-refresh"></i></a><a class="btn btn-warning btn-flat" href="#"><i class="fa fa-lg fa-trash"></i></a>
-                </div>
+                <div><button class="btn btn-primary btn-flat" data-toggle="modal" data-target="#modal_carousel"><span class="fa fa-lg fa-plus"></span> Tambah Header</button></div>
             </div>
             <div class="row">
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-title"><h3>Preview Header</h3></div>
                         <div class="card-body">
+                        <?php foreach($carousel as $index => $row):?>
                             <div id="myCarousel" class="carousel slide" data-ride="carousel">
-                            <!-- Indicators -->
-                            <ol class="carousel-indicators">
-                                <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-                                <li data-target="#myCarousel" data-slide-to="1"></li>
-                                <li data-target="#myCarousel" data-slide-to="2"></li>
-                            </ol>
-
                             <!-- Wrapper for slides -->
                             <div class="carousel-inner">
-                                <div class="item active">
-                                    <img src="<?php echo base_url('assets/images/fashion2.jpg'); ?>" alt="1">
-                                </div>
-
-                                <div class="item">
-                                    <img src="<?php echo base_url('assets/images/fashion3.jpg'); ?>" alt="2">
-                                </div>
-
-                                <div class="item">
-                                    <img src="<?php echo base_url('assets/images/fashion2.jpg'); ?>" alt="1">
+                                <div class="carousel-item">
+                                    <img src="<?php echo base_url();?>assets/images/Header/<?php echo $row->foto_carousel;?>" alt="1">
                                 </div>
                             </div>
-
+                            
                             <!-- Left and right controls -->
                             <a class="left carousel-control" href="#myCarousel" data-slide="prev">
                                 <span class="glyphicon glyphicon-chevron-left"></span>
@@ -124,6 +108,7 @@
                             </a>
                             </div>
                         </div>
+                        <?php endforeach;?>
                     </div>
                 </div>
             </div>
@@ -145,14 +130,14 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    
+                                    <?php foreach($carousel as $index => $row):?>
                                     <tr>
-                                        <td class="text-center">lsdfjalksdjla</td>
-                                        <td>sdfsdmf.smdf.</td>
-                                        <td>logo</td>
-                                        <td class="text-center"><a data-toggle="modal" data-target="#update_konveksi" class="btn btn-info btn-flat" style="padding:5px 5px;" href="#"><i class="fa fa-sm fa-pencil" ></i></a><a class="btn btn-danger btn-flat show-alert" style="padding:5px 5px;" href="#"><i class="fa fa-sm fa-trash" ></i></a></td>
+                                        <td class="text-center"><?php echo $index+1;?></td>
+                                        <td><?php echo $row->nama_carousel;?></td>
+                                          <td><?php echo $row->foto_carousel;?></td>
+                                        <td class="text-center"><button onclick="deleteCarousel(<?php echo $row->id_carousel;?>)" class="btn btn-danger btn-flat show-alert" style="padding:5px 5px;" href="#"><i class="fa fa-sm fa-trash" ></i></button></td>
                                     </tr>
-                                    
+                                    <?php endforeach;?>
                                 </tbody>
                             </table>
                         </div>
@@ -161,50 +146,39 @@
             </div>
         </div>
     </div>
-
     <!--      modal tambah-->
-    <div class="modal fade" id="status_product" style="border-radius:0px;" role="dialog">
+    <div class="modal fade" id="modal_carousel" style="border-radius:0px;" role="dialog">
         <div class="modal-dialog modal-sm">
             <div class="modal-content">
                 <div class="modal-header" style="border-radius:0px;">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">Ubah Status Produk</h4>
+                    <h4 class="modal-title">Tambah Header</h4>
                 </div>
                 <div class="modal-body">
-                    <form class="form-horizontal">
+                    <form class="form-horizontal" action="<?php echo base_url('');?>Admin_carousel/add_carousel" method="POST" enctype='multipart/form-data'>
                         <div class="form-group">
                             <div class="col-lg-12">
-                                <input class="form-control" name="nama_konveksi" type="text" placeholder="Nama Konveksi">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-lg-12">
-                                <input class="form-control" name="harga_konveksi" type="text" placeholder="Harga Konveksi">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-md-12">
-                                <textarea class="form-control" rows="3" placeholder="Deskripsi konveksi"></textarea>
+                                <input class="form-control" name="nama_carousel" type="text" placeholder="Nama Header">
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-lg-12"><strong>Logo Konveksi</strong></label>
                             <div class="col-lg-12">
-                                <input class="form-control" type="file" name="logo_konveksi" id="logo_konveksi">
+                                <input type="file" name="userfile" class="form-control" value="">
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="col-lg-12 ">
-                                <img class="center-block" id="show_logo" style="max-width:120px;height:auto;"/>
+                                <img class="center-block" id="show_header" style="max-width:120px;height:auto;"/>
                             </div>
                         </div>
-                        
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-danger" data-dismiss="modal">Tutup</button>
+                            <input type="submit" name="submit" class="btn btn-success" value="Tambah"></input>
+                        </div>
                     </form>
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">Tutup</button>
-                    <button type="button" name="submit" class="btn btn-success">Tambah</button>
-                </div>
+                
             </div>
         </div>
     </div>
@@ -219,20 +193,55 @@
     <script src="<?php echo base_url('assets/bootstrap/js/plugins/dataTables.bootstrap.min.js');?>"></script>
     <script type="text/javascript">
         $('#konveksi').DataTable();
+
+        // function tambahCarousel(){
+        //     $('#form_carousel')['0'].reset();
+        //     $('#modal_carousel').modal('show');
+        //     $('.modal-title').text('Tambah Header');
+        // }
+
+        // function save(){
+        //     url = "<?php echo base_url('Admin_carousel/add_carousel');?>";
+        //     var nama_carousel = document.getElementById("nama_carousel").value;
+        //     var file_header = document.getElementById("file_header").value;
+
+        //     console.log(nama_carousel)
+        //     console.log(file_header)
+        //     $.ajax({
+        //         url : url,
+        //         type: "POST",
+        //         data: "{nama_carousel, file_header}",
+        //         dataType: "JSON",
+        //         success: function(data)
+        //         {
+        //             //if success close modal and reload ajax table
+        //             $('#modal_carousel').modal('hide');
+        //             location.reload();// for reload a page
+        //         },
+        //         error: function (jqXHR, textStatus, errorThrown)
+        //         {
+        //             alert('Gagal menambahkan data.');
+        //         }
+        //     });
+        // }
+
+        function deleteCarousel(id){
+            if(confirm('Apakah anda yakin ingin menghapus data?')){
+                $.ajax({
+                    url : "<?php echo site_url('Admin_carousel/delete');?>/" + id,
+                    type: "POST",
+                    dataType: "JSON",
+                    success: function(data){
+                        location.reload();
+                    },
+                    error: function (jqXHR, textStatus, errorThrown)
+                    {
+                        alert('Gagal menghapus data!');
+                    }
+                });
+            }
+        }
     </script>
-    <!--<script>
-    document.getElementById("logo_konveksi").onchange = function() {
-        var reader = new FileReader();
-
-        reader.onload = function(e) {
-            // get loaded data and render thumbnail.
-            document.getElementById("show_logo").src = e.target.result;
-        };
-
-        // read the image file as a data URL.
-        reader.readAsDataURL(this.files[0]);
-    };
-</script>-->
 </body>
 
 </html>

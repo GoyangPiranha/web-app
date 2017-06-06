@@ -14,9 +14,9 @@
     	}
 
     	function registrasi($username_user, $password_user, $nama_user, $tanggal_lahir_user, $kota_user, $alamat_user, $fotoprofile, $fotobackground, $email_user, $contact_user){
-			$jenis_user = 2;
-			$result = $this->db->query("INSERT INTO `user`(`username_user`, `password_user`, `nama_user`, `tanggal_lahir_user`, `id_kota`, `alamat_user`, `foto_profile_user`, `foto_background_user`, `email_user`, `contact_user`, `jenis_user`) 
-			VALUES ('$username_user', '$password_user', '$nama_user', '$tanggal_lahir_user', $kota_user, '$alamat_user', '$fotoprofile', '$fotobackground', '$email_user', '$contact_user', $jenis_user)");
+			$id_jenis_user = 2;
+			$result = $this->db->query("INSERT INTO `user`(`username_user`, `password_user`, `nama_user`, `tanggal_lahir_user`, `id_kota`, `alamat_user`, `foto_profile_user`, `foto_background_user`, `email_user`, `contact_user`, `id_jenis_user`) 
+			VALUES ('$username_user', '$password_user', '$nama_user', '$tanggal_lahir_user', $kota_user, '$alamat_user', '$fotoprofile', '$fotobackground', '$email_user', '$contact_user', $id_jenis_user)");
 			if ($result == true) {
 				return true;
 			}
@@ -92,7 +92,7 @@
 		}
 
 		function cekAdmin($username, $password, $jenis_user){
-			$query = $this->db->query("SELECT * FROM `user` WHERE `username_user` = '$username' and `password_user` = '$password' and `jenis_user` = '$jenis_user'");
+			$query = $this->db->query("SELECT * FROM `user` WHERE `username_user` = '$username' and `password_user` = '$password' and `id_jenis_user` = '$jenis_user'");
 			if ($query->num_rows()>0) {
 				foreach ($query->result() as $row){
 					$_SESSION['ID_USER']= $row->id_user;
@@ -110,12 +110,12 @@
 
 		//query get all user kecuali admin
 		function getNoAdmin(){
-			$query = $this->db->query("SELECT u.nama_user, u.username_user, u.tanggal_lahir_user, u.alamat_user, u.email_user, u.contact_user, K.nama_kota, p.nama_provinsi, u.jenis_user FROM user U, kota K, provinsi P WHERE U.id_kota = K.id_kota AND K.id_provinsi = p.id_provinsi AND u.jenis_user = 1");
+			$query = $this->db->query("SELECT U.id_user, U.nama_user, U.username_user, U.tanggal_lahir_user, U.alamat_user, U.email_user, U.contact_user, K.nama_kota, P.nama_provinsi, JU.jenis_user FROM user U, kota K, provinsi P, jenis_user JU WHERE U.id_kota = K.id_kota AND K.id_provinsi = P.id_provinsi AND U.id_jenis_user = JU.id_jenis_user AND (JU.id_jenis_user = 1 OR JU.id_jenis_user = 2)");
 			return $query->result();
 		}
 
 		function getJenisUser($id_user){
-            $query = $this->db->query("SELECT id_jenis_user FROM user WHERE id_user = $id_user");
+            $query = $this->db->query("SELECT JU.id_jenis_user, JU.jenis_user FROM user U, jenis_user JU WHERE U.id_jenis_user = JU.id_jenis_user AND U.id_user = $id_user");
 			return $query->result();
         }
 

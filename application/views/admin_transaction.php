@@ -60,7 +60,7 @@
                 <!-- Sidebar Menu-->
                 <ul class="sidebar-menu">
                     <li><a href="<?php echo base_url('Admin_index');?>"><i class="fa fa-home"></i><span>Beranda</span></a></li>
-                    <li><a href="<?php echo base_url('Admin_add_carousel');?>"><i class="fa fa-laptop"></i><span>Kelola Header</span></a></li>
+                    <li><a href="<?php echo base_url('Admin_carousel');?>"><i class="fa fa-laptop"></i><span>Kelola Header</span></a></li>
                     <li><a href="<?php echo base_url('Admin_konveksi');?>"><i class="fa fa-laptop"></i><span>Kelola Konveksi</span></a></li>
                     <li><a href="<?php echo base_url('Admin_bank');?>"><i class="fa fa-bank"></i><span>Kelola Bank</span></a></li>
                     <li><a href="<?php echo base_url('Admin_show_user');?>"><i class="fa fa-home"></i><span>Kelola Pengguna</span></a></li>
@@ -92,32 +92,23 @@
                                         <th>Nama Produk</th>
                                         <th>Pembeli</th>
                                         <th>Tanggal Beli</th>
-                                        <!--<th>Ukuran</th>
-                                        <th>Jumlah</th>
-                                        <th>Konveksi</th>
-                                        <th>Harga</th>
-                                        <th>Jasa</th>
-                                        <th>Tujuan</th>-->
-                                        <th>Total Harga</th>
                                         <th>Status</th>
+                                        <th>Total Harga</th>
                                         <th>&nbsp;</th>
                                     </tr>
                                 </thead>
                                 <tbody>
+                                <?php foreach($transaksi as $index => $row):?>
                                     <tr>
-                                        <td>1</td>
-                                        <td>System Architect</td>
-                                        <td>Edinburgh</td>
-                                        <td>Edinburgh</td>
-                                        <td>Edinburgh</td>
-                                        <!--<td>Edinburgh</td>
-                                        <td>Edinburgh</td>
-                                        <td>Edinburgh</td>
-                                        <td>Edinburgh</td>
-                                        <td>Edinburgh</td>
-                                        <td>Edinburgh</td>-->
-                                        <td>Edinburgh</td>
-                                        <td class="text-center" style="min-width:40px;"><a data-toggle="modal" data-target="#detail_transaksi" title="Detail" class="btn btn-success btn-flat" style="padding:5px 5px;" href="#"><i class="fa fa-sm fa-bars" ></i></a><a data-toggle="modal" data-target="#ubah_status"title="Ubah Status Pengiriman" data-toggle="modal" data-target="#ubah_status" class="btn btn-info btn-flat" style="padding:5px 5px;" href="#"><i class="fa fa-sm fa-pencil" ></i></a><a title="Hapus" class="btn btn-danger btn-flat show-alert" style="padding:5px 5px;" href="#"><i class="fa fa-sm fa-trash" ></i></a></td>
+                                        <td><?php echo $index+1;?></td>
+                                        <td><?php echo $row->nama_produk;?></td>
+                                        <td><?php echo $row->nama_user;?></td>
+                                        <td><?php echo $row->tanggal;?></td>
+                                        <td><?php echo $row->status_transaksi;?></td>
+                                        <td><?php echo $row->total_harga;?></td>
+                                        <td class="text-center" style="min-width:40px;"><button onclick="detail(<?php echo $row->id;?>)" title="Detail" class="btn btn-success btn-flat" style="padding:5px 5px;" href="#"><i class="fa fa-sm fa-bars" ></i></button><button onclick="change_status(<?php echo $row->id;?>)" title="Ubah Status Pengiriman" data-toggle="modal" data-target="#ubah_status" class="btn btn-info btn-flat" style="padding:5px 5px;" href="#"><i class="fa fa-sm fa-pencil" ></i></button><a title="Hapus" class="btn btn-danger btn-flat show-alert" style="padding:5px 5px;" href="#"><i class="fa fa-sm fa-trash" ></i></a></td>
+                                    <?php endforeach;?>
+                                    </tr>
                                 </tbody>
                             </table>
                         </div>
@@ -127,16 +118,22 @@
         </div>
     </div>
     <!--change transaction status modal-->
-    <div class="modal fade" id="detail_transaksi" style="border-radius:0px;" role="dialog">
+    <div class="modal fade" id="modal_detail" style="border-radius:0px;" role="dialog">
         <div class="modal-dialog modal-sm">
             <div class="modal-content">
                 <div class="modal-header" style="border-radius:0px;">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">Status Transaksi</h4>
+                    <h4 class="modal-title">Detail Transaksi</h4>
                 </div>
                 <div class="modal-body">
-                    <form class="form-horizontal">
-                       <div class="form-group"d>
+                    <form class="form-horizontal" id="form_view">
+                        <div class="form-group">
+                            <div class="col-lg-12">
+                                <label class="control-label" for="kategori">Kategori</label>
+                                <input class="form-control" id="kategori" name="kategori" type="text" placeholder="Ukuran" readonly>
+                            </div>
+                        </div>
+                       <div class="form-group">
                             <div class="col-lg-12">
                                 <label class="control-label" for="ukuran">Ukuran</label>
                                 <input class="form-control" id="ukuran" name="ukuran" type="text" placeholder="Ukuran" readonly>
@@ -145,13 +142,13 @@
                         <div class="form-group">
                             <div class="col-lg-12">
                                 <label class="control-label" for="jumlah">Jumlah</label>
-                                <input class="form-control" id="jumlah" name="ukuran" type="text" placeholder="Jumlah" readonly>
+                                <input class="form-control" id="jumlah" name="jumlah" type="text" placeholder="Jumlah" readonly>
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="col-lg-12">
                                 <label class="control-label" for="konveksi">Konveksi</label>
-                                <input class="form-control" id="konveksi" name="ukuran" type="text" placeholder="Konveksi" readonly>
+                                <input class="form-control" id="konveksi" name="konveksi" type="text" placeholder="Konveksi" readonly>
                             </div>
                         </div>
                         <div class="form-group">
@@ -169,15 +166,15 @@
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">Batal</button>
-                    <button type="button" name="submit" class="btn btn-success">Ubah</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Tutup</button>
+                    <!--<button type="button" name="submit" class="btn btn-success">Ubah</button>-->
                 </div>
             </div>
         </div>
     </div>
     <!--End of change transaction status modal-->
         <!--change transaction status modal-->
-    <div class="modal fade" id="ubah_status" style="border-radius:0px;" role="dialog">
+    <div class="modal fade" id="modal_status" style="border-radius:0px;" role="dialog">
         <div class="modal-dialog modal-sm">
             <div class="modal-content">
                 <div class="modal-header" style="border-radius:0px;">
@@ -185,27 +182,27 @@
                     <h4 class="modal-title">Status Transaksi</h4>
                 </div>
                 <div class="modal-body">
-                    <form class="form-horizontal">
+                    <form class="form-horizontal" id="form_status" action="<?php echo base_url('Admin_transaction/ubah_status');?>" method="POST">
                         <div class="form-group">
                             <div class="col-lg-12"><h5><strong>Status Sekarang:</strong></h5></div>
-                            <div class="col-lg-12"><h4 class="text-center"><strong>Belum Dibayar</strong></h4></div>
+                            <div class="col-lg-12"><h4 class="text-center"><strong style="color:green;" id="status_sekarang"></strong></h4></div>
                         </div>
                         <div class="form-group">
                             <label class="col-lg-12"><strong>Upgrade User:</strong></label>
                             <div class="col-lg-12">
                                 <select class="form-control" id="upgrade_list">
-                                    <option value="1">Belum Dibayar</option>
-                                    <option value="1">Dibayar</option>
-                                    <option value="1">Dikirim</option>
-                                    <option value="1">Diterima</option>
+                                    <?php foreach($status as $row):?>
+                                    <option value="<?php echo $row->id;?>"><?php echo $row->status_transaksi;?></option>
+                                    <?php endforeach;?>
                                 </select>
                             </div>
                         </div>
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Batal</button>
+                        <input type="button" name="submit" class="btn btn-success" value="Ubah"></input>
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">Batal</button>
-                    <button type="button" name="submit" class="btn btn-success">Ubah</button>
+                    
                 </div>
             </div>
         </div>
@@ -220,6 +217,97 @@
     <script src="<?php echo base_url('assets/bootstrap/js/plugins/dataTables.bootstrap.min.js');?>"></script>
     <script type="text/javascript">
         $('#usertable').DataTable();
+
+        function detail(id){
+            $('#form_view')[0].reset();
+            // console.log(id);
+            $.ajax({
+                url : "<?php echo base_url('Admin_transaction/detail');?>/" + id,
+                type: "GET",
+                dataType: "JSON",
+                success: function(data)
+                {
+                        var transaksi = jQuery.parseJSON(JSON.stringify(data));
+                        console.log(transaksi); 
+                        var destination = document.getElementById("tujuan");
+                        $.each(transaksi, function(i, item){
+                            $('#kategori').val(item.kategori_produk);
+                            $('#ukuran').val(item.ukuran);
+                            $('#jumlah').val(item.jumlah_produk);
+                            $('#konveksi').val(item.nama);
+                            $('#jasa').val(item.jenis_pengiriman);
+                            // $('#tujuan').val(item.tujuan_pengiriman);
+                            destination.value = item.alamat;
+                            // console.log(item.t);
+                        });              
+
+                    $('#modal_detail').modal('show'); // show bootstrap modal when complete loaded
+                    // $('.modal-title').text('Edit Book'); // Set title to Bootstrap modal title
+                },
+                error: function (jqXHR, textStatus, errorThrown)
+                {
+                    alert('Error get data from ajax');
+                }
+            });
+        }
+
+        function change_status(id){
+             $('#form_status')[0].reset();
+
+             $.ajax({
+                url : "<?php echo base_url('Admin_transaction/detail');?>/" + id,
+                type: "GET",
+                dataType: "JSON",
+                success: function(data)
+                {
+                        var transaksi = jQuery.parseJSON(JSON.stringify(data));
+                        // console.log(transaksi); 
+                        var destination = document.getElementById("tujuan");
+                        $.each(transaksi, function(i, item){
+                            $('#status_sekarang').text(item.status_transaksi);
+                            // console.log(item.status_transaksi);
+                        });              
+
+                    $('#modal_status').modal('show'); // show bootstrap modal when complete loaded
+                    // $('.modal-title').text('Edit Book'); // Set title to Bootstrap modal title
+                },
+                error: function (jqXHR, textStatus, errorThrown)
+                {
+                    alert('Error get data from ajax');
+                }
+            });
+
+            // $.ajax({
+            //     url : "<?php echo base_url('Admin_transaction/showAllStatus');?>",
+            //     type: "GET",
+            //     dataType: "JSON",
+            //     success: function(data)
+            //     {
+            //             var status = jQuery.parseJSON(JSON.stringify(data));
+            //             console.log(status); 
+                        
+            //             var select = document.getElementById("upgrade_list");
+            //             // var destination = document.getElementById("tujuan");
+            //             $.each(status, function(i, item){
+                            
+            //                 for(index in item) {
+            //                     select.options[select.options.length] = new Option(status[index], index);
+            //                 }
+            //             });              
+
+            //         $('#modal_status').modal('show'); // show bootstrap modal when complete loaded
+            //         // $('.modal-title').text('Edit Book'); // Set title to Bootstrap modal title
+            //     },
+            //     error: function (jqXHR, textStatus, errorThrown)
+            //     {
+            //         alert('Error get data from ajax');
+            //     }
+            // });
+        }
+
+        function save(){
+
+        }
     </script>
 </body>
 

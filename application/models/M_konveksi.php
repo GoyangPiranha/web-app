@@ -20,7 +20,7 @@
         }
 
         function getKonveksi(){
-            $query = $this->db->query("SELECT * FROM `konveksi`");
+            $query = $this->db->query("SELECT K.nama, K.deskripsi, JK.harga, K.logo, JK.id_kategori_produk FROM konveksi K, jenis_konveksi JK, kategori_produk KP WHERE K.id = JK.id_konveksi AND JK.id_kategori_produk = KP.id");
 
             return $query->result();
         }

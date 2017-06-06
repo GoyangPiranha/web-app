@@ -33,4 +33,10 @@ class Admin_show_user extends CI_Controller {
 			$this->load->view('admin_login');
 		}
 	}
+
+	public function show($id){
+		$data = $this->M_users->getJenisUser($id);
+		echo json_encode($data);
+	}
+
 }
