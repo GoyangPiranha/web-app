@@ -18,8 +18,23 @@
 			return $query->result();
         }
 
+        function getProdukId($id_produk){
+            $query = $this->db->query("SELECT * FROM `produk` WHERE id_produk = $id_produk");
+			return $query->result();
+        }
+
+        function getProdukUser($id_user){
+            $query = $this->db->query("SELECT p.*, u.* FROM produk p join user u ON p.id_user = u.id_user WHERE p.id_user = $id_user AND p.id_status_produk = 3");
+			return $query->result();
+        }
+
+        function getProdukCanvass($id_user){
+            $query = $this->db->query("SELECT p.*, u.* FROM produk p join user u ON p.id_user = u.id_user WHERE p.id_user = $id_user AND p.id_status_produk = 1");
+			return $query->result();
+        }
+
         function get_produk_by_id($id){
-            $query = $this->db->query("SELECT * FROM `produk` WHERE `id_produk`= $id");
+            $query = $this->db->query("SELECT p.*, u.* FROM produk p join user u ON p.id_user = u.id_user WHERE `id_produk`= $id");
 			return $query->result();
         }
 
@@ -28,8 +43,8 @@
 			return $query->result();
         }
         
-        function getProdukByKategoriLimit($id_kategori_produk, $id_status_produk){
-            $query = $this->db->query("SELECT p.id_produk, p.foto_produk_depan, p.nama_produk, u.nama_user, p.rating_produk, p.harga_produk FROM produk p join user u ON p.id_user = u.id_user WHERE `id_kategori_produk`=$id_kategori_produk AND `id_status_produk` = $id_status_produk LIMIT 4");
+        function getProdukByKategoriLimit($id_kategori_produk){
+            $query = $this->db->query("SELECT p.*, u.* FROM produk p join user u ON p.id_user = u.id_user WHERE p.id_kategori_produk=$id_kategori_produk AND p.id_status_produk = 3 LIMIT 4");
 			return $query->result();
         }
 
@@ -38,7 +53,15 @@
 			return $query->result();
         }
 
-        function insert($nama_produk, $deskripsi, $foto_produk_depan, $foto_produk_belakang, $id_jenis_produk, $id_kategori_produk, $tag_produk, $harga_produk, $id_user, $id_status_produk){
+        function insert($nama_produk, $deskripsi, $foto_produk_depan, $foto_produk_belakang, $id_jenis_produk, $id_kategori_produk, $tag_produk, $harga_produk, $id_user, $id_status_produk, $date){
+            $query = $this->db->query("INSERT INTO `produk`(`nama_produk`, `deskripsi`, `foto_produk_depan`, `foto_produk_belakang`, `id_jenis_produk`, `id_kategori_produk`, `tag_produk`, `harga_produk`, `id_user`, `id_status_produk`, `date`)
+            VALUES ('$nama_produk', '$deskripsi', '$foto_produk_depan', '$foto_produk_belakang', $id_jenis_produk, $id_kategori_produk, '$tag_produk', '$harga_produk', $id_user,$id_status_produk, $date)");
+            if ($query == true) {
+				return true;
+			}
+        }
+
+        function insertSave($nama_produk, $deskripsi, $foto_produk_depan, $foto_produk_belakang, $id_jenis_produk, $id_kategori_produk, $tag_produk, $harga_produk, $id_user, $id_status_produk){
             $query = $this->db->query("INSERT INTO `produk`(`nama_produk`, `deskripsi`, `foto_produk_depan`, `foto_produk_belakang`, `id_jenis_produk`, `id_kategori_produk`, `tag_produk`, `harga_produk`, `id_user`, `id_status_produk`)
             VALUES ('$nama_produk', '$deskripsi', '$foto_produk_depan', '$foto_produk_belakang', $id_jenis_produk, $id_kategori_produk, '$tag_produk', '$harga_produk', $id_user,$id_status_produk)");
             if ($query == true) {
@@ -48,6 +71,13 @@
 
         function update_status_product($id, $id_status_produk){
             $query = $this->db->query("UPDATE `produk` SET `id_status_produk`=$id_status_produk WHERE `id_produk` = $id ");
+            if ($query == true) {
+				return true;
+			}
+        }
+
+        function updateStatusJual($id, $date){
+            $query = $this->db->query("UPDATE `produk` SET `id_status_produk`=3, `date` = $date WHERE `id_produk` = $id ");
             if ($query == true) {
 				return true;
 			}
@@ -66,5 +96,19 @@
 				return true;
 			}
         }
+
+        function deleteProduk($id){
+            $query = $this->db->query("DELETE FROM produk where id_produk = $id");
+            if ($query == true) {
+				return true;
+			}
+        }
+
+        function hitungProduk($id_user){
+            $query = $this->db->query("SELECT COUNT(id_produk) as jumlah FROM `produk` WHERE id_user = $id_user");
+			return $query->result();
+        }
+
+        
 
     }

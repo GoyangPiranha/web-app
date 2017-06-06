@@ -21,16 +21,21 @@ class Konveksi_list extends CI_Controller {
     function __construct(){
         parent::__construct();
         $this->load->helper('url');
-        $this->load->model('M_konveksi','',TRUE);
+        $this->load->model('M_jenis_konveksi','',TRUE);
     }
-	public function index()
+	public function index($kategori)
 	{
         if(isset($_SESSION['ID_USER'])){
             //$_SESSION['STATUS'] = "";
-            $data['konveksi'] = $this->M_konveksi->getKonveksi();
-            $this->load->view('konveksi_list', $data);
+        $this->load->view('konveksi_list');
         }else {
 				$this->load->view('login');
 		}
 	}
+
+    function konveksi($kategori){
+        $data['konveksi'] = $this->M_jenis_konveksi->getJenisKonveksi($kategori);
+        $this->load->view('konveksi_list', $data);
+    }
+
 }

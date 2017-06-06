@@ -18,8 +18,18 @@ class Purchasing_history extends CI_Controller {
      * map to /index.php/welcome/<method_name>
      * @see https://codeigniter.com/user_guide/general/urls.html
      */
-    public function index()
-    {
-        $this->load->view('purchasing_history');
-    }
+        function __construct(){
+            parent::__construct();
+            $this->load->helper('url');
+            $this->load->model('M_transaksi','', TRUE);
+        }
+        public function index(){
+            if (isset($_SESSION['ID_USER'])){
+                $id_user = $_SESSION['ID_USER'];
+                $data['riwayat_pembelian'] = $this->M_transaksi->getRiwayatPembelian($id_user);
+                $this->load->view('purchasing_history', $data);
+            }else{
+                $this->load->view('login');
+            }
+        }
 }

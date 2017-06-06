@@ -33,11 +33,15 @@ class Profile_edit extends CI_Controller {
     public function index()
     {
         if(isset($_SESSION['USERNAME'])){
+            if(isset($_SESSION['STATUS'])){
+				$data['status'] = $_SESSION['STATUS'];
+			}
             $id_user = $_SESSION['ID_USER'];
             $data['users'] = $this->M_users->getUserById($id_user);
             $data['rekening'] = $this->M_rekening->getRekeningByUser($id_user);
-            $data['status'] = "";
+            // $data['status'] = "";
             $this->load->view('profile_edit', $data);
+            $this->session->unset_userdata('STATUS');
         }
         else{
             $this->load->view('login');
@@ -48,9 +52,11 @@ class Profile_edit extends CI_Controller {
         $query = $this->M_rekening->deleteRekening($id_rekening);
         if($query == true){
             //kurang status berhasil
+            $_SESSION['STATUS'] = "Rekening Berhasil Dihapus";	
             redirect('/Profile_edit', 'refresh');
         }else{
             //kurang status gagal
+            $_SESSION['STATUS'] = "Rekening Gagal Dihapus";	            
             redirect('/Profile_edit', 'refresh');
         }
     }
@@ -98,6 +104,7 @@ class Profile_edit extends CI_Controller {
                     if($new_password != $confirm_password){
                         //kurang status password tidak sesuai
                         //$data['status'] = "Password tidak sesuai, silahkan cek kembali";
+                        $_SESSION['STATUS'] = "Password Tidak Sesuai, Silahkan Periksa Kembali";
                         redirect('/Profile_edit', 'refresh');
                     }else{
                         $password = md5($new_password);
@@ -105,6 +112,7 @@ class Profile_edit extends CI_Controller {
                 }else{
                     //kurang status password lama tidak sesuai
                     //$data['status'] = "Password lama tidak sesuai";
+                    $_SESSION['STATUS'] = "Password Lama Salah";
                     redirect('/Profile_edit', 'refresh');
                 }
             }
@@ -139,10 +147,12 @@ class Profile_edit extends CI_Controller {
                 if($check == true){
                     //kurang status data berhasil diupdate
                     //$data['status'] = "Data Berhasil Diupdate";
+                    $_SESSION['STATUS'] = "Data Berhasil Diupdate";
                     redirect('/Profile_edit', 'refresh');
                 }else{
                     //kurang status gagal
                     //$data['status'] = "";
+                    //$_SESSION['STATUS'] = "Data Gagal Diupdate";
                     redirect('/Profile_edit', 'refresh');
                 }
             }elseif($no_rekening != null && $nama_pemilik != null && $nama_bank != null){
@@ -163,10 +173,12 @@ class Profile_edit extends CI_Controller {
                 if($check == true || $check2 == true){
                     //kurang sttatus berhasil
                     //$data['status'] = "Data Berhasil Diupdate";
+                    $_SESSION['STATUS'] = "Data Berhasil Dihapus";
                     redirect('/Profile_edit', 'refresh'); 
                 }else{
                     //kurang status gagal
                     //$data['status'] = "Data Tidak Berhasil Diupdate. Coba Periksa Kembali Data Anda.";
+                    $_SESSION['STATUS'] = "Data Gagal Dihapus";
                     redirect('/Profile_edit', 'refresh');
                 }
             }        

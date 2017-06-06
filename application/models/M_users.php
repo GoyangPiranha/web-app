@@ -13,10 +13,10 @@
         	$this->load->database();
     	}
 
-    	function registrasi($username_user, $password_user, $nama_user, $tanggal_lahir_user, $kota_user, $alamat_user, $fotoprofile, $email_user, $contact_user){
-			$jenis_user = 1;
-			$result = $this->db->query("INSERT INTO `user`(`username_user`, `password_user`, `nama_user`, `tanggal_lahir_user`, `id_kota`, `alamat_user`, `foto_profile_user`, `email_user`, `contact_user`, `jenis_user`) 
-			VALUES ('$username_user', '$password_user', '$nama_user', '$tanggal_lahir_user', $kota_user, '$alamat_user', '$fotoprofile', '$email_user', '$contact_user', $jenis_user)");
+    	function registrasi($username_user, $password_user, $nama_user, $tanggal_lahir_user, $kota_user, $alamat_user, $fotoprofile, $fotobackground, $email_user, $contact_user){
+			$jenis_user = 2;
+			$result = $this->db->query("INSERT INTO `user`(`username_user`, `password_user`, `nama_user`, `tanggal_lahir_user`, `id_kota`, `alamat_user`, `foto_profile_user`, `foto_background_user`, `email_user`, `contact_user`, `jenis_user`) 
+			VALUES ('$username_user', '$password_user', '$nama_user', '$tanggal_lahir_user', $kota_user, '$alamat_user', '$fotoprofile', '$fotobackground', '$email_user', '$contact_user', $jenis_user)");
 			if ($result == true) {
 				return true;
 			}
@@ -48,9 +48,8 @@
 					$_SESSION['BACKGROUND']= $row->foto_background_user;
 				return true;   
 				}
-			}
-
-			else{
+		
+			}else{
 				return false;
 			}
 		}
@@ -109,10 +108,15 @@
 			}
 		}
 
-
 		//query get all user kecuali admin
 		function getNoAdmin(){
 			$query = $this->db->query("SELECT u.nama_user, u.username_user, u.tanggal_lahir_user, u.alamat_user, u.email_user, u.contact_user, K.nama_kota, p.nama_provinsi, u.jenis_user FROM user U, kota K, provinsi P WHERE U.id_kota = K.id_kota AND K.id_provinsi = p.id_provinsi AND u.jenis_user = 1");
 			return $query->result();
 		}
+
+		function getJenisUser($id_user){
+            $query = $this->db->query("SELECT id_jenis_user FROM user WHERE id_user = $id_user");
+			return $query->result();
+        }
+
 }

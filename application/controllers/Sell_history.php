@@ -18,8 +18,22 @@ class Sell_history extends CI_Controller {
      * map to /index.php/welcome/<method_name>
      * @see https://codeigniter.com/user_guide/general/urls.html
      */
-    public function index()
-    {
-        $this->load->view('sell_history');
+    function __construct(){
+        parent::__construct();
+        $this->load->helper('url');
+        $this->load->model('M_transaksi','',TRUE);
+		
     }
+	public function index()
+	{
+		if(isset($_SESSION['ID_USER'])){
+			$id_user = $_SESSION['ID_USER'];
+            $data['riwayat_penjualan'] = $this->M_transaksi->getRiwayatPenjualan($id_user);
+            $this->load->view('sell_history', $data);
+		}
+		else{
+			$this->load->view('login');
+		}
+		
+	}
 }

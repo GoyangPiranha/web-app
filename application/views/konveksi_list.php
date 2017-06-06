@@ -25,23 +25,24 @@
     <form action="<?php echo base_url(''); ?>" class="inner-login" method="POST" enctype="multipart/form-data">
         <div id="accordion" role="tablist" aria-multiselectable="true">
             <!--list view-->    
+            <?php foreach($konveksi as $konveksi) { ?>
             <div class="card list-view-column konveksi-col">
                 <div class="card-header" role="tab" id="bri">
                     <h5 class="mb-0">
-                        <a data-toggle="collapse" data-parent="#accordion" href="#first" aria-expanded="true" aria-controls="collapseOne">
+                        <a data-toggle="collapse" data-parent="#accordion" href="<?php echo "#".$konveksi->nama ?>" aria-expanded="true" aria-controls="collapseOne">
                             <div class="radio radio-primary">
-                                <strong>Andshop Custom</strong>
+                                <strong><?php echo $konveksi->nama ?></strong>
                             </div>
                         </a>
                     </h5>
                 </div>
-                <div id="first" class="collapse" role="tabpanel" aria-labelledby="bri">
+                <div id="<?php echo $konveksi->nama ?>" class="collapse" role="tabpanel" aria-labelledby="bri">
                     <div class="card-block">
                         <div class="row" id="row-konveksi">
                             <div class="col-lg-12">
                                 <div class="row">
                                     <div class="col-lg-12" style="margin-bottom: 10px;">
-                                        <img id="img-konveksi" class="img-responsive center-block" src="<?php echo base_url('assets/images/konveksi1.jpg'); ?>" alt="product-img">
+                                        <img id="img-konveksi" class="img-responsive center-block" src="<?php echo base_url(); ?>assets/images/Konveksi/<?php echo $konveksi->logo; ?>" alt="product-img">
                                     </div>
                                 </div>
                             </div>
@@ -52,7 +53,7 @@
                                         <h5 class="text-left"><strong>Deskripsi: </strong></h5>
                                     </div>
                                     <div class="col-xs-12">
-                                        <p class="text-justify">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias aperiam, corporis cum dicta doloremque enim error exercitationem, ipsum iure labore maiores minus, quasi quia reiciendis sed tempora temporibus veritatis vero?</p>
+                                        <p class="text-justify"><?php echo $konveksi->deskripsi ?></p>
                                     </div>
                                 </div>
                             </div>
@@ -61,178 +62,21 @@
                                 <h5 class="text-left"><strong>Harga</strong></h5>
                             </div>
                             <div class="col-xs-10" style="margin-bottom: 5px;">
-                                <h5 class="text-left"><strong>: Rp. 250.000/unit</strong></h5>
+                                <h5 class="text-left"><strong>: Rp. <?php echo $konveksi->harga ?>/unit</strong></h5>
                             </div>
                             <div class="col-xs-12"><div class="line-separator" id="separator"></div></div>
                             <div class="col-xs-12">
-                                <div class="checkbox">
-                                    <input type="checkbox" id="cb2">
-                                    <label for="cb2"><strong>Pilih Konveksi</strong></label>
-                                </div>
+                                <a href=""><input name="submit" type="submit" class="btn btn-block btn-custom-green submit" value="Lanjut"></input></a>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <!--ends of list view-->
-            <!--list view-->
-            <div class="card list-view-column konveksi-col">
-                <div class="card-header" role="tab" id="bri">
-                    <h5 class="mb-0">
-                        <a data-toggle="collapse" data-parent="#accordion" href="#second" aria-expanded="true" aria-controls="collapseOne">
-                            <div class="radio radio-primary">
-                                <strong>Andshop Custom</strong>
-                            </div>
-                        </a>
-                    </h5>
-                </div>
-                <div id="second" class="collapse" role="tabpanel" aria-labelledby="bri">
-                    <div class="card-block">
-                        <div class="row" id="row-konveksi">
-                            <div class="col-lg-12">
-                                <div class="row">
-                                    <div class="col-lg-12" style="margin-bottom: 10px;">
-                                        <img id="img-konveksi" class="img-responsive center-block" src="<?php echo base_url('assets/images/konveksi1.jpg'); ?>" alt="product-img">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xs-12"><div class="line-separator" id="separator"></div></div>
-                            <div class="col-xs-12">
-                                <div class="row">
-                                    <div class="col-xs-12">
-                                        <h5 class="text-left"><strong>Deskripsi: </strong></h5>
-                                    </div>
-                                    <div class="col-xs-12">
-                                        <p class="text-justify">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias aperiam, corporis cum dicta doloremque enim error exercitationem, ipsum iure labore maiores minus, quasi quia reiciendis sed tempora temporibus veritatis vero?</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xs-12"><div class="line-separator" id="separator"></div></div>
-                            <div class="col-xs-2">
-                                <h5 class="text-left"><strong>Harga</strong></h5>
-                            </div>
-                            <div class="col-xs-10" style="margin-bottom: 5px;">
-                                <h5 class="text-left"><strong>: Rp. 250.000/unit</strong></h5>
-                            </div>
-                            <div class="col-xs-12"><div class="line-separator" id="separator"></div></div>
-                            <div class="col-xs-12">
-                                <div class="checkbox">
-                                    <input type="checkbox" id="cb2">
-                                    <label for="cb2"><strong>Pilih Konveksi</strong></label>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!--ends of list view-->
-            <!--list view-->
-            <div class="card list-view-column konveksi-col">
-                <div class="card-header" role="tab" id="bri">
-                    <h5 class="mb-0">
-                        <a data-toggle="collapse" data-parent="#accordion" href="#third" aria-expanded="true" aria-controls="collapseOne">
-                            <div class="radio radio-primary">
-                                <strong>Andshop Custom</strong>
-                            </div>
-                        </a>
-                    </h5>
-                </div>
-                <div id="third" class="collapse" role="tabpanel" aria-labelledby="bri">
-                    <div class="card-block">
-                        <div class="row" id="row-konveksi">
-                            <div class="col-lg-12">
-                                <div class="row">
-                                    <div class="col-lg-12" style="margin-bottom: 10px;">
-                                        <img id="img-konveksi" class="img-responsive center-block" src="<?php echo base_url('assets/images/konveksi1.jpg'); ?>" alt="product-img">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xs-12"><div class="line-separator" id="separator"></div></div>
-                            <div class="col-xs-12">
-                                <div class="row">
-                                    <div class="col-xs-12">
-                                        <h5 class="text-left"><strong>Deskripsi: </strong></h5>
-                                    </div>
-                                    <div class="col-xs-12">
-                                        <p class="text-justify">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias aperiam, corporis cum dicta doloremque enim error exercitationem, ipsum iure labore maiores minus, quasi quia reiciendis sed tempora temporibus veritatis vero?</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xs-12"><div class="line-separator" id="separator"></div></div>
-                            <div class="col-xs-2">
-                                <h5 class="text-left"><strong>Harga</strong></h5>
-                            </div>
-                            <div class="col-xs-10" style="margin-bottom: 5px;">
-                                <h5 class="text-left"><strong>: Rp. 250.000/unit</strong></h5>
-                            </div>
-                            <div class="col-xs-12"><div class="line-separator" id="separator"></div></div>
-                            <div class="col-xs-12">
-                                <div class="checkbox">
-                                    <input type="checkbox" id="cb2">
-                                    <label for="cb2"><strong>Pilih Konveksi</strong></label>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!--ends of list view-->
-            <!--list view-->
-            <div class="card list-view-column konveksi-col">
-                <div class="card-header" role="tab" id="bri">
-                    <h5 class="mb-0">
-                        <a data-toggle="collapse" data-parent="#accordion" href="#fourth" aria-expanded="true" aria-controls="collapseOne">
-                            <div class="radio radio-primary">
-                                <strong>Andshop Custom</strong>
-                            </div>
-                        </a>
-                    </h5>
-                </div>
-                <div id="fourth" class="collapse" role="tabpanel" aria-labelledby="bri">
-                    <div class="card-block">
-                        <div class="row" id="row-konveksi">
-                            <div class="col-lg-12">
-                                <div class="row">
-                                    <div class="col-lg-12" style="margin-bottom: 10px;">
-                                        <img id="img-konveksi" class="img-responsive center-block" src="<?php echo base_url('assets/images/konveksi1.jpg'); ?>" alt="product-img">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xs-12"><div class="line-separator" id="separator"></div></div>
-                            <div class="col-xs-12">
-                                <div class="row">
-                                    <div class="col-xs-12">
-                                        <h5 class="text-left"><strong>Deskripsi: </strong></h5>
-                                    </div>
-                                    <div class="col-xs-12">
-                                        <p class="text-justify">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias aperiam, corporis cum dicta doloremque enim error exercitationem, ipsum iure labore maiores minus, quasi quia reiciendis sed tempora temporibus veritatis vero?</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xs-12"><div class="line-separator" id="separator"></div></div>
-                            <div class="col-xs-2">
-                                <h5 class="text-left"><strong>Harga</strong></h5>
-                            </div>
-                            <div class="col-xs-10" style="margin-bottom: 5px;">
-                                <h5 class="text-left"><strong>: Rp. 250.000/unit</strong></h5>
-                            </div>
-                            <div class="col-xs-12"><div class="line-separator" id="separator"></div></div>
-                            <div class="col-xs-12">
-                                <div class="checkbox">
-                                    <input type="checkbox" id="cb2">
-                                    <label for="cb2"><strong>Pilih Konveksi</strong></label>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <?php } ?>
             <!--ends of list view-->
 
 
         </div>
-        <button type="button" class="btn btn-block btn-custom-yellow"><a href="<?=base_url('');?>Sent_details">Lanjut</a></button>
-         <!--<input name="submit" type="submit" class="btn btn-block btn-custom-green submit" value="Lanjut"></input> -->
     </form>
 </div>
 

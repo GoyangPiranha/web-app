@@ -21,16 +21,25 @@ class Profile extends CI_Controller {
      function __construct(){
         parent::__construct();
         $this->load->helper('url');
-        $this->load->model('M_users','m_user',TRUE);
+        $this->load->model('M_users','',TRUE);
+        $this->load->model('M_produk','',TRUE);
     }
     public function index(){
         if (isset($_SESSION['ID_USER'])) {
             $id_user = $_SESSION['ID_USER'];
-            $data['user_data'] = $this->m_user->getUserById($id_user);
+            $data['user_data'] = $this->M_users->getUserById($id_user);
+            $data['user_produk'] = $this->M_produk->getProdukUser($id_user);
             $this->load->view('profil', $data);
             } else {
                 $this->load->view('login');
             }
     }
+
+    function show($id_user){
+            $data['user_data'] = $this->M_users->getUserById($id_user);
+            $data['user_produk'] = $this->M_produk->getProdukUser($id_user);
+            $this->load->view('profil', $data);
+    }
+
 }
 ?>

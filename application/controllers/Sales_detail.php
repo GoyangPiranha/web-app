@@ -21,13 +21,13 @@ class Sales_detail extends CI_Controller {
      function __construct(){
         parent::__construct();
         $this->load->helper('url');
-        $this->load->model('M_produk','m_produk', TRUE);
+        $this->load->model('M_produk','', TRUE);
     }
     public function index()
     {
       if (isset($_SESSION['ID_USER'])){
         $id_user = $_SESSION['ID_USER'];
-        $data['produk'] = $this->m_produk->get_produk_by_id($id_user);
+        $data['produk'] = $this->M_produk->get_produk_by_id($id_user);
         $this->load->view('sales_detail', $data);
       }
       else{

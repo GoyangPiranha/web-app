@@ -58,7 +58,7 @@
                                 <?php
                                   foreach ($provinsi as $row):
                                  ?>
-                                 <option value="<?php echo $row->id_provinsi;?>"><?php echo $row->nama_provinsi;?></option>
+                                 <option value="<?php echo $row->province_id;?>"><?php echo $row->province;?></option>
                                  <?php endforeach; ?>
                               </select>
                         </div>
@@ -142,65 +142,34 @@
                             <div class="col-xs-12">
                                 <div class="row">
                                    <div class="col-xs-4">
-                                       <div class="col-xs-12"></div>
                                        <div class="col-xs-12">
-                                           <img id="img-no-bg" src="<?php echo base_url('assets/images/jne-logo.png'); ?>" alt="" class="img-responsive img-kurir align-left">
+                                           <img id="img-no-bg" src="assets/images/Logistik/jne.png" alt="" class="img-responsive img-kurir align-left">
                                        </div>
-                                       <div class="col-xs-12"></div>
                                    </div>
+                                    <?php foreach($jenis as $jenis){ ?>
+                                   
                                    <div class="col-xs-8">
                                        <div class="col-xs-12">
+                                       
                                            <div class="col-xs-12">
                                                <div class="checkbox box-sent">
                                                    <input type="checkbox" id="oke">
-                                                   <label for="oke"><strong class="small">JNE OKE</strong></label>
+                                                   <label for="oke"><strong class="small"><?php echo $jenis->jenis_pengiriman ?></strong></label>
                                                </div>
-                                           </div>
-                                           <div class="col-xs-12">
-                                               <div class="checkbox box-sent">
-                                                   <input type="checkbox" id="reguler">
-                                                   <label for="reguler"><strong class="small">JNE Reguler</strong></label>
-                                               </div>
-                                           </div>
-                                           <div class="col-xs-12">
-                                               <div class="checkbox box-sent">
-                                                   <input type="checkbox" id="express">
-                                                   <label for="express"><strong class="small">JNE Express</strong></label>
-                                               </div>
-                                           </div>
-
+                                           </div>       
                                        </div>
                                    </div>
+                                   <?php } ?>
                                 </div>
                             </div>
                         </div>
+                     
 
-                        <div class="row row-top-border">
-                            <div class="col-xs-12">
-                                <div class="row">
-                                    <div class="col-xs-4">
-                                        <div class="col-xs-12"></div>
-                                        <div class="col-xs-12">
-                                            <img id="img-no-bg" src="<?php echo base_url('assets/images/pos-logo.png'); ?>" alt="" class="img-responsive img-kurir align-left">
-                                        </div>
-                                        <div class="col-xs-12"></div>
-                                    </div>
-                                    <div class="col-xs-8">
-                                        <div class="col-xs-12">
-                                            <div class="col-xs-12">
-                                                <div class="checkbox box-sent">
-                                                    <input type="checkbox" id="poskilat">
-                                                    <label for="poskilat"><strong class="small">Pos Kilat Khusus</strong></label>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        
                     </div>
                 </div>
             </div>
+            
 
             <div class="row">
                 <div class="col-xs-12 form-login">
@@ -276,9 +245,10 @@
             $('#select_kota').prop('disabled', true);
           }
           else{
+			  console.log(id_provinsi);
             $('#select_kota').prop('disabled', false);
             $.ajax({
-              url : "<?php echo base_url()?>Daftar/getKota",
+              url : "<?php echo base_url()?>Sent_details/getKota",
               type : 'POST',
               data :  {'id_provinsi' : id_provinsi},
               dataType: 'json',
@@ -286,7 +256,32 @@
                 $('#select_kota').html(data);
               },
               error: function(){
-                alert('terjadi error error');
+                  alert('terjadi  error');
+              }
+            });
+          }
+        });
+      });
+	   $(document).ready(function(){
+        $('#select_kota').on('change', function(){
+          var id_kota = $(this).val();
+          if (id_kota ==''){
+            $('#select_kota').prop('disabled', true);
+          }
+          else{
+			  console.log(id_kota);
+            $('#select_kota').prop('disabled', false);
+            $.ajax({
+              url : "<?php echo base_url()?>Sent_details/getHarga",
+              type : 'POST',
+              data :  {'id_kota' : id_kota},
+              dataType: 'json',
+              success : function(data){
+                // $('#select_kota').html(data);
+				console.log(data);
+              },
+              error: function(){
+                  alert('terjadi  error');
               }
             });
           }
