@@ -44,12 +44,21 @@
         }
         
         function getProdukByKategoriLimit($id_kategori_produk){
-            $query = $this->db->query("SELECT p.*, u.* FROM produk p join user u ON p.id_user = u.id_user WHERE p.id_kategori_produk=$id_kategori_produk AND p.id_status_produk = 3 LIMIT 4");
+            $query = $this->db->query("SELECT p.*, u.*, k.* 
+            FROM produk p join user u join kategori_produk k ON p.id_user = u.id_user AND p.id_kategori_produk = k.id 
+            WHERE p.id_kategori_produk= $id_kategori_produk AND p.id_status_produk = 3 LIMIT 4");
+			return $query->result();
+        }
+
+        function getProdukByKategori($id_kategori_produk){
+            $query = $this->db->query("SELECT p.*, u.*
+            FROM produk p join user u ON p.id_user = u.id_user 
+            WHERE p.id_kategori_produk= $id_kategori_produk AND p.id_status_produk = 3");
 			return $query->result();
         }
 
         function searchProduk($key){
-            $query = $this->db->query("SELECT * FROM `produk` WHERE nama_produk LIKE %$key%");
+            $query = $this->db->query("SELECT p.*, u.* FROM produk p JOIN user u ON p.id_user = u.id_user WHERE p.nama_produk LIKE '%$key%' OR p.tag_produk LIKE '%$key%' OR u.nama_user LIKE '%$key%'");
 			return $query->result();
         }
 
@@ -108,6 +117,12 @@
             $query = $this->db->query("SELECT COUNT(id_produk) as jumlah FROM `produk` WHERE id_user = $id_user");
 			return $query->result();
         }
+
+        function getKategori($id_produk){
+            $query = $this->db->query("SELECT id_produk, id_kategori_produk FROM `produk` WHERE id_produk = $id_produk");
+			return $query->result();
+        }
+
 
         
 

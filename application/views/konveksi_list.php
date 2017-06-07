@@ -22,7 +22,7 @@
 <!-- NAVBAR -->
 
 <div class="col-lg-4 col-lg-offset-4 form-login">
-    <form action="<?php echo base_url(''); ?>" class="inner-login" method="POST" enctype="multipart/form-data">
+    <!--<form action="" class="inner-login" method="POST" enctype="multipart/form-data">-->
         <div id="accordion" role="tablist" aria-multiselectable="true">
             <!--list view-->    
             <?php foreach($konveksi as $konveksi) { ?>
@@ -66,7 +66,7 @@
                             </div>
                             <div class="col-xs-12"><div class="line-separator" id="separator"></div></div>
                             <div class="col-xs-12">
-                                <a href=""><input name="submit" type="submit" class="btn btn-block btn-custom-green submit" value="Lanjut"></input></a>
+                                <a href="<?=base_url()?>Sent_details/index/<?=$konveksi->id?>/<?=$id_produk?>"><input name="submit" type="submit" class="btn btn-block btn-custom-green submit" value="Lanjut"></input></a>
                             </div>
                         </div>
                     </div>
@@ -77,7 +77,7 @@
 
 
         </div>
-    </form>
+    <!--</form>-->
 </div>
 
 

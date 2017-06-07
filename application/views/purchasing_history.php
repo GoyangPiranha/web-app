@@ -28,12 +28,12 @@
     <div class="list-view-column">
         <div class="row">
             <div class="col-xs-4">
-                <a href="<?=base_url()?>Details_produk/details/<?=$row->id_produk?>"><img id="img-no-bg" class="img-responsive center-block" src="<?php echo base_url(); ?>assets/images/Product/<?php echo $row->foto_produk_depan; ?>" alt="product-img"></a>
+                <a href="<?=base_url()?>Sales_detail/index/<?=$row->id?>"><img id="img-no-bg" class="img-responsive center-block" src="<?php echo base_url(); ?>assets/images/Product/<?php echo $row->foto_produk_depan; ?>" alt="product-img"></a>
             </div>
             <div class="col-xs-8">
                 <div class="row">
                     <div class="col-xs-12">
-                        <a href="<?=base_url()?>Details_produk/details/<?=$row->id_produk?>">
+                        <a href="<?=base_url()?>Sales_detail/index/<?=$row->id?>">
                         <h6><strong><?php echo $row->nama_produk ?></strong></h6>
                         </a>
                     </div>

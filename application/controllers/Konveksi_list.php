@@ -22,19 +22,24 @@ class Konveksi_list extends CI_Controller {
         parent::__construct();
         $this->load->helper('url');
         $this->load->model('M_jenis_konveksi','',TRUE);
+        $this->load->model('M_produk','',TRUE);
+        
     }
 	public function index($kategori)
 	{
         if(isset($_SESSION['ID_USER'])){
             //$_SESSION['STATUS'] = "";
-        $this->load->view('konveksi_list');
-        }else {
-				$this->load->view('login');
+            $this->load->view('konveksi_list');
+        }else{
+			$this->load->view('login');
 		}
 	}
 
-    function konveksi($kategori){
-        $data['konveksi'] = $this->M_jenis_konveksi->getJenisKonveksi($kategori);
+
+    function konveksi($id_produk, $id_kategori){
+        $data['konveksi'] = $this->M_jenis_konveksi->getJenisKonveksi($id_kategori);
+        $data['id_produk'] = $id_produk;
+        
         $this->load->view('konveksi_list', $data);
     }
 

@@ -28,16 +28,20 @@
                     <button class="w3-button w3-teal w3-xlarge" onclick="w3_open()" style="background-color: rgba(255, 255, 255, 0)!important;">☰</button>
                 </div>
                 <div class="col-xs-7 col-md-4">
+                    <form action="<?php echo base_url('Home/search'); ?>" class="inner-login" method="POST" enctype="multipart/form-data">
                     <div id="imaginary_container">
                         <div class="input-group stylish-input-group">
-                            <input type="text" class="form-control"  placeholder="Search" >
-                            <span class="input-group-addon">
-                            <button type="submit">
-                            <span class="glyphicon glyphicon-search"></span>
-                        </button>
-                    </span>
+                                <input type="text" class="form-control" name="key" placeholder="Search" >
+                                <span class="input-group-addon">
+                                    <!--<a href="<?=base_url()?>Home/search/">-->
+                                        <button type="submit">
+                                            <span class="glyphicon glyphicon-search"></span>
+                                        </button>
+                                    <!--</a>-->
+                                </span>
                         </div>
                     </div>
+                    </form>
                 </div>
                 <div class="col-xs-3 col-md-2">
                     <a class="navbar-brand" href="#" id="brand">
@@ -122,30 +126,124 @@
         <div class="col-xs-6">
             <button type="button"  class="buttonmenu2" onclick="callfunction(this)" value="throwit" >Throw It</button>
         </div>
+               
         <div class="col-xs-6">
-            <p>Kaos</p>
+            <p>Baju</p>
         </div>
+        
         <div class="col-xs-6">
-            <button type="button" class="seeall">See All</button>
+            <a href="<?=base_url()?>Home/seeAll/<?=1?>"><button type="button" class="seeall">See All</button></a>
         </div>
-
-        <?php foreach($produkkaos as $produkkaos){?>
+        <?php foreach($baju as $row){?>  
         <div class="col-xs-6 col-md-3" id="produk">
             <div class="thumbnail">
-                <a href="<?=base_url()?>Details_produk/details/<?=$produkkaos->id_produk?>"><img src="<?php echo base_url(); ?>assets/images/Product/<?php echo $produkkaos->foto_produk_depan; ?>" alt="" class="img-responsive"></a>
+                <a href="<?=base_url()?>Details_produk/details/<?=$row->id_produk?>"><img src="<?php echo base_url(); ?>assets/images/Product/<?php echo $row->foto_produk_depan; ?>" alt="" class="img-responsive"></a>
                 <div class="caption">
-                    <h5 id="produkname"><a href="<?=base_url()?>Details_produk/details/<?=$produkkaos->id_produk?>"><?php echo $produkkaos->nama_produk ?></a></h5>
-                    <p id="produkcaption">Oleh <?php echo $produkkaos->nama_user ?></p>
-                    <p id="produkrating"><?php echo $produkkaos->rating_produk ?></p>
-                    <h5 id="produkprice">Rp. <?php echo $produkkaos->harga_produk ?></h5>
+                    <h5 id="produkname"><a href="<?=base_url()?>Details_produk/details/<?=$row->id_produk?>"><?php echo $row->nama_produk ?></a></h5>
+                    <p id="produkcaption">Oleh <?php echo $row->nama_user ?></p>
+                    <p id="produkrating"><?php echo $row->rating_produk ?></p>
+                    <h5 id="produkprice">Rp. <?php echo $row->harga_produk ?></h5>
                 </div>
                 <div class="row">
                     <div class="col-xs-6">
-                        <a href="<?=base_url()?>Wishlist/insert/<?=$produkkaos->id_produk?>"><button type="button" class="btn btn-info btn-product">Whistlist</button></a>
+                        <a href="<?=base_url()?>Wishlist/insert/<?=$row->id_produk?>"><button type="button" class="btn btn-info btn-product">Whistlist</button></a>
                     </div>
                     <div class="col-xs-6">
 
-                        <a href="<?=base_url()?>Konveksi_list/konveksi/<?=$produkkaos->id_kategori_produk?>"><button type="button" class="btn btn-success btn-product">Beli</button></a>
+                        <a href="<?=base_url()?>Konveksi_list/konveksi/<?=$row->id_produk?>/<?=$row->id_kategori_produk?>"><button type="button" class="btn btn-success btn-product">Beli</button></a>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <?php } ?>
+        
+        <div class="col-xs-6">
+            <p>Jaket</p>
+        </div>
+        <div class="col-xs-6">
+            <a href="<?=base_url()?>Home/seeAll/<?=2?>"><button type="button" class="seeall">See All</button></a>
+        </div>
+
+        <?php foreach($jaket as $row){?>                
+        <div class="col-xs-6 col-md-3" id="produk">
+            <div class="thumbnail">
+                <a href="<?=base_url()?>Details_produk/details/<?=$row->id_produk?>"><img src="<?php echo base_url(); ?>assets/images/Product/<?php echo $row->foto_produk_depan; ?>" alt="" class="img-responsive"></a>
+                <div class="caption">
+                    <h5 id="produkname"><a href="<?=base_url()?>Details_produk/details/<?=$row->id_produk?>"><?php echo $row->nama_produk ?></a></h5>
+                    <p id="produkcaption">Oleh <?php echo $row->nama_user ?></p>
+                    <p id="produkrating"><?php echo $row->rating_produk ?></p>
+                    <h5 id="produkprice">Rp. <?php echo $row->harga_produk ?></h5>
+                </div>
+                <div class="row">
+                    <div class="col-xs-6">
+                        <a href="<?=base_url()?>Wishlist/insert/<?=$row->id_produk?>"><button type="button" class="btn btn-info btn-product">Whistlist</button></a>
+                    </div>
+                    <div class="col-xs-6">
+
+                        <a href="<?=base_url()?>Konveksi_list/konveksi/<?=$row->id_produk?>/<?=$row->id_kategori_produk?>"><button type="button" class="btn btn-success btn-product">Beli</button></a>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <?php } ?>
+       
+        <div class="col-xs-6">
+            <p>Topi</p>
+        </div>
+        <div class="col-xs-6">
+            <a href="<?=base_url()?>Home/seeAll/<?=3?>"><button type="button" class="seeall">See All</button></a>            
+        </div>
+
+        <?php foreach($topi as $row){?>        
+        <div class="col-xs-6 col-md-3" id="produk">
+            <div class="thumbnail">
+                <a href="<?=base_url()?>Details_produk/details/<?=$row->id_produk?>"><img src="<?php echo base_url(); ?>assets/images/Product/<?php echo $row->foto_produk_depan; ?>" alt="" class="img-responsive"></a>
+                <div class="caption">
+                    <h5 id="produkname"><a href="<?=base_url()?>Details_produk/details/<?=$row->id_produk?>"><?php echo $row->nama_produk ?></a></h5>
+                    <p id="produkcaption">Oleh <?php echo $row->nama_user ?></p>
+                    <p id="produkrating"><?php echo $row->rating_produk ?></p>
+                    <h5 id="produkprice">Rp. <?php echo $row->harga_produk ?></h5>
+                </div>
+                <div class="row">
+                    <div class="col-xs-6">
+                        <a href="<?=base_url()?>Wishlist/insert/<?=$row->id_produk?>"><button type="button" class="btn btn-info btn-product">Whistlist</button></a>
+                    </div>
+                    <div class="col-xs-6">
+
+                        <a href="<?=base_url()?>Konveksi_list/konveksi/<?=$row->id_produk?>/<?=$row->id_kategori_produk?>"><button type="button" class="btn btn-success btn-product">Beli</button></a>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <?php } ?>
+
+        <div class="col-xs-6">
+            <p>Celana</p>
+        </div>
+        <div class="col-xs-6">
+            <a href="<?=base_url()?>Home/seeAll/<?=4?>"><button type="button" class="seeall">See All</button></a>            
+        </div>
+
+        <?php foreach($celana as $row){?>
+        <div class="col-xs-6 col-md-3" id="produk">
+            <div class="thumbnail">
+                <a href="<?=base_url()?>Details_produk/details/<?=$row->id_produk?>"><img src="<?php echo base_url(); ?>assets/images/Product/<?php echo $row->foto_produk_depan; ?>" alt="" class="img-responsive"></a>
+                <div class="caption">
+                    <h5 id="produkname"><a href="<?=base_url()?>Details_produk/details/<?=$row->id_produk?>"><?php echo $row->nama_produk ?></a></h5>
+                    <p id="produkcaption">Oleh <?php echo $row->nama_user ?></p>
+                    <p id="produkrating"><?php echo $row->rating_produk ?></p>
+                    <h5 id="produkprice">Rp. <?php echo $row->harga_produk ?></h5>
+                </div>
+                <div class="row">
+                    <div class="col-xs-6">
+                        <a href="<?=base_url()?>Wishlist/insert/<?=$row->id_produk?>"><button type="button" class="btn btn-info btn-product">Whistlist</button></a>
+                    </div>
+                    <div class="col-xs-6">
+
+                        <a href="<?=base_url()?>Konveksi_list/konveksi/<?=$row->id_produk?>/<?=$row->id_kategori_produk?>"><button type="button" class="btn btn-success btn-product">Beli</button></a>
 
                     </div>
                 </div>

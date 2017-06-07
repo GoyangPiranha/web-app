@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: May 20, 2017 at 07:13 AM
+-- Generation Time: Jun 07, 2017 at 07:19 PM
 -- Server version: 10.1.19-MariaDB
 -- PHP Version: 7.0.13
 
@@ -46,6 +46,17 @@ CREATE TABLE `jenis_konveksi` (
   `harga` double NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `jenis_konveksi`
+--
+
+INSERT INTO `jenis_konveksi` (`id`, `id_kategori_produk`, `id_konveksi`, `harga`) VALUES
+(1, 1, 1, 20000),
+(2, 2, 1, 30000),
+(3, 3, 1, 40000),
+(4, 4, 1, 10000),
+(5, 4, 2, 20000);
+
 -- --------------------------------------------------------
 
 --
@@ -58,6 +69,16 @@ CREATE TABLE `jenis_pengiriman` (
   `id_logistik` smallint(6) NOT NULL,
   `harga` double NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `jenis_pengiriman`
+--
+
+INSERT INTO `jenis_pengiriman` (`id_jenis_pengiriman`, `jenis_pengiriman`, `id_logistik`, `harga`) VALUES
+(1, 'JNE OKE', 1, 15000),
+(2, 'JNE Reguler', 1, 20000),
+(3, 'JNE Express', 1, 30000),
+(4, 'POS Kilat Khusus', 2, 40000);
 
 -- --------------------------------------------------------
 
@@ -77,6 +98,25 @@ CREATE TABLE `jenis_produk` (
 INSERT INTO `jenis_produk` (`id`, `jenis_produk`) VALUES
 (1, 'Pria'),
 (2, 'Wanita');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `jenis_user`
+--
+
+CREATE TABLE `jenis_user` (
+  `id_jenis_user` int(11) NOT NULL,
+  `jenis_user` varchar(1000) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `jenis_user`
+--
+
+INSERT INTO `jenis_user` (`id_jenis_user`, `jenis_user`) VALUES
+(1, 'Premium'),
+(2, 'Non-Premium');
 
 -- --------------------------------------------------------
 
@@ -109,8 +149,18 @@ CREATE TABLE `konveksi` (
   `id` smallint(6) NOT NULL,
   `nama` varchar(1000) NOT NULL,
   `deskripsi` varchar(1000) NOT NULL,
-  `logo` longblob
+  `logo` varchar(1000) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `konveksi`
+--
+
+INSERT INTO `konveksi` (`id`, `nama`, `deskripsi`, `logo`) VALUES
+(1, 'Awesam', 'Ini konveksi awesam yang sangat bagus hasilnya', 'konveksi1.jpg'),
+(2, 'solaro', 'solareo oancen oyeee geeeesss', 'konveksi2.jpg'),
+(3, 'gogo dolls', 'mantab jiwa ini konveksi brooo', 'konveksi3.jpg'),
+(4, 'piranha konveksi', 'ini konveksi paling oyee', 'konveksi4.jpg');
 
 -- --------------------------------------------------------
 
@@ -653,8 +703,16 @@ INSERT INTO `kota` (`id_kota`, `id_provinsi`, `nama_kota`) VALUES
 CREATE TABLE `logistik` (
   `id_logistik` smallint(6) NOT NULL,
   `nama_logistik` varchar(50) NOT NULL,
-  `logo_logistik` longblob
+  `logo_logistik` varchar(1000) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `logistik`
+--
+
+INSERT INTO `logistik` (`id_logistik`, `nama_logistik`, `logo_logistik`) VALUES
+(1, 'jne', 'jne.png'),
+(2, 'pos', 'pos.png');
 
 -- --------------------------------------------------------
 
@@ -666,8 +724,8 @@ CREATE TABLE `produk` (
   `id_produk` smallint(6) NOT NULL,
   `nama_produk` varchar(100) NOT NULL,
   `deskripsi` text NOT NULL,
-  `foto_produk_depan` longblob,
-  `foto_produk_belakang` longblob,
+  `foto_produk_depan` varchar(1000) DEFAULT NULL,
+  `foto_produk_belakang` varchar(1000) DEFAULT NULL,
   `id_jenis_produk` int(100) NOT NULL,
   `id_kategori_produk` int(100) NOT NULL,
   `tag_produk` varchar(100) DEFAULT NULL,
@@ -675,8 +733,24 @@ CREATE TABLE `produk` (
   `diskon_produk` double DEFAULT NULL,
   `id_user` smallint(6) NOT NULL,
   `rating_produk` int(5) DEFAULT NULL,
-  `id_status_produk` tinyint(1) NOT NULL
+  `id_status_produk` tinyint(1) NOT NULL,
+  `date` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `produk`
+--
+
+INSERT INTO `produk` (`id_produk`, `nama_produk`, `deskripsi`, `foto_produk_depan`, `foto_produk_belakang`, `id_jenis_produk`, `id_kategori_produk`, `tag_produk`, `harga_produk`, `diskon_produk`, `id_user`, `rating_produk`, `id_status_produk`, `date`) VALUES
+(1, 'Baju koko', 'Ini Baju koko terhebat', 'sample1.png', 'sample1 - Copy.png', 1, 4, NULL, 90000, NULL, 19, NULL, 3, '2017-06-01'),
+(2, 'Baju Oke', 'Ini baju koko oke cuyy', 'sample2.png', 'sample2 - Copy.png', 1, 4, NULL, 5000, NULL, 20, NULL, 3, '2017-04-01'),
+(3, 'Baju oyee', 'Ini baju koko oke cuyy  agus bangreeettt', 'sample3.png', 'sample3 - Copy.png', 1, 4, NULL, 30000, NULL, 22, NULL, 3, '2017-03-14'),
+(4, 'baju piranha', 'Ini baju koko oke cuyy', 'sample4.png', 'sample4 - Copy.png', 1, 4, NULL, 400000, NULL, 22, NULL, 3, '2017-06-02'),
+(5, 'kaos uyee', 'Ini baju koko oke cuyy mantab jiwaa', 'sample5.png', 'sample5 - Copy.png', 2, 4, NULL, 23412112, NULL, 22, NULL, 3, '2017-06-01'),
+(6, 'Baju oyee muther', 'ini good banget vuuu', 'sample6.png', 'sample6 - Copy.png', 2, 4, NULL, 300000, NULL, 21, NULL, 3, '2017-06-02'),
+(8, 'Sepatu oye', 'sdfsd', '5933b47f9849522image1.jpg', '5933b47f9849522image2.jpg', 1, 4, 'sepatu,harga,murah', 20000, NULL, 22, NULL, 3, '0000-00-00'),
+(9, 'Sepatunjoss', 'dfasd', '5933c91315aae22image3.jpg', '5933c91315aae22image4.jpg', 1, 4, 'dsda,dasd', 30000, NULL, 22, NULL, 3, '0000-00-00'),
+(10, 'asasd', 'sadam asdas dsa', '5933cb70c870924image3.jpg', '5933cb70c870924image2.jpg', 1, 4, 'da,sad', 50000, NULL, 24, NULL, 3, '0000-00-00');
 
 -- --------------------------------------------------------
 
@@ -749,7 +823,11 @@ CREATE TABLE `rekening` (
 
 INSERT INTO `rekening` (`id_rekening`, `no_rekening`, `nama_pemilik`, `id_user`, `nama_bank`) VALUES
 (2, '', '', 17, ''),
-(3, '123123123', 'renndy', 16, 'BNI');
+(3, '123123123', 'renndy', 16, 'BNI'),
+(4, '145123', 'tio', 20, 'BRI'),
+(6, '12345', 'TIO', 20, 'MANDIRI'),
+(7, '123123', 'tio', 22, 'bri'),
+(10, '1231321312', 'wewe', 22, 'mandiri');
 
 -- --------------------------------------------------------
 
@@ -776,6 +854,14 @@ CREATE TABLE `riwayat_penjualan` (
   `total_pendapatan` double NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `riwayat_penjualan`
+--
+
+INSERT INTO `riwayat_penjualan` (`id`, `id_user`, `id_transaksi`, `total_pendapatan`) VALUES
+(1, 22, 1, 20000),
+(2, 22, 2, 10000);
+
 -- --------------------------------------------------------
 
 --
@@ -786,6 +872,15 @@ CREATE TABLE `status_produk` (
   `id` tinyint(1) NOT NULL,
   `status_produk` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `status_produk`
+--
+
+INSERT INTO `status_produk` (`id`, `status_produk`) VALUES
+(1, 'Disimpan'),
+(2, 'Belumditerima'),
+(3, 'Diterima');
 
 -- --------------------------------------------------------
 
@@ -815,19 +910,34 @@ INSERT INTO `status_transaksi` (`id`, `status_transaksi`) VALUES
 --
 
 CREATE TABLE `transaksi` (
-  `id_transaksi` int(100) NOT NULL,
+  `id` int(100) NOT NULL,
+  `id_transaksi` varchar(255) NOT NULL,
   `id_user` smallint(6) NOT NULL,
-  `jumlah_produk` int(100) NOT NULL,
   `id_produk` smallint(6) NOT NULL,
   `id_jenis_konveksi` int(100) NOT NULL,
   `id_ukuran` int(100) DEFAULT NULL,
   `id_status_transaksi` int(100) NOT NULL,
-  `id_jenis_pengiriman` smallint(6) NOT NULL,
-  `bukti_pembayaran_transaksi` longblob,
-  `id_tujuan` int(100) NOT NULL,
+  `bukti_pembayaran_transaksi` varchar(1000) DEFAULT NULL,
+  `id_tujuan` varchar(100) NOT NULL,
   `tanggal` date NOT NULL,
-  `total_harga` double NOT NULL
+  `jenis_pengiriman` varchar(1000) NOT NULL,
+  `harga_pengiriman` double NOT NULL,
+  `total_harga` double NOT NULL,
+  `id_rekening` int(11) DEFAULT NULL,
+  `nama_pemilik` varchar(1000) DEFAULT NULL,
+  `rekening_user` varchar(1000) DEFAULT NULL,
+  `bank` varchar(1000) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `transaksi`
+--
+
+INSERT INTO `transaksi` (`id`, `id_transaksi`, `id_user`, `id_produk`, `id_jenis_konveksi`, `id_ukuran`, `id_status_transaksi`, `bukti_pembayaran_transaksi`, `id_tujuan`, `tanggal`, `jenis_pengiriman`, `harga_pengiriman`, `total_harga`, `id_rekening`, `nama_pemilik`, `rekening_user`, `bank`) VALUES
+(9, '12332', 22, 1, 1, 3, 2, 'images2.jpg', '2', '2017-06-01', '', 0, 123312, 0, '', '', ''),
+(10, '31232', 22, 2, 1, 2, 2, '5937bd51d898c10', '2', '2017-06-02', '', 0, 341324, 0, '', '', ''),
+(11, '12312', 21, 3, 2, 2, 4, NULL, '1', '2017-06-02', '', 0, 300020, 0, '', '', ''),
+(12, '355432', 21, 4, 2, 2, 4, NULL, '2', '2017-06-15', '', 0, 132322, 0, '', '', '');
 
 -- --------------------------------------------------------
 
@@ -836,7 +946,7 @@ CREATE TABLE `transaksi` (
 --
 
 CREATE TABLE `tujuan` (
-  `id` int(100) NOT NULL,
+  `id` varchar(100) NOT NULL,
   `nama` varchar(1000) NOT NULL,
   `id_kota` smallint(6) NOT NULL,
   `telefon` varchar(1000) NOT NULL,
@@ -844,6 +954,14 @@ CREATE TABLE `tujuan` (
   `email` varchar(1000) NOT NULL,
   `alamat` varchar(1000) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tujuan`
+--
+
+INSERT INTO `tujuan` (`id`, `nama`, `id_kota`, `telefon`, `zipcode`, `email`, `alamat`) VALUES
+('1', 'Arip', 1102, '13213', '1232211', 'asdas@fda.vo', 'adsadmasdlaskna'),
+('2', 'surap', 1104, '2131231', '21312', 'asdas@dsadas.ss', 'werewqqweqe');
 
 -- --------------------------------------------------------
 
@@ -888,16 +1006,19 @@ CREATE TABLE `user` (
   `email_user` varchar(30) NOT NULL,
   `contact_user` varchar(25) NOT NULL,
   `deskripsi_user` text,
-  `jenis_user` int(10) NOT NULL
+  `id_jenis_user` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`id_user`, `username_user`, `password_user`, `nama_user`, `tanggal_lahir_user`, `id_kota`, `alamat_user`, `foto_profile_user`, `foto_background_user`, `email_user`, `contact_user`, `deskripsi_user`, `jenis_user`) VALUES
-(19, 'w', '123', 'aku', '2017-05-31', 1203, '31231', '', '', '123', '123', NULL, 1),
-(20, 'a', '123', 'a', '2017-05-24', 1103, 'qwe', '591fc40b5c894a1480689069855.jpg', NULL, 'a@a.com', '123', NULL, 1);
+INSERT INTO `user` (`id_user`, `username_user`, `password_user`, `nama_user`, `tanggal_lahir_user`, `id_kota`, `alamat_user`, `foto_profile_user`, `foto_background_user`, `email_user`, `contact_user`, `deskripsi_user`, `id_jenis_user`) VALUES
+(19, 'w', '123', 'aku', '2017-05-31', 1203, '31231', 'default.jpg', 'default.jpg', '123', '123', NULL, 1),
+(20, 'a', 'qwer', 'qwer', '2017-05-24', 1103, 'qwe', 'default.jpg', 'default.jpg', 'a@a.com', '123', NULL, 1),
+(21, 'tio', '76d80224611fc919a5d54f0ff9fba446', 'renndy', '2017-05-19', 1303, 'sdasda', '5920fe03d9ec7tioflat-osx-icons-file-types-folders-apps-games-dr-slash-8.png', NULL, 't@m.co', '23412312', NULL, 1),
+(22, 'tioo', '202cb962ac59075b964b07152d234b70', 'tio', '2017-05-10', 3172, 'werwerwer', '5932f27e8eb3dtioofoto.PNG', 'default.jpg', 't@m.co', '123123', '', 1),
+(24, 'sugeng', '202cb962ac59075b964b07152d234b70', 'Sugeng Rahayu', '2017-06-22', 1304, 'Surabaya madiun nhgawi 123', 'default.jpg', 'default.jpg', 'sugeng@mail.com', '08967356172', NULL, 2);
 
 -- --------------------------------------------------------
 
@@ -910,6 +1031,15 @@ CREATE TABLE `whistlist` (
   `id_produk` smallint(6) NOT NULL,
   `id_user` smallint(6) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `whistlist`
+--
+
+INSERT INTO `whistlist` (`id`, `id_produk`, `id_user`) VALUES
+(26, 2, 22),
+(27, 1, 24),
+(28, 1, 22);
 
 --
 -- Indexes for dumped tables
@@ -941,6 +1071,12 @@ ALTER TABLE `jenis_pengiriman`
 --
 ALTER TABLE `jenis_produk`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `jenis_user`
+--
+ALTER TABLE `jenis_user`
+  ADD PRIMARY KEY (`id_jenis_user`);
 
 --
 -- Indexes for table `kategori_produk`
@@ -1018,9 +1154,8 @@ ALTER TABLE `status_transaksi`
 -- Indexes for table `transaksi`
 --
 ALTER TABLE `transaksi`
-  ADD PRIMARY KEY (`id_transaksi`),
+  ADD PRIMARY KEY (`id`),
   ADD KEY `id_produk` (`id_produk`),
-  ADD KEY `id_jenis_pengiriman` (`id_jenis_pengiriman`),
   ADD KEY `id_ukuran` (`id_ukuran`),
   ADD KEY `id_tujuan` (`id_tujuan`),
   ADD KEY `id_status_transaksi` (`id_status_transaksi`),
@@ -1063,17 +1198,22 @@ ALTER TABLE `whistlist`
 -- AUTO_INCREMENT for table `jenis_konveksi`
 --
 ALTER TABLE `jenis_konveksi`
-  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `jenis_pengiriman`
 --
 ALTER TABLE `jenis_pengiriman`
-  MODIFY `id_jenis_pengiriman` smallint(6) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_jenis_pengiriman` smallint(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `jenis_produk`
 --
 ALTER TABLE `jenis_produk`
   MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT for table `jenis_user`
+--
+ALTER TABLE `jenis_user`
+  MODIFY `id_jenis_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `kategori_produk`
 --
@@ -1083,7 +1223,7 @@ ALTER TABLE `kategori_produk`
 -- AUTO_INCREMENT for table `konveksi`
 --
 ALTER TABLE `konveksi`
-  MODIFY `id` smallint(6) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` smallint(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `kota`
 --
@@ -1093,7 +1233,12 @@ ALTER TABLE `kota`
 -- AUTO_INCREMENT for table `logistik`
 --
 ALTER TABLE `logistik`
-  MODIFY `id_logistik` smallint(6) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_logistik` smallint(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT for table `produk`
+--
+ALTER TABLE `produk`
+  MODIFY `id_produk` smallint(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT for table `provinsi`
 --
@@ -1103,7 +1248,7 @@ ALTER TABLE `provinsi`
 -- AUTO_INCREMENT for table `rekening`
 --
 ALTER TABLE `rekening`
-  MODIFY `id_rekening` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_rekening` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT for table `riwayat_pembelian`
 --
@@ -1113,12 +1258,12 @@ ALTER TABLE `riwayat_pembelian`
 -- AUTO_INCREMENT for table `riwayat_penjualan`
 --
 ALTER TABLE `riwayat_penjualan`
-  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `status_produk`
 --
 ALTER TABLE `status_produk`
-  MODIFY `id` tinyint(1) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` tinyint(1) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `status_transaksi`
 --
@@ -1128,12 +1273,7 @@ ALTER TABLE `status_transaksi`
 -- AUTO_INCREMENT for table `transaksi`
 --
 ALTER TABLE `transaksi`
-  MODIFY `id_transaksi` int(100) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `tujuan`
---
-ALTER TABLE `tujuan`
-  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 --
 -- AUTO_INCREMENT for table `ukuran`
 --
@@ -1143,12 +1283,12 @@ ALTER TABLE `ukuran`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id_user` smallint(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id_user` smallint(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 --
 -- AUTO_INCREMENT for table `whistlist`
 --
 ALTER TABLE `whistlist`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 --
 -- Constraints for dumped tables
 --
@@ -1185,11 +1325,8 @@ ALTER TABLE `provinsi`
 -- Constraints for table `transaksi`
 --
 ALTER TABLE `transaksi`
-  ADD CONSTRAINT `transaksi_ibfk_1` FOREIGN KEY (`id_produk`) REFERENCES `produk` (`id_produk`) ON UPDATE CASCADE,
   ADD CONSTRAINT `transaksi_ibfk_10` FOREIGN KEY (`id_user`) REFERENCES `user` (`id_user`),
-  ADD CONSTRAINT `transaksi_ibfk_4` FOREIGN KEY (`id_jenis_pengiriman`) REFERENCES `jenis_pengiriman` (`id_logistik`) ON UPDATE CASCADE,
   ADD CONSTRAINT `transaksi_ibfk_5` FOREIGN KEY (`id_ukuran`) REFERENCES `ukuran` (`id`),
-  ADD CONSTRAINT `transaksi_ibfk_7` FOREIGN KEY (`id_tujuan`) REFERENCES `tujuan` (`id`),
   ADD CONSTRAINT `transaksi_ibfk_8` FOREIGN KEY (`id_status_transaksi`) REFERENCES `status_transaksi` (`id`),
   ADD CONSTRAINT `transaksi_ibfk_9` FOREIGN KEY (`id_jenis_konveksi`) REFERENCES `jenis_konveksi` (`id`);
 
@@ -1209,7 +1346,6 @@ ALTER TABLE `user`
 -- Constraints for table `whistlist`
 --
 ALTER TABLE `whistlist`
-  ADD CONSTRAINT `whistlist_ibfk_1` FOREIGN KEY (`id_produk`) REFERENCES `produk` (`id_produk`),
   ADD CONSTRAINT `whistlist_ibfk_2` FOREIGN KEY (`id_user`) REFERENCES `user` (`id_user`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

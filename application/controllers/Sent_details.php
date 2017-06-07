@@ -1,6 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
+//required_once('/Home/');
 class Sent_details extends CI_Controller {
 
 	/**
@@ -26,16 +27,22 @@ class Sent_details extends CI_Controller {
 		$this->load->model('M_transaksi','',TRUE);
 		$this->load->model('M_jenis_pengiriman','',TRUE);
 		$this->load->model('M_logistik','',TRUE);
+		$this->load->model('M_produk','',TRUE);
+		$this->load->model('M_jenis_konveksi','',TRUE);
+		$this->load->model('M_tujuan','',TRUE);
+		
+		
+		
 		
     }
 	
-	public function index()
+	public function index($id_konveksi, $id_produk)
 	{
 
-		if(isset($_SESSION['USERNAME'])){
-			$username = $_SESSION['USERNAME'];
+		if(isset($_SESSION['ID_USER'])){
+			$username = $_SESSION['ID_USER'];
 			// $data['provinsi'] = $this->m_user->getProvinsiQuery(); //from db
-
+			$data['harga'] = $this->M_jenis_konveksi->getHarga($id_produk, $id_konveksi);
 			$data['provinsi'] = $this->rajaongkir->province(); //from api
 			$data['ukuran'] = $this->M_transaksi->getUkuran();
 			$prov_obj = json_decode($data['provinsi']);
@@ -74,14 +81,9 @@ class Sent_details extends CI_Controller {
 		}
 	}
 
-	public function process(){
-		$nama_tujuan      = $this->input->post('fullname');
-		$kodepos_tujuan   = $this->input->post('kodepos');
-		$handphone_tujuan = $this->input->post('nomorhp');
-		$kota_tujuan	  = $this->input->post('select_kota');
-		$email_tujuan     = $this->input->post('email');
-		$alamat_tujuan    = $this->input->post('alamat');
-	}
+	// function proses($id_konveksi, $id_produk){
+	// 	echo $id_konveksi."========".$id_produk;
+	// }
 
 	public function getHarga(){
 		$this->load->library('rajaongkir');

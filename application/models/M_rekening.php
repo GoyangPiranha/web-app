@@ -24,6 +24,13 @@
 			return $query->result();
 		}
 
+		function getRekeningAdmin(){
+			$query = $this->db->query("SELECT r.id_rekening, r.no_rekening, r.id_user, u.id_jenis_user 
+			FROM rekening r, user u 
+			WHERE r.id_user = u.id_user AND u.id_jenis_user = 9");
+			return $query->result()
+		}
+
         function deleteRekening($id_rekening){
             $query = $this->db->query("DELETE FROM `rekening` WHERE id_rekening = $id_rekening");
 			if ($query == true) {
