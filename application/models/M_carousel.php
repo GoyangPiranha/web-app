@@ -33,7 +33,4 @@
             $query = $this->db->query("SELECT `foto_carousel` FROM `carousel` WHERE `id_carousel` = $id");
             return $query->result();
         }
-
-
-
     }

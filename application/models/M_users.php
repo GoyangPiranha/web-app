@@ -115,8 +115,24 @@
 		}
 
 		function getJenisUser($id_user){
-            $query = $this->db->query("SELECT JU.id_jenis_user, JU.jenis_user FROM user U, jenis_user JU WHERE U.id_jenis_user = JU.id_jenis_user AND U.id_user = $id_user");
+            $query = $this->db->query("SELECT U.id_user, JU.id_jenis_user, JU.jenis_user FROM user U, jenis_user JU WHERE U.id_jenis_user = JU.id_jenis_user AND U.id_user = $id_user");
 			return $query->result();
+        }
+
+		public function ubahJenisUser($where, $data)
+        {
+            $this->db->update('user', $data, $where);
+            return $this->db->affected_rows();
+        }
+
+		public function updateStatusUser($id_user, $data){
+			$this->db->update('user', $data, $id_user);
+			return $this->db->affected_rows();
+		}
+
+		function getKonveksiCount(){
+            $query = $this->db->query("SELECT COUNT(id_user) FROM user WHERE id_jenis_user != 9");
+            return $query->result();
         }
 
 }

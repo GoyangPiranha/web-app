@@ -35,6 +35,12 @@ class Admin_konveksi extends CI_Controller {
 		}
 	}
 
+	function getById($id){
+		$data = $this->M_konveksi->getById($id);
+		echo json_encode($data);
+		
+	}
+
 	function add(){
 		$nama = $_POST['nama_konveksi'];
 		$harga_baju = $_POST['harga_konveksi'];

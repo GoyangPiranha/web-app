@@ -109,6 +109,27 @@
 			return $query->result();
         }
 
-        
+//ADMIN
+        function getUserProduct(){
+            $query = $this->db->query("SELECT P.id_produk, P.nama_produk, U.nama_user, P.date, JP.jenis_produk, KP.kategori_produk, P.deskripsi, SP.status_produk, P.rating_produk, P.diskon_produk, P.tag_produk FROM produk P, user U, status_produk SP, jenis_produk JP, kategori_produk KP WHERE U.id_user = P.id_user AND SP.id = P.id_status_produk AND JP.id = P.id_jenis_produk AND KP.id = P.id_kategori_produk");
+
+            return $query->result();
+        }
+
+        function getStatusProductById($id_produk){
+            $query = $this->db->query("SELECT P.id_produk, SP.id, SP.status_produk FROM produk P, status_produk SP WHERE P.id_status_produk = SP.id AND P.id_produk = $id_produk");
+            
+            return $query->result();
+        }
+
+        function changeStatusProduct($id_produk, $data){
+            $this->db->update('produk', $data, $id_produk);
+            return $this->db->affected_rows();
+        }
+
+        function getProductCount(){
+            $query = $this->db->query("SELECT COUNT(id_produk) FROM produk");
+            return $query->result();
+        }
 
     }

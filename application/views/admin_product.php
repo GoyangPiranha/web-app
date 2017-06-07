@@ -76,14 +76,13 @@
             <div class="page-title">
                 <div>
                     <h1>Daftar Produk</h1>
-                    <ul>Produk</ul>
                     <ul class="breadcrumb side">
                         <li><i class="fa fa-home fa-lg"></i></li>
                         <li class="active"><a href="#">Daftar Produk</a></li>
                     </ul>
                 </div>
                 <div>
-                    <a class="btn btn-primary btn-flat" href="" data-toggle="modal" data-target="#tambah"><i class="fa fa-lg fa-plus"></i></a><a class="btn btn-info btn-flat" href="#"><i class="fa fa-lg fa-refresh"></i></a><a class="btn btn-warning btn-flat" href="#"><i class="fa fa-lg fa-trash"></i></a>
+                    <!--<a class="btn btn-primary btn-flat" href="" data-toggle="modal" data-target="#tambah"><i class="fa fa-lg fa-plus"></i></a><a class="btn btn-info btn-flat" href="#"><i class="fa fa-lg fa-refresh"></i></a><a class="btn btn-warning btn-flat" href="#"><i class="fa fa-lg fa-trash"></i></a>-->
                 </div>
             </div>
             <div class="row">
@@ -93,57 +92,31 @@
                             <table class="table table-hover table-bordered" id="konveksi">
                                 <thead>
                                     <tr>
-                                        <th style="width:30px;">No</th>
-                                        <th>Nama</th>
-                                        <th>Deskripsi</th>
-                                        <th>Harga</th>
+                                        <th style="width:25px;">No</th>
+                                        <th>Nama Produk</th>
+                                        <th>Pemilik</th>
                                         <th>Kategori</th>
+                                        <th>Gender</th>
+                                        <th>Deskripsi</th>
                                         <th>Status</th>
                                         <th>Rating</th>
                                         <th>&nbsp;</th>
                                     </tr>
                                 </thead>
                                 <tbody>
+                                <?php foreach($produk as $index => $row):?>
                                     <tr>
-                                        <td class="text-center">1</td>
-                                        <td>System Architect</td>
-                                        <td>Edinburgh</td>
-                                        <td>Edinburgh</td>
-                                        <td>Edinburgh</td>
-                                        <th>Status</th>
-                                        <th>Status</th>
-                                        <th class="text-center"><a  class="btn btn-info btn-flat" style="padding:5px 5px;" href="#"><i class="fa fa-sm fa-pencil" ></i></a></th>
+                                        <td class="text-center"><?php echo $index+1;?></td>
+                                        <td><?php echo $row->nama_produk;?></td>
+                                        <td><?php echo $row->nama_user;?></td>
+                                        <td><?php echo $row->kategori_produk;?></td>
+                                        <td><?php echo $row->jenis_produk;?></td>
+                                        <td><?php echo $row->deskripsi;?></td>
+                                        <td><?php echo $row->status_produk;?></td>
+                                        <td><?php echo $row->rating_produk;?></td>
+                                        <th class="text-center"><button onclick="change_status(<?php echo $row->id_produk;?>)" class="btn btn-info btn-flat" style="padding:5px 5px;"><i class="fa fa-sm fa-pencil" ></i></button></th>
                                     </tr>
-                                    <tr>
-                                        <td class="text-center">2</td>
-                                        <td>Accountant</td>
-                                        <td>Tokyo</td>
-                                        <td>Edinburgh</td>
-                                        <td>Edinburgh</td>
-                                        <th>Status</th>
-                                        <th>Status</th>
-                                        <th class="text-center"><a class="btn btn-info btn-flat" style="padding:5px 5px;" href="#"><i class="fa fa-sm fa-pencil" ></i></a></th>
-                                    </tr>
-                                    <tr>
-                                        <td class="text-center">3</td>
-                                        <td>Junior Technical Author</td>
-                                        <td>San Francisco</td>
-                                        <td>Edinburgh</td>
-                                        <td>Edinburgh</td>
-                                        <th>Status</th>
-                                        <th>Status</th>
-                                        <th class="text-center"><a class="btn btn-info btn-flat" style="padding:5px 5px;" href="#"><i class="fa fa-sm fa-pencil" ></i></a></th>
-                                    </tr>
-                                    <tr>
-                                        <td class="text-center">6</td>
-                                        <td>Integration Specialist</td>
-                                        <td>New York</td>
-                                        <th>Status</th>
-                                        <th>Status</th>
-                                        <td>Edinburgh</td>
-                                        <td>Edinburgh</td>
-                                        <th class="text-center"><a class="btn btn-info btn-flat" style="padding:5px 5px;" href="#"><i class="fa fa-sm fa-pencil" ></i></a></th>
-                                    </tr>
+                                <?php endforeach;?>
                                 </tbody>
                             </table>
                         </div>
@@ -153,8 +126,8 @@
         </div>
     </div>
 
-    <!--      modal tambah-->
-    <div class="modal fade" id="status_product" style="border-radius:0px;" role="dialog">
+     <!--Ubah status produk modal-->
+    <div class="modal fade" id="modal_status" style="border-radius:0px;" role="dialog">
         <div class="modal-dialog modal-sm">
             <div class="modal-content">
                 <div class="modal-header" style="border-radius:0px;">
@@ -162,44 +135,35 @@
                     <h4 class="modal-title">Ubah Status Produk</h4>
                 </div>
                 <div class="modal-body">
-                    <form class="form-horizontal">
+                    <form class="form-horizontal" id="form_status" action="">
                         <div class="form-group">
+                            <div class="col-lg-12"><h5><strong>Status Sekarang:</strong></h5></div>
+                            <div class="col-lg-12"><h4 class="text-center" id="status"><strong id="status_sekarang" style="color:green;"></strong></h4></div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-lg-12"><input type="hidden" id="id_produk" value=""></div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-12"><strong>Upgrade User:</strong></label>
                             <div class="col-lg-12">
-                                <input class="form-control" name="nama_konveksi" type="text" placeholder="Nama Konveksi">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-lg-12">
-                                <input class="form-control" name="harga_konveksi" type="text" placeholder="Harga Konveksi">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-md-12">
-                                <textarea class="form-control" rows="3" placeholder="Deskripsi konveksi"></textarea>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-lg-12"><strong>Logo Konveksi</strong></label>
-                            <div class="col-lg-12">
-                                <input class="form-control" type="file" name="logo_konveksi" id="logo_konveksi">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-lg-12 ">
-                                <img class="center-block" id="show_logo" style="max-width:120px;height:auto;"/>
+                                <select class="form-control" id="upgrade_list">
+                                    <option value="1">Disimpan</option>
+                                    <option value="2">Belum Diterima</option>
+                                    <option value="3">Diterima</option>
+                                </select>
                             </div>
                         </div>
                         
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">Tutup</button>
-                    <button type="button" name="submit" class="btn btn-success">Tambah</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Batal</button>
+                    <button type="submit" onclick="save()" name="submit" class="btn btn-success">Konfirmasi</button>
                 </div>
             </div>
         </div>
     </div>
-    <!--      end of modal tambah-->
+    <!--End of Ubah status produk modal-->
     <!-- Javascripts-->
 
     <script src="<?php echo base_url('assets/bootstrap/js/jquery.min.js');?>"></script>
@@ -210,20 +174,58 @@
     <script src="<?php echo base_url('assets/bootstrap/js/plugins/dataTables.bootstrap.min.js');?>"></script>
     <script type="text/javascript">
         $('#konveksi').DataTable();
+
+        function change_status(id){
+             $('#form_status')[0].reset();
+
+             $.ajax({
+                url : "<?php echo base_url('Admin_product/getProductById');?>/" + id,
+                type: "GET",
+                dataType: "JSON",
+                success: function(data)
+                {
+                        var produk = jQuery.parseJSON(JSON.stringify(data));
+                        console.log(produk);
+                        $.each(produk, function(i, item){
+                            $('#status_sekarang').text(item.status_produk);
+                            // document.getElementById("upgrade_list").value = item.id_jenis_user;
+                            // console.log(item.id_jenis_user);
+                            $('#id_produk').val(item.id_produk);
+                        });
+
+                    $('#modal_status').modal('show'); // show bootstrap modal when complete loaded
+                },
+                error: function (jqXHR, textStatus, errorThrown)
+                {
+                    alert('Error get data from ajax');
+                }
+            });
+        }
+
+        function save(){
+            var id_produk = document.getElementById("id_produk").value;
+            var id_status_produk = document.getElementById("upgrade_list").value;
+
+            var data = {'id_produk' : id_produk, 'id_status_produk' : id_status_produk};
+            console.log(data);
+            $.ajax({
+                url : "<?php echo base_url('Admin_product/changeStatus');?>",
+                type: "POST",
+                data : data,
+                dataType: "JSON",
+                success: function(data)
+                {
+                    $('#modal_status').modal('hide'); // show bootstrap modal when complete loaded
+                    location.reload();
+                },
+                error: function (jqXHR, textStatus, errorThrown)
+                {
+                    console.log(data);
+                    alert('Error get data from ajax');
+                }
+            });     
+        }
     </script>
-    <!--<script>
-    document.getElementById("logo_konveksi").onchange = function() {
-        var reader = new FileReader();
-
-        reader.onload = function(e) {
-            // get loaded data and render thumbnail.
-            document.getElementById("show_logo").src = e.target.result;
-        };
-
-        // read the image file as a data URL.
-        reader.readAsDataURL(this.files[0]);
-    };
-</script>-->
 </body>
 
 </html>

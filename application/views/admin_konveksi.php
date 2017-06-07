@@ -95,12 +95,8 @@
                                     <tr>
                                         <th style="width:30px;">No</th>
                                         <th>Nama Konveksi</th>
-                                        <th>Baju</th>
-                                        <th>Celana</th>
-                                        <th>Jaket</th>
-                                        <th>Topi</th>
                                         <th>Deskripsi</th>
-                                        <th>Logo</th>
+                                        <th>Gambar</th>
                                         <th>&nbsp;</th>
                                     </tr>
                                 </thead>
@@ -109,13 +105,13 @@
                                     <tr>
                                         <td class="text-center"><?php echo $index+1;?></td>
                                         <td><?php echo $row->nama;?></td>
-                                        <td><?php if($row->id_kategori_produk==1){echo $row->harga;}?></td>
+                                        <!--<td><?php if($row->id_kategori_produk==1){echo $row->harga;}?></td>
                                         <td><?php if($row->id_kategori_produk==4){echo $row->harga;}?></td>
                                         <td><?php if($row->id_kategori_produk==2){echo $row->harga;}?></td>
-                                        <td><?php if($row->id_kategori_produk==3){echo $row->harga;}?></td>
+                                        <td><?php if($row->id_kategori_produk==3){echo $row->harga;}?></td>-->
                                         <td><?php echo $row->deskripsi;?></td>
                                         <td><?php echo $row->logo;?></td>
-                                        <td class="text-center"><button onclick="update_data()" class="btn btn-info btn-flat" style="padding:5px 5px;"><i class="fa fa-sm fa-pencil" ></i></button><a class="btn btn-danger btn-flat show-alert" style="padding:5px 5px;" href="#"><i class="fa fa-sm fa-trash" ></i></a></td>
+                                        <td class="text-center"><button onclick="detail(<?php echo $row->id;?>)" title="Detail" class="btn btn-success btn-flat" style="padding:5px 5px;" href="#"><i class="fa fa-sm fa-bars" ></i></button><button onclick="update_data()" class="btn btn-info btn-flat" style="padding:5px 5px;"><i class="fa fa-sm fa-pencil" ></i></button><a class="btn btn-danger btn-flat show-alert" style="padding:5px 5px;" href="#"><i class="fa fa-sm fa-trash" ></i></a></td>
                                     </tr>
                                     <?php endforeach;?>
                                 </tbody>
@@ -196,6 +192,54 @@
         </div>
     </div>
     <!--end of modal tambah-->
+
+    <!--modal harga-->
+    <div class="modal fade" id="modal_harga" style="border-radius:0px;" role="dialog">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header" style="border-radius:0px;">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Detail Harga</h4>
+                </div>
+                <div class="modal-body">
+                    <form class="form-horizontal" id="form_harga" method="POST" enctype="multipart/form-data">
+                        <div class="form-group">
+                            <div class="col-lg-12">
+                                <div class="row">
+                                    <div class="col-xs-6">
+                                        <label class="control-label" for="kategori_baju">Kategori Baju</label>
+                                        <input class="form-control" id="kategori_baju" name="harga_kategori_baju" type="text" placeholder="Harga">
+                                    </div>
+                                    <div class="col-xs-6">
+                                        <label class="control-label" for="kategori_jaket">Kategori Jaket</label>
+                                        <input class="form-control" id="kategori_jaket" name="harga_kategori_jaket" type="text" placeholder="Harga">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="row">
+                                    <div class="col-xs-6">
+                                        <label class="control-label" for="kategori_topi">Kategori Topi</label>
+                                        <input class="form-control" id="kategori_topi" name="harga_kategori_topi" type="text" placeholder="Harga">
+                                    </div>
+                                    <div class="col-xs-6">
+                                        <label class="control-label" for="kategori_celana">Kategori Celana</label>
+                                        <input class="form-control" id="kategori_celana" name="harga_kategori_celana" type="text" placeholder="Harga">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-danger" data-dismiss="modal">Tutup</button>
+                            <input type="submit" name="Tambah" class="btn btn-success"></input>
+                        </div>
+                    </form>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    <!--end of modal harga-->
     
     <!-- Javascripts-->
     <script src="<?php echo base_url('assets/bootstrap/js/jquery.min.js');?>"></script>
@@ -242,6 +286,35 @@
         };
 
         var save_method;
+
+        function detail(id){
+            $('#form_harga')[0].reset();
+            $.ajax({
+                url : "<?php echo base_url('Admin_konveksi/getById');?>/" + id,
+                type: "GET",
+                dataType: "JSON",
+                success: function(data)
+                {
+                    var konveksi = jQuery.parseJSON(JSON.stringify(data));
+                    var destination = document.getElementById("tujuan");
+                    $.each(konveksi, function(i, item){
+                        // console.log(item.id_kategori_produk);
+                        // $('#kategori_baju').val(item.kategori_produk);
+                        // $('#kategori_jaket').val(item.ukuran);
+                        // $('#kategori_topi').val(item.jumlah_produk);
+                        // $('#kategori_celana').val(item.nama);
+                        // $('#jasa').val(item.jenis_pengiriman);
+                        // destination.value = item.alamat;
+                    });              
+
+                    $('#modal_detail').modal('show'); // show bootstrap modal when complete loaded
+                },
+                error: function (jqXHR, textStatus, errorThrown)
+                {
+                    alert('Error get data from ajax');
+                }
+            });
+        }
 
         function tambah_data(){
             save_method = 'tambah';

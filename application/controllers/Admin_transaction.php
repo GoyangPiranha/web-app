@@ -39,9 +39,22 @@ class Admin_transaction extends CI_Controller {
 		echo json_encode($data);
 	}
 
-	public function showAllStatus(){
-		$data['status'] = $this->M_transaksi->getAllTransaction();
+	public function updateStatus(){
+		$id = array(
+					'id' => $this->input->post('id')
+		);
+		$data = array(
+						'id_status_transaksi' => $this->input->post('status_transaksi')
+		);
 
-		// echo json_encode($data);
+		// $id = $this->input->post('id');
+		// $id_status_transaksi = $this->input->post('status_transaksi');
+		$this->M_transaksi->transactionUpdate($id, $data);
+		echo json_encode(array("status" => TRUE));
+	}
+
+	function deleteTransaction($id){
+		$this->M_transaksi->deleteTransaction($id);
+		echo json_encode(array("status" => TRUE));
 	}
 }

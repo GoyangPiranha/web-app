@@ -38,7 +38,7 @@ class Admin_carousel extends CI_Controller {
 		$nama = $_POST['nama_carousel'];
 		$foto = $_FILES['userfile']['name'];
 		$uniqid = uniqid();
-		$header = $uniqid.$foto;
+		$header = $uniqid.$foto; 
 		$tmp_name = $_FILES['userfile']['tmp_name'];
 		$logoerr = $_FILES['userfile']['error'];
 
@@ -46,6 +46,8 @@ class Admin_carousel extends CI_Controller {
 					'nama_carousel' => $nama,
 					'foto_carousel' => $header
 		);
+
+		// echo $data['foto_carousel'];
 		$location = './assets/images/Header/';
 		move_uploaded_file($tmp_name, $location.$header);
 		$check = $this->M_carousel->addCarousel($data);

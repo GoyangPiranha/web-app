@@ -79,7 +79,7 @@
                         <li class="active"><a href="konveksi.html">Daftar Transaksi</a></li>
                     </ul>
                 </div>
-                <div><a class="btn btn-primary btn-flat" href="#"><i class="fa fa-lg fa-plus"></i></a><a class="btn btn-info btn-flat" href="courier.html"><i class="fa fa-lg fa-refresh"></i></a><a class="btn btn-warning btn-flat" href="#"><i class="fa fa-lg fa-trash"></i></a></div>
+                <!--<div><a class="btn btn-primary btn-flat" href="#"><i class="fa fa-lg fa-plus"></i></a><a class="btn btn-info btn-flat" href="courier.html"><i class="fa fa-lg fa-refresh"></i></a><a class="btn btn-warning btn-flat" href="#"><i class="fa fa-lg fa-trash"></i></a></div>-->
             </div>
             <div class="row">
                 <div class="col-md-12">
@@ -88,7 +88,7 @@
                             <table class="table table-hover table-bordered" id="usertable">
                                 <thead>
                                     <tr class="text-center">
-                                        <th style="max-width:13px;">No</th>
+                                       <th style="width:25px;">No</th>
                                         <th>Nama Produk</th>
                                         <th>Pembeli</th>
                                         <th>Tanggal Beli</th>
@@ -100,13 +100,13 @@
                                 <tbody>
                                 <?php foreach($transaksi as $index => $row):?>
                                     <tr>
-                                        <td><?php echo $index+1;?></td>
+                                        <td class="text-center"><?php echo $index+1;?></td>
                                         <td><?php echo $row->nama_produk;?></td>
                                         <td><?php echo $row->nama_user;?></td>
                                         <td><?php echo $row->tanggal;?></td>
                                         <td><?php echo $row->status_transaksi;?></td>
                                         <td><?php echo $row->total_harga;?></td>
-                                        <td class="text-center" style="min-width:40px;"><button onclick="detail(<?php echo $row->id;?>)" title="Detail" class="btn btn-success btn-flat" style="padding:5px 5px;" href="#"><i class="fa fa-sm fa-bars" ></i></button><button onclick="change_status(<?php echo $row->id;?>)" title="Ubah Status Pengiriman" data-toggle="modal" data-target="#ubah_status" class="btn btn-info btn-flat" style="padding:5px 5px;" href="#"><i class="fa fa-sm fa-pencil" ></i></button><a title="Hapus" class="btn btn-danger btn-flat show-alert" style="padding:5px 5px;" href="#"><i class="fa fa-sm fa-trash" ></i></a></td>
+                                        <td class="text-center" style="min-width:40px;"><button onclick="detail(<?php echo $row->id;?>)" title="Detail" class="btn btn-success btn-flat" style="padding:5px 5px;" href="#"><i class="fa fa-sm fa-bars" ></i></button><button onclick="change_status(<?php echo $row->id;?>)" title="Ubah Status Pengiriman" data-toggle="modal" data-target="#ubah_status" class="btn btn-info btn-flat" style="padding:5px 5px;" href="#"><i class="fa fa-sm fa-pencil" ></i></button><button title="Hapus" onclick="hapusTransaksi(<?php echo $row->id;?>)" class="btn btn-danger btn-flat show-alert" style="padding:5px 5px;" href="#"><i class="fa fa-sm fa-trash" ></i></button></td>
                                     <?php endforeach;?>
                                     </tr>
                                 </tbody>
@@ -182,27 +182,31 @@
                     <h4 class="modal-title">Status Transaksi</h4>
                 </div>
                 <div class="modal-body">
-                    <form class="form-horizontal" id="form_status" action="<?php echo base_url('Admin_transaction/ubah_status');?>" method="POST">
+                    <form class="form-horizontal" id="form_status" >
                         <div class="form-group">
                             <div class="col-lg-12"><h5><strong>Status Sekarang:</strong></h5></div>
                             <div class="col-lg-12"><h4 class="text-center"><strong style="color:green;" id="status_sekarang"></strong></h4></div>
+                            <div class="col-lg-12">
+                                <input type="hidden" name="id_trans" id="id_trans" value="">
+                            </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-lg-12"><strong>Upgrade User:</strong></label>
+                            <!--<label class="col-lg-12"><strong>Ubah Status Transaksi:</strong></label>-->
                             <div class="col-lg-12">
                                 <select class="form-control" id="upgrade_list">
-                                    <?php foreach($status as $row):?>
-                                    <option value="<?php echo $row->id;?>"><?php echo $row->status_transaksi;?></option>
-                                    <?php endforeach;?>
+                                    <option>Ubah Status Transaksi</option>
+                                    <option value="1">Belum Dibayar</option>
+                                    <option value="2">Dibayar</option>
+                                    <option value="3">Dikirim</option>
+                                    <option value="4">Barang Diterima</option>
                                 </select>
                             </div>
                         </div>
-                        <button type="button" class="btn btn-danger" data-dismiss="modal">Batal</button>
-                        <input type="button" name="submit" class="btn btn-success" value="Ubah"></input>
                     </form>
                 </div>
                 <div class="modal-footer">
-                    
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Batal</button>
+                    <button type="button" name="submit" onclick="save()" class="btn btn-success" >Ubah</button>
                 </div>
             </div>
         </div>
@@ -216,33 +220,28 @@
     <script src="<?php echo base_url('assets/bootstrap/js/plugins/jquery.dataTables.min.js');?>"></script>
     <script src="<?php echo base_url('assets/bootstrap/js/plugins/dataTables.bootstrap.min.js');?>"></script>
     <script type="text/javascript">
-        $('#usertable').DataTable();
+        var table = $('#usertable').DataTable();
 
         function detail(id){
             $('#form_view')[0].reset();
-            // console.log(id);
             $.ajax({
                 url : "<?php echo base_url('Admin_transaction/detail');?>/" + id,
                 type: "GET",
                 dataType: "JSON",
                 success: function(data)
                 {
-                        var transaksi = jQuery.parseJSON(JSON.stringify(data));
-                        console.log(transaksi); 
-                        var destination = document.getElementById("tujuan");
-                        $.each(transaksi, function(i, item){
-                            $('#kategori').val(item.kategori_produk);
-                            $('#ukuran').val(item.ukuran);
-                            $('#jumlah').val(item.jumlah_produk);
-                            $('#konveksi').val(item.nama);
-                            $('#jasa').val(item.jenis_pengiriman);
-                            // $('#tujuan').val(item.tujuan_pengiriman);
-                            destination.value = item.alamat;
-                            // console.log(item.t);
-                        });              
+                    var transaksi = jQuery.parseJSON(JSON.stringify(data));
+                    var destination = document.getElementById("tujuan");
+                    $.each(transaksi, function(i, item){
+                        $('#kategori').val(item.kategori_produk);
+                        $('#ukuran').val(item.ukuran);
+                        $('#jumlah').val(item.jumlah_produk);
+                        $('#konveksi').val(item.nama);
+                        $('#jasa').val(item.jenis_pengiriman);
+                        destination.value = item.alamat;
+                    });              
 
                     $('#modal_detail').modal('show'); // show bootstrap modal when complete loaded
-                    // $('.modal-title').text('Edit Book'); // Set title to Bootstrap modal title
                 },
                 error: function (jqXHR, textStatus, errorThrown)
                 {
@@ -261,52 +260,62 @@
                 success: function(data)
                 {
                         var transaksi = jQuery.parseJSON(JSON.stringify(data));
-                        // console.log(transaksi); 
-                        var destination = document.getElementById("tujuan");
                         $.each(transaksi, function(i, item){
                             $('#status_sekarang').text(item.status_transaksi);
-                            // console.log(item.status_transaksi);
-                        });              
+                            $('#id_trans').val(item.id);
+                        });
 
                     $('#modal_status').modal('show'); // show bootstrap modal when complete loaded
-                    // $('.modal-title').text('Edit Book'); // Set title to Bootstrap modal title
                 },
                 error: function (jqXHR, textStatus, errorThrown)
                 {
                     alert('Error get data from ajax');
                 }
             });
-
-            // $.ajax({
-            //     url : "<?php echo base_url('Admin_transaction/showAllStatus');?>",
-            //     type: "GET",
-            //     dataType: "JSON",
-            //     success: function(data)
-            //     {
-            //             var status = jQuery.parseJSON(JSON.stringify(data));
-            //             console.log(status); 
-                        
-            //             var select = document.getElementById("upgrade_list");
-            //             // var destination = document.getElementById("tujuan");
-            //             $.each(status, function(i, item){
-                            
-            //                 for(index in item) {
-            //                     select.options[select.options.length] = new Option(status[index], index);
-            //                 }
-            //             });              
-
-            //         $('#modal_status').modal('show'); // show bootstrap modal when complete loaded
-            //         // $('.modal-title').text('Edit Book'); // Set title to Bootstrap modal title
-            //     },
-            //     error: function (jqXHR, textStatus, errorThrown)
-            //     {
-            //         alert('Error get data from ajax');
-            //     }
-            // });
         }
 
         function save(){
+            var id = document.getElementById("id_trans").value;
+            var status_transaksi = document.getElementById("upgrade_list").value;
 
+            var data = {'id' : id, 'status_transaksi' : status_transaksi};
+
+            $.ajax({
+                url : "<?php echo base_url('Admin_transaction/updateStatus');?>",
+                type: "POST",
+                data : data,
+                dataType: "JSON",
+                success: function(data)
+                {
+                    $('#modal_status').modal('hide'); // show bootstrap modal when complete loaded
+                    location.reload();
+                },
+                error: function (jqXHR, textStatus, errorThrown)
+                {
+                    console.log(data);
+                    alert('Error get data from ajax');
+                }
+            });     
+        }
+
+        function hapusTransaksi(id){
+            if(confirm('Apakah anda yakin ingin menghapus data?')){
+                // ajax delete data to database
+                console.log(id)
+                $.ajax({
+                    url : "<?php echo site_url('Admin_transaction/deleteTransaction');?>/" + id,
+                    type: "POST",
+                    dataType: "JSON",
+                    success: function(data)
+                    {
+                        location.reload();
+                    },
+                    error: function (jqXHR, textStatus, errorThrown)
+                    {
+                        alert('Gagal menghapus data.');
+                    }
+                });
+            }
         }
     </script>
 </body>

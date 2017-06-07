@@ -34,7 +34,24 @@ class Admin_show_user extends CI_Controller {
 		}
 	}
 
-	public function show($id){
+	public function updateJenis(){
+		// $id_user = $this->input->post('id_user');
+		// $id_jenis_user = $this->input->post('id_jenis_user');
+		$id_user = array(
+						'id_user' => $this->input->post('id_user')
+		);
+
+		$data = array(
+						'id_jenis_user' => $this->input->post('id_jenis_user')
+		);
+
+		// echo  $id_user['id_user'];
+		// echo  $data['id_jenis_user'];
+		$check = $this->M_users->updateStatusUser($id_user, $data);
+		echo json_encode(array("status" => $check));
+	}
+
+	public function getJenisUser($id){
 		$data = $this->M_users->getJenisUser($id);
 		echo json_encode($data);
 	}

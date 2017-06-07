@@ -162,7 +162,7 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-lg-12"><strong>Logo Konveksi</strong></label>
+                            <label class="col-lg-12"><strong>Pilih Header</strong></label>
                             <div class="col-lg-12">
                                 <input type="file" name="userfile" class="form-control" value="">
                             </div>

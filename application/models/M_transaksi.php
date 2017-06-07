@@ -66,5 +66,21 @@
             return $query->result();
         }
 
+        public function transactionUpdate($where, $data)
+        {
+            $this->db->update('transaksi', $data, $where);
+            return $this->db->affected_rows();
+        }
+
+        public function deleteTransaction($id){
+			$this->db->where('id', $id);
+			$this->db->delete('transaksi');
+		}
+
+        function getTransactionCount(){
+            $query = $this->db->query("SELECT COUNT(id) FROM transaksi");
+            return $query->result();
+        }
+
     
     }

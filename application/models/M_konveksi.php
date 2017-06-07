@@ -20,8 +20,15 @@
         }
 
         function getKonveksi(){
-            $query = $this->db->query("SELECT K.nama, K.deskripsi, JK.harga, K.logo, JK.id_kategori_produk FROM konveksi K, jenis_konveksi JK, kategori_produk KP WHERE K.id = JK.id_konveksi AND JK.id_kategori_produk = KP.id");
+            $query = $this->db->query("SELECT K.id, K.nama, K.deskripsi, JK.harga, K.logo, JK.id_kategori_produk FROM konveksi K, jenis_konveksi JK, kategori_produk KP WHERE K.id = JK.id_konveksi AND JK.id_kategori_produk = KP.id");
 
             return $query->result();
         }
+
+        function getById($id){
+            $query = $this->db->query("SELECT K.id, JK.id, K.nama, K.deskripsi, JK.harga, K.logo, JK.id_kategori_produk FROM konveksi K, jenis_konveksi JK, kategori_produk KP WHERE K.id = JK.id_konveksi AND JK.id_kategori_produk = KP.id AND K.id = $id");
+
+            return $query->result();
+        }
+        
     }

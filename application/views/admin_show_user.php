@@ -85,12 +85,12 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="card">
-                    <?php echo $_SESSION['ID_USER'];?>
+                    
                         <div class="card-body">
                             <table class="table table-hover table-bordered" id="usertable">
                                 <thead>
                                     <tr>
-                                        <th>No</th>
+                                        <th style="width:25px;">No</th>
                                         <th>Nama Lengkap</th>
                                         <th>Username</th>
                                         <th>Tanggal Lahir</th>
@@ -106,7 +106,7 @@
                                 <tbody>
                                      <?php foreach($users as $index => $row):?>
                                     <tr>
-                                        <td><?php echo $index+1; ?></td>
+                                        <td class="text-center"><?php echo $index+1; ?></td>
                                         <td><?php echo $row->nama_user;?></td>
                                         <td><?php echo $row->username_user;?></td>
                                         <td><?php echo $row->tanggal_lahir_user;?></td>
@@ -116,7 +116,7 @@
                                         <td><?php echo $row->email_user;?></td>
                                         <td><?php echo $row->contact_user;?></td>
                                         <td><?php echo $row->jenis_user;?></td>
-                                        <td class="text-center"><a href="<?=base_url();?>Admin_konveksi/$row->id_user" title="Upgrade User" class="btn btn-info btn-flat" style="padding:5px 5px;" href="#"><i class="fa fa-sm fa-pencil" ></i></a></td>
+                                        <td class="text-center"><button onclick="change_status(<?php echo $row->id_user;?>)" title="Upgrade User" class="btn btn-info btn-flat" style="padding:5px 5px;" href="#"><i class="fa fa-sm fa-pencil" ></i></button></td>
                                     </tr>
                                     <?php endforeach;?>                      
                                 </tbody>
@@ -139,23 +139,27 @@
                     <form class="form-horizontal" id="form_upgrade" action="">
                         <div class="form-group">
                             <div class="col-lg-12"><h5><strong>Status Sekarang:</strong></h5></div>
-                            <div class="col-lg-12"><h4 class="text-center" id="status"><strong>Pengguna Reguler</strong></h4></div>
+                            <div class="col-lg-12"><h4 class="text-center" id="status"><strong id="status_sekarang" style="color:green;"></strong></h4></div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-lg-12"><input type="hidden" id="id_user" value=""></div>
                         </div>
                         <div class="form-group">
                             <label class="col-lg-12"><strong>Upgrade User:</strong></label>
                             <div class="col-lg-12">
-                                <select class="form-control" name="upgrade_list" id="upgrade_list">
-                                    <option value="<??>"></option>
+                                <select class="form-control" id="upgrade_list">
+                                    <option value="2">Non-Premium</option>
+                                    <option value="1">Premium</option>
                                 </select>
                             </div>
                         </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-danger" data-dismiss="modal">Batal</button>
-                            <input type="submit" name="submit" class="btn btn-success" value="Konfirmasi"></input>
-                        </div>
+                        
                     </form>
                 </div>
-                
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Batal</button>
+                    <button type="submit" onclick="save()" name="submit" class="btn btn-success">Konfirmasi</button>
+                </div>
             </div>
         </div>
     </div>
@@ -171,52 +175,56 @@
         $('#usertable').DataTable();
         $('[data-toggle="tooltip"]').tooltip();
 
-        // funtion upgrade(){
-        //     $('#form_upgrade')['0'].reset();
-        //     $('#modal_upgrade').modal('show');
-        //     $('modal-title').text('Upgrade User');
-        // }
+        function change_status(id){
+             $('#form_upgrade')[0].reset();
 
-        // function ubah_status_user(id){
-        //     $('#form_upgrade')['0'].reset();
-        //     $.ajax({
-        //         url : "<?php echo base_url('Admin_show_user/show');?>/" + id,
-        //         type: "GET",
-        //         dataType: "JSON",
-        //         success: function(data)
-        //         {
-        //             $('[id="jenis_user_select"]').val(data.jenis_user);
-        
-        //             $('#modal_upgrade').modal('show'); // show bootstrap modal when complete loaded
-        //            $('.modal-title').text('Upgrade User'); // Set title to Bootstrap modal title
-        
-        //         },
-        //         error: function (jqXHR, textStatus, errorThrown)
-        //         {
-        //             alert('Gagal mendapatkan data');
-        //         }
-        //     });
-           
-        }
-
-        function confirm(){
-            $.ajax({
-                url : "<?php echo base_url('Admin_show_user/ubah_jenis');?>",
-                type: "POST",
-                data: $('#form_bank').serialize(),
+             $.ajax({
+                url : "<?php echo base_url('Admin_show_user/getJenisUser');?>/" + id,
+                type: "GET",
                 dataType: "JSON",
                 success: function(data)
                 {
-                    //if success close modal and reload ajax table
-                    $('#modal-bank').modal('hide');
-                    location.reload();// for reload a page
+                        var transaksi = jQuery.parseJSON(JSON.stringify(data));
+                        $.each(transaksi, function(i, item){
+                            $('#status_sekarang').text(item.jenis_user);
+                            // document.getElementById("upgrade_list").value = item.id_jenis_user;
+                            // console.log(item.id_jenis_user);
+                            $('#id_user').val(item.id_user);
+                        });
+
+                    $('#modal_upgrade').modal('show'); // show bootstrap modal when complete loaded
                 },
                 error: function (jqXHR, textStatus, errorThrown)
                 {
-                    alert('Error adding / update data');
+                    alert('Error get data from ajax');
                 }
             });
         }
+
+        function save(){
+            var id_user = document.getElementById("id_user").value;
+            var id_jenis_user = document.getElementById("upgrade_list").value;
+            // console.log(status_user);
+            var data = {'id_user' : id_user, 'id_jenis_user' : id_jenis_user};
+            console.log(data);
+            $.ajax({
+                url : "<?php echo base_url('Admin_show_user/updateJenis');?>",
+                type: "POST",
+                data : data,
+                dataType: "JSON",
+                success: function(data)
+                {
+                    $('#modal_status').modal('hide'); // show bootstrap modal when complete loaded
+                    location.reload();
+                },
+                error: function (jqXHR, textStatus, errorThrown)
+                {
+                    // console.log(data);
+                    alert('Error get data from ajax');
+                }
+            });     
+        }
+
     </script>
 </body>
 

@@ -38,7 +38,7 @@ class Admin_bank extends CI_Controller {
 	}
 
 	public function add(){
-		$id_user = $_SESSION['ID_USER'];
+		$id_user = $_SESSION['ID_USER']; 
 		$data = array(
 					'no_rekening' => $this->input->post('no_rekening'),
 					'nama_pemilik' => $this->input->post('nama_pemilik'),

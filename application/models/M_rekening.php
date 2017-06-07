@@ -21,7 +21,7 @@
 
 		// REKENING ADMIN
 		function getAdminRek(){
-			$query = $this->db->query("SELECT * FROM `rekening` WHERE `id_user` = 23");
+			$query = $this->db->query("SELECT * FROM `rekening` WHERE `id_user` = 27");
 			return $query->result();
 		}
 		

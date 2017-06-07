@@ -90,7 +90,7 @@
                             <table class="table table-hover table-bordered" id="bank">
                                 <thead>
                                     <tr>
-                                        <th style="width:20px;">No</th>
+                                        <th style="width:25px;">No</th>
                                         <th>Nama Pemilik</th>
                                         <th>Nomor Rekening</th>
                                         <th>Nama Bank</th>
@@ -100,11 +100,12 @@
                                 <tbody>
                                     <?php foreach($admin_bank as $index=> $row):?>
                                     <tr>
-                                        <td><?php echo $index+1;?></td>
+                                        <td class="text-center"><?php echo $index+1;?></td>
                                         <td><?php echo $row->nama_pemilik;?></td>
                                         <td><?php echo $row->no_rekening;?></td>
                                         <td><?php echo $row->nama_bank;?></td>
-                                        <th class="text-center"><button onclick="update_bank(<?php echo $row->id_rekening;?>)" class="btn btn-info btn-flat" style="padding:5px 5px;" href="#"><span class="fa fa-sm fa-pencil" ></span></button><button onclick="hapus(<?php echo $row->id_rekening;?>)" class="btn btn-danger btn-flat" style="padding:5px 5px;" href="#"><i class="fa fa-sm fa-trash" ></i></button></th>
+                                        <th class="text-center"><button onclick="hapus(<?php echo $row->id_rekening;?>)" class="btn btn-danger btn-flat" style="padding:5px 5px;" href="#"><i class="fa fa-sm fa-trash" ></i></button></th>
+                                        <!--<button onclick="update_bank(<?php echo $row->id_rekening;?>)" class="btn btn-info btn-flat" style="padding:5px 5px;" href="#"><span class="fa fa-sm fa-pencil" ></span></button>-->
                                     </tr>
                                     <?php endforeach;?>
                                 </tbody>
@@ -186,14 +187,9 @@
             $('.modal-title').text('Update Bank');
         }
 
-        function simpan(){
+        function simpan(){  
             var url;
-            if(save_method=='tambah'){
-                url = "<?=base_url('');?>Admin_bank/add";
-            }
-            else{
-                url = "<?php echo base_url('Admin_bank/update');?>";
-            }
+            url = "<?=base_url('');?>Admin_bank/add";
             console.log($('#form_bank').serialize())
             // // var data;
             // $.each($('#form_bank').serialize(),function(a, i){
