@@ -366,13 +366,9 @@
           var id_kota = $(this).val();
           if (id_kota != 'null'){
 			  console.log(id_kota);
-			($('#REG').attr('value', '0'));				  
-			($('#YES').attr('value', '0'));				  
-			($('#OKE').attr('value', '0'));
 			($('#OKE-cost').html("-"));				  
 			($('#YES-cost').html("-"));
-			($('#REG-cost').html("-"));
-			($('#poskilat').attr('value', '0'));				  
+			($('#REG-cost').html("-"));				  
 			($('#poskilat-cost').html("-"));				  
             $('#select_kota').prop('disabled', false);
             $.ajax({
