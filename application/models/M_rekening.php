@@ -41,6 +41,11 @@
 			return $query->result();
 		}
 
+		function getRekeningAdmin(){
+			$query = $this->db->query("SELECT * FROM bank");
+			return $query->result();
+		}
+
         function deleteRekening($id_rekening){
             $query = $this->db->query("DELETE FROM `rekening` WHERE id_rekening = $id_rekening");
 			if ($query == true) {

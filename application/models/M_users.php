@@ -130,7 +130,7 @@
 			return $this->db->affected_rows();
 		}
 
-		function getKonveksiCount(){
+		function getUserCount(){
             $query = $this->db->query("SELECT COUNT(id_user) FROM user WHERE id_jenis_user != 9");
             return $query->result();
         }

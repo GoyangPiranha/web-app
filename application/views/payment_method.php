@@ -18,26 +18,27 @@
 <nav class="navbar-default navbar-fixed-top">
     <div class="container">
         <div class="navbar-header">
-            <a class="navbar-brand" href="<?php echo base_url('login'); ?>"><span class="glyphicon glyphicon-chevron-left"></span><span  id="registration">Metode Pembayaran</span></a>
+            <a class="navbar-brand" href="javascript:window.history.go(-1);"><span class="glyphicon glyphicon-chevron-left"></span><span  id="registration">Metode Pembayaran</span></a>
         </div>
     </div><!--/.container -->
 </nav>
 <!-- NAVBAR -->
 <div class="container">
     <div class="alert alert-warning " role="alert">
-        <h6 class="text-center">Pembayaran harus ditransfer sebelum tanggal 14 September 2017 Pukul 10.00 WIB. Melewati batas pembayaran maka transaksi akan dibatalkan secara otomatis.</h6>
+        <!--<h6 class="text-center">Pembayaran harus ditransfer sebelum tanggal 14 September 2017 Pukul 10.00 WIB. Melewati batas pembayaran maka transaksi akan dibatalkan secara otomatis.</h6>-->
     </div>
 </div>
 
-<form>
+<!--<form>-->
     <div class="col-lg-4 col-lg-offset-4 form-login">
     <div id="accordion" role="tablist" aria-multiselectable="true">
+    <?php foreach($rekening as $row){ ?>
         <div class="card list-view-column">
-            <div class="card-header" role="tab" id="bri">
+            <div class="card-header" role="tab" id="<?php echo $row->nama_bank ?>">
                 <h5 class="mb-0">
                     <a data-toggle="collapse" data-parent="#accordion" href="#collapseBri" aria-expanded="true" aria-controls="collapseOne">
                         <div class="radio radio-primary">
-                            <strong>Bank BRI</strong>
+                            <strong><?php echo $row->nama_bank ?></strong>
                         </div>
                     </a>
                 </h5>
@@ -48,13 +49,12 @@
                         <div class="col-xs-6">
                             <div class="row">
                                 <div class="col-xs-12">
-                                    <h5 id="custom-h5">No. Rek <strong>000982883877728</strong></h5>
+                                    <h5 id="custom-h5">No. Rek <strong><?php echo $row->no_rekening ?></strong></h5>
                                 </div>
                                 <div class="col-xs-12"><div class="line-separator" id="separator"></div></div>
                                 <div class="col-xs-12">
                                     <div class="checkbox">
-                                        <input type="checkbox" id="cb2">
-                                        <label for="cb2"><strong>Pilih Bank</strong></label>
+                                         <a href="<?=base_url()?>Payment_method/process/<?=$row->id_bank?>"><input name="submit" type="submit" class="btn btn-block btn-custom-green submit" value="Pilih"></input></a>
                                     </div>
                                 </div>
                             </div>
@@ -63,7 +63,7 @@
                             <div class="row">
                                 <div class="col-xs-12"></div>
                                 <div class="col-xs-12">
-                                    <img id="img-payment" class="img-responsive center-block" src="<?php echo base_url('assets/images/bri.webp'); ?>" alt="product-img">
+                                    <img id="img-payment" class="img-responsive center-block" src="<?php echo base_url(); ?>assets/images/Bank/<?php echo $row->logo_bank; ?>" alt="product-img">
                                 </div>
                                 <div class="col-xs-12"></div>
                             </div>
@@ -72,7 +72,8 @@
                 </div>
             </div>
         </div>
-        <div class="card list-view-column">
+        <?php } ?>
+        <!--<div class="card list-view-column">
             <div class="card-header" role="tab" id="mandiri">
                 <h5 class="mb-0">
                     <a data-toggle="collapse" data-parent="#accordion" href="#collapseMandiri" aria-expanded="true" aria-controls="collapseOne">
@@ -191,11 +192,11 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div>-->
         <!--end of card list view column-->
     </div>
 
-    <div class="col-xs-12"><div class="line-separator" style="" id="separator"></div></div>
+    <!--<div class="col-xs-12"><div class="line-separator" style="" id="separator"></div></div>
     <div class="card list-view-column" style="margin-top:20px;">
             <div class="card-header" role="tab" id="bni">
                 <h5 class="mb-0">
@@ -225,26 +226,23 @@
                         </div>
                         <div class="col-xs-12">
                             <div class="form-group">
-                                <div class="input-group">
-                                    <select class="form-control" name="select_bank" id="select_bank">
-                                    <option value="">Pilih Bank</option>
-                                    </select>
+                                <div class="input-group center-block">
+                                    <input name="nama_bank" type="text" class="form-control" placeholder="Nama Bank" aria-describedby="basic-addon1" id="edit-profil-input" value="">
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </div>-->
 
-    <div class="row">
+    <!--<div class="row">
         <div class="col-xs-12" style="margin-bottom: 10px;">
              <input type="submit" value="Selesai" class="btn btn-block btn-custom-yellow center-block"></input> 
         </div>
-
-    </div>
+    </div>-->
 </div> 
-</form>
+<!--</form>-->
 
 
 <!--end of col-lg-4-->

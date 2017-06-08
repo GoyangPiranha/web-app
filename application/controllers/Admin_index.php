@@ -30,9 +30,9 @@ class Admin_index extends CI_Controller {
 	public function index()
 	{
 		if (isset($_SESSION['USERNAME'])) {
-			$data['user'] = $this->M_user->getUserCount();
-			$data['produk'] = $this->M_user->getProductCount();
-			$data['transaksi'] = $this->M_user->getTransactionCount();
+			$data['user'] = $this->M_users->getUserCount();
+			$data['produk'] = $this->M_produk->getProductCount();
+			$data['transaksi'] = $this->M_transaksi->getTransactionCount();
 			$this->load->view('admin_index');
 		}
 		else {
