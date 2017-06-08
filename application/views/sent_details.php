@@ -66,7 +66,7 @@
 <nav class="navbar-default navbar-fixed-top">
     <div class="container">
         <div class="navbar-header">
-            <a class="navbar-brand" href="<?php echo base_url('login'); ?>"><span class="glyphicon glyphicon-chevron-left"></span><span  id="registration">  Detail Pengiriman</span></a>
+            <a class="navbar-brand" href="javascript:window.history.go(-1);"><span class="glyphicon glyphicon-chevron-left"></span><span  id="registration">  Detail Pengiriman</span></a>
         </div>
     </div><!--/.container -->
 </nav>
@@ -76,7 +76,7 @@
 <div class="col-md-4 col-md-offset-4 form-login">
     <div class="outter-form-register">
         <?php foreach($harga as $row){ ?>
-        <form action="<?=base_url()?>Payment_method/process/<?=$row->id_produk?>/<?=$row->id?>" class="inner-login" method="POST" enctype="multipart/form-data">
+        <form action="<?=base_url()?>Sent_details/process/<?=$row->id_produk?>/<?=$row->id?>" class="inner-login" method="POST" enctype="multipart/form-data">
         <?php } ?>    
             <h5 class="title-login"><strong>Tujuan Pengiriman</strong></h5>
             <p style="color: red;">

@@ -15,7 +15,7 @@
 <nav class="navbar-default navbar-fixed-top">
     <div class="container">
         <div class="navbar-header">
-            <a class="navbar-brand" href="<?php echo base_url('login'); ?>"><span class="glyphicon glyphicon-chevron-left"></span><span  id="registration">List Konveksi</span></a>
+            <a class="navbar-brand" href="javascript:window.history.go(-1);"><span class="glyphicon glyphicon-chevron-left"></span><span  id="registration">List Konveksi</span></a>
         </div>
     </div><!--/.container -->
 </nav>

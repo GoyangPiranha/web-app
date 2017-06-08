@@ -16,7 +16,7 @@
         function insert($id, $nama, $id_kota, $telefon, $zipcode, $email, $alamat){
             
             $query = $this->db->query("INSERT INTO `tujuan`(`id`, `nama`, `id_kota`, `telefon`, `zipcode`, `email`, `alamat`) 
-            VALUES ($id,$nama,$id_kota,$telefon,$zipcode,$email,$alamat))");
+            VALUES ('$id','$nama',$id_kota,'$telefon','$zipcode','$email','$alamat')");
             if ($query == true) {
 				return true;
 			}

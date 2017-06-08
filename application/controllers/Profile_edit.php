@@ -26,10 +26,10 @@ class Profile_edit extends CI_Controller {
              {
                parent::__construct();
                $this->load->helper('url');
-               
 			   $this->load->model('M_rekening','',TRUE);
 			   $this->load->model('M_users','',TRUE);
              }
+
     public function index()
     {
         if(isset($_SESSION['USERNAME'])){
@@ -184,3 +184,5 @@ class Profile_edit extends CI_Controller {
             }        
     }
 }
+
+?>

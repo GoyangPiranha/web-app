@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 07, 2017 at 07:19 PM
+-- Generation Time: Jun 08, 2017 at 06:56 AM
 -- Server version: 10.1.19-MariaDB
 -- PHP Version: 7.0.13
 
@@ -29,9 +29,19 @@ SET time_zone = "+00:00";
 CREATE TABLE `bank` (
   `id_bank` smallint(6) NOT NULL,
   `nama_bank` varchar(25) NOT NULL,
-  `no_rekening` varchar(1000) DEFAULT NULL,
-  `logo_bank` varchar(100) DEFAULT NULL
+  `logo_bank` varchar(100) DEFAULT NULL,
+  `no_rekening` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `bank`
+--
+
+INSERT INTO `bank` (`id_bank`, `nama_bank`, `logo_bank`, `no_rekening`) VALUES
+(1, 'Mandiri', 'mandiri.webp', '13213213'),
+(2, 'BNI', 'bni.webp', '2131312312'),
+(3, 'BRI', 'bri.webp', '312312312312'),
+(4, 'BCA', 'bca.webp', '2132131232');
 
 -- --------------------------------------------------------
 
@@ -822,12 +832,12 @@ CREATE TABLE `rekening` (
 --
 
 INSERT INTO `rekening` (`id_rekening`, `no_rekening`, `nama_pemilik`, `id_user`, `nama_bank`) VALUES
-(2, '', '', 17, ''),
-(3, '123123123', 'renndy', 16, 'BNI'),
-(4, '145123', 'tio', 20, 'BRI'),
-(6, '12345', 'TIO', 20, 'MANDIRI'),
-(7, '123123', 'tio', 22, 'bri'),
-(10, '1231321312', 'wewe', 22, 'mandiri');
+(2, '', '', 17, 'qeqw'),
+(3, '123123123', 'renndy', 16, 'eqqweq'),
+(4, '145123', 'tio', 20, 'eqweqwe'),
+(6, '12345', 'TIO', 20, 'qweqweq'),
+(7, '123123', 'tio', 22, 'qweqwewqe'),
+(10, '1231321312', 'wewe', 22, 'wqewqeq');
 
 -- --------------------------------------------------------
 
@@ -923,7 +933,7 @@ CREATE TABLE `transaksi` (
   `jenis_pengiriman` varchar(1000) NOT NULL,
   `harga_pengiriman` double NOT NULL,
   `total_harga` double NOT NULL,
-  `id_rekening` int(11) DEFAULT NULL,
+  `id_bank` int(11) DEFAULT NULL,
   `nama_pemilik` varchar(1000) DEFAULT NULL,
   `rekening_user` varchar(1000) DEFAULT NULL,
   `bank` varchar(1000) DEFAULT NULL
@@ -933,11 +943,14 @@ CREATE TABLE `transaksi` (
 -- Dumping data for table `transaksi`
 --
 
-INSERT INTO `transaksi` (`id`, `id_transaksi`, `id_user`, `id_produk`, `id_jenis_konveksi`, `id_ukuran`, `id_status_transaksi`, `bukti_pembayaran_transaksi`, `id_tujuan`, `tanggal`, `jenis_pengiriman`, `harga_pengiriman`, `total_harga`, `id_rekening`, `nama_pemilik`, `rekening_user`, `bank`) VALUES
+INSERT INTO `transaksi` (`id`, `id_transaksi`, `id_user`, `id_produk`, `id_jenis_konveksi`, `id_ukuran`, `id_status_transaksi`, `bukti_pembayaran_transaksi`, `id_tujuan`, `tanggal`, `jenis_pengiriman`, `harga_pengiriman`, `total_harga`, `id_bank`, `nama_pemilik`, `rekening_user`, `bank`) VALUES
 (9, '12332', 22, 1, 1, 3, 2, 'images2.jpg', '2', '2017-06-01', '', 0, 123312, 0, '', '', ''),
 (10, '31232', 22, 2, 1, 2, 2, '5937bd51d898c10', '2', '2017-06-02', '', 0, 341324, 0, '', '', ''),
 (11, '12312', 21, 3, 2, 2, 4, NULL, '1', '2017-06-02', '', 0, 300020, 0, '', '', ''),
-(12, '355432', 21, 4, 2, 2, 4, NULL, '2', '2017-06-15', '', 0, 132322, 0, '', '', '');
+(12, '355432', 21, 4, 2, 2, 4, NULL, '2', '2017-06-15', '', 0, 132322, 0, '', '', ''),
+(13, '5938c19254b5a', 24, 2, 5, 3, 1, NULL, '5938c19254b5a', '0000-00-00', '0', 24000, 49000, NULL, NULL, NULL, NULL),
+(14, '5938d3d7e9e3c', 24, 1, 4, 4, 1, NULL, '5938d3d7e9e3c', '2017-06-08', '0', 24000, 124000, 1, 'dsaas', 'dsdsfdsa', 'fsdfdf'),
+(15, '5938d42e25f35', 24, 6, 4, 3, 1, NULL, '5938d42e25f35', '2017-06-08', '0', 32000, 342000, 1, 'fsfda', 'dssad', 'dsdasdd');
 
 -- --------------------------------------------------------
 
@@ -961,7 +974,14 @@ CREATE TABLE `tujuan` (
 
 INSERT INTO `tujuan` (`id`, `nama`, `id_kota`, `telefon`, `zipcode`, `email`, `alamat`) VALUES
 ('1', 'Arip', 1102, '13213', '1232211', 'asdas@fda.vo', 'adsadmasdlaskna'),
-('2', 'surap', 1104, '2131231', '21312', 'asdas@dsadas.ss', 'werewqqweqe');
+('2', 'surap', 1104, '2131231', '21312', 'asdas@dsadas.ss', 'werewqqweqe'),
+('5938c0f478267', 'dasd', 419, '31313', '131312', 'sadas@sd.sf', 'dasdasdafdfs'),
+('5938c19254b5a', 'dasd', 152, '31313', '131312', 'sadas@sd.sf', 'dasdasdafdfs'),
+('5938d1a077fa9', 'dsdas', 153, '213123', '3123', 'adsa@ads.csd', 'adsadadsa'),
+('5938d1a077fa9', 'dsdas', 153, '213123', '3123', 'adsa@ads.csd', 'adsadadsa'),
+('5938d1a077fa9', 'dsdas', 153, '213123', '3123', 'adsa@ads.csd', 'adsadadsa'),
+('5938d3d7e9e3c', 'dsdas', 152, '213123', '3123', 'adsa@ads.csd', 'adsadadsa'),
+('5938d42e25f35', 'xzcsaaxa', 154, '2312321', '32312', 'adsa@ads.csd', 'sdaad');
 
 -- --------------------------------------------------------
 
@@ -1017,7 +1037,7 @@ INSERT INTO `user` (`id_user`, `username_user`, `password_user`, `nama_user`, `t
 (19, 'w', '123', 'aku', '2017-05-31', 1203, '31231', 'default.jpg', 'default.jpg', '123', '123', NULL, 1),
 (20, 'a', 'qwer', 'qwer', '2017-05-24', 1103, 'qwe', 'default.jpg', 'default.jpg', 'a@a.com', '123', NULL, 1),
 (21, 'tio', '76d80224611fc919a5d54f0ff9fba446', 'renndy', '2017-05-19', 1303, 'sdasda', '5920fe03d9ec7tioflat-osx-icons-file-types-folders-apps-games-dr-slash-8.png', NULL, 't@m.co', '23412312', NULL, 1),
-(22, 'tioo', '202cb962ac59075b964b07152d234b70', 'tio', '2017-05-10', 3172, 'werwerwer', '5932f27e8eb3dtioofoto.PNG', 'default.jpg', 't@m.co', '123123', '', 1),
+(22, 'tioo', '202cb962ac59075b964b07152d234b70', 'tio', '2017-05-10', 3172, 'werwerwer', '5932f27e8eb3dtioofoto.PNG', 'default.jpg', 't@m.co', '123123', '', 9),
 (24, 'sugeng', '202cb962ac59075b964b07152d234b70', 'Sugeng Rahayu', '2017-06-22', 1304, 'Surabaya madiun nhgawi 123', 'default.jpg', 'default.jpg', 'sugeng@mail.com', '08967356172', NULL, 2);
 
 -- --------------------------------------------------------
@@ -1166,7 +1186,6 @@ ALTER TABLE `transaksi`
 -- Indexes for table `tujuan`
 --
 ALTER TABLE `tujuan`
-  ADD PRIMARY KEY (`id`),
   ADD KEY `id_kota` (`id_kota`);
 
 --
@@ -1194,6 +1213,11 @@ ALTER TABLE `whistlist`
 -- AUTO_INCREMENT for dumped tables
 --
 
+--
+-- AUTO_INCREMENT for table `bank`
+--
+ALTER TABLE `bank`
+  MODIFY `id_bank` smallint(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT for table `jenis_konveksi`
 --
@@ -1273,7 +1297,7 @@ ALTER TABLE `status_transaksi`
 -- AUTO_INCREMENT for table `transaksi`
 --
 ALTER TABLE `transaksi`
-  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 --
 -- AUTO_INCREMENT for table `ukuran`
 --
@@ -1329,12 +1353,6 @@ ALTER TABLE `transaksi`
   ADD CONSTRAINT `transaksi_ibfk_5` FOREIGN KEY (`id_ukuran`) REFERENCES `ukuran` (`id`),
   ADD CONSTRAINT `transaksi_ibfk_8` FOREIGN KEY (`id_status_transaksi`) REFERENCES `status_transaksi` (`id`),
   ADD CONSTRAINT `transaksi_ibfk_9` FOREIGN KEY (`id_jenis_konveksi`) REFERENCES `jenis_konveksi` (`id`);
-
---
--- Constraints for table `tujuan`
---
-ALTER TABLE `tujuan`
-  ADD CONSTRAINT `tujuan_ibfk_1` FOREIGN KEY (`id_kota`) REFERENCES `kota` (`id_kota`);
 
 --
 -- Constraints for table `user`
