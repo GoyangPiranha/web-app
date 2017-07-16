@@ -25,7 +25,7 @@
                 <div class="navbar-custom-menu">
                     <ul class="top-nav">
                         <!--Notification Menu-->
-                        <li class="dropdown notification-menu"><a class="dropdown-toggle" href="#" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-bell-o fa-lg"></i></a>
+                        <!--<li class="dropdown notification-menu"><a class="dropdown-toggle" href="#" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-bell-o fa-lg"></i></a>
                             <ul class="dropdown-menu">
                                 <li class="not-head">You have 4 new notifications.</li>
                                 <li><a class="media" href="javascript:;"><span class="media-left media-icon"><span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x text-primary"></i><i class="fa fa-envelope fa-stack-1x fa-inverse"></i></span></span>
@@ -36,11 +36,11 @@
                       <div class="media-body"><span class="block">Transaction xyz complete</span><span class="text-muted block">2min ago</span></div></a></li>
                                 <li class="not-footer"><a href="#">See all notifications.</a></li>
                             </ul>
-                        </li>
+                        </li>-->
                         <!-- User Menu-->
                         <li class="dropdown"><a class="dropdown-toggle" href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user fa-lg"></i></a>
                             <ul class="dropdown-menu settings-menu">
-                                <li><a href="page-login.html"><i class="fa fa-sign-out fa-lg"></i> Logout</a></li>
+                                <li><a href="<?php echo base_url('Admin_index/logout'); ?>"><i class="fa fa-sign-out fa-lg"></i> Logout</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -133,22 +133,41 @@
                                 <input class="form-control" id="kategori" name="kategori" type="text" placeholder="Ukuran" readonly>
                             </div>
                         </div>
-                       <div class="form-group">
+                        <div class="form-group">
                             <div class="col-lg-12">
-                                <label class="control-label" for="ukuran">Ukuran</label>
-                                <input class="form-control" id="ukuran" name="ukuran" type="text" placeholder="Ukuran" readonly>
+                                <label class="control-label" for="harga_barang">Harga</label>
+                                <input class="form-control" id="harga_barang" name="harga_barang" type="text" placeholder="Ukuran" readonly>
+                            </div>
+                        </div>
+                       
+                        <div class="form-group">
+                            <div class="col-lg-12">
+                                <div class="row">
+                                    <div class="col-xs-6">
+                                        <label class="control-label" for="no_rek_user">Nomor Rekening Pembeli</label>
+                                        <input class="form-control" id="no_rek_user" name="no_rek_user" type="text" placeholder="Konveksi" readonly>
+                                    </div>
+                                    <div class="col-xs-6">
+                                        <label class="control-label" for="nama_pemilik_user">Nama Pemilik</label>
+                                        <input class="form-control" id="nama_pemilik_user" name="nama_pemilik_user" type="text" placeholder="Konveksi" readonly>
+                                    </div>
+                                </div>
+                                
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="col-lg-12">
-                                <label class="control-label" for="jumlah">Jumlah</label>
-                                <input class="form-control" id="jumlah" name="jumlah" type="text" placeholder="Jumlah" readonly>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-lg-12">
-                                <label class="control-label" for="konveksi">Konveksi</label>
-                                <input class="form-control" id="konveksi" name="konveksi" type="text" placeholder="Konveksi" readonly>
+                                <div class="row">
+                                    <div class="col-xs-6">
+                                        <label class="control-label" for="no_rek_admin">Nomor Rekening Admin</label>
+                                        <input class="form-control" id="no_rek_admin" name="no_rek_admin" type="text" placeholder="Konveksi" readonly>
+                                    </div>
+                                    <div class="col-xs-6">
+                                        <label class="control-label" for="bank_admin">Bank Admin</label>
+                                        <input class="form-control" id="bank_admin" name="bank_admin" type="text" placeholder="Konveksi" readonly>
+                                    </div>
+                                </div>
+                                
                             </div>
                         </div>
                         <div class="form-group">
@@ -234,6 +253,11 @@
                     var destination = document.getElementById("tujuan");
                     $.each(transaksi, function(i, item){
                         $('#kategori').val(item.kategori_produk);
+                        $('#harga_barang').val(item.harga);
+                        $('#no_rek_user').val(item.rekening_user);
+                        $('#nama_pemilik_user').val(item.nama_pemilik);
+                        $('#no_rek_admin').val(item.no_rekening);
+                        $('#bank_admin').val(item.nama_bank);
                         $('#ukuran').val(item.ukuran);
                         $('#jumlah').val(item.jumlah_produk);
                         $('#konveksi').val(item.nama);

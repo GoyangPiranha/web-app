@@ -41,9 +41,16 @@ class Admin_konveksi extends CI_Controller {
 		
 	}
 
+	function updateKonveksi(){
+		
+	}
+
 	function add(){
 		$nama = $_POST['nama_konveksi'];
-		$harga_baju = $_POST['harga_konveksi'];
+		$harga_baju = $_POST['harga_kategori_baju'];
+		$harga_jaket = $_POST['harga_kategori_jaket'];
+		$harga_topi = $_POST['harga_kategori_topi'];
+		$harga_celana = $_POST['harga_kategori_celana'];
 		$deskripsi = $_POST['deskripsi_konveksi'];
 		$logo = $_FILES['logo_konveksi']['name'];
 		$uniqid = uniqid();
@@ -58,7 +65,7 @@ class Admin_konveksi extends CI_Controller {
 		else{
 			$location = '.assets/images/Konveksi/';
 			move_uploaded_file($tmp_name, $location.$logo_konveksi);
-			$check = $this->M_konveksi->insertKonveksi($nama, $deskripsi, $harga, $logo_konveksi);
+			$check = $this->M_konveksi->insertKonveksi($nama, $deskripsi, $harga_baju, $harga_jaket, $harga_topi, $harga_celana , $logo_konveksi);
 			
 			// if($check == true){
 			// 	$data['status'] = "Data berhasil ditambahkan.";
