@@ -15,7 +15,7 @@
 
     	function registrasi($username_user, $password_user, $nama_user, $tanggal_lahir_user, $kota_user, $alamat_user, $fotoprofile, $fotobackground, $email_user, $contact_user){
 			$jenis_user = 2;
-			$result = $this->db->query("INSERT INTO `user`(`username_user`, `password_user`, `nama_user`, `tanggal_lahir_user`, `id_kota`, `alamat_user`, `foto_profile_user`, `foto_background_user`, `email_user`, `contact_user`, `jenis_user`) 
+			$result = $this->db->query("INSERT INTO `user`(`username_user`, `password_user`, `nama_user`, `tanggal_lahir_user`, `id_kota`, `alamat_user`, `foto_profile_user`, `foto_background_user`, `email_user`, `contact_user`, `id_jenis_user`) 
 			VALUES ('$username_user', '$password_user', '$nama_user', '$tanggal_lahir_user', $kota_user, '$alamat_user', '$fotoprofile', '$fotobackground', '$email_user', '$contact_user', $jenis_user)");
 			if ($result == true) {
 				return true;

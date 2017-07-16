@@ -91,6 +91,7 @@ class Insert_rekening extends CI_Controller {
     			redirect('Insert_rekening/index','refresh');
             }else{
                 redirect('Purchasing_history','refresh');
+                
             }
         }	
         
