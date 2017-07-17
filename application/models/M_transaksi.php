@@ -14,7 +14,6 @@
     	}
 
         function insert($id_transaksi, $id_user, $id_produk, $id_jenis_konveksi, $id_ukuran, $id_status_transaksi, $id_tujuan, $tanggal, $jenis_pengiriman, $harga_pengiriman, $total_harga, $id_bank, $nama_pemilik, $rekening_user, $bank){
-
             $query = $this->db->query("INSERT INTO `transaksi`(`id_transaksi`, `id_user`, `id_produk`, `id_jenis_konveksi`, `id_ukuran`, `id_status_transaksi`, `id_tujuan`, `tanggal`, `jenis_pengiriman`, `harga_pengiriman`, `total_harga`, `id_bank`, `nama_pemilik`, `rekening_user`, `bank`) 
             VALUES ('$id_transaksi',$id_user, $id_produk, $id_jenis_konveksi, $id_ukuran, $id_status_transaksi, '$id_tujuan', '$tanggal', '$jenis_pengiriman', $harga_pengiriman, $total_harga, $id_bank, '$nama_pemilik', '$rekening_user', '$bank')");
             if ($query == true) {

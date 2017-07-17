@@ -16,49 +16,49 @@
 </head>
 
 <script type="text/javascript">
-		function init() {
-            // by default disable button
-            $("#submittransaksi").prop('disabled',true);
-            //check once box and uncheck othres checkbox
-			$('input[type=checkbox]').on('change', function() {
-                if($(this)["0"].id !="agreement"){
-                    var temp = $("#agreement")["0"].checked;
-                    $('input[type=checkbox]').not(this,("#agreement")).prop('checked', false);
-                    $("#agreement")["0"].checked =temp;
-                    //matematic total price
-                    if ($(this)["0"].checked) {
-                        $('#biayakirim').html('Rp. '+$("#"+$(this)["0"].id + "-lab")["0"].attributes[2].nodeValue);
-                        $('#biayakirim').val( $("#"+$(this)["0"].id + "-lab")["0"].attributes[2].nodeValue);
-                        $('#hargatotal').val( parseInt($('#hargabarang').val()) + parseInt($('#biayakonveksi').val()) + parseInt($('#biayakirim').val()));
-                        // $('#hargatotal').html('Rp. ' + $('#hargatotal')["0"].attributes[2].nodeValue);
-                    }
-            //toogle status button (enable and disable)
-                }else{
-                    if($("#agreement")["0"].checked){
-                        $("#submittransaksi").prop('disabled',false);                        
-                    }else{
-                        $("#submittransaksi").prop('disabled',true);
-                    }
-				}
-			});
-		}
-		(
+		// function init() {
+        //     // by default disable button
+        //     $("#submittransaksi").prop('disabled',true);
+        //     //check once box and uncheck othres checkbox
+		// 	$('input[type=checkbox]').on('change', function() {
+        //         if($(this)["0"].id !="agreement"){
+        //             var temp = $("#agreement")["0"].checked;
+        //             $('input[type=checkbox]').not(this,("#agreement")).prop('checked', false);
+        //             $("#agreement")["0"].checked =temp;
+        //             //matematic total price
+        //             if ($(this)["0"].checked) {
+        //                 $('#biayakirim').html('Rp. '+$("#"+$(this)["0"].id + "-lab")["0"].attributes[2].nodeValue);
+        //                 $('#biayakirim').val( $("#"+$(this)["0"].id + "-lab")["0"].attributes[2].nodeValue);
+        //                 $('#hargatotal').val( parseInt($('#hargabarang').val()) + parseInt($('#biayakonveksi').val()) + parseInt($('#biayakirim').val()));
+        //                 // $('#hargatotal').html('Rp. ' + $('#hargatotal')["0"].attributes[2].nodeValue);
+        //             }
+        //     //toogle status button (enable and disable)
+        //         }else{
+        //             if($("#agreement")["0"].checked){
+        //                 $("#submittransaksi").prop('disabled',false);                        
+        //             }else{
+        //                 $("#submittransaksi").prop('disabled',true);
+        //             }
+		// 		}
+		// 	});
+		// }
+		// (
 
-		function (yourcode) {
-			"use strict";
-			yourcode(window.jQuery, window, document);
-		}(
+		// function (yourcode) {
+		// 	"use strict";
+		// 	yourcode(window.jQuery, window, document);
+		// }(
 
-		function ($, window, document) {
-			"use strict";
-			// The $ is now locally scoped 
-			$(function () {
-				// The DOM is ready!
-				init();
-			});
+		// function ($, window, document) {
+		// 	"use strict";
+		// 	// The $ is now locally scoped 
+		// 	$(function () {
+		// 		// The DOM is ready!
+		// 		init();
+		// 	});
 
-			// The rest of your code goes here!
-		}));
+		// 	// The rest of your code goes here!
+		// }));
     </script>
 
 <body style="margin-top: 60px; background: #FFFFFF">
@@ -88,6 +88,7 @@
                 }
                 ?>
             </p>
+            <h5 style="color: red;">*Hanya melayani pengiriman daerah Malang</h5>
             <!-- fullname -->
             <div class="row">
                 <div class="col-xs-12">
@@ -111,7 +112,7 @@
                                 <?php
                                   foreach ($provinsi as $row):
                                  ?>
-                                 <option value="<?php echo $row->province_id;?>"><?php echo $row->province;?></option>
+                                 <option value="<?php echo $row->id_provinsi;?>"><?php echo $row->nama_provinsi;?></option>
                                  <?php endforeach; ?>
                               </select>
                         </div>
@@ -124,6 +125,7 @@
                             <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-map-marker"></span></span>
                             <select class="form-control" name="select_kota" id="select_kota" disabled="">
                                 <option value="">Pilih Kota</option>
+
                             </select>
                         </div>
                     </div>
@@ -186,8 +188,35 @@
                     </div>
                 </div>
             </div>
-            
 
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-map-marker"></span></span>
+                            <select class="form-control" name="jenis_logistik" id="jenis_logistik">
+                                <option value="0">Pilih Jenis Logistik</option>
+                                <option value="1">JNE</option>
+                                <option value="2">TIKI</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-map-marker"></span></span>
+                            <select class="form-control" name="jenis_paket" id="jenis_paket">
+                            
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+<!-- 
             <div class="row">
                 <div class="col-xs-12 form-login">
                     <div class="outter-form-sent">
@@ -255,7 +284,7 @@
                     </div>
                 </div>
             </div>
-            
+             -->
 
             <div class="row">
                 <div class="col-xs-12 form-login">
@@ -334,8 +363,14 @@
 <script src="<?php echo base_url('assets/bootstrap/js/jquery.min.js');?>"></script>
 <script src="<?php echo base_url('assets/bootstrap/js/bootstrap.min.js');?>"></script>
 <script type="text/javascript">
-    // script untuk load kota berdasarkan provinsi yg dipilih
-      $(document).ready(function(){
+
+        $("#jenis_paket").prop('disabled', true);
+        var jenis_logistik;
+        var harga_paket;
+        var harga_barang = document.getElementById('hargabarang').value;
+        var biaya_konveksi = document.getElementById('biayakonveksi').value;
+        
+
         $('#select_provinsi').on('change', function(){
           var id_provinsi = $(this).val();
           if (id_provinsi ==''){
@@ -344,86 +379,73 @@
           else{
             $('#select_kota').prop('disabled', false);
             $.ajax({
-              url : "<?php echo base_url()?>Sent_details/getKota",
+              url : "<?php echo base_url()?>Daftar/getKota",
               type : 'POST',
               data :  {'id_provinsi' : id_provinsi},
               dataType: 'json',
               success : function(data){
-				$('#select_kota').val('null');
-				$('#select_kota').empty();
-                $('#select_kota').append(data);
+                $('#select_kota').html(data);
               },
               error: function(){
-                  alert('terjadi  error');
+                alert('terjadi error error');
               }
             });
           }
         });
-      });
 
-	   $(document).ready(function(){
-        $('#select_kota').on('change', function(){
-          var id_kota = $(this).val();
-          if (id_kota != 'null'){
-			  console.log(id_kota);
-			($('#OKE-cost').html("-"));				  
-			($('#YES-cost').html("-"));
-			($('#REG-cost').html("-"));				  
-			($('#poskilat-cost').html("-"));				  
-            $('#select_kota').prop('disabled', false);
-            $.ajax({
-              url : "<?php echo base_url()?>Sent_details/getHarga",
-              type : 'POST',
-              data :  {'id_kota' : id_kota},
-              dataType: 'json',
-              success : function(data){
-				  "Paket Kilat Khusus"
-				  $.each(data, function(i,r){
-					$.each(r[0].costs, function( index, values ) {
-						if (values.description == "Paket Kilat Khusus") {
-							if($('#poskilat-lab').length){
-								$('#poskilat-lab').attr('value',values.cost[0].value);
-								$('#poskilat-cost').html(values.cost[0].value + '('+ values.cost[0].etd+' Hari)');
-							}
-						}else if (values.description=="Ongkos Kirim Ekonomis"){
-							if($('#OKE-lab').length){
-								$('#OKE-lab').attr('value',values.cost[0].value);
-								$('#OKE-cost').html(values.cost[0].value + '('+ values.cost[0].etd+' Hari)');
-							}
-						}else if (values.description=="Layanan Reguler"){
-							if($('#REG-lab').length){
-								$('#REG-lab').attr('value',values.cost[0].value);
-								$('#REG-cost').html(values.cost[0].value + '('+ values.cost[0].etd+' Hari)');
-							}
-						}else if (values.description=="Yakin Esok Sampai"){
-							if($('#YES-lab').length){
-								$('#YES-lab').attr('value',values.cost[0].value);
-								$('#YES-cost').html(values.cost[0].value + '('+ values.cost[0].etd+' Hari)');
-							}
-						}							
-						
-					});
-				  });
-              },
-              error: function(){
-                  alert('terjadi  error');
-              }
-            });
-          }
+        $('#jenis_logistik').on('change', function(){
+            jenis_logistik = $(this).val();
+            $("#jenis_paket").prop('disabled', false);
+            if(0==jenis_logistik){
+                $("#jenis_paket").prop('disabled', true);
+            }else if(1==jenis_logistik){
+                $('#jenis_paket').empty();
+                $('#jenis_paket').append('<option value="0">Pilih Paket</option>');
+                $('#jenis_paket').append('<option value="5000">CTC Rp.5000 1-2 Hari</option>');
+                $('#jenis_paket').append('<option value="4000">CTCOKE Rp.4000 2-3 Hari</option>');
+                $('#jenis_paket').append('<option value="7000">CTCYES Rp.7000 1-1 Hari</option>');
+            }else if(2 == jenis_logistik){
+                $('#jenis_paket').empty();                
+                $('#jenis_paket').append('<option value="0">Pilih Paket</option>');
+                $('#jenis_paket').append('<option value="4000">REG Rp.4000 2 Hari</option>');
+                $('#jenis_paket').append('<option value="3500">ECO Rp.3500 4 Hari</option>');
+                $('#jenis_paket').append('<option value="6000">ONS Rp.4000 1 Hari</option>');
+            }
         });
-      });
-      // end of one function
 
-    //   function sum() {
-    //   var hargaBarang = document.getElementById('hargabarang').value;
-    //   var biayaKirim = document.getElementById('biayakirim').value;
-    //   var biayaKonveksi = document.getElementById('biayakonveksi').value;      
-    //   var result = parseInt(hargabarang) + parseInt(biayaKirim) + parseInt(biayaKonveksi);
-    //   if (!isNaN(result)) {
-    //      document.getElementById('hargatotal').value = result;
-    //   }
-    //   }
+        $('#jenis_paket').on('change', function(){
+            harga_paket = $(this).val();
+            console.log(harga_barang);
+            console.log(harga_paket);
+            console.log(biaya_konveksi);
+            document.getElementById('biayakirim').value = harga_paket;               
+            var result = parseInt(harga_barang) + parseInt(harga_paket) + parseInt(biaya_konveksi);
+            document.getElementById('hargatotal').value = result;   
+        });
 
+        $("#submittransaksi").prop('disabled',true);
+            //check once box and uncheck othres checkbox
+			$('input[type=checkbox]').on('change', function() {
+                if($(this)["0"].id !="agreement"){
+                    var temp = $("#agreement")["0"].checked;
+                    $('input[type=checkbox]').not(this,("#agreement")).prop('checked', false);
+                    $("#agreement")["0"].checked =temp;
+                    //matematic total price
+                    if ($(this)["0"].checked) {
+                        $('#biayakirim').html('Rp. '+$("#"+$(this)["0"].id + "-lab")["0"].attributes[2].nodeValue);
+                        $('#biayakirim').val( $("#"+$(this)["0"].id + "-lab")["0"].attributes[2].nodeValue);
+                        $('#hargatotal').val( parseInt($('#hargabarang').val()) + parseInt($('#biayakonveksi').val()) + parseInt($('#biayakirim').val()));
+                        // $('#hargatotal').html('Rp. ' + $('#hargatotal')["0"].attributes[2].nodeValue);
+                    }
+            //toogle status button (enable and disable)
+                }else{
+                    if($("#agreement")["0"].checked){
+                        $("#submittransaksi").prop('disabled',false);                        
+                    }else{
+                        $("#submittransaksi").prop('disabled',true);
+                    }
+				}
+			});
 
     </script>
 </body>

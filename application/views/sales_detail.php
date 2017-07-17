@@ -125,7 +125,7 @@
                   <div class="col-xs-12">
                     <h5 class="text-center">Status</h5>
                     <div id="status" class="text-center">
-                      <button type="submit" class="btn btn-danger" disable><?php echo $row->status_transaksi ?></button>
+                      <button id='statusbayar' type="submit" class="btn btn-danger" disable><?php echo $row->status_transaksi ?></button>
                     </div>
                   </div>
 
@@ -164,14 +164,15 @@
                   </button>
                   <input id="buttonproduk" class=" btn" type="button">Konfirmasi</input>
               </form>-->
-              <?php if($row->status_transaksi == 1){
-                echo '<div class="row" style="margin-bottom: 4px;">
+            <div id='bukti'>  
+            <div class="row" style="margin-bottom: 4px;">
                           <div class="col-xs-6 text-center">
                             <h5 class="small"><strong>Upload Bukti Pembayaran</strong></h5>
                           </div>
                       </div>
-            <form action="<?php =base_url() ?>Sales_detail/updateTransaksi/<?php =$row->id?>" class="inner-login" method="POST" enctype="multipart/form-data">
+            <form action="<?=base_url()?>Sales_detail/updateTransaksi/<?=$row->id?>" class="inner-login" method="POST" enctype="multipart/form-data">
 			        <div class="row">
+              
                 <div class="col-xs-12 center-block">
                     <div class="form-group center-block">
 					          <div class="input-group center-block">
@@ -180,12 +181,8 @@
                 </div>
 			        </div>
                 <input name="simpan" type="submit" class="btn btn-block btn-custom-yellow" value="Konfirmasi" />
-            </form>';
-
-              }else{
-                echo "";
-              } ?>
-              
+            </form>
+            </div>
 
             </div>
           </div>
@@ -230,7 +227,15 @@
 		// 		_fileReader.readAsDataURL(_inputFile.files[0]);
 		// 	}
 		// };
-
+    $('#bukti').hide();
+    var bukti = $('#statusbayar').text();
+    console.log(bukti);
+    if(bukti == 'Belum Dibayar'){
+      $('#bukti').show();
+    }else{
+    $('#bukti').hide();
+      
+    }
 		// (
 
 		// function (yourcode) {

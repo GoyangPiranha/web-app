@@ -38,9 +38,9 @@ class Sales_detail extends CI_Controller {
     function updateTransaksi($id_transaksi){
         $foto = $_FILES["fotobuktiname"]["name"];
         $uniqid = uniqid();
-			  $fotobukti = $uniqid.$id_transaksi.$foto;
+		$fotobukti = $uniqid.$id_transaksi.$foto;
         $tmp_name = $_FILES['fotobuktiname']['tmp_name'];
-			  $fotoerror = $_FILES['fotobuktiname']['error'];
+		$fotoerror = $_FILES['fotobuktiname']['error'];
         $id_status_transaksi = 2;
 
         if($fotoerror==1){
@@ -51,7 +51,8 @@ class Sales_detail extends CI_Controller {
             $this->index($id_transaksi);
         }else{
             $location = './assets/images/Bukti/';
-				    move_uploaded_file($tmp_name, $location.$fotobukti);
+			move_uploaded_file($tmp_name, $location.$fotobukti);
+            redirect('Purchasing_history');
         }
         
     }
