@@ -114,7 +114,7 @@
                                         <td><?php echo $row->email_user;?></td>
                                         <td><?php echo $row->contact_user;?></td>
                                         <td><?php if($row->jenis_user==1){echo "Reguler";}elseif($row->jenis_user==2){echo "Premium";}?></td>
-                                        <td class="text-center"><a title="Upgrade User" data-toggle="modal" data-target="#upgrade_user" class="btn btn-info btn-flat" style="padding:5px 5px;" href="#"><i class="fa fa-sm fa-pencil" ></i></a></td>
+                                        <td class="text-center"><a title="Upgrade User" data-toggle="modal" data-target="#upgrade_user" class="btn btn-info btn-flat" style="padding:5px 5px;" href="#"><i class="fa fa-sm fa-pencil" ></i></a><a class="btn btn-flat btn-danger" title="Hapus User" onclick="hapus(<?php echo $row->id_user;?>)"><span class="fa fa-trash"></span></a></td>
                                     </tr>
                                     <?php endforeach;?>                      
                                 </tbody>
@@ -168,6 +168,30 @@
     <script type="text/javascript">
         $('#usertable').DataTable();
         $('[data-toggle="tooltip"]').tooltip();
+
+        function hapus(id){
+            if(confirm('Apakah anda yakin ingin menghapus user?')){
+                // ajax delete data to database
+                console.log(id)
+                $.ajax({
+                    url : "<?php echo base_url('Admin_show_user/hapus');?>/" + id,
+                    type: "POST",
+                    dataType: "JSON",
+                    success: function(data)
+                    {
+                        //if success reload ajax table
+                        // $('#modal-bank').modal('hide');
+                        location.reload();
+                        $.notify("Delete successfull.", "success");
+                    },
+                    error: function (jqXHR, textStatus, errorThrown)
+                    {
+                        // alert('This Project has been taken, unable to delete!');
+                        $.notify("This job has already taken, unable to delete!", {className: "error", position: "bottom-left"});
+                    }
+                });
+            }
+        }
     </script>
 </body>
 

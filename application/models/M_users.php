@@ -108,10 +108,21 @@
 			}
 		}
 
-
 		//query get all user kecuali admin
 		function getNoAdmin(){
 			$query = $this->db->query("SELECT u.nama_user, u.username_user, u.tanggal_lahir_user, u.alamat_user, u.email_user, u.contact_user, K.nama_kota, p.nama_provinsi, u.jenis_user FROM user U, kota K, provinsi P WHERE U.id_kota = K.id_kota AND K.id_provinsi = p.id_provinsi AND u.jenis_user = 1");
 			return $query->result();
+		}
+
+		function deleteUser($id_user){
+			$this->db->where('id_user', $id_user);
+			$this->db-delete('user');
+
+			if($this->db->affected_rows() > 0){
+				return TRUE;
+			}
+			else{
+				return FALSE;
+			}
 		}
 }
