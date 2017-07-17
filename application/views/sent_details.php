@@ -409,7 +409,7 @@
                 $('#jenis_paket').append('<option value="0">Pilih Paket</option>');
                 $('#jenis_paket').append('<option value="4000">REG Rp.4000 2 Hari</option>');
                 $('#jenis_paket').append('<option value="3500">ECO Rp.3500 4 Hari</option>');
-                $('#jenis_paket').append('<option value="6000">ONS Rp.4000 1 Hari</option>');
+                $('#jenis_paket').append('<option value="6000">ONS Rp.6000 1 Hari</option>');
             }
         });
 
