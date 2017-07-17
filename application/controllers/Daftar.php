@@ -38,6 +38,7 @@ class Daftar extends CI_Controller {
 			$fotoprofile = $uniqid.$username_user.$foto;
         	$tmp_name = $_FILES['userfile']['tmp_name'];
 			$fotoerror = $_FILES['userfile']['error'];
+			$fotobackground = "default.jpg";			
 			$tanggal_lahir_user = $_POST['dateofbirth'];
 			$password_user = $_POST['password'];
 			$repassword_user = $_POST['confirmpassword'];
@@ -45,7 +46,7 @@ class Daftar extends CI_Controller {
 			$alamat_user = $_POST['address'];
 			$email_user = $_POST['email'];
 			$contact_user = $_POST['handphone'];
-			$this->load->model('m_users');
+			// $this->load->model('m_users');
 			$user = $this->M_users->cekUser($username_user);
 			$email = $this->M_users->cekEmail($username_user);
 			if ($user == true) {
@@ -64,12 +65,21 @@ class Daftar extends CI_Controller {
 				$data ['warning']  = "Email sudah terdaftar";
 				$data ['provinsi'] = $this->M_users->getProvinsiQuery();
 				$this->load->view('register',$data);
+			}elseif($foto== null){
+				$password_user = md5($password_user);
+				$fotoprofile = "default.jpg";
+				$p = $this->M_users->registrasi($username_user, $password_user, $nama_user, $tanggal_lahir_user, $kota_user, $alamat_user, $fotoprofile, $fotobackground, $email_user, $contact_user);
+				if ($p === TRUE) {
+					redirect('Login/index', 'refresh');
+				}else{
+					redirect('Daftar/index','refresh');
+				}
 			}else{
 				$password_user = md5($password_user);
 				$location = './assets/images/Profil/';
 				move_uploaded_file($tmp_name, $location.$fotoprofile);
-				$p = $this->M_users->registrasi($username_user, $password_user, $nama_user, $tanggal_lahir_user, $kota_user, $alamat_user, $fotoprofile, $email_user, $contact_user);
-				if ($p == TRUE) {
+				$p = $this->M_users->registrasi($username_user, $password_user, $nama_user, $tanggal_lahir_user, $kota_user, $alamat_user, $fotoprofile, $fotobackground, $email_user, $contact_user);
+				if ($p === TRUE) {
 					redirect('Login/index', 'refresh');
 				}else{
 					redirect('Daftar/index','refresh');
@@ -78,3 +88,4 @@ class Daftar extends CI_Controller {
 	}
 }
 
+?>

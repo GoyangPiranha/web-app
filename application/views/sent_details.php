@@ -9,13 +9,64 @@
     <link href="<?php echo base_url('assets/bootstrap/css/bootstrap.min.css'); ?>" rel="stylesheet">
     <link href="<?php echo base_url('assets/bootstrap/css/style.css'); ?>" rel="stylesheet">
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+		<script
+  src="https://code.jquery.com/jquery-3.2.1.js"
+  integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
+  crossorigin="anonymous"></script>
 </head>
+
+<script type="text/javascript">
+		function init() {
+            // by default disable button
+            $("#submittransaksi").prop('disabled',true);
+            //check once box and uncheck othres checkbox
+			$('input[type=checkbox]').on('change', function() {
+                if($(this)["0"].id !="agreement"){
+                    var temp = $("#agreement")["0"].checked;
+                    $('input[type=checkbox]').not(this,("#agreement")).prop('checked', false);
+                    $("#agreement")["0"].checked =temp;
+                    //matematic total price
+                    if ($(this)["0"].checked) {
+                        $('#biayakirim').html('Rp. '+$("#"+$(this)["0"].id + "-lab")["0"].attributes[2].nodeValue);
+                        $('#biayakirim').val( $("#"+$(this)["0"].id + "-lab")["0"].attributes[2].nodeValue);
+                        $('#hargatotal').val( parseInt($('#hargabarang').val()) + parseInt($('#biayakonveksi').val()) + parseInt($('#biayakirim').val()));
+                        // $('#hargatotal').html('Rp. ' + $('#hargatotal')["0"].attributes[2].nodeValue);
+                    }
+            //toogle status button (enable and disable)
+                }else{
+                    if($("#agreement")["0"].checked){
+                        $("#submittransaksi").prop('disabled',false);                        
+                    }else{
+                        $("#submittransaksi").prop('disabled',true);
+                    }
+				}
+			});
+		}
+		(
+
+		function (yourcode) {
+			"use strict";
+			yourcode(window.jQuery, window, document);
+		}(
+
+		function ($, window, document) {
+			"use strict";
+			// The $ is now locally scoped 
+			$(function () {
+				// The DOM is ready!
+				init();
+			});
+
+			// The rest of your code goes here!
+		}));
+    </script>
+
 <body style="margin-top: 60px; background: #FFFFFF">
 <!-- NAVBAR -->
 <nav class="navbar-default navbar-fixed-top">
     <div class="container">
         <div class="navbar-header">
-            <a class="navbar-brand" href="<?php echo base_url('login'); ?>"><span class="glyphicon glyphicon-chevron-left"></span><span  id="registration">  Detail Pengiriman</span></a>
+            <a class="navbar-brand" href="javascript:window.history.go(-1);"><span class="glyphicon glyphicon-chevron-left"></span><span  id="registration">  Detail Pengiriman</span></a>
         </div>
     </div><!--/.container -->
 </nav>
@@ -24,7 +75,9 @@
 <!--</div>-->
 <div class="col-md-4 col-md-offset-4 form-login">
     <div class="outter-form-register">
-        <form action="<?php echo base_url('Sent_details/process'); ?>" class="inner-login" method="POST" enctype="multipart/form-data">
+        <?php foreach($harga as $row){ ?>
+        <form action="<?=base_url()?>Sent_details/process/<?=$row->id_produk?>/<?=$row->id?>" class="inner-login" method="POST" enctype="multipart/form-data">
+        <?php } ?>    
             <h5 class="title-login"><strong>Tujuan Pengiriman</strong></h5>
             <p style="color: red;">
                 <?php
@@ -58,7 +111,7 @@
                                 <?php
                                   foreach ($provinsi as $row):
                                  ?>
-                                 <option value="<?php echo $row->id_provinsi;?>"><?php echo $row->nama_provinsi;?></option>
+                                 <option value="<?php echo $row->province_id;?>"><?php echo $row->province;?></option>
                                  <?php endforeach; ?>
                               </select>
                         </div>
@@ -142,30 +195,31 @@
                             <div class="col-xs-12">
                                 <div class="row">
                                    <div class="col-xs-4">
-                                       <div class="col-xs-12"></div>
                                        <div class="col-xs-12">
                                            <img id="img-no-bg" src="<?php echo base_url('assets/images/jne-logo.png'); ?>" alt="" class="img-responsive img-kurir align-left">
                                        </div>
-                                       <div class="col-xs-12"></div>
                                    </div>
+                                   
                                    <div class="col-xs-8">
                                        <div class="col-xs-12">
+                                       
                                            <div class="col-xs-12">
                                                <div class="checkbox box-sent">
-                                                   <input type="checkbox" id="oke">
-                                                   <label for="oke"><strong class="small">JNE OKE</strong></label>
+
+                                                   <input type="checkbox" class="logis" id="OKE" value="OKE" name="logistik">
+                                                   <label for="OKE" id="OKE-lab" value="0"><strong class="small">JNE OKE : Rp.</strong><strong class="small" id="OKE-cost"> 0,00 </strong></label>
                                                </div>
                                            </div>
                                            <div class="col-xs-12">
                                                <div class="checkbox box-sent">
-                                                   <input type="checkbox" id="reguler">
-                                                   <label for="reguler"><strong class="small">JNE Reguler</strong></label>
+                                                   <input type="checkbox" class="logis" id="REG" value="REG" name="logistik">
+                                                   <label for="REG" id="REG-lab" value="0"><strong class="small">JNE Reguler : Rp.</strong><strong class="small" id="REG-cost"> 0,00 </strong></label>
                                                </div>
                                            </div>
                                            <div class="col-xs-12">
                                                <div class="checkbox box-sent">
-                                                   <input type="checkbox" id="express">
-                                                   <label for="express"><strong class="small">JNE Express</strong></label>
+                                                   <input type="checkbox" class="logis" id="YES" value="YES" name="logistik">
+                                                   <label for="YES" id="YES-lab" value="0"><strong class="small">JNE Express  : Rp.</strong><strong class="small" id="YES-cost"> 0,00 </strong></label>
                                                </div>
                                            </div>
 
@@ -174,7 +228,7 @@
                                 </div>
                             </div>
                         </div>
-
+                    
                         <div class="row row-top-border">
                             <div class="col-xs-12">
                                 <div class="row">
@@ -189,8 +243,8 @@
                                         <div class="col-xs-12">
                                             <div class="col-xs-12">
                                                 <div class="checkbox box-sent">
-                                                    <input type="checkbox" id="poskilat">
-                                                    <label for="poskilat"><strong class="small">Pos Kilat Khusus</strong></label>
+                                                    <input type="checkbox" id="poskilat" value="poskilat" name="logistik">
+                                                    <label for="poskilat" id="poskilat-lab" value="0"><strong class="small">Pos Kilat Khusus : Rp.</strong><strong class="small" id="poskilat-cost"> 0,00 </strong></label>
                                                 </div>
                                             </div>
                                         </div>
@@ -201,6 +255,7 @@
                     </div>
                 </div>
             </div>
+            
 
             <div class="row">
                 <div class="col-xs-12 form-login">
@@ -209,8 +264,9 @@
                             <div class="col-xs-5 text-right">
                                 <h5 class="small">Harga barang :</h5>
                             </div>
+                            <?php foreach($harga as $row){ ?> 
                             <div class="col-xs-7 text-right">
-                                <h5 class="small text-right">Rp. 500.000</h5>
+                                Rp. <input type="text" style="border-color:transparent;" class="small text-right" name="hargabarang" id="hargabarang" value="<?php echo $row->harga_produk ?>" readonly></input>
                             </div>
                         </div>
                         <div class="row">
@@ -218,8 +274,17 @@
                                 <h5 class="small">Biaya kirim :</h5>
                             </div>
                             <div class="col-xs-7 text-right">
-                                <h5 class="small text-right">Rp. 20.000</h5>
+                                Rp. <input type="text" style="border-color:transparent;" class="small text-right" name="biayakirim" id="biayakirim" value="0" readonly></input>
                             </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-5 text-right">
+                                <h5 class="small">Biaya konveksi :</h5>
+                            </div>                            
+                            <div class="col-xs-7 text-right">
+                                Rp. <input type="text" style="border-color:transparent;" class="small text-right" name="biayakonveksi" id="biayakonveksi" value="<?php echo $row->harga ?>" readonly></input>
+                            </div>
+                                                      
                         </div>
                         <div class="line-separator"></div>
                         <div class="row">
@@ -227,7 +292,7 @@
                                 <h5 class="small"><strong>Total :</strong></h5>
                             </div>
                             <div class="col-xs-7 text-right">
-                                <h5 class="small text-right">Rp. 520.000</h5>
+                                Rp. <input type="text" style="border-color:transparent;" class="small text-right" name="hargatotal" id="hargatotal" value="0" readonly></input>
                             </div>
                         </div>
                     </div>
@@ -245,8 +310,9 @@
                 </div>
             </div>
              
-             <button type="button" class="btn btn-block btn-custom-yellow"><a href="<?=base_url('');?>Payment_method">Lanjut</a></button>
-             <!--<input name="lanjut" type="submit" class="btn btn-block btn-custom-yellow" value="Lanjut" /> -->
+             <!--<button type="button" class="btn btn-block btn-custom-yellow"><a href="<?=base_url('');?>Payment_method">Lanjut</a></button>-->
+             <input name="lanjut" type="submit" class="btn btn-block btn-custom-yellow" value="Lanjut" id="submittransaksi" /> 
+             <?php } ?>  
         </form>
     </div>
 </div>
@@ -278,21 +344,87 @@
           else{
             $('#select_kota').prop('disabled', false);
             $.ajax({
-              url : "<?php echo base_url()?>Daftar/getKota",
+              url : "<?php echo base_url()?>Sent_details/getKota",
               type : 'POST',
               data :  {'id_provinsi' : id_provinsi},
               dataType: 'json',
               success : function(data){
-                $('#select_kota').html(data);
+				$('#select_kota').val('null');
+				$('#select_kota').empty();
+                $('#select_kota').append(data);
               },
               error: function(){
-                alert('terjadi error error');
+                  alert('terjadi  error');
+              }
+            });
+          }
+        });
+      });
+
+	   $(document).ready(function(){
+        $('#select_kota').on('change', function(){
+          var id_kota = $(this).val();
+          if (id_kota != 'null'){
+			  console.log(id_kota);
+			($('#OKE-cost').html("-"));				  
+			($('#YES-cost').html("-"));
+			($('#REG-cost').html("-"));				  
+			($('#poskilat-cost').html("-"));				  
+            $('#select_kota').prop('disabled', false);
+            $.ajax({
+              url : "<?php echo base_url()?>Sent_details/getHarga",
+              type : 'POST',
+              data :  {'id_kota' : id_kota},
+              dataType: 'json',
+              success : function(data){
+				  "Paket Kilat Khusus"
+				  $.each(data, function(i,r){
+					$.each(r[0].costs, function( index, values ) {
+						if (values.description == "Paket Kilat Khusus") {
+							if($('#poskilat-lab').length){
+								$('#poskilat-lab').attr('value',values.cost[0].value);
+								$('#poskilat-cost').html(values.cost[0].value + '('+ values.cost[0].etd+' Hari)');
+							}
+						}else if (values.description=="Ongkos Kirim Ekonomis"){
+							if($('#OKE-lab').length){
+								$('#OKE-lab').attr('value',values.cost[0].value);
+								$('#OKE-cost').html(values.cost[0].value + '('+ values.cost[0].etd+' Hari)');
+							}
+						}else if (values.description=="Layanan Reguler"){
+							if($('#REG-lab').length){
+								$('#REG-lab').attr('value',values.cost[0].value);
+								$('#REG-cost').html(values.cost[0].value + '('+ values.cost[0].etd+' Hari)');
+							}
+						}else if (values.description=="Yakin Esok Sampai"){
+							if($('#YES-lab').length){
+								$('#YES-lab').attr('value',values.cost[0].value);
+								$('#YES-cost').html(values.cost[0].value + '('+ values.cost[0].etd+' Hari)');
+							}
+						}							
+						
+					});
+				  });
+              },
+              error: function(){
+                  alert('terjadi  error');
               }
             });
           }
         });
       });
       // end of one function
+
+    //   function sum() {
+    //   var hargaBarang = document.getElementById('hargabarang').value;
+    //   var biayaKirim = document.getElementById('biayakirim').value;
+    //   var biayaKonveksi = document.getElementById('biayakonveksi').value;      
+    //   var result = parseInt(hargabarang) + parseInt(biayaKirim) + parseInt(biayaKonveksi);
+    //   if (!isNaN(result)) {
+    //      document.getElementById('hargatotal').value = result;
+    //   }
+    //   }
+
+
     </script>
 </body>
 </html>

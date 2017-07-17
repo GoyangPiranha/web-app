@@ -18,8 +18,33 @@ class Payment_method extends CI_Controller {
      * map to /index.php/welcome/<method_name>
      * @see https://codeigniter.com/user_guide/general/urls.html
      */
+
+     function __construct(){
+        parent::__construct();
+		$this->load->library('rajaongkir');
+        $this->load->helper('url');
+        $this->load->model('M_rekening','',TRUE);
+        $this->load->model('M_transaksi','',TRUE);
+        $this->load->model('M_tujuan','',TRUE);
+        
+		
+    }
+
     public function index()
     {
-        $this->load->view('payment_method');
+       if(isset($_SESSION['ID_USER'])){
+            $data['rekening'] = $this->M_rekening->getRekeningAdmin();
+            $this->load->view('payment_method', $data);
+        }
+        else{
+            $this->load->view('login');
+        }
     }
+
+    function process($id_bank){
+		$_SESSION['ID_BANK'] = $id_bank;
+		redirect('Insert_rekening', 'refresh');
+
+	}
+    
 }

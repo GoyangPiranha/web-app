@@ -27,29 +27,43 @@ class Wishlist extends CI_Controller {
 	{
         if(isset($_SESSION['ID_USER'])){
             //$_SESSION['STATUS'] = "";
-			$data['status'] = "";
+			if(isset($_SESSION['STATUS'])){
+				$data['status'] = $_SESSION['STATUS'];
+			}
+
             $id_user = $_SESSION['ID_USER'];
             $data['wishlist'] = $this->M_wishlist->getWishlistByUser($id_user);
             $this->load->view('wishlist', $data);
-        }else {
+			$this->session->unset_userdata('STATUS');
+        }else{
 				$this->load->view('login');
-			}
+		}
 	}
 
 	function insert($id_produk){
 		$id_user = $_SESSION['ID_USER'];
 		$query = $this->M_wishlist->insert($id_produk, $id_user);
-        if($query == true){
+        // if(!isset($_SESSION['STATUS'])){
+        // 		session_start();
+    	// }
+		
+		if($query == true){
+			$_SESSION['STATUS'] = "Data Berhasil Ditambahkan";	
          	redirect('/Wishlist', 'refresh');
-        }
+        }else{
+			$_SESSION['STATUS'] = "Data Gagal Ditambahkan";		
+         	redirect('/Wishlist', 'refresh');					
+		}
 
 	}
 
 	function deleteWishlist($id){
 		$query = $this->M_wishlist->deleteWishlist($id);
 		if($query == true){
+			$_SESSION['STATUS'] = "Data Berhasil Dihapus";
          	redirect('/Wishlist', 'refresh');
         }else{
+			$_SESSION['STATUS'] = "Data Gagal Dihapus";				
            	redirect('/Wishlist', 'refresh');
         }
 	}

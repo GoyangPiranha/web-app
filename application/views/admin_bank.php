@@ -27,7 +27,7 @@
                 <div class="navbar-custom-menu">
                     <ul class="top-nav">
                         <!--Notification Menu-->
-                        <li class="dropdown notification-menu"><a class="dropdown-toggle" href="#" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-bell-o fa-lg"></i></a>
+                        <!--<li class="dropdown notification-menu"><a class="dropdown-toggle" href="#" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-bell-o fa-lg"></i></a>
                             <ul class="dropdown-menu">
                                 <li class="not-head">You have 4 new notifications.</li>
                                 <li><a class="media" href="javascript:;"><span class="media-left media-icon"><span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x text-primary"></i><i class="fa fa-envelope fa-stack-1x fa-inverse"></i></span></span>
@@ -38,11 +38,11 @@
                       <div class="media-body"><span class="block">Transaction xyz complete</span><span class="text-muted block">2min ago</span></div></a></li>
                                 <li class="not-footer"><a href="#">See all notifications.</a></li>
                             </ul>
-                        </li>
+                        </li>-->
                         <!-- User Menu-->
                         <li class="dropdown"><a class="dropdown-toggle" href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user fa-lg"></i></a>
                             <ul class="dropdown-menu settings-menu">
-                                <li><a href="page-login.html"><i class="fa fa-sign-out fa-lg"></i> Logout</a></li>
+                                <li><a href="<?php echo base_url('Admin_index/logout'); ?>"><i class="fa fa-sign-out fa-lg"></i> Logout</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -62,6 +62,7 @@
                 <!-- Sidebar Menu-->
                 <ul class="sidebar-menu">
                     <li><a href="<?php echo base_url('Admin_index');?>"><i class="fa fa-home"></i><span>Beranda</span></a></li>
+                    <li><a href="<?php echo base_url('Admin_carousel');?>"><i class="fa fa-laptop"></i><span>Kelola Header</span></a></li>
                     <li><a href="<?php echo base_url('Admin_konveksi');?>"><i class="fa fa-laptop"></i><span>Kelola Konveksi</span></a></li>
                     <li class="active"><a href="<?php echo base_url('Admin_bank');?>"><i class="fa fa-bank"></i><span>Kelola Bank</span></a></li>
                     <li><a href="<?php echo base_url('Admin_show_user');?>"><i class="fa fa-home"></i><span>Kelola Pengguna</span></a></li>
@@ -80,7 +81,7 @@
                         <li class="active"><a href="#">Daftar Bank</a></li>
                     </ul>
                 </div>
-                <div><a class="btn btn-primary btn-flat" href="#" data-toggle="modal" data-target="#tambah_bank"><span class="fa fa-lg fa-plus"></span> Tambah Bank</a></div>
+                <div><button class="btn btn-primary btn-flat" onclick="tambah_bank()"><span class="fa fa-lg fa-plus"></span> Tambah Bank</button></div>
             </div>
             <div class="row">
                 <div class="col-md-12">
@@ -89,41 +90,24 @@
                             <table class="table table-hover table-bordered" id="bank">
                                 <thead>
                                     <tr>
-                                        <th style="width:20px;">No</th>
+                                        <th style="width:25px;">No</th>
                                         <th>Nama Pemilik</th>
                                         <th>Nomor Rekening</th>
                                         <th>Nama Bank</th>
-                                        <th>Logo Bank</th>
                                         <th style="width:40px;">&nbsp;</th>
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    <?php foreach($admin_bank as $index=> $row):?>
                                     <tr>
-                                        <td>1</td>
-                                        <td>System Architect</td>
-                                        <td>System Architect</td>
-                                        <td>System Architect</td>
-                                        <td>Edinburgh</td>
-                                        <th class="text-center"><a data-toggle="modal" data-target="#update_bank" class="btn btn-info btn-flat" style="padding:5px 5px;" href="#"><i class="fa fa-sm fa-pencil" ></i></a><a class="btn btn-danger btn-flat" style="padding:5px 5px;" href="#"><i class="fa fa-sm fa-trash" ></i></a></th>
+                                        <td class="text-center"><?php echo $index+1;?></td>
+                                        <td><?php echo $row->nama_pemilik;?></td>
+                                        <td><?php echo $row->no_rekening;?></td>
+                                        <td><?php echo $row->nama_bank;?></td>
+                                        <th class="text-center"><button onclick="hapus(<?php echo $row->id_rekening;?>)" class="btn btn-danger btn-flat" style="padding:5px 5px;" href="#"><i class="fa fa-sm fa-trash" ></i></button></th>
+                                        <!--<button onclick="update_bank(<?php echo $row->id_rekening;?>)" class="btn btn-info btn-flat" style="padding:5px 5px;" href="#"><span class="fa fa-sm fa-pencil" ></span></button>-->
                                     </tr>
-                                    <tr>
-                                        <td>2</td>
-                                        <td>Accountant</td>
-                                        <td>Tokyo</td>
-                                        <th class="text-center"><a class="btn btn-info btn-flat" style="padding:5px 5px;" href="#"><i class="fa fa-sm fa-pencil" ></i></a><a class="btn btn-danger btn-flat" style="padding:5px 5px;" href="#"><i class="fa fa-sm fa-trash" ></i></a></th>
-                                    </tr>
-                                    <tr>
-                                        <td>3</td>
-                                        <td>Junior Technical Author</td>
-                                        <td>San Francisco</td>
-                                        <th class="text-center"><a class="btn btn-info btn-flat" style="padding:5px 5px;" href="#"><i class="fa fa-sm fa-pencil" ></i></a><a class="btn btn-danger btn-flat" style="padding:5px 5px;" href="#"><i class="fa fa-sm fa-trash" ></i></a></th>
-                                    </tr>
-                                    <tr>
-                                        <td>4</td>
-                                        <td>Senior Javascript Developer</td>
-                                        <td>Edinburgh</td>
-                                        <th class="text-center"><a class="btn btn-info btn-flat" style="padding:5px 5px;" href="#"><i class="fa fa-sm fa-pencil" ></i></a><a class="btn btn-danger btn-flat" style="padding:5px 5px;" href="#"><i class="fa fa-sm fa-trash" ></i></a></th>
-                                    </tr>
+                                    <?php endforeach;?>
                                 </tbody>
                             </table>
                         </div>
@@ -132,8 +116,8 @@
             </div>
         </div>
     </div>
-    <!--      modal tambah bank-->
-    <div class="modal fade" id="tambah_bank" style="border-radius:0px;" role="dialog">
+    <!--modal tambah bank-->
+    <div class="modal fade" id="modal-bank" style="border-radius:0px;" role="dialog">
         <div class="modal-dialog modal-sm">
             <div class="modal-content">
                 <div class="modal-header" style="border-radius:0px;">
@@ -141,71 +125,38 @@
                     <h4 class="modal-title">Tambah Bank</h4>
                 </div>
                 <div class="modal-body">
-                    <form class="form-horizontal">
+                    <form class="form-horizontal" action="#" id="form_bank" method="POST">
                         <div class="form-group">
                             <div class="col-lg-12">
-                                <input class="form-control" name="nama_bank" type="text" placeholder="Nama Bank">
+                                <input class="form-control" name="nama_pemilik" id="nama_pemilik" type="text" placeholder="Nama Pemilik">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-lg-12"><strong>Logo Bank</strong></label>
                             <div class="col-lg-12">
-                                <input class="form-control" type="file" name="logo_bank" id="logo_bank">
+                                <input class="form-control" name="no_rekening" id="no_rekening" type="text" placeholder="Nomor Rekening">
                             </div>
                         </div>
                         <div class="form-group">
-                            <div class="col-lg-12 ">
-                                <img class="center-block" id="show_logo" style="max-width:120px;height:auto;" />
+                            <div class="col-lg-12">
+                                <select class="form-control" id="pilih_bank" name="pilih_bank">
+                                    <option value="">Pilih Bank</option>
+                                    <?php foreach($bank as $row):?>
+                                    <option value="<?php echo $row->nama_bank;?>"><?php echo $row->nama_bank;?></option>
+                                    <?php endforeach;?>
+                                </select>
                             </div>
-                        </div>
-
-                    </form>
-                </div>
+                        </div>  
+                    </div>
+                </form>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger" data-dismiss="modal">Tutup</button>
-                    <button type="button" name="submit" class="btn btn-success">Tambah</button>
+                    <button type="button" onclick="simpan()" class="btn btn-success">Tambah</input>
                 </div>
             </div>
         </div>
     </div>
-    <!--      end of modal tambah bank-->
-    <!--modal update bank-->
-    <div class="modal fade" id="update_bank" style="border-radius:0px;" role="dialog">
-        <div class="modal-dialog modal-sm">
-            <div class="modal-content">
-                <div class="modal-header" style="border-radius:0px;">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">Update Bank</h4>
-                </div>
-                <div class="modal-body">
-                    <form class="form-horizontal">
-                        <div class="form-group">
-                            <div class="col-lg-12">
-                                <input class="form-control" name="nama_bank" type="text" placeholder="Nama Bank">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-lg-12"><strong>Logo Bank</strong></label>
-                            <div class="col-lg-12">
-                                <input class="form-control" type="file" name="logo_bank_update" id="logo_bank_update">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-lg-12 ">
-                                <img class="center-block" id="show_logo_update" style="max-width:120px;height:auto;" />
-                            </div>
-                        </div>
+    <!--end of modal tambah bank-->
 
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">Tutup</button>
-                    <button type="button" name="submit" class="btn btn-success">Update</button>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!--end of modal bank-->
     <!-- Javascripts-->
     <script src="<?php echo base_url('assets/bootstrap/js/jquery.min.js');?>"></script>
     <script src="<?php echo base_url('assets/bootstrap/js/bootstrap.min.js');?>"></script>
@@ -213,32 +164,76 @@
     <script src="<?php echo base_url('assets/bootstrap/js/main.js');?>"></script>
     <script src="<?php echo base_url('assets/bootstrap/js/plugins/jquery.dataTables.min.js');?>"></script>
     <script src="<?php echo base_url('assets/bootstrap/js/plugins/dataTables.bootstrap.min.js');?>"></script>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <script type="text/javascript">
-        $('#bank').DataTable();
-    </script>
-    <script>
-        document.getElementById("logo_bank").onchange = function() {
-            var reader = new FileReader();
+        var save_method;
+        var table;
+        $(document).ready( function () {
+            table = $('#bank').DataTable();
+        });
 
-            reader.onload = function(e) {
-                // get loaded data and render thumbnail.
-                document.getElementById("show_logo").src = e.target.result;
-            };
+        function tambah_bank(){
+            save_method = 'tambah'
+            $('#form_bank')['0'].reset();
+            $('#modal-bank').modal('show');
+            $('.modal-title').text('Tambah Bank');
+        }
 
-            // read the image file as a data URL.
-            reader.readAsDataURL(this.files[0]);
-        };
-        document.getElementById("logo_bank_update").onchange = function() {
-            var reader = new FileReader();
+        function update_bank(){
+            save_method = 'update'
+            $('#form_bank')['0'].reset();
+            $('#modal-bank').modal('show');
+            $('.modal-title').text('Update Bank');
+        }
 
-            reader.onload = function(e) {
-                // get loaded data and render thumbnail.
-                document.getElementById("show_logo_update").src = e.target.result;
-            };
+        function simpan(){  
+            var url;
+            url = "<?=base_url('');?>Admin_bank/add";
+            console.log($('#form_bank').serialize())
+            // // var data;
+            // $.each($('#form_bank').serialize(),function(a, i){
+            //     console.log(i,a);
+            // });
+            $.ajax({
+                url : url,
+                type: "POST",
+                data: $('#form_bank').serialize(),
+                dataType: "JSON",
+                success: function(data)
+                {
+                    //if success close modal and reload ajax table
+                    $('#modal-bank').modal('hide');
+                    location.reload();// for reload a page
+                },
+                error: function (jqXHR, textStatus, errorThrown)
+                {
+                    alert('Error adding / update data');
+                }
+            });
+        }
 
-            // read the image file as a data URL.
-            reader.readAsDataURL(this.files[0]);
-        };
+        function hapus(id){
+            if(confirm('Apakah anda yaking ingin menghapus data?')){
+                // ajax delete data to database
+                console.log(id)
+                $.ajax({
+                    url : "<?php echo site_url('Admin_bank/hapus');?>/" + id,
+                    type: "POST",
+                    dataType: "JSON",
+                    success: function(data)
+                    {
+                        //if success reload ajax table
+                        $('#modal-bank').modal('hide');
+                        location.reload();
+                    },
+                    error: function (jqXHR, textStatus, errorThrown)
+                    {
+                        alert('Gagal menghapus data.');
+                    }
+                });
+            }
+        }
     </script>
 </body>
 

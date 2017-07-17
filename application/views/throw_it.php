@@ -26,15 +26,18 @@
 					.attr('onchange', 'readImage()')
                     .attr('class',  'form-control')
 					.attr('data-image-placeholder', e.id)
-                    .attr('name', e.id + "name");
-                    console.log(e.id + "name")
-
+                    .attr('name', e.id + "name")
+					.attr('required','');
 				$(e.parentElement).append(_inputFile);
-
 				$(e).on("click", _inputFile, triggerClick);
 			});
+			$('input[name=jenisproduk]').on('change', function() {
+    			$('input[name=jenisproduk]').not(this).prop('checked', false);  
+			});
+			$('input[name=kategoriproduk]').on('change', function() {
+    			$('input[name=kategoriproduk]').not(this).prop('checked', false);  
+			});
 		}
-
 		function triggerClick(e) {
 			e.data.click();
 		}
@@ -75,7 +78,7 @@
 <nav class="navbar-default navbar-fixed-top">
     <div class="container">
         <div class="navbar-header">
-            <a class="navbar-brand" href="<?php echo base_url('login'); ?>"><span class="glyphicon glyphicon-chevron-left"></span><span  id="registration">  Throw It!</span></a>
+            <a class="navbar-brand" href="javascript:window.history.go(-1);"><span class="glyphicon glyphicon-chevron-left"></span><span  id="registration">  Throw It!</span></a>
         </div>
     </div><!--/.container -->
 </nav>
@@ -89,10 +92,15 @@
             <h5 class="title-login"><strong>Deskripsi design yang akan dijual</strong></h5>
             <p style="color: red;">
                 <?php
-                if (empty($warning)) {
+                if (empty($status)) {
                     echo "";
                 }else{
-                    echo $warning;
+                    echo "<div class='alert alert-success alert-dismissible text-center' role='alert'>
+                            <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+                              <span aria-hidden='true'>&times;</span>
+                            </button>
+                            $status
+                          </div>";
                 }
                 ?>
             </p>
@@ -108,7 +116,7 @@
                 <div class="col-xs-12 center-block">
                     <div class="form-group center-block">
 					<div class="input-group center-block">
-						<img class="center-block img-responsive" name="desaindepan" id="desaindepan" src="#" data-type="data" /></div>
+						<img class="center-block img-responsive" name="fotodepan" id="desaindepan" src="" data-type="data" /></div>
                     </div>
                 </div>
 			</div>
@@ -122,7 +130,7 @@
                 <div class="col-xs-12 center-block">
                     <div class="form-group center-block">
 					<div class="input-group center-block">
-						<img class="center-block img-responsive" name="desainbelakang" id="desainbelakang" src="#" data-type="data" /></div>
+						<img class="center-block img-responsive" name="fotobelakang" id="desainbelakang" src="" data-type="data" /></div>
                     </div>
                 </div>
 			</div>
@@ -164,13 +172,13 @@
                         <div class="row" style="padding-left: 15px;">
                             <div class="col-xs-12">
                                 <div class="checkbox box-aggrement center-block">
-                                    <input type="checkbox" id="male_cloth">
+                                    <input type="checkbox" id="male_cloth" name="jenisproduk" value=1>
                                     <label for="male_cloth" class="small text-justify">Pakaian Pria</label>
                                 </div>
                             </div>
                             <div class="col-xs-12">
                                 <div class="checkbox box-aggrement center-block">
-                                    <input type="checkbox" id="female_cloth">
+                                    <input type="checkbox" id="female_cloth" name="jenisproduk" value=2>
                                     <label for="female_cloth" class="small text-justify">Pakaian Wanita</label>
                                 </div>
                             </div>
@@ -181,25 +189,25 @@
                         <div class="row">
                             <div class="col-xs-12">
                                 <div class="checkbox box-aggrement center-block">
-                                    <input type="checkbox" id="baju">
+                                    <input type="checkbox" id="baju" name="kategoriproduk" value=1>
                                     <label for="baju" class="small text-justify">Baju</label>
                                 </div>
                             </div>
                             <div class="col-xs-12">
                                 <div class="checkbox box-aggrement center-block">
-                                    <input type="checkbox" id="jaket">
+                                    <input type="checkbox" name="kategoriproduk" id="jaket" value=2>
                                     <label for="jaket" class="small text-justify">Jaket</label>
                                 </div>
                             </div>
                             <div class="col-xs-12">
                                 <div class="checkbox box-aggrement center-block">
-                                    <input type="checkbox" id="topi">
+                                    <input type="checkbox" id="topi" name="kategoriproduk" value=3>
                                     <label for="topi" class="small text-justify">Topi</label>
                                 </div>
                             </div>
                             <div class="col-xs-12">
                                 <div class="checkbox box-aggrement center-block">
-                                    <input type="checkbox" id="celana">
+                                    <input type="checkbox" id="celana" name="kategoriproduk" value=4>
                                     <label for="celana" class="small text-justify">Celana</label>
                                 </div>
                             </div>
@@ -220,7 +228,7 @@
                         <div class="form-group">
                             <div class="input-group">
                                 <span class="input-group-addon" id="basic-addon1"><span class="fa fa-tags"></span></span>
-                                <input name="tags" type="text" class="form-control" data-role="tagsinput" placeholder="Tags" aria-describedby="basic-addon1" required>
+                                <input name="tags" type="text" class="form-control" data-role="tagsinput" placeholder="Tags" aria-describedby="basic-addon1">
                             </div>
                         </div>
                     </div>

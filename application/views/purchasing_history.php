@@ -15,13 +15,43 @@
 <nav class="navbar-default navbar-fixed-top">
     <div class="container">
         <div class="navbar-header">
-            <a class="navbar-brand" href="<?php echo base_url('login'); ?>"><span class="glyphicon glyphicon-chevron-left"></span><span  id="registration">Rekap Pembelian</span></a>
+            <a class="navbar-brand" href="javascript:window.history.go(-1);"><span class="glyphicon glyphicon-chevron-left"></span><span  id="registration">Rekap Pembelian</span></a>
         </div>
     </div><!--/.container -->
 </nav>
 <!-- NAVBAR -->
 
 <div class="col-md-4 col-md-offset-4 form-login">
+
+
+<?php foreach($riwayat_pembelian as $row){ ?>
+    <div class="list-view-column">
+        <div class="row">
+            <div class="col-xs-4">
+                <a href="<?=base_url()?>Sales_detail/index/<?=$row->id?>"><img id="img-no-bg" class="img-responsive center-block" src="<?php echo base_url(); ?>assets/images/Product/<?php echo $row->foto_produk_depan; ?>" alt="product-img"></a>
+            </div>
+            <div class="col-xs-8">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <a href="<?=base_url()?>Sales_detail/index/<?=$row->id?>">
+                        <h6><strong><?php echo $row->nama_produk ?></strong></h6>
+                        </a>
+                    </div>
+                    <div class="col-xs-12">
+                        <h6>Oleh <a href="<?=base_url()?>Profile/show/<?=$row->id_user_produk?>"><?php echo $row->nama_user ?></a></h6>
+                    </div>
+                    <!--<div class="col-xs-12">
+                        <h6><a style="color:#00b0ff;" href="">Mostly Positive (1280 Review)</a></h6>
+                    </div>-->
+                    <div class="col-xs-12">
+                        <h5><strong><?php echo $row->harga_produk ?></strong></h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<?php } ?>
+<!--
     <div class="list-view-column">
         <div class="row">
             <div class="col-xs-4">
@@ -67,29 +97,6 @@
                 </div>
             </div>
         </div>
-    </div>
-    <div class="list-view-column">
-        <div class="row">
-            <div class="col-xs-4">
-                <img id="img-no-bg" class="img-responsive center-block" src="<?php echo base_url('assets/images/sample2.png'); ?>" alt="product-img">
-            </div>
-            <div class="col-xs-8">
-                <div class="row">
-                    <div class="col-xs-12">
-                        <h6><strong>Sample Title</strong></h6>
-                    </div>
-                    <div class="col-xs-12">
-                        <h6>Oleh <a href="">Alvin</a></h6>
-                    </div>
-                    <div class="col-xs-12">
-                        <h6><a style="color:#00b0ff;" href="">Mostly Positive (1280 Review)</a></h6>
-                    </div>
-                    <div class="col-xs-12">
-                        <h5><strong>Rp. 500.000</strong></h5>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div><div class="list-view-column">
         <div class="row">
             <div class="col-xs-4">
@@ -200,7 +207,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div>-->
 </div>
 
 <nav class="navbar navbar-default navbar-fixed-bottom" style="background: #606062;">

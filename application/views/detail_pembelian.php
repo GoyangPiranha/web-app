@@ -24,7 +24,7 @@
 <nav class="navbar-default navbar-fixed-top" style="background-color:#FFC300;">
     <div class="container">
         <div class="navbar-header">
-            <a class="navbar-brand" href="<?php echo base_url('login'); ?>"><span class="glyphicon glyphicon-chevron-left"></span><span  id="registration">Detail Pembelian</span></a>
+            <a class="navbar-brand" href="javascript:window.history.go(-1);"><span class="glyphicon glyphicon-chevron-left"></span><span  id="registration">Detail Pembelian</span></a>
         </div>
     </div><!--/.container -->
 </nav>
@@ -43,10 +43,7 @@
             <div id="status" >
                 <button type="submit" class="btn btn-danger">Belum Dibayar</button>
             </div>
-
-
         </div>
-
 
     </div>
     <h3 style="text-align: center;">Yellow Ham</h3>

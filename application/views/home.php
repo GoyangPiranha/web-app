@@ -5,9 +5,7 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0  user-scalable=no"/>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-    <script src="<?php echo base_url('assets/assets/js/jquery.min.js');?>"></script>
-    <script src="<?php echo base_url('assets/bootstrap/js/bootstrap.min.js');?>"></script>
+    <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
     <!--Import Google Icon Font-->
     <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -15,6 +13,8 @@
     <link rel="stylesheet" href="<?php echo base_url('./assets/style.css'); ?>">
 
    <link href="<?php echo base_url('assets/bootstrap/css/bootstrap.min.css'); ?>" rel="stylesheet">
+   <script src="<?php echo base_url('assets/bootstrap/js/jquery.min.js');?>"></script>
+    <script src="<?php echo base_url('assets/bootstrap/js/bootstrap.min.js');?>"></script>
 
 </head>
 <body style="margin-top: 0px; margin-bottom: 60px;" id="bodyid" >
@@ -28,16 +28,20 @@
                     <button class="w3-button w3-teal w3-xlarge" onclick="w3_open()" style="background-color: rgba(255, 255, 255, 0)!important;">☰</button>
                 </div>
                 <div class="col-xs-7 col-md-4">
+                    <form action="<?php echo base_url('Home/search'); ?>" class="inner-login" method="POST" enctype="multipart/form-data">
                     <div id="imaginary_container">
                         <div class="input-group stylish-input-group">
-                            <input type="text" class="form-control"  placeholder="Search" >
-                            <span class="input-group-addon">
-                            <button type="submit">
-                            <span class="glyphicon glyphicon-search"></span>
-                        </button>
-                    </span>
+                                <input type="text" class="form-control" name="key" placeholder="Search" >
+                                <span class="input-group-addon">
+                                    <!--<a href="<?=base_url()?>Home/search/">-->
+                                        <button type="submit">
+                                            <span class="glyphicon glyphicon-search"></span>
+                                        </button>
+                                    <!--</a>-->
+                                </span>
                         </div>
                     </div>
+                    </form>
                 </div>
                 <div class="col-xs-3 col-md-2">
                     <a class="navbar-brand" href="#" id="brand">
@@ -50,15 +54,15 @@
                 </div>
             </div>
 </nav>
-
+<?php foreach($user as $row){ ?>
 <div class="w3-sidebar w3-bar-block w3-border-right" style="display:none; width: 250px; overflow: hidden; background-color: #FFC300;" id="mySidebar">
-  <div class="row" style="background: url(./assets/images/Profil/<?php if (isset($_SESSION['AVATAR'])) {echo $_SESSION['AVATAR'];}else{echo"profil.png";}?>) 50% 50% no-repeat;">
+  <div class="row" style="background: url(./assets/images/Sampul/<?php echo $row->foto_background_user ?>) 50% 50% no-repeat;">
             <div class="col-xs-4" id="profilmenu" >
-                <div style=" background: url(./assets/images/Profil/<?php if (isset($_SESSION['AVATAR'])) {echo $_SESSION['AVATAR'];}else{echo"profil.png";}?>) 50% 50% no-repeat; background-size: cover; overflow: hidden; width: 75px; height: 75px; border-radius: 50px;" class="circle">
+                <div style=" background: url(./assets/images/Profil/<?php echo $row->foto_profile_user ?>) 50% 50% no-repeat; background-size: cover; overflow: hidden; width: 75px; height: 75px; border-radius: 50px;" class="circle">
                 </div>
             </div>
             <div class="col-xs-6" style="text-align: left; line-height: 50%; margin-left: 5px; margin-right: -5px;">
-                <p style="color: white;  padding-left: 0; font-size: 110%;  padding-right: 5%; padding-top: 25px; line-height: 100%; "><?php echo $_SESSION['FULLNAME'];?></p>
+                <p style="color: white;  padding-left: 0; font-size: 110%;  padding-right: 5%; padding-top: 25px; line-height: 100%; "><?php echo $row->nama_user?></p>
                 <p style="color: orange; font-size: 80%; padding-top: 0;">Regular Account</p>
             </div>
             <div class="col-xs-2">
@@ -77,7 +81,7 @@
   <a href="<?php echo base_url('Home/logout'); ?>" class="w3-bar-item w3-button" id="menusidebar" style="text-decoration: none;"><h4>Logout</h4></a>
 
 </div>
-
+<?php } ?>
 
 
 
@@ -115,36 +119,137 @@
 
 <div class="container" onclick="w3_close()">
     <div class="row">
-
         <div class="col-xs-6">
-            <button type="button" class="buttonmenu1" onclick="callfunction(this)" value="category">Category</button>
+            <button type="button" class="buttonmenu1 dropdown-toggle" onclick="callfunction(this)" data-toggle="dropdown" value="category">Category</button>
+            <div class="dropdown-menu" >
+                <a class="dropdown-item">Baju</a><br>
+                <a class="dropdown-item">Celana</a><br>
+                <a class="dropdown-item">Jaket</a><br>
+                <a class="dropdown-item">Topi</a>
+            </div>
         </div>
         <div class="col-xs-6">
             <button type="button"  class="buttonmenu2" onclick="callfunction(this)" value="throwit" >Throw It</button>
         </div>
+               
         <div class="col-xs-6">
-            <p>Kaos</p>
+            <p>Baju</p>
         </div>
+        
         <div class="col-xs-6">
-            <button type="button" class="seeall">See All</button>
+            <a href="<?=base_url()?>Home/seeAll/<?=1?>"><button type="button" class="seeall">See All</button></a>
         </div>
-
-        <?php foreach($produkkaos as $produkkaos){?>
+        <?php foreach($baju as $row){?>  
         <div class="col-xs-6 col-md-3" id="produk">
             <div class="thumbnail">
-                <img src="assets/images/Product/<?php echo $produkkaos->foto_produk_depan ?>" alt="" class="img-responsive">
+                <a href="<?=base_url()?>Details_produk/details/<?=$row->id_produk?>"><img src="<?php echo base_url(); ?>assets/images/Product/<?php echo $row->foto_produk_depan; ?>" alt="" class="img-responsive"></a>
                 <div class="caption">
-                    <h5 id="produkname"><a href="#"><?php echo $produkkaos->nama_produk ?></a></h5>
-                    <p id="produkcaption">Oleh <?php echo $produkkaos->nama_user ?></p>
-                    <p id="produkrating"><?php echo $produkkaos->rating_produk ?></p>
-                    <h5 id="produkprice"><?php echo $produkkaos->harga_produk ?></h5>
+                    <h5 id="produkname"><a href="<?=base_url()?>Details_produk/details/<?=$row->id_produk?>"><?php echo $row->nama_produk ?></a></h5>
+                    <p id="produkcaption">Oleh <?php echo $row->nama_user ?></p>
+                    <p id="produkrating"><?php echo $row->rating_produk ?></p>
+                    <h5 id="produkprice">Rp. <?php echo $row->harga_produk ?></h5>
                 </div>
                 <div class="row">
                     <div class="col-xs-6">
-                        <a href="<?=base_url()?>Wishlist/insert/<?=$produkkaos->id_produk?>"><button type="button" class="btn btn-info btn-product">Whistlist</button></a>
+                        <a href="<?=base_url()?>Wishlist/insert/<?=$row->id_produk?>"><button type="button" class="btn btn-info btn-product">Whistlist</button></a>
                     </div>
                     <div class="col-xs-6">
-                        <button type="button" class="btn btn-success btn-product"><a href="<?=base_url('');?>Konveksi_list">Beli</a></button>
+
+                        <a href="<?=base_url()?>Konveksi_list/konveksi/<?=$row->id_produk?>/<?=$row->id_kategori_produk?>"><button type="button" class="btn btn-success btn-product">Beli</button></a>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <?php } ?>
+        
+        <div class="col-xs-6">
+            <p>Jaket</p>
+        </div>
+        <div class="col-xs-6">
+            <a href="<?=base_url()?>Home/seeAll/<?=2?>"><button type="button" class="seeall">See All</button></a>
+        </div>
+
+        <?php foreach($jaket as $row){?>                
+        <div class="col-xs-6 col-md-3" id="produk">
+            <div class="thumbnail">
+                <a href="<?=base_url()?>Details_produk/details/<?=$row->id_produk?>"><img src="<?php echo base_url(); ?>assets/images/Product/<?php echo $row->foto_produk_depan; ?>" alt="" class="img-responsive"></a>
+                <div class="caption">
+                    <h5 id="produkname"><a href="<?=base_url()?>Details_produk/details/<?=$row->id_produk?>"><?php echo $row->nama_produk ?></a></h5>
+                    <p id="produkcaption">Oleh <?php echo $row->nama_user ?></p>
+                    <p id="produkrating"><?php echo $row->rating_produk ?></p>
+                    <h5 id="produkprice">Rp. <?php echo $row->harga_produk ?></h5>
+                </div>
+                <div class="row">
+                    <div class="col-xs-6">
+                        <a href="<?=base_url()?>Wishlist/insert/<?=$row->id_produk?>"><button type="button" class="btn btn-info btn-product">Whistlist</button></a>
+                    </div>
+                    <div class="col-xs-6">
+
+                        <a href="<?=base_url()?>Konveksi_list/konveksi/<?=$row->id_produk?>/<?=$row->id_kategori_produk?>"><button type="button" class="btn btn-success btn-product">Beli</button></a>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <?php } ?>
+       
+        <div class="col-xs-6">
+            <p>Topi</p>
+        </div>
+        <div class="col-xs-6">
+            <a href="<?=base_url()?>Home/seeAll/<?=3?>"><button type="button" class="seeall">See All</button></a>            
+        </div>
+
+        <?php foreach($topi as $row){?>        
+        <div class="col-xs-6 col-md-3" id="produk">
+            <div class="thumbnail">
+                <a href="<?=base_url()?>Details_produk/details/<?=$row->id_produk?>"><img src="<?php echo base_url(); ?>assets/images/Product/<?php echo $row->foto_produk_depan; ?>" alt="" class="img-responsive"></a>
+                <div class="caption">
+                    <h5 id="produkname"><a href="<?=base_url()?>Details_produk/details/<?=$row->id_produk?>"><?php echo $row->nama_produk ?></a></h5>
+                    <p id="produkcaption">Oleh <?php echo $row->nama_user ?></p>
+                    <p id="produkrating"><?php echo $row->rating_produk ?></p>
+                    <h5 id="produkprice">Rp. <?php echo $row->harga_produk ?></h5>
+                </div>
+                <div class="row">
+                    <div class="col-xs-6">
+                        <a href="<?=base_url()?>Wishlist/insert/<?=$row->id_produk?>"><button type="button" class="btn btn-info btn-product">Whistlist</button></a>
+                    </div>
+                    <div class="col-xs-6">
+
+                        <a href="<?=base_url()?>Konveksi_list/konveksi/<?=$row->id_produk?>/<?=$row->id_kategori_produk?>"><button type="button" class="btn btn-success btn-product">Beli</button></a>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <?php } ?>
+
+        <div class="col-xs-6">
+            <p>Celana</p>
+        </div>
+        <div class="col-xs-6">
+            <a href="<?=base_url()?>Home/seeAll/<?=4?>"><button type="button" class="seeall">See All</button></a>            
+        </div>
+
+        <?php foreach($celana as $row){?>
+        <div class="col-xs-6 col-md-3" id="produk">
+            <div class="thumbnail">
+                <a href="<?=base_url()?>Details_produk/details/<?=$row->id_produk?>"><img src="<?php echo base_url(); ?>assets/images/Product/<?php echo $row->foto_produk_depan; ?>" alt="" class="img-responsive"></a>
+                <div class="caption">
+                    <h5 id="produkname"><a href="<?=base_url()?>Details_produk/details/<?=$row->id_produk?>"><?php echo $row->nama_produk ?></a></h5>
+                    <p id="produkcaption">Oleh <?php echo $row->nama_user ?></p>
+                    <p id="produkrating"><?php echo $row->rating_produk ?></p>
+                    <h5 id="produkprice">Rp. <?php echo $row->harga_produk ?></h5>
+                </div>
+                <div class="row">
+                    <div class="col-xs-6">
+                        <a href="<?=base_url()?>Wishlist/insert/<?=$row->id_produk?>"><button type="button" class="btn btn-info btn-product">Whistlist</button></a>
+                    </div>
+                    <div class="col-xs-6">
+
+                        <a href="<?=base_url()?>Konveksi_list/konveksi/<?=$row->id_produk?>/<?=$row->id_kategori_produk?>"><button type="button" class="btn btn-success btn-product">Beli</button></a>
+
                     </div>
                 </div>
             </div>
@@ -181,7 +286,7 @@ function w3_close() {
 
 function callfunction(a) {
     if (a.value == "throwit") {
-        window.location = "<?php echo base_url(); ?>Detail/throwit";
+        window.location = "<?php echo base_url(); ?>Throw_it";
     }
     else if (a.value == "category"){
 

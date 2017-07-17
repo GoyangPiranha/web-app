@@ -1,8 +1,6 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-
 class Admin_show_user extends CI_Controller {
-
 	/**
 	 * Index Page for this controller.
 	 *
@@ -18,7 +16,6 @@ class Admin_show_user extends CI_Controller {
 	 * map to /index.php/welcome/<method_name>
 	 * @see https://codeigniter.com/user_guide/general/urls.html
 	 */
-
 	function __construct(){
 		parent::__construct();
 		$this->load->model('M_users','',TRUE);
@@ -33,4 +30,28 @@ class Admin_show_user extends CI_Controller {
 			$this->load->view('admin_login');
 		}
 	}
+	public function updateJenis(){
+		// $id_user = $this->input->post('id_user');
+		// $id_jenis_user = $this->input->post('id_jenis_user');
+		$id_user = array(
+						'id_user' => $this->input->post('id_user')
+		);
+		$data = array(
+						'id_jenis_user' => $this->input->post('id_jenis_user')
+		);
+		// echo  $id_user['id_user'];
+		// echo  $data['id_jenis_user'];
+		$check = $this->M_users->updateStatusUser($id_user, $data);
+		echo json_encode(array("status" => $check));
+	}
+	public function getJenisUser($id){
+		$data = $this->M_users->getJenisUser($id);
+		echo json_encode($data);
+	}
+
+	public function hapus($id_user){
+		$delete = $this->M_users->deleteUser($id_user);
+		echo json_encode(array('status' => $delete));
+	}
+	
 }

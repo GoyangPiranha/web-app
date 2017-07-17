@@ -22,13 +22,17 @@ class Admin_index extends CI_Controller {
 	{
 		parent::__construct();
 		$this->load->model('M_users','',TRUE);
-		$this->load->model('M_Produk','',TRUE);
+		$this->load->model('M_produk','',TRUE);
 		$this->load->model('M_konveksi','',TRUE);
+		$this->load->model('M_transaksi','',TRUE);
 		
 	}
 	public function index()
 	{
 		if (isset($_SESSION['USERNAME'])) {
+			$data['user'] = $this->M_users->getUserCount();
+			$data['produk'] = $this->M_produk->getProductCount();
+			$data['transaksi'] = $this->M_transaksi->getTransactionCount();
 			$this->load->view('admin_index');
 		}
 		else {

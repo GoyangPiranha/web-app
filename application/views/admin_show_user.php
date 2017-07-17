@@ -26,7 +26,7 @@
                 <div class="navbar-custom-menu">
                     <ul class="top-nav">
                         <!--Notification Menu-->
-                        <li class="dropdown notification-menu"><a class="dropdown-toggle" href="#" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-bell-o fa-lg"></i></a>
+                        <!--<li class="dropdown notification-menu"><a class="dropdown-toggle" href="#" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-bell-o fa-lg"></i></a>
                             <ul class="dropdown-menu">
                                 <li class="not-head">You have 4 new notifications.</li>
                                 <li><a class="media" href="javascript:;"><span class="media-left media-icon"><span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x text-primary"></i><i class="fa fa-envelope fa-stack-1x fa-inverse"></i></span></span>
@@ -37,11 +37,11 @@
                       <div class="media-body"><span class="block">Transaction xyz complete</span><span class="text-muted block">2min ago</span></div></a></li>
                                 <li class="not-footer"><a href="#">See all notifications.</a></li>
                             </ul>
-                        </li>
+                        </li>-->
                         <!-- User Menu-->
                         <li class="dropdown"><a class="dropdown-toggle" href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user fa-lg"></i></a>
                             <ul class="dropdown-menu settings-menu">
-                                <li><a href="page-login.html"><i class="fa fa-sign-out fa-lg"></i> Logout</a></li>
+                                <li><a href="<?php echo base_url('Admin_index/logout'); ?>"><i class="fa fa-sign-out fa-lg"></i> Logout</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -61,6 +61,7 @@
                 <!-- Sidebar Menu-->
                 <ul class="sidebar-menu">
                     <li><a href="<?php echo base_url('Admin_index');?>"><i class="fa fa-home"></i><span>Beranda</span></a></li>
+                    <li><a href="<?php echo base_url('Admin_carousel');?>"><i class="fa fa-laptop"></i><span>Kelola Header</span></a></li>
                     <li><a href="<?php echo base_url('Admin_konveksi');?>"><i class="fa fa-laptop"></i><span>Kelola Konveksi</span></a></li>
                     <li><a href="<?php echo base_url('Admin_bank');?>"><i class="fa fa-bank"></i><span>Kelola Bank</span></a></li>
                     <li class="active"><a href="<?php echo base_url('Admin_show_user');?>"><i class="fa fa-home"></i><span>Kelola Pengguna</span></a></li>
@@ -84,11 +85,12 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="card">
+                    
                         <div class="card-body">
                             <table class="table table-hover table-bordered" id="usertable">
                                 <thead>
                                     <tr>
-                                        <th>No</th>
+                                        <th style="width:25px;">No</th>
                                         <th>Nama Lengkap</th>
                                         <th>Username</th>
                                         <th>Tanggal Lahir</th>
@@ -104,7 +106,7 @@
                                 <tbody>
                                      <?php foreach($users as $index => $row):?>
                                     <tr>
-                                        <td><?php echo $index+1; ?></td>
+                                        <td class="text-center"><?php echo $index+1; ?></td>
                                         <td><?php echo $row->nama_user;?></td>
                                         <td><?php echo $row->username_user;?></td>
                                         <td><?php echo $row->tanggal_lahir_user;?></td>
@@ -114,7 +116,7 @@
                                         <td><?php echo $row->email_user;?></td>
                                         <td><?php echo $row->contact_user;?></td>
                                         <td><?php if($row->jenis_user==1){echo "Reguler";}elseif($row->jenis_user==2){echo "Premium";}?></td>
-                                        <td class="text-center"><a title="Upgrade User" data-toggle="modal" data-target="#upgrade_user" class="btn btn-info btn-flat" style="padding:5px 5px;" href="#"><i class="fa fa-sm fa-pencil" ></i></a><a class="btn btn-flat btn-danger" title="Hapus User" onclick="hapus(<?php echo $row->id_user;?>)"><span class="fa fa-trash"></span></a></td>
+                                        <td class="text-center"><a title="Upgrade User" data-toggle="modal" data-target="#upgrade_user" class="btn btn-info btn-flat" style="padding:5px 5px;" href="#"><i class="fa fa-sm fa-pencil" ></i></a><a class="btn btn-danger btn-flat" style="padding:5px 5px;" title="Hapus User" onclick="hapus(<?php echo $row->id_user;?>)"><span class="fa fa-trash"></span></a></td>
                                     </tr>
                                     <?php endforeach;?>                      
                                 </tbody>
@@ -126,7 +128,7 @@
         </div>
     </div>
     <!--Upgrade user modal-->
-    <div class="modal fade" id="upgrade_user" style="border-radius:0px;" role="dialog">
+    <div class="modal fade" id="modal_upgrade" style="border-radius:0px;" role="dialog">
         <div class="modal-dialog modal-sm">
             <div class="modal-content">
                 <div class="modal-header" style="border-radius:0px;">
@@ -134,25 +136,29 @@
                     <h4 class="modal-title">Upgrade User</h4>
                 </div>
                 <div class="modal-body">
-                    <form class="form-horizontal">
+                    <form class="form-horizontal" id="form_upgrade" action="">
                         <div class="form-group">
                             <div class="col-lg-12"><h5><strong>Status Sekarang:</strong></h5></div>
-                            <div class="col-lg-12"><h4 class="text-center"><strong>Pengguna Reguler</strong></h4></div>
+                            <div class="col-lg-12"><h4 class="text-center" id="status"><strong id="status_sekarang" style="color:green;"></strong></h4></div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-lg-12"><input type="hidden" id="id_user" value=""></div>
                         </div>
                         <div class="form-group">
                             <label class="col-lg-12"><strong>Upgrade User:</strong></label>
                             <div class="col-lg-12">
                                 <select class="form-control" id="upgrade_list">
-                                    <option value="1">Reguler</option>
+                                    <option value="2">Non-Premium</option>
                                     <option value="1">Premium</option>
                                 </select>
                             </div>
                         </div>
+                        
                     </form>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger" data-dismiss="modal">Batal</button>
-                    <button type="button" name="submit" class="btn btn-success">Konfirmasi</button>
+                    <button type="submit" onclick="save()" name="submit" class="btn btn-success">Konfirmasi</button>
                 </div>
             </div>
         </div>
@@ -182,16 +188,66 @@
                         //if success reload ajax table
                         // $('#modal-bank').modal('hide');
                         location.reload();
-                        $.notify("Delete successfull.", "success");
+                        // $.notify("Delete successfull.", "success");
                     },
                     error: function (jqXHR, textStatus, errorThrown)
                     {
-                        // alert('This Project has been taken, unable to delete!');
-                        $.notify("This job has already taken, unable to delete!", {className: "error", position: "bottom-left"});
+                        alert('Gagal menghapus user.');
+                        // $.notify("This job has already taken, unable to delete!", {className: "error", position: "bottom-left"});
                     }
                 });
             }
         }
+        function change_status(id){
+             $('#form_upgrade')[0].reset();
+
+             $.ajax({
+                url : "<?php echo base_url('Admin_show_user/getJenisUser');?>/" + id,
+                type: "GET",
+                dataType: "JSON",
+                success: function(data)
+                {
+                        var transaksi = jQuery.parseJSON(JSON.stringify(data));
+                        $.each(transaksi, function(i, item){
+                            $('#status_sekarang').text(item.jenis_user);
+                            // document.getElementById("upgrade_list").value = item.id_jenis_user;
+                            // console.log(item.id_jenis_user);
+                            $('#id_user').val(item.id_user);
+                        });
+
+                    $('#modal_upgrade').modal('show'); // show bootstrap modal when complete loaded
+                },
+                error: function (jqXHR, textStatus, errorThrown)
+                {
+                    alert('Error get data from ajax');
+                }
+            });
+        }
+
+        function save(){
+            var id_user = document.getElementById("id_user").value;
+            var id_jenis_user = document.getElementById("upgrade_list").value;
+            // console.log(status_user);
+            var data = {'id_user' : id_user, 'id_jenis_user' : id_jenis_user};
+            console.log(data);
+            $.ajax({
+                url : "<?php echo base_url('Admin_show_user/updateJenis');?>",
+                type: "POST",
+                data : data,
+                dataType: "JSON",
+                success: function(data)
+                {
+                    $('#modal_status').modal('hide'); // show bootstrap modal when complete loaded
+                    location.reload();
+                },
+                error: function (jqXHR, textStatus, errorThrown)
+                {
+                    // console.log(data);
+                    alert('Error get data from ajax');
+                }
+            });     
+        }
+
     </script>
 </body>
 

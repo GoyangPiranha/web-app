@@ -15,7 +15,7 @@
 <nav class="navbar-default navbar-fixed-top">
     <div class="container">
         <div class="navbar-header">
-            <a class="navbar-brand" href="<?php echo base_url('Home'); ?>"><span class="glyphicon glyphicon-chevron-left"></span><span  id="registration"> Home</span></a>
+            <a class="navbar-brand" href="javascript:window.history.go(-1);"><span class="glyphicon glyphicon-chevron-left"></span><span  id="registration"> Wishlist</span></a>
         </div>
     </div><!--/.container -->
 </nav>
@@ -48,7 +48,7 @@
         </div>
         <div class="row">
             <div class="col-xs-4">
-                <img id="img-no-bg" class="img-responsive center-block" src="assets/images/Product/<?php echo $wishlist->foto_produk_depan ?>" alt="product-img">
+                <img id="img-no-bg" class="img-responsive center-block" src="<?php echo base_url(); ?>assets/images/Product/<?php echo $wishlist->foto_produk_depan ?>" alt="product-img">
             </div>
             <div class="col-xs-8">
                 <div class="row">
@@ -67,7 +67,7 @@
         <div class="row">
             <div class="col-xs-8"></div>
             <div class="col-xs-4">
-                <button href="<?=base_url('');?>Konveksi_list" style="padding: 3px 7px;border-radius: 2px;font-size: 12px;" class="pull-right btn btn-custom-yellow small">Bayar</button>
+                <a href=""><button style="padding: 3px 7px;border-radius: 2px;font-size: 12px;" class="pull-right btn btn-custom-yellow small">Bayar</button></a>
             </div>
         </div>
     </div>
