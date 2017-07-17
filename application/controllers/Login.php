@@ -25,8 +25,7 @@ class Login extends CI_Controller {
 				redirect('home','refresh');
 				//echo "aaaaaaaaa";
 			}else {
-				$data ['warning']  = "Data tidak ditemukan";
-				$this->load->view('login',$data);
+				redirect('login','refresh');
 				//echo "salah";
 			}
 		}

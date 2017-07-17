@@ -1,9 +1,9 @@
 <?php
 
 defined('BASEPATH') OR exit('No direct script access allowed');
-require_once 'RajaOngkir/endpoints.php';
+require_once 'Rajaongkir/endpoints.php';
 
-class RajaOngkir extends Endpoints {
+class Rajaongkir extends Endpoints {
 
     private $api_key;
     private $account_type;

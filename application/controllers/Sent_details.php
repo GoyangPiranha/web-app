@@ -43,10 +43,11 @@ class Sent_details extends CI_Controller {
 			$username = $_SESSION['ID_USER'];
 			// $data['provinsi'] = $this->m_user->getProvinsiQuery(); //from db
 			$data['harga'] = $this->M_jenis_konveksi->getHarga($id_produk, $id_konveksi);
-			$data['provinsi'] = $this->rajaongkir->province(); //from api
+			$data['provinsi']=$this->M_users->getProvinsiQuery();
+			// $data['provinsi'] = $this->rajaongkir->province(); //from api
 			$data['ukuran'] = $this->M_transaksi->getUkuran();
-			$prov_obj = json_decode($data['provinsi']);
-			$data['provinsi'] = $prov_obj->rajaongkir->results;		
+			// $prov_obj = json_decode($data['provinsi']);
+			// $data['provinsi'] = $prov_obj->rajaongkir->results;		
 
 			$this->load->view('sent_details', $data);
 		}
@@ -55,31 +56,45 @@ class Sent_details extends CI_Controller {
 		}
 		
 	}
-	public function getKota(){
-		//use API
-		$this->load->library('rajaongkir');
-		$id_provinsi = $this->input->post('id_provinsi');
-		// $kotas = $this->M_users->getKotaQuery($id_provinsi);
-		$kotas = $this->rajaongkir->city($id_provinsi);
-		// echo $kota;
-		$kota_objct = json_decode($kotas);
-		$kotas = $kota_objct->rajaongkir->results;
-		// echo json_encode('dffdfdfd');
 
+	public function getKota(){
+		$id_provinsi = $this->input->post('id_provinsi');
+		$kotas = $this->M_users->getKotaQuery($id_provinsi);
 		if (count($kotas)>0) {
 			$select_box = '';
-			$select_box .= '<option value="null">Pilih Kota</option>';
+			$select_box .= '<option value="">Pilih Kota</option>';
 			foreach ($kotas as $kota) {
-				if($kota->type == 'Kabupaten'){
-					$nama ='Kab.'.$kota->city_name;
-				}else{
-					$nama = $kota->type.' '.$kota->city_name;
-				}
-				$select_box .= '<option value="'.$kota->city_id.'">'.$nama.'</option>';
+				$select_box .= '<option value="'.$kota->id_kota.'">'.$kota->nama_kota.'</option>';
 			}
 			echo json_encode($select_box);
 		}
 	}
+
+	// public function getKota(){
+	// 	//use API
+	// 	$this->load->library('rajaongkir');
+	// 	$id_provinsi = $this->input->post('id_provinsi');
+	// 	// $kotas = $this->M_users->getKotaQuery($id_provinsi);
+	// 	$kotas = $this->rajaongkir->city($id_provinsi);
+	// 	// echo $kota;
+	// 	$kota_objct = json_decode($kotas);
+	// 	$kotas = $kota_objct->rajaongkir->results;
+	// 	// echo json_encode('dffdfdfd');
+
+	// 	if (count($kotas)>0) {
+	// 		$select_box = '';
+	// 		$select_box .= '<option value="null">Pilih Kota</option>';
+	// 		foreach ($kotas as $kota) {
+	// 			if($kota->type == 'Kabupaten'){
+	// 				$nama ='Kab.'.$kota->city_name;
+	// 			}else{
+	// 				$nama = $kota->type.' '.$kota->city_name;
+	// 			}
+	// 			$select_box .= '<option value="'.$kota->city_id.'">'.$nama.'</option>';
+	// 		}
+	// 		echo json_encode($select_box);
+	// 	}
+	// }
 
 	// function proses($id_konveksi, $id_produk){
 	// 	echo $id_konveksi."========".$id_produk;
@@ -107,7 +122,9 @@ class Sent_details extends CI_Controller {
 		$email_tujuan     = $this->input->post('email');
 		$alamat_tujuan    = $this->input->post('alamat');
 		$ukuran = $this->input->post('select_ukuran');
-		$jenis_pengiriman = $_POST['logistik'];
+		$jenis_logistik = $_POST['jenis_logistik'];
+		$jenis_paket = $_POST['jenis_paket'];
+		// $jenis_pengiriman = $_POST['logistik'];
 		$biaya_konveksi = $_POST['biayakonveksi'];
 		$biaya_kirim = $_POST['biayakirim'];
 		$harga_barang = $_POST['hargabarang'];
@@ -116,6 +133,16 @@ class Sent_details extends CI_Controller {
 		$tanggal  = date('Y-m-d');
 		$status_transaksi = 1;
 		$id_user = $_SESSION['ID_USER'];
+
+		$jenis_pengiriman;
+
+		if(1==$jenis_logistik){
+			$jenis_pengiriman = "JNE";
+		}else if(2== $jenis_logistik){
+			$jenis_pengiriman = "TIKI";
+		}
+		// echo $jenis_pengiriman;
+		
 
 		$tujuan = array(
 			'id_tujuan' => $uniq,
@@ -142,6 +169,7 @@ class Sent_details extends CI_Controller {
 		$_SESSION['tujuan'] = $tujuan;
 		$_SESSION['transaksi'] = $transaksi;
 		
+		// echo $transaksi['jenis_pengiriman'];
 
 		redirect('Payment_method/index', 'refresh');
 

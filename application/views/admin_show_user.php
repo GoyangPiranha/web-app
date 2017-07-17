@@ -115,7 +115,7 @@
                                         <td><?php echo $row->nama_provinsi;?></td>
                                         <td><?php echo $row->email_user;?></td>
                                         <td><?php echo $row->contact_user;?></td>
-                                        <td><?php if($row->jenis_user==1){echo "Reguler";}elseif($row->jenis_user==2){echo "Premium";}?></td>
+                                        <td><?php if($row->id_jenis_user==1){echo "Reguler";}elseif($row->id_jenis_user==2){echo "Premium";}?></td>
                                         <td class="text-center"><a title="Upgrade User" data-toggle="modal" data-target="#upgrade_user" class="btn btn-info btn-flat" style="padding:5px 5px;" href="#"><i class="fa fa-sm fa-pencil" ></i></a><a class="btn btn-danger btn-flat" style="padding:5px 5px;" title="Hapus User" onclick="hapus(<?php echo $row->id_user;?>)"><span class="fa fa-trash"></span></a></td>
                                     </tr>
                                     <?php endforeach;?>                      
@@ -128,7 +128,7 @@
         </div>
     </div>
     <!--Upgrade user modal-->
-    <div class="modal fade" id="modal_upgrade" style="border-radius:0px;" role="dialog">
+    <div class="modal fade" id="upgrade_user" style="border-radius:0px;" role="dialog">
         <div class="modal-dialog modal-sm">
             <div class="modal-content">
                 <div class="modal-header" style="border-radius:0px;">

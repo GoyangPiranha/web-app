@@ -34,16 +34,16 @@
     <div id="accordion" role="tablist" aria-multiselectable="true">
     <?php foreach($rekening as $row){ ?>
         <div class="card list-view-column">
-            <div class="card-header" role="tab" id="<?php echo $row->nama_bank ?>">
+            <div class="card-header" role="tab" id="bri">
                 <h5 class="mb-0">
-                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseBri" aria-expanded="true" aria-controls="collapseOne">
+                    <a data-toggle="collapse" data-parent="#accordion" href="<?php echo '#'.$row->nama_bank ?>" aria-expanded="true" aria-controls="collapseOne">
                         <div class="radio radio-primary">
                             <strong><?php echo $row->nama_bank ?></strong>
                         </div>
                     </a>
                 </h5>
             </div>
-            <div id="collapseBri" class="collapse" role="tabpanel" aria-labelledby="bri">
+            <div id="<?php echo $row->nama_bank?>" class="collapse" role="tabpanel" aria-labelledby="bri">
                 <div class="card-block">
                     <div class="row" id="row-payment">
                         <div class="col-xs-6">

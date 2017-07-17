@@ -110,7 +110,7 @@
 
 		//query get all user kecuali admin
 		function getNoAdmin(){
-			$query = $this->db->query("SELECT U.id_user, U.nama_user, U.username_user, U.tanggal_lahir_user, U.alamat_user, U.email_user, U.contact_user, K.nama_kota, P.nama_provinsi, JU.jenis_user FROM user U, kota K, provinsi P, jenis_user JU WHERE U.id_kota = K.id_kota AND K.id_provinsi = P.id_provinsi AND U.id_jenis_user = JU.id_jenis_user AND (JU.id_jenis_user = 1 OR JU.id_jenis_user = 2)");
+			$query = $this->db->query("SELECT U.id_user, U.nama_user, U.username_user, U.tanggal_lahir_user, U.alamat_user, U.email_user, U.contact_user, K.nama_kota, P.nama_provinsi, JU.id_jenis_user FROM user U, kota K, provinsi P, jenis_user JU WHERE U.id_kota = K.id_kota AND K.id_provinsi = P.id_provinsi AND U.id_jenis_user = JU.id_jenis_user AND (JU.id_jenis_user = 1 OR JU.id_jenis_user = 2)");
 			return $query->result();
 		}
 

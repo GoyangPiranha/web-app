@@ -25,6 +25,7 @@ class Purchasing_history extends CI_Controller {
         }
         public function index(){
             if (isset($_SESSION['ID_USER'])){
+                $_SESSION['konfirmasi']='';
                 $id_user = $_SESSION['ID_USER'];
                 $data['riwayat_pembelian'] = $this->M_transaksi->getRiwayatPembelian($id_user);
                 $this->load->view('purchasing_history', $data);

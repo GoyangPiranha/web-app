@@ -76,10 +76,10 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => 'localhost',
-	'username' => 'root',
-	'password' => '',
-	'database' => 'db_throwapp',
+	'hostname' => 'mysql.idhostinger.com',
+	'username' => 'u346156039_user',
+	'password' => 'DB_throwapp2k17',
+	'database' => 'u346156039_throw',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,
